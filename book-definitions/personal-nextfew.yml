@@ -20,6 +20,44 @@ personal-nextfew:
       replace: ../Images/ForgerCover.jpg
 
   parts:
+    # TODO - potentially rearrange starting stories
+  - toc: "Unexpected Consequences"
+    story: {id: 2}
+  - toc: "Mom, I Don't Feel So Good"
+    story: {id: 7}
+  - toc: "Enter The Chaka!"
+    story: {id: 3}
+  - toc: "Jade 1: Coming Out"
+    story: {id: 10}
+  - toc: "Jade 2"
+    story: {id: 11}
+  - toc: "Quoth the Ninja: Nevermore!"
+    story: {id: 133}
+  - toc: "Another Day, We Were Going Where?"
+    story: {id: 24}
+  - toc: "PMS And Other Problems"
+    story: {id: 23}
+  - toc: "Jade 3: Being a Girl"
+    story: {id: 122}
+  - toc: "Chaka: Duel Damsel"
+    story: {id: 144}
+  - toc: "A Simple Game"
+    story: {id: 123}
+  - toc: "Welcome to Poe"
+    story: {id: 132}
+  - toc: "First Day"
+    story: {id: 147}
+  - toc: "Fey: Adjustments"
+    story: {id: 146}
+  - toc: "First Assembly"
+    story: {id: 148}
+
+
+  - toc: "MISSING PARTS"
+    coverpage: >
+      <p>Please ask the publisher to add the missing chapters.</p>
+
+
   - toc: "Christmas Chicanery"
     story: {id: 316}
   - toc: "Like a Brick"
@@ -113,4 +151,63 @@ personal-nextfew:
     story: {id: 441}
   - toc: "A View to a Smell"
     story: {id: 231}
-
+  - toc: "Straight From the Squirrel's Mouth: Chapter 8"
+    coverpage: >
+      <p>Please switch to squirrel.epub and read Chapter 8.</p>
+  - toc: "The Secret of the Forger's List: Chapter 4"
+    coverpage: >
+      <p>Please switch to loophole.epub and read Chapter 4.</p>
+  - toc: "Straight From the Squirrel's Mouth: Chapter 9"
+    coverpage: >
+      <p>Please switch to squirrel.epub and read Chapter 9.</p>
+  - toc: "Gong Hai Fat Choy: Part 1"
+    story: {id: 416}
+  - toc: "Gong Hai Fat Choy: Part 2"
+    story: {id: 422}
+  - toc: "Monkey of Constant Sorrow"
+    story: {id: 326}
+  - toc: "Straight From the Squirrel's Mouth: Chapter 10"
+    coverpage: >
+      <p>Please switch to squirrel.epub and read Chapter 10.</p>
+  - toc: "Silver Linings (Part 5)"
+    story: {id: 125}
+  - toc: "Test Tube Babies"
+    story: {id: 233}
+  - toc: "Call The Thunder: Part 7"
+    coverpage: >
+      <p>Please switch to eldritch.epub and read Chapter 7 (final chapter).</p>
+  - toc: "Combat Boot"
+    story: {id: 178}
+  - toc: "I Looked Into The Abyss And It Winked: Part 1"
+    story: {id: 317}
+  - toc: "Adios"
+    story: {id: 331}
+  - toc: "I Looked Into The Abyss And It Winked: Part 2"
+    story: {id: 318}
+  - toc: "Mimeographic"
+    story: {id: 232}
+  - toc: "Wednesday Morning, 5 A.M."
+    story: {id: 273}
+  - toc: "I Looked Into The Abyss And It Winked: Parts 3-6"
+    story: {id: 319} # TODO - anchors for Abyss
+  - toc: "To Know Your Heart"
+    story: {id: 475}
+  - toc: "I Looked Into The Abyss And It Winked: Parts 7-8"
+    story: {id: 320} # TODO - anchors for Abyss
+  - toc: "I Looked Into The Abyss And It Winked: Part 9"
+    story: {id: 322}
+  - toc: "I Looked Into The Abyss And It Winked: Part 10"
+    story: {id: 321}
+  - toc: "Spring, and a Young Squirrel's Fancy"
+    story: {id: 234} # TODO - add to squirrel.epub?
+  - toc: "Ayla and the Mad Scientist: Chapter 1"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 1.</p>
+  - toc: "Ayla and the Mad Scientist: Chapter 2"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 2.</p>
+  - toc: "Ayla and the Mad Scientist: Chapter 3"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 3.</p>
+  - toc: "Triple Threat"
+    story: {id: 348}

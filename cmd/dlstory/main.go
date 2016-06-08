@@ -46,6 +46,7 @@ func main() {
 		fatal(err)
 	}
 	fmt.Println(page.URL())
+	fmt.Println(page.PublishDate())
 	ioutil.WriteFile("out1.html", []byte(page.StoryBody()), 0644)
 	ebooks.FixForEbook(page)
 	ioutil.WriteFile("out2.html", []byte(page.StoryBody()), 0644)

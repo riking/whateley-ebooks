@@ -25,7 +25,7 @@ func main() {
 		CacheFile: "./cache.db",
 	})
 
-	ebook := "gen2"
+	ebook := "personal-nextfew"
 
 	var ebooksFile map[string]*ebooks.EpubDefinition
 	b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))

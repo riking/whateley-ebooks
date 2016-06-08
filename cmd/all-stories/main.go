@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-
-	"io/ioutil"
+	//"io/ioutil"
 	"os"
 	"sync"
 
 	"github.com/riking/whateley-ebooks/client"
-	"github.com/riking/whateley-ebooks/ebooks"
-	"gopkg.in/yaml.v2"
+	//"github.com/riking/whateley-ebooks/ebooks"
+	//"gopkg.in/yaml.v2"
+	"time"
+	"sort"
 )
 
 func fatal(err error) {
@@ -21,15 +22,16 @@ func fatal(err error) {
 }
 
 type result struct {
-	Story     client.StoryURL
-	WordCount int
+	client.StoryURL
+	WordCount   int
+	PublishDate time.Time
 }
 
 func wordcountStory(ch chan<- result, storyID string, networkAccess *client.WANetwork) {
-	fmt.Println(storyID)
 	story, err := networkAccess.GetStoryByID(storyID)
 	if err != nil {
-		if strings.Contains(err.Error(), "Non-200 response") {
+		if strings.Contains(err.Error(), "fetching page HTML") {
+			fmt.Fprintf(os.Stderr, "[W] Ignoring error fetching HTML for %s: %s\n", storyID, err)
 			return
 		}
 		if strings.Contains(err.Error(), "Could not parse canonical URL") {
@@ -43,10 +45,14 @@ func wordcountStory(ch chan<- result, storyID string, networkAccess *client.WANe
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	fmt.Println(story.CategorySlug)
 	if story.CategorySlug == "original-timeline" || story.CategorySlug == "stories" || story.CategorySlug == "2nd-gen-canon" {
 		count := len(strings.Fields(story.StoryBodySelection().Text()))
-		ch <- result{Story: story.StoryURL, WordCount: count}
+		date, err := story.PublishDate()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "[F] Could not parse date for %s: %s\n", storyID, err)
+			os.Exit(1)
+		}
+		ch <- result{StoryURL: story.StoryURL, WordCount: count, PublishDate: date}
 	}
 }
 
@@ -65,6 +71,52 @@ outer:
 	}
 	close(idChan)
 
+}
+
+func wordcountConsumer(resChan chan result) {
+	total := 0
+	for v := range resChan {
+		fmt.Printf("%d %s-%s\n", v.WordCount, v.StoryID, v.StorySlug)
+		total += v.WordCount
+	}
+
+	fmt.Println("---------")
+	fmt.Println("TOTAL:", total)
+}
+
+type dateAndID struct {
+	Published time.Time
+	client.StoryURL
+}
+
+type sortByPubdate []dateAndID
+
+func (a sortByPubdate) Len() int {
+	return len(a)
+}
+
+func (a sortByPubdate) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+
+func (a sortByPubdate) Less(i, j int) bool {
+	return a[i].Published.Before(a[j].Published)
+}
+
+func sortingConsumer(resChan chan result) {
+	ary := make(sortByPubdate, 0, 150)
+
+	for v := range resChan {
+		ary = append(ary, dateAndID{Published: v.PublishDate, StoryURL: v.StoryURL})
+		fmt.Fprintf(os.Stderr, ".")
+	}
+
+	sort.Sort(ary)
+
+	fmt.Println("In publication order:")
+	for _, v := range ary {
+		fmt.Println(v.StoryID, v.StorySlug)
+	}
 }
 
 func main() {
@@ -95,41 +147,34 @@ func main() {
 		go worker()
 	}
 
-	//go emitAllIDs(idChan, maxID)
+	go emitAllIDs(idChan, maxID)
 
-	ebook := "gen2"
-
-	var ebooksFile map[string]*ebooks.EpubDefinition
-	b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))
-	if err != nil {
-		fatal(err)
-	}
-	err = yaml.Unmarshal(b, &ebooksFile)
-	if err != nil {
-		fatal(err)
-	}
-	go func() {
-		b := ebooksFile[ebook]
-		for _, v := range b.Parts {
-			if v.Story.ID != "" {
-				idChan <- v.Story.ID
-			}
-		}
-		close(idChan)
-	}()
+	//ebook := "gen2"
+	//
+	//var ebooksFile map[string]*ebooks.EpubDefinition
+	//b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))
+	//if err != nil {
+	//	fatal(err)
+	//}
+	//err = yaml.Unmarshal(b, &ebooksFile)
+	//if err != nil {
+	//	fatal(err)
+	//}
+	//go func() {
+	//	b := ebooksFile[ebook]
+	//	for _, v := range b.Parts {
+	//		if v.Story.ID != "" {
+	//			idChan <- v.Story.ID
+	//		}
+	//	}
+	//	close(idChan)
+	//}()
 
 	go func() {
 		wg.Wait()
 		close(resChan)
 	}()
 
-	total := 0
-	// Consumer
-	for v := range resChan {
-		fmt.Printf("%d %s-%s\n", v.WordCount, v.Story.StoryID, v.Story.StorySlug)
-		total += v.WordCount
-	}
-
-	fmt.Println("---------")
-	fmt.Println("TOTAL:", total)
+	//wordcountConsumer(resChan)
+	sortingConsumer(resChan)
 }
