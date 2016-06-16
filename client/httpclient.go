@@ -10,9 +10,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
-	"time"
-
 	"os"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"

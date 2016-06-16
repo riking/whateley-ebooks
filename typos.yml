@@ -1,14 +1,20 @@
 # Please see COPYRIGHT.md, CONTRIBUTING.md, and LICENSE-TYPOS.txt
-"279":
-  - - |
-        <table border="0" style="width: 80%;" cellspacing="5" cellpadding="5" align="center">
-        <tbody>
-        <tr>
-        <td>
-    - "<div class='lyrics'>"
-  - - |
-        </td>
-        </tr>
-        </tbody>
-        </table>
-    - "</div>"
+library:
+  table-to-div-lyrics:
+    - select: table tbody
+      action: unwrap
+    - select: tbody tr
+      action: unwrap
+    - select: tr td
+      action: unwrap
+    - select: td
+      action: wrap
+      replace: <div class="lyrics">
+    - select: div.lyrics td p
+      action: unwrap
+
+279:
+  - include: table-to-div-lyrics
+  - select: div.lyrics p[align="left"]
+    action: deleteAttr
+    attr: align

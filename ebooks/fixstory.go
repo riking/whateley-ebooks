@@ -19,73 +19,106 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-// TypoFix represents a single search-and-replace processing for a story.
-type TypoFix []string
-
-func (t TypoFix) Find() string {
-	return t[0]
+// TypoFix represents a single fixup processing for a story.
+type TypoFix struct {
+	FindSelector    string `yaml:"select,omitempty"`
+	FindText        string `yaml:",omitempty"`
+	FindHTML        string `yaml:",omitempty"`
+	ReplaceSelector string `yaml:",omitempty"`
+	ReplaceText     string `yaml:",omitempty"`
+	ReplaceHTML     string `yaml:"replace,omitempty"`
+	Attribute       string `yaml:"attr,omitempty"`
+	Action          string `yaml:",omitempty"`
+	Include         string `yaml:"include,omitempty"`
 }
 
-func (t TypoFix) Replace() string {
-	return t[1]
+func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
+	var s *goquery.Selection
+	if t.FindHTML != "" {
+		panic("findHTML not implemented")
+	}
+	if t.FindSelector != "" {
+		if t.FindText != "" {
+			s = doc.Find(fmt.Sprintf("%s %s:contains(\"%s\")", client.StoryBodySelector, t.FindSelector, t.FindText))
+		} else {
+			s = doc.Find(client.StoryBodySelector + t.FindSelector)
+		}
+	} else if t.FindText != "" {
+		s = doc.Find(client.StoryBodySelector + " p:contains(\"" + t.FindSelector + "\")")
+	}
+	return s
 }
 
-// TyposFile is the JSON format for typos.json.
-// The key of the map is the story slug.
-type TyposFile map[string][]TypoFix
+func (t TypoFix) Apply(p *client.WhateleyPage) {
+	switch t.Action {
+	case "unwrap":
+		t.Find(p.Doc()).Unwrap()
+	case "wrap":
+		t.Find(p.Doc()).WrapHtml(t.ReplaceHTML)
+	case "deleteAttr":
+		t.Find(p.Doc()).RemoveAttr(t.Attribute)
+	default:
+		fmt.Printf("[ebooks] warning: unknown typos.yml action %s\n", t.Action)
+	}
+}
+
+// TyposFile is the file format for typos.yml.
+// The key of the map is the story ID string.
+type TyposFile struct {
+	ByStoryID map[string][]TypoFix `yaml:",inline"`
+	Library   map[string][]TypoFix `yaml:"library"`
+}
 
 const TyposDefaultFilename = "./typos.yml"
 
-var allTypos TyposFile
-
-var cachedReplacers map[string]*strings.Replacer
+var typosFile TyposFile
 
 func SetTypos(t TyposFile) {
-	allTypos = t
-	cachedReplacers = make(map[string]*strings.Replacer)
+	typosFile = t
 }
 
 func SetTyposFromFile(filename string) error {
 	if filename == "" {
 		filename = TyposDefaultFilename
 	}
-	t := make(TyposFile)
+	t := TyposFile{
+		ByStoryID: make(map[string][]TypoFix),
+		Library:   make(map[string][]TypoFix),
+	}
 	bytes, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return errors.Wrap(err, "could not read typos file")
 	}
 	err = yaml.Unmarshal(bytes, &t)
-	//err = json.Unmarshal(bytes, &t)
 	if err != nil {
 		return errors.Wrap(err, "syntax error in typos file")
 	}
-	allTypos = t
-	cachedReplacers = make(map[string]*strings.Replacer)
+	typosFile = t
 	return nil
 }
 
-var noopReplacer = strings.NewReplacer()
-
-func getTypos(p *client.WhateleyPage) *strings.Replacer {
+func getTypos(p *client.WhateleyPage) []TypoFix {
 	if p.StorySlug == "" {
 		panic("story slug was empty string")
 	}
-	r, ok := cachedReplacers[p.StorySlug]
-	if ok {
-		return r
-	}
-	t, ok := allTypos[p.StorySlug]
+
+	oTypos, ok := typosFile.ByStoryID[p.StoryID]
 	if !ok {
-		return noopReplacer
+		return nil
 	}
-	args := make([]string, len(t)*2)
-	for i, v := range t {
-		args[i*2] = v.Find()
-		args[i*2+1] = v.Replace()
+
+	// Process include: statements
+	typos := make([]TypoFix, 0, len(oTypos))
+	for _, v := range oTypos {
+		if v.Include != "" {
+			for _, v2 := range typosFile.Library[v.Include] {
+				typos = append(typos, v2)
+			}
+		} else {
+			typos = append(typos, v)
+		}
 	}
-	r = strings.NewReplacer(args...)
-	cachedReplacers[p.StorySlug] = r
-	return r
+	return typos
 }
 
 //
@@ -159,16 +192,13 @@ func searchRegexp(search *regexp.Regexp) func(*html.Node) bool {
 }
 
 func applyTypos(p *client.WhateleyPage) {
-	curHtml, err := goquery.OuterHtml(p.StoryBodySelection())
-	if err != nil {
-		panic(errors.Wrap(err, "could not convert storybody to html"))
+	//curHtml, err := goquery.OuterHtml(p.StoryBodySelection())
+	//if err != nil {
+	//	panic(errors.Wrap(err, "could not convert storybody to html"))
+	//}
+	for _, v := range getTypos(p) {
+		v.Apply(p)
 	}
-	fmt.Println(allTypos[p.StoryID])
-	newHtml := getTypos(p).Replace(curHtml)
-	if curHtml != newHtml {
-		fmt.Println("Applied typos")
-	}
-	p.StoryBodySelection().ReplaceWithHtml(newHtml)
 }
 
 func FixForEbook(p *client.WhateleyPage) error {
@@ -184,7 +214,7 @@ func FixForEbook(p *client.WhateleyPage) error {
 	}
 	s = s.AddMatcher(cascadia.Selector(hrParagraphMatcher()))
 	fmt.Println(s.Length())
-	hrsReplaced := s.ReplaceWith("hr")
+	hrsReplaced := s.ReplaceWithHtml("<hr>")
 	fmt.Println("replaced", hrsReplaced.Length(), "<hr>s")
 	hrsReplaced.Each(func(_ int, s *goquery.Selection) {
 		fmt.Println(s.Html())

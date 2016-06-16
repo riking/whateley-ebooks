@@ -1,0 +1,125 @@
+p {
+    text-indent: .5in;
+}
+.Webarticle {
+    color: #FFFFFF;
+    background-color: #006600;
+    margin-top: auto;
+    margin-right: 8%;
+    margin-left: 8%;
+    border: thin solid #999999;
+}
+
+.lyrics {
+    margin-left: 0.5in;
+    margin-right: 0.5in;
+    text-indent: 0;
+    text-align: left;
+}
+
+.bizcard {
+    font-style: italic;
+    background-color: #FFFFFF;
+    text-align: center;
+    vertical-align: baseline;
+    margin: 5px;
+    padding: 5px;
+    height: 2in;
+    width: 3in;
+    border: 1px solid #FF0000;
+    background-position: center;
+    clear: both;
+    float: none;
+}
+.PCscreen {
+    font-family: "Courier New", Courier, monospace;
+    color: #FFFFFF;
+    background-color: #000000;
+    width: 80%;
+    margin-left: .5in;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: #FFFF00;
+    border-right-color: #FFFF00;
+    border-bottom-color: #FFFF00;
+    border-left-color: #FFFF00;
+    text-decoration: none;
+}
+.Net {
+    background-color: #3300FF;
+    border: 2px double #00FFFF;
+    color: #FFFFFF;
+}
+.Fireworks {
+    background-image: url(firework27.gif);
+    background-position: center center;
+}
+
+.headder {
+    text-align: center;
+}
+.Newsclipping {
+    margin-right: 3%;
+    margin-left: 3%;
+    border: thin solid #999999;
+
+}
+.WarningYellow {
+    color: #FFFF00;
+    background-color: #FF0000;
+}
+.hr {
+    height: 15px;
+    background: #fff url(hr1.gif) no-repeat scroll center;
+}
+.hr hr {
+    display: none;
+}
+.hr1 {
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin-top: auto;
+    margin-right: 7.9%;
+    margin-bottom: auto;
+    margin-left: 7.9%;
+
+}
+.hr2 {
+    border-bottom: 1px solid black;
+    width: 20%;
+    margin-top: auto;
+    margin-right: 40%;
+    margin-bottom: auto;
+    margin-left: 40%;
+
+}
+.MID {
+    width: 30pc;
+    float: none;
+    clear: none;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #000000;
+    border-right-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+}
+MMID {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #66FFFF;
+    border: thin solid #66FFFF;
+}
+.TONG {
+    background-image: url(../Images/paper.jpg);
+    background-repeat: repeat;
+}
+.parchment {
+    background-image: url(../Images/paper.jpg);
+}
+.rpicture {
+    float: right;
+}

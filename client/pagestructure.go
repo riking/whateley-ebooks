@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/pkg/errors"
 	"github.com/andybalholm/cascadia"
+	"github.com/pkg/errors"
 	"golang.org/x/net/html"
 )
 

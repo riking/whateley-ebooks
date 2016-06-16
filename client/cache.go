@@ -6,10 +6,10 @@ package client
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	"github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
-	"time"
 )
 
 var dbMigrations = []struct {
@@ -145,7 +145,7 @@ VALUES (?, ?, ?)`
 
 var stmtInsertCacheData *sql.Stmt
 
-const cacheStalePeriod = 196*time.Hour
+const cacheStalePeriod = 196 * time.Hour
 
 // returns -1 if no match
 func (c *Client) cacheCheck(u StoryURL) (int64, error) {
