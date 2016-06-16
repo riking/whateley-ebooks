@@ -10,7 +10,9 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
+	"golang.org/x/net/html"
 )
 
 const timeFmt = "2006-01-02T15:04:05-07:00"
@@ -28,6 +30,10 @@ type StoryURL struct {
 
 func (u *StoryURL) URL() string {
 	return fmt.Sprintf("http://whateleyacademy.net/index.php/%s/%s-%s", u.CategorySlug, u.StoryID, u.StorySlug)
+}
+
+func (u *StoryURL) CacheKey() string {
+	return fmt.Sprintf("%s-%s", u.CategorySlug, u.StoryID)
 }
 
 type WhateleyPage struct {
@@ -94,12 +100,12 @@ func (p *WhateleyPage) StoryBody() string {
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
 var printURLRegexp = regexp.MustCompile(`\A/index.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)\?tmpl=component&amp;print=1`)
 
-var stripExceptionSelectors = []string{
-	`head base`,
-	`meta[name="rights"]`,
-	`head title`,
-	`div.item-page`,
-}
+var stripExceptionsSelector = `
+head base,
+meta[name="rights"],
+head title,
+div.item-page,
+div[itemprop="articleBody"]`
 
 func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	page := new(WhateleyPage)
@@ -130,11 +136,15 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		}
 	}
 
-	s := page.document.Find("html *")
-	for _, v := range stripExceptionSelectors {
-		s = s.Not(v)
-	}
-	s.NotSelection(s.Parents()).Remove()
+	//dontRemove := page.document.Find(stripExceptionsSelector)
+	//removed := page.document.RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
+	//	if dontRemove.Contains(n) {
+	//		fmt.Println(n.Data)
+	//		return false
+	//	}
+	//	return true
+	//}))
+	//fmt.Println("removed", removed.Length())
 
 	return page, nil
 }

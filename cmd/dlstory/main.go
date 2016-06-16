@@ -53,4 +53,6 @@ func main() {
 	ioutil.WriteFile("out1", []byte(page.StoryBody()), 0644)
 	ebooks.FixForEbook(page)
 	ioutil.WriteFile("out2", []byte(page.StoryBody()), 0644)
+	html, _ := page.Doc().Html()
+	ioutil.WriteFile("out0", []byte(html), 0644)
 }

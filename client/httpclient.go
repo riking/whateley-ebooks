@@ -4,10 +4,12 @@
 package client
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
-	"os"
+	"net/url"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
@@ -22,6 +24,7 @@ type Client struct {
 	Headers    http.Header
 	httpClient http.Client
 	options    Options
+	cache      *diskv.Diskv
 }
 
 type Options struct {
@@ -45,12 +48,17 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 	return resp, err
 }
 
-func cacheDirTransform(key string) []string {
-	fields, err := ParseURL(key)
+func getCacheKey(url string) string {
+	fields, err := ParseURL(url)
 	if err != nil {
-		return []string{"_other", key}
+		return url
 	}
-	return []string{fields.CategorySlug, fields.StoryID}
+	fields.StorySlug = "x"
+	return fields.CacheKey()
+}
+
+func getCacheKeyURL(u *url.URL) string {
+	return getCacheKey(u.String())
 }
 
 func New(opts Options) *Client {
@@ -68,10 +76,9 @@ func New(opts Options) *Client {
 	c.httpClient.Transport = &printingRoundTripper{c.httpClient.Transport}
 
 	if opts.CacheDir != "" {
-		diskv.New(diskv.Options{
-			BasePath: opts.CacheDir,
-			Transform: cacheDirTransform,
-			CacheSizeMax: 1024*1024*300,
+		c.cache = diskv.New(diskv.Options{
+			BasePath:     opts.CacheDir,
+			CacheSizeMax: 1024 * 1024 * 300,
 		})
 	}
 	return c
@@ -85,10 +92,32 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 }
 
 func (c *Client) Document(req *http.Request) (*goquery.Document, error) {
+	cacheKey := getCacheKeyURL(req.URL)
+	if c.cache.Has(cacheKey) {
+		fmt.Println("cache hit:", cacheKey)
+		r, err := c.cache.ReadStream(cacheKey, false)
+		if err != nil {
+			return nil, err
+		}
+		return goquery.NewDocumentFromReader(r)
+	}
+
 	resp, err := c.Do(req)
 	if err != nil {
 		return nil, err
 	}
-	resp.Header.Write(os.Stdout)
-	return goquery.NewDocumentFromResponse(resp)
+
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	err = resp.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	err = c.cache.Write(cacheKey, b)
+	buf := bytes.NewBuffer(b)
+
+	return goquery.NewDocumentFromReader(buf)
 }
