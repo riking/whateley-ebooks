@@ -1,0 +1,8 @@
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# Code output
+target/
