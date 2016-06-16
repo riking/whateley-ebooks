@@ -1,7 +1,7 @@
 // Copyright © Kane York 2016.
 // Please see COPYRIGHT.md and LICENSE-CODE.txt.
 
-package ebooks
+package ebooks // import "github.com/riking/whateley-ebooks/ebooks"
 
 import (
 	"bytes"
@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/riking/homeapi/whateley/client"
+	"github.com/riking/whateley-ebooks/client"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/andybalholm/cascadia"

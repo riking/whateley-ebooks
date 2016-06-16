@@ -1,7 +1,7 @@
 // Copyright © Kane York 2016.
 // Please see COPYRIGHT.md and LICENSE-CODE.txt.
 
-package client
+package client // import "github.com/riking/whateley-ebooks/client"
 
 import (
 	"fmt"
@@ -94,6 +94,13 @@ func (p *WhateleyPage) StoryBody() string {
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
 var printURLRegexp = regexp.MustCompile(`\A/index.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)\?tmpl=component&amp;print=1`)
 
+var stripExceptionSelectors = []string{
+	`head base`,
+	`meta[name="rights"]`,
+	`head title`,
+	`div.item-page`,
+}
+
 func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	page := new(WhateleyPage)
 	doc = goquery.CloneDocument(doc)
@@ -123,7 +130,11 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		}
 	}
 
-	page.document.Find("html *").Not("head base")
+	s := page.document.Find("html *")
+	for _, v := range stripExceptionSelectors {
+		s = s.Not(v)
+	}
+	s.NotSelection(s.Parents()).Remove()
 
 	return page, nil
 }
@@ -131,11 +142,11 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 func ParseURL(url string) (StoryURL, error) {
 	m := canonicalURLRegexp.FindStringSubmatch(url)
 	if m == nil {
-		return StoryURL{}, errors.Wrap("Could not parse canonical story URL", fmt.Errorf("got %s", url))
+		return StoryURL{}, errors.Wrap(fmt.Errorf("got %s", url), "Could not parse canonical story URL")
 	}
 	return StoryURL{
 		CategorySlug: m[1],
 		StoryID:      m[2],
 		StorySlug:    m[3],
-	}
+	}, nil
 }

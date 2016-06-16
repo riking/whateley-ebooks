@@ -1,7 +1,7 @@
 // Copyright © Kane York 2016.
 // Please see COPYRIGHT.md and LICENSE-CODE.txt.
 
-package main
+package main // import "github.com/riking/whateley-ebooks/cmd/dlstory"
 
 import (
 	"fmt"
@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/riking/homeapi/whateley/client"
-	"github.com/riking/homeapi/whateley/ebooks"
+	"github.com/riking/whateley-ebooks/client"
+	"github.com/riking/whateley-ebooks/ebooks"
 
 	"github.com/pkg/errors"
 )
