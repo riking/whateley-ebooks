@@ -5,15 +5,17 @@ package client
 
 import (
 	"bytes"
+	"database/sql"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
-	"net/url"
 	"time"
 
+	"os"
+
 	"github.com/PuerkitoBio/goquery"
-	"github.com/peterbourgon/diskv"
+	"github.com/pkg/errors"
 )
 
 type Doer interface {
@@ -24,11 +26,11 @@ type Client struct {
 	Headers    http.Header
 	httpClient http.Client
 	options    Options
-	cache      *diskv.Diskv
+	db         *sql.DB
 }
 
 type Options struct {
-	CacheDir  string
+	CacheFile string
 	UserAgent string
 	Headers   http.Header
 }
@@ -48,19 +50,6 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 	return resp, err
 }
 
-func getCacheKey(url string) string {
-	fields, err := ParseURL(url)
-	if err != nil {
-		return url
-	}
-	fields.StorySlug = "x"
-	return fields.CacheKey()
-}
-
-func getCacheKeyURL(u *url.URL) string {
-	return getCacheKey(u.String())
-}
-
 func New(opts Options) *Client {
 	c := new(Client)
 	if opts.UserAgent == "" {
@@ -75,11 +64,16 @@ func New(opts Options) *Client {
 	c.httpClient.Timeout = 15 * time.Second
 	c.httpClient.Transport = &printingRoundTripper{c.httpClient.Transport}
 
-	if opts.CacheDir != "" {
-		c.cache = diskv.New(diskv.Options{
-			BasePath:     opts.CacheDir,
-			CacheSizeMax: 1024 * 1024 * 300,
-		})
+	if opts.CacheFile != "" {
+		conn, err := sql.Open("sqlite3", fmt.Sprintf("file:%s", opts.CacheFile))
+		if err != nil {
+			panic(err)
+		}
+		c.db = conn
+		err = c.setupDB()
+		if err != nil {
+			panic(err)
+		}
 	}
 	return c
 }
@@ -91,15 +85,29 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	return c.httpClient.Do(req)
 }
 
+// Document gets a URL, cached, and returns a goquery.Document.
 func (c *Client) Document(req *http.Request) (*goquery.Document, error) {
-	cacheKey := getCacheKeyURL(req.URL)
-	if c.cache.Has(cacheKey) {
-		fmt.Println("cache hit:", cacheKey)
-		r, err := c.cache.ReadStream(cacheKey, false)
+	if req.Method != "GET" {
+		panic("Document() does not support non-GET")
+	}
+
+	u, err := ParseURL(req.URL.String())
+	switch err {
+	case nil:
+		id, err := c.cacheCheck(u)
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrap(err, "checking cache for page")
 		}
-		return goquery.NewDocumentFromReader(r)
+		if id == -1 {
+			// cache miss
+			break
+		}
+
+		b, err := c.cacheGet(id)
+		if err != nil {
+			return nil, errors.Wrap(err, "Retrieving value from cache")
+		}
+		return goquery.NewDocumentFromReader(bytes.NewBuffer(b))
 	}
 
 	resp, err := c.Do(req)
@@ -116,7 +124,12 @@ func (c *Client) Document(req *http.Request) (*goquery.Document, error) {
 		return nil, err
 	}
 
-	err = c.cache.Write(cacheKey, b)
+	// if time is OK
+	err = c.cachePut(u, b)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
+	}
+
 	buf := bytes.NewBuffer(b)
 
 	return goquery.NewDocumentFromReader(buf)

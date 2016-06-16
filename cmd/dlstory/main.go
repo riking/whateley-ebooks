@@ -40,7 +40,7 @@ func main() {
 
 	httpClient = client.New(client.Options{
 		UserAgent: "ebooks tool test script (+https://www.riking.org)",
-		CacheDir:  os.ExpandEnv("$HOME/projects/whateley/httpdiskcache"),
+		CacheFile: "./cache.db",
 	})
 
 	url := `http://whateleyacademy.net/index.php/wrong-category/208-wrong-slug`

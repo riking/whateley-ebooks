@@ -10,9 +10,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
-	"golang.org/x/net/html"
 )
 
 const timeFmt = "2006-01-02T15:04:05-07:00"
