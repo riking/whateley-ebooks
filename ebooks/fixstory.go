@@ -163,6 +163,7 @@ func applyTypos(p *client.WhateleyPage) {
 	if err != nil {
 		panic(errors.Wrap(err, "could not convert storybody to html"))
 	}
+	fmt.Println(allTypos[p.StoryID])
 	newHtml := getTypos(p).Replace(curHtml)
 	if curHtml != newHtml {
 		fmt.Println("Applied typos")

@@ -11,6 +11,8 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
+	"github.com/andybalholm/cascadia"
+	"golang.org/x/net/html"
 )
 
 const timeFmt = "2006-01-02T15:04:05-07:00"
@@ -110,8 +112,53 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	doc = goquery.CloneDocument(doc)
 	page.document = doc
 
+	// Remove everything not part of the page (header, footer, sidebar)
+	// After these two transforms, most of the page bytes will be the actual story
+	dontRemove := page.document.Find(stripExceptionsSelector)
+	prevLen := 0
+	for dontRemove.Length() != prevLen {
+		prevLen = dontRemove.Length()
+		dontRemove = dontRemove.AddSelection(dontRemove.Children())
+	}
+	prevLen = 0
+	for dontRemove.Length() != prevLen {
+		prevLen = dontRemove.Length()
+		dontRemove = dontRemove.AddSelection(dontRemove.Parents())
+	}
+	fmt.Println(dontRemove.Length())
+
+	removed := page.document.Find("html *").NotSelection(dontRemove).RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
+		if n.Type == html.TextNode {
+			decision := !dontRemove.IsNodes(n.Parent)
+			fmt.Println(decision, n.Data)
+			return decision
+		}
+		return true
+	}))
+	fmt.Println("removed", removed.Length())
+
+	// Delete the space nodes adjacent to other space nodes
+	spacesTrimmed := 0
+	page.document.Find("*").Each(func(_ int, s *goquery.Selection) {
+		n := s.Nodes[0]
+		if n.Type == html.TextNode && n.NextSibling != nil && n.NextSibling.Type == html.TextNode {
+			if strings.TrimSpace(n.Data) == "" && strings.TrimSpace(n.NextSibling.Data) == "" {
+				n.NextSibling.Data = "\n"
+				s.Remove()
+				spacesTrimmed++
+				return
+			}
+		}
+		if n.Type == html.TextNode && strings.TrimSpace(n.Data) == "" && strings.ContainsRune(n.Data, '\n') {
+			n.Data = "\n"
+			spacesTrimmed++
+			return
+		}
+	})
+	fmt.Println("spacesTrimmed:", spacesTrimmed)
+
 	var m []string
-	// Only part of the page where the correct slug is emitted
+	// The printing link is the only part of the page where the correct slug is emitted
 	printURL, ok := doc.Find(".page-header .print-icon a").Attr("href")
 	if ok {
 		m = printURLRegexp.FindStringSubmatch(printURL)
@@ -133,16 +180,6 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 			return nil, err
 		}
 	}
-
-	//dontRemove := page.document.Find(stripExceptionsSelector)
-	//removed := page.document.RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
-	//	if dontRemove.Contains(n) {
-	//		fmt.Println(n.Data)
-	//		return false
-	//	}
-	//	return true
-	//}))
-	//fmt.Println("removed", removed.Length())
 
 	return page, nil
 }
