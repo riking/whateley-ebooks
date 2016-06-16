@@ -24,6 +24,7 @@ type TypoFix struct {
 	FindSelector    string `yaml:"select,omitempty"`
 	FindText        string `yaml:",omitempty"`
 	FindHTML        string `yaml:",omitempty"`
+	FindModifiers   []string `yaml:"selectmod,omitempty"`
 	ReplaceSelector string `yaml:",omitempty"`
 	ReplaceText     string `yaml:",omitempty"`
 	ReplaceHTML     string `yaml:"replace,omitempty"`
@@ -46,17 +47,53 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 	} else if t.FindText != "" {
 		s = doc.Find(client.StoryBodySelector + " p:contains(\"" + t.FindSelector + "\")")
 	}
+
+	for _, v := range t.FindModifiers {
+		switch v {
+		case "parent":
+			s = s.Parent()
+		case "addNextSibling":
+			s = s.AddSelection(s.Next())
+		}
+	}
 	return s
 }
 
 func (t TypoFix) Apply(p *client.WhateleyPage) {
+	switch true {
+	case t.FindText != "" && t.ReplaceText != "":
+		t.Action = "replaceText"
+	}
 	switch t.Action {
 	case "unwrap":
 		t.Find(p.Doc()).Unwrap()
 	case "wrap":
 		t.Find(p.Doc()).WrapHtml(t.ReplaceHTML)
+	case "wrapAll":
+		t.Find(p.Doc()).WrapAllHtml(t.ReplaceHTML)
 	case "deleteAttr":
 		t.Find(p.Doc()).RemoveAttr(t.Attribute)
+	case "insertBefore":
+		t.Find(p.Doc()).BeforeHtml(t.ReplaceHTML)
+	case "replaceText":
+		t.Find(p.Doc()).Each(func(_ int, s *goquery.Selection) {
+			html, err := goquery.OuterHtml(s)
+			if err != nil {
+				panic(err)
+			}
+			s.ReplaceWithHtml(strings.Replace(html, t.FindText, t.ReplaceText, -1))
+		})
+	case "paragraphsToLinebreaks":
+		sel := t.Find(p.Doc())
+		sel.Each(func(_ int, s *goquery.Selection) {
+			para := s.Get(0)
+			newNode, err := html.ParseFragment(bytes.NewBufferString("<br>"), para)
+			if err != nil {
+				panic(err)
+			}
+			para.AppendChild(newNode[0])
+		})
+		sel.Find("p > *").Unwrap()
 	default:
 		fmt.Printf("[ebooks] warning: unknown typos.yml action %s\n", t.Action)
 	}
@@ -124,7 +161,9 @@ func getTypos(p *client.WhateleyPage) []TypoFix {
 //
 
 var hrSelectors = []string{
-	`p > img[alt="linebreak bluearcs"]`,
+	`p > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
+	`center > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
+	`center > img[alt="linebreak shadow"]`,
 	`div.hr`,
 	`div.hr2`,
 	`hr[style]`,
@@ -138,8 +177,8 @@ var hrParagraphs = []string{
 var hrParagraphRegex *regexp.Regexp
 
 var h3Selectors = []string{
-	`p.lyrics strong em`,
-	`p.lyrics em strong`,
+//	`p.lyrics strong em`,
+//	`p.lyrics em strong`,
 }
 
 func getHrParagraphRegex() *regexp.Regexp {
@@ -170,7 +209,7 @@ func hrParagraphMatcher() func(*html.Node) bool {
 		if n.Type != html.ElementNode {
 			return false
 		}
-		if n.Data != "p" {
+		if n.Data != "p" && n.Data != "div" {
 			return false
 		}
 		d := goquery.NewDocumentFromNode(n)
@@ -216,9 +255,11 @@ func FixForEbook(p *client.WhateleyPage) error {
 	fmt.Println(s.Length())
 	hrsReplaced := s.ReplaceWithHtml("<hr>")
 	fmt.Println("replaced", hrsReplaced.Length(), "<hr>s")
-	hrsReplaced.Each(func(_ int, s *goquery.Selection) {
-		fmt.Println(s.Html())
-	})
+
+	p.Doc().Find("p hr").Parent().ReplaceWithHtml("<hr>")
+	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")
+
+	p.Doc().Find("blockquote .lyrics .PCscreen").Unwrap()
 
 	s = p.Doc().Find("")
 	for _, sel := range h3Selectors {

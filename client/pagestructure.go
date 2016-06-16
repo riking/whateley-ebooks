@@ -13,6 +13,8 @@ import (
 	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
+	"os"
+	"html/template"
 )
 
 const timeFmt = "2006-01-02T15:04:05-07:00"
@@ -33,7 +35,7 @@ func (u *StoryURL) URL() string {
 }
 
 func (u *StoryURL) CacheKey() string {
-	return fmt.Sprintf("%s-%s", u.CategorySlug, u.StoryID)
+	return fmt.Sprintf("story-%s", u.StoryID)
 }
 
 type WhateleyPage struct {
@@ -97,8 +99,12 @@ func (p *WhateleyPage) StoryBody() string {
 	return b
 }
 
+func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
+	return template.HTML(p.StoryBody())
+}
+
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
-var printURLRegexp = regexp.MustCompile(`\A/index.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)\?tmpl=component&amp;print=1`)
+var printURLRegexp = regexp.MustCompile(`\A/index.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)\?tmpl=component&print=1`)
 
 var stripExceptionsSelector = `
 head base,
@@ -130,12 +136,13 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	removed := page.document.Find("html *").NotSelection(dontRemove).RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
 		if n.Type == html.TextNode {
 			decision := !dontRemove.IsNodes(n.Parent)
-			fmt.Println(decision, n.Data)
 			return decision
 		}
 		return true
 	}))
 	fmt.Println("removed", removed.Length())
+
+	page.document.Find("script,style").Remove()
 
 	// Delete the space nodes adjacent to other space nodes
 	spacesTrimmed := 0
@@ -159,7 +166,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 
 	var m []string
 	// The printing link is the only part of the page where the correct slug is emitted
-	printURL, ok := doc.Find(".page-header .print-icon a").Attr("href")
+	printURL, ok := doc.Find(".print-icon a").Attr("href")
 	if ok {
 		m = printURLRegexp.FindStringSubmatch(printURL)
 		if m == nil {
@@ -171,6 +178,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	} else {
 		// Fall back on the requested URL
 		canonical, ok := doc.Find(`head base`).Attr("href")
+		fmt.Fprintf(os.Stderr, "warning: falling back to <base>")
 		if !ok {
 			return nil, fmt.Errorf("could not find <base href> (canonical URL)")
 		}

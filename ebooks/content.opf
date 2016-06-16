@@ -1,0 +1,14 @@
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="2.0">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+<dc:creator opf:role="aut" opf:file-as="{{.AuthorFileAs}}">{{.Author}}</dc:creator>
+<dc:identifier id="BookId" opf:scheme="UUID">urn:uuid:{{.UUID}}</dc:identifier>
+<dc:date>{{.Date}}</dc:date>
+<dc:title>{{.Title}}</dc:title>
+<dc:publisher>{{.Publisher}}</dc:publisher>
+<meta name="calibre:title_sort" content="{{.TitleFileAs}}"/>
+<meta name="calibre:series" content="{{.Series}}"/>
+<dc:identifier opf:scheme="calibre">{{.UUID}}</dc:identifier>
+</metadata>
+{{.ManifestAndSpine}}
+<guide/>
+</package>

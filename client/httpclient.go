@@ -7,7 +7,6 @@ import (
 	"bytes"
 	"database/sql"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
 	"os"
@@ -21,7 +20,7 @@ type Doer interface {
 	Do(*http.Request) (*http.Response, error)
 }
 
-type Client struct {
+type WANetwork struct {
 	Headers    http.Header
 	httpClient http.Client
 	options    Options
@@ -49,8 +48,8 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 	return resp, err
 }
 
-func New(opts Options) *Client {
-	c := new(Client)
+func New(opts Options) *WANetwork {
+	c := new(WANetwork)
 	if opts.UserAgent == "" {
 		opts.UserAgent = "Client Name Not Set (+github.com/riking/whateley)"
 	}
@@ -77,7 +76,7 @@ func New(opts Options) *Client {
 	return c
 }
 
-func (c *Client) Do(req *http.Request) (*http.Response, error) {
+func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
 	for k := range c.Headers {
 		req.Header.Set(k, c.Headers.Get(k))
 	}
@@ -85,51 +84,63 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 }
 
 // Document gets a URL, cached, and returns a goquery.Document.
-func (c *Client) Document(req *http.Request) (*goquery.Document, error) {
+func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 	if req.Method != "GET" {
 		panic("Document() does not support non-GET")
-	}
-
-	u, err := ParseURL(req.URL.String())
-	switch err {
-	case nil:
-		id, err := c.cacheCheck(u)
-		if err != nil {
-			return nil, errors.Wrap(err, "checking cache for page")
-		}
-		if id == -1 {
-			// cache miss
-			break
-		}
-
-		b, err := c.cacheGet(id)
-		if err != nil {
-			return nil, errors.Wrap(err, "Retrieving value from cache")
-		}
-		return goquery.NewDocumentFromReader(bytes.NewBuffer(b))
 	}
 
 	resp, err := c.Do(req)
 	if err != nil {
 		return nil, err
 	}
+	return goquery.NewDocumentFromResponse(resp)
+}
 
-	b, err := ioutil.ReadAll(resp.Body)
+func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
+	u := StoryURL{StoryID: storyId, StorySlug: "-", CategorySlug: "-"}
+	var doc *goquery.Document
+	fromCache := false
+
+	dbID, err := c.cacheCheck(u)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "checking cache for page")
 	}
-	err = resp.Body.Close()
+	if dbID != -1 {
+		b, err := c.cacheGet(dbID)
+		if err != nil {
+			return nil, errors.Wrap(err, "Retrieving value from cache")
+		}
+		doc, err = goquery.NewDocumentFromReader(bytes.NewBuffer(b))
+		fromCache = true
+	} else {
+		req, err := http.NewRequest("GET", u.URL(), nil)
+		if err != nil {
+			panic(err)
+		}
+
+		doc, err = c.Document(req)
+	}
+
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "fetching page HTML")
 	}
 
-	// if time is OK
-	err = c.cachePut(u, b)
+	page, err := ParseStoryPage(doc)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
+		return nil, errors.Wrap(err, "parsing story page")
 	}
 
-	buf := bytes.NewBuffer(b)
+	if !fromCache {
+		body, err := page.Doc().Html()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
+		} else {
+			err = c.cachePut(u, body)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
+			}
+		}
+	}
 
-	return goquery.NewDocumentFromReader(buf)
+	return page, nil
 }

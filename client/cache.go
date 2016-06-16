@@ -47,7 +47,7 @@ var dbMigrations = []struct {
 
 var createMigrationsTable = dbMigrations[0]
 
-func (c *Client) setupDB() error {
+func (c *WANetwork) setupDB() error {
 	var firstRun bool
 	rows, err := c.db.Query("select version from migrations")
 	if sErr, ok := err.(sqlite3.Error); ok {
@@ -148,7 +148,7 @@ var stmtInsertCacheData *sql.Stmt
 const cacheStalePeriod = 196 * time.Hour
 
 // returns -1 if no match
-func (c *Client) cacheCheck(u StoryURL) (int64, error) {
+func (c *WANetwork) cacheCheck(u StoryURL) (int64, error) {
 	row := stmtSelectExistsInCache.QueryRow(u.CacheKey())
 	var id int64 = -1
 	var lastUpdated time.Time
@@ -164,7 +164,7 @@ func (c *Client) cacheCheck(u StoryURL) (int64, error) {
 	return id, nil
 }
 
-func (c *Client) cacheGet(id int64) ([]byte, error) {
+func (c *WANetwork) cacheGet(id int64) ([]byte, error) {
 	row := stmtSelectCacheData.QueryRow(id)
 	var b []byte
 	err := row.Scan(&b)
@@ -174,7 +174,7 @@ func (c *Client) cacheGet(id int64) ([]byte, error) {
 	return b, nil
 }
 
-func (c *Client) cachePut(u StoryURL, body []byte) error {
+func (c *WANetwork) cachePut(u StoryURL, body string) error {
 	_, err := stmtInsertCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
 	return err
 }
