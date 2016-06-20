@@ -18,6 +18,9 @@ library:
     action: setAttr
     attr: id
     replace: canto-1
+127:
+  - findtext: "later, Karen was wearing"
+    replacetext: "later, Stacy was wearing"
 275:
   - select: p:contains("November 12"), p:contains("November 14")
     action: insertBefore

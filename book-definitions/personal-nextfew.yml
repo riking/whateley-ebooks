@@ -1,0 +1,116 @@
+
+personal-nextfew:
+  author: Whateley Academy Canon Authors
+  author-sort: Whateley Academy Canon Authors
+  title: Whateley Next Stories (20 June 2016)
+  uuid: e6064959-7b33-4077-8ae3-dd09ecb29de3
+  series: Whateley Academy Original Canon
+  publisher: Whateley Academy Canon Authors
+
+  assets:
+    # Power of Cute (478)
+    - download: http://whateleyacademy.net/images/PoC.jpg
+      target: PoC.jpg
+      find: /images/PoC.jpg
+      replace: ../Images/PoC.jpg
+    # Forger's List
+    - download: http://whateleyacademy.net/images/ForgerCover.jpg
+      target: ForgerCover.jpg
+      find: /images/ForgerCover.jpg
+      replace: ../Images/ForgerCover.jpg
+
+  parts:
+  - toc: "Christmas Chicanery"
+    story: {id: 316}
+  - toc: "Like a Brick"
+    story: {id: 182}
+  - toc: "Ayla and the Birthday Brawl: Chapter 3-5"
+    coverpage: >
+      <p>Please switch to ayla.epub and read:</p>
+      <ul><li>Chapter 3</li>
+      <li>Chapter 4</li>
+      <li>Chapter 5</li></ul>
+  - toc: "April Fool's"
+    coverpage: >
+      <h2>Publisher's Note</p>
+      <p>The following stories were published on 1 April 2010 as April Fool's jokes.</p>
+      <p>As such, they are significantly darker than the other stories in the Whateley Universe.</p>
+      <p>If you wish to skip the stories, please use the Table of Contents to do so.</p>
+  - toc: "As Above, So Below"
+    toc-nest: 2
+    story: {id: 298}
+  - toc: "Knife in the Ribs"
+    toc-nest: 2
+    story: {id: 349}
+  - toc: "A Fistful of Chaka"
+    story: {id: 300}
+  - toc: "Crime and Chaos"
+    story: {id: 265}
+  - toc: "Ayla and the Birthday Brawl: Chapter 6"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 6.</p>
+  - toc: "Five Elements Dancing: Book of the Fire"
+    story: {id: 406}
+  - toc: "Ayla and the Birthday Brawl: Chapter 7"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 7.</p>
+  - toc: "Silver Linings (Part 1)"
+    story: {id: 126}
+  - toc: "Silver Linings (Part 2)"
+    story: {id: 127}
+  - toc: "Dream Quest of the Underage Taoist"
+    story: {id: 399}
+  - toc: "Ayla and the Birthday Brawl: Chapter 8"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 8.</p>
+  - toc: "Silver Linings (Part 3)"
+    story: {id: 128}
+  - toc: "The Secret of the Forger's List: Chapter 1"
+    coverpage: >
+      <p>Please switch to loophole.epub and read Chapter 1.</p>
+  - toc: "Ayla and the Birthday Brawl: Chapter 9"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 9.</p>
+  - toc: "Straight From the Squirrel's Mouth: Chapter 6"
+    coverpage: >
+      <p>Please switch to squirrel.epub and read Chapter 6.</p>
+  - toc: "Ayla and the Birthday Brawl: Chapter 10"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 10.</p>
+  - toc: "The Power of Cute Compels You!"
+    story: {id: 478}
+  - toc: "Silver Linings (Part 4)"
+    story: {id: 129}
+  - toc: "Rotten to the C.O.R.E."
+    story: {id: 266}
+  - toc: "Ayla and the Birthday Brawl: Chapter 11"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 11.</p>
+  - toc: "Silver Linings (Part 5)"
+    story: {id: 130}
+  - toc: "The Secret of the Forger's List: Chapter 2"
+    coverpage: >
+      <p>Please switch to loophole.epub and read Chapter 2.</p>
+  - toc: "Ayla and the Birthday Brawl: Chapter 12"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 12.</p>
+  - toc: "Ayla and the Birthday Brawl: Chapter 13"
+    coverpage: >
+      <p>Please switch to ayla.epub and read Chapter 13.</p>
+  - toc: "Straight From the Squirrel's Mouth: Chapter 7"
+    coverpage: >
+      <p>Please switch to squirrel.epub and read Chapter 7.</p>
+  - toc: "The Secret of the Forger's List: Chapter 3"
+    coverpage: >
+      <p>Please switch to loophole.epub and read Chapter 3.</p>
+  - toc: "Razzle Dazzle"
+    story: {id: 439}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 440}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 441}
+  - toc: "A View to a Smell"
+    story: {id: 231}
+
