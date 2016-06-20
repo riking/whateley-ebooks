@@ -13,6 +13,11 @@ library:
     - select: div.lyrics td > p
       action: unwrap
 
+82:
+  - select: h2:contains("Canto I")
+    action: setAttr
+    attr: id
+    replace: canto-1
 275:
   - select: p:contains("November 12"), p:contains("November 14")
     action: insertBefore

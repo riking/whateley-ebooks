@@ -4,6 +4,7 @@
 // cover.html
 // part.html
 // story.css
+// toc.ncx
 // DO NOT EDIT!
 
 package ebooks
@@ -102,6 +103,24 @@ func storyCss() (*asset, error) {
 	return a, err
 }
 
+// tocNcx reads file data from disk. It returns an error on failure.
+func tocNcx() (*asset, error) {
+	path := "/home/kane/gocode/src/github.com/riking/whateley-ebooks/ebooks/toc.ncx"
+	name := "toc.ncx"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %v", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
 // Asset loads and returns the asset for the given name.
 // It returns an error if the asset could not be found or
 // could not be loaded.
@@ -155,9 +174,10 @@ func AssetNames() []string {
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
 	"content.opf": contentOpf,
-	"cover.html": coverHtml,
-	"part.html": partHtml,
-	"story.css": storyCss,
+	"cover.html":  coverHtml,
+	"part.html":   partHtml,
+	"story.css":   storyCss,
+	"toc.ncx":     tocNcx,
 }
 
 // AssetDir returns the file names below a certain
@@ -199,11 +219,13 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"content.opf": &bintree{contentOpf, map[string]*bintree{}},
-	"cover.html": &bintree{coverHtml, map[string]*bintree{}},
-	"part.html": &bintree{partHtml, map[string]*bintree{}},
-	"story.css": &bintree{storyCss, map[string]*bintree{}},
+	"cover.html":  &bintree{coverHtml, map[string]*bintree{}},
+	"part.html":   &bintree{partHtml, map[string]*bintree{}},
+	"story.css":   &bintree{storyCss, map[string]*bintree{}},
+	"toc.ncx":     &bintree{tocNcx, map[string]*bintree{}},
 }}
 
 // RestoreAsset restores an asset under the given directory
@@ -252,4 +274,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

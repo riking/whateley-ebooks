@@ -1,14 +1,14 @@
 package main
 
 import (
-
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/ebooks"
 
-	"gopkg.in/yaml.v2"
+	"fmt"
 	"io/ioutil"
 	"os"
-	"fmt"
+
+	"gopkg.in/yaml.v2"
 )
 
 func fatal(err error) {
@@ -25,10 +25,10 @@ func main() {
 		CacheFile: "./cache.db",
 	})
 
-	ebook := "hive"
+	ebook := "gen2"
 
 	var ebooksFile map[string]*ebooks.EpubDefinition
-	b, err := ioutil.ReadFile("ebooks.yml")
+	b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))
 	if err != nil {
 		fatal(err)
 	}

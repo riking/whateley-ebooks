@@ -8,9 +8,10 @@ import (
 	"io/ioutil"
 	"os"
 
+	"flag"
+
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/ebooks"
-	"flag"
 )
 
 func getPage(url string, access *client.WANetwork) (*client.WhateleyPage, error) {

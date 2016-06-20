@@ -21,16 +21,16 @@ import (
 
 // TypoFix represents a single fixup processing for a story.
 type TypoFix struct {
-	FindSelector    string `yaml:"select,omitempty"`
-	FindText        string `yaml:",omitempty"`
-	FindHTML        string `yaml:",omitempty"`
+	FindSelector    string   `yaml:"select,omitempty"`
+	FindText        string   `yaml:",omitempty"`
+	FindHTML        string   `yaml:",omitempty"`
 	FindModifiers   []string `yaml:"selectmod,omitempty"`
-	ReplaceSelector string `yaml:",omitempty"`
-	ReplaceText     string `yaml:",omitempty"`
-	ReplaceHTML     string `yaml:"replace,omitempty"`
-	Attribute       string `yaml:"attr,omitempty"`
-	Action          string `yaml:",omitempty"`
-	Include         string `yaml:"include,omitempty"`
+	ReplaceSelector string   `yaml:",omitempty"`
+	ReplaceText     string   `yaml:",omitempty"`
+	ReplaceHTML     string   `yaml:"replace,omitempty"`
+	Attribute       string   `yaml:"attr,omitempty"`
+	Action          string   `yaml:",omitempty"`
+	Include         string   `yaml:"include,omitempty"`
 }
 
 func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
@@ -73,6 +73,8 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 		t.Find(p.Doc()).WrapAllHtml(t.ReplaceHTML)
 	case "deleteAttr":
 		t.Find(p.Doc()).RemoveAttr(t.Attribute)
+	case "setAttr":
+		t.Find(p.Doc()).SetAttr(t.Attribute, t.ReplaceHTML)
 	case "insertBefore":
 		t.Find(p.Doc()).BeforeHtml(t.ReplaceHTML)
 	case "replaceText":
