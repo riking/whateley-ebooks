@@ -12,6 +12,8 @@ import (
 
 	"github.com/riking/whateley-ebooks/client"
 
+	"os"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
@@ -97,7 +99,7 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 		})
 		sel.Find("p > *").Unwrap()
 	default:
-		fmt.Printf("[ebooks] warning: unknown typos.yml action %s\n", t.Action)
+		fmt.Fprintf(os.Stderr, "[ebooks] warning: unknown typos.yml action %s\n", t.Action)
 	}
 }
 
@@ -199,7 +201,6 @@ func getHrParagraphRegex() *regexp.Regexp {
 		}
 	}
 	buf.WriteString(")\\z")
-	fmt.Println(buf.String())
 	hrParagraphRegex = regexp.MustCompile(buf.String())
 
 	return hrParagraphRegex
@@ -254,9 +255,7 @@ func FixForEbook(p *client.WhateleyPage) error {
 		s = s.Add(client.StoryBodySelector + sel)
 	}
 	s = s.AddMatcher(cascadia.Selector(hrParagraphMatcher()))
-	fmt.Println(s.Length())
-	hrsReplaced := s.ReplaceWithHtml("<hr>")
-	fmt.Println("replaced", hrsReplaced.Length(), "<hr>s")
+	s.ReplaceWithHtml("<hr>")
 
 	p.Doc().Find("p hr").Parent().ReplaceWithHtml("<hr>")
 	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")

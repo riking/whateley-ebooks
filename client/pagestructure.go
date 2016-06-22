@@ -74,7 +74,7 @@ func (p *WhateleyPage) ViewCount() int64 {
 	var hits int64
 	s, ok := p.document.Find(`.hits [itemprop="interactionCount"]`).Attr("content")
 	if !ok {
-		fmt.Printf("<Error: could not find .hits in page %s>\n", p.URL())
+		fmt.Fprintf(os.Stderr, "<Error: could not find .hits in page %s>\n", p.URL())
 		return 0
 	}
 	fmt.Sscanf(s,
@@ -105,7 +105,7 @@ func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
 }
 
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
-var printURLRegexp = regexp.MustCompile(`\A/index.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)\?tmpl=component&print=1`)
+var printURLRegexp = regexp.MustCompile(`\A/index.php/(?:([a-zA-Z0-9-]+)/)?(\d+)-([a-zA-Z0-9-]+)(?:(\d+)-([a-zA-Z0-9-]+))?\?tmpl=component&print=1`)
 
 var stripExceptionsSelector = `
 head base,
@@ -115,6 +115,9 @@ div.item-page,
 div[itemprop="articleBody"]`
 
 func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
+	if doc == nil {
+		return nil, errors.Errorf("doc was nil")
+	}
 	page := new(WhateleyPage)
 	doc = goquery.CloneDocument(doc)
 	page.document = doc
@@ -132,7 +135,6 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		prevLen = dontRemove.Length()
 		dontRemove = dontRemove.AddSelection(dontRemove.Parents())
 	}
-	fmt.Println(dontRemove.Length())
 
 	removed := page.document.Find("html *").NotSelection(dontRemove).RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
 		if n.Type == html.TextNode {
@@ -141,7 +143,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		}
 		return true
 	}))
-	fmt.Println("removed", removed.Length())
+	_ = removed
 
 	page.document.Find("script,style").Remove()
 
@@ -163,15 +165,17 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 			return
 		}
 	})
-	fmt.Println("spacesTrimmed:", spacesTrimmed)
 
 	var m []string
 	// The printing link is the only part of the page where the correct slug is emitted
 	printURL, ok := doc.Find(".print-icon a").Attr("href")
 	if ok {
+		if strings.Contains(printURL, "the-library") {
+			return nil, errors.Errorf("Library stories are not supported at this time (got %s)", printURL)
+		}
 		m = printURLRegexp.FindStringSubmatch(printURL)
 		if m == nil {
-			return nil, fmt.Errorf("Could not parse canonical URL (got %s)", printURL)
+			return nil, errors.Errorf("Could not parse canonical URL (got %s)", printURL)
 		}
 		page.CategorySlug = m[1]
 		page.StoryID = m[2]
@@ -181,7 +185,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		canonical, ok := doc.Find(`head base`).Attr("href")
 		fmt.Fprintf(os.Stderr, "warning: falling back to <base>")
 		if !ok {
-			return nil, fmt.Errorf("could not find <base href> (canonical URL)")
+			return nil, errors.Errorf("could not find <base href> (canonical URL)")
 		}
 		var err error
 		page.StoryURL, err = ParseURL(canonical)

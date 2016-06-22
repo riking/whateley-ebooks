@@ -21,7 +21,7 @@ func main() {
 	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
 
 	networkAccess := client.New(client.Options{
-		UserAgent: "ebooks tool test script (+https://www.riking.org)",
+		UserAgent: "Ebook tool - Make EPub (+https://www.riking.org)",
 		CacheFile: "./cache.db",
 	})
 

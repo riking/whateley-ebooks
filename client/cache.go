@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"time"
 
+	"os"
+
 	"github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
 )
@@ -52,7 +54,7 @@ func (c *WANetwork) setupDB() error {
 	rows, err := c.db.Query("select version from migrations")
 	if sErr, ok := err.(sqlite3.Error); ok {
 		if sErr.Error() == "no such table: migrations" {
-			fmt.Println("[db] setting up database")
+			fmt.Fprintln(os.Stderr, "[db] setting up database")
 			err := createMigrationsTable.Apply(c.db)
 			if err != nil {
 				return errors.Wrap(err, "Creating migrations table")
@@ -96,7 +98,7 @@ func (c *WANetwork) setupDB() error {
 				// make a backup and restore it?
 				return errors.Wrap(err, fmt.Sprintf("Recording migration %s", m.Version))
 			}
-			fmt.Println("[db] Applied migration", m.Version)
+			fmt.Fprintln(os.Stderr, "[db] Applied migration", m.Version)
 		} else {
 			haveIdx++
 		}
@@ -104,7 +106,7 @@ func (c *WANetwork) setupDB() error {
 	stmt.Close()
 
 	if firstRun {
-		fmt.Println("[db] database created")
+		fmt.Fprintln(os.Stderr, "[db] database created")
 	}
 
 	stmtSelectExistsInCache, err = c.db.Prepare(selectExistsInCache)

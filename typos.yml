@@ -14,6 +14,7 @@ library:
       action: unwrap
 
 82:
+  # Add anchor for ToC
   - select: h2:contains("Canto I")
     action: setAttr
     attr: id
@@ -22,6 +23,7 @@ library:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
 275:
+  # Add <hr> to scene change
   - select: p:contains("November 12"), p:contains("November 14")
     action: insertBefore
     replace: <hr>
@@ -29,6 +31,7 @@ library:
   - findtext: "INTEGRATITY"
     replacetext: "INTEGRITY"
 278:
+  # Handle bad linebreaks in song lyrics
   - select: p:contains("True love is a welcome struggle")
     selectmod: [addNextSibling, addNextSibling, addNextSibling, addNextSibling]
     action: wrapAll
@@ -47,10 +50,27 @@ library:
     replacetext: "<br>— Keeping by Embrace"
 279:
   - include: table-to-div-lyrics
+  # align=left not needed
   - select: div.lyrics p[align="left"]
     action: deleteAttr
     attr: align
 280:
+  # Add <hr> to scene change
   - select: p:contains("December 24, 2006")
     action: insertBefore
     replace: <hr>
+
+# notes while reading
+# need to find the story ID
+todo:
+  ayla-bb-ch-4:
+    - findtext: "MiST"
+      replacetext: "MST3K"
+  murphys-loopholes-ch-4:
+    - findtext: "Biforst"
+      replacetext: "Bifrost"
+  hive-4:
+    - findtext: "like did"
+      replacetext: "like it did to you"
+  hive-christmas:
+    # MID display is wonky

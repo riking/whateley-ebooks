@@ -42,9 +42,9 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 		p.parent = http.DefaultTransport
 	}
 
-	fmt.Printf("> %s %s\n", req.Method, req.URL.String())
+	fmt.Fprintf(os.Stderr, "> %s %s\n", req.Method, req.URL.String())
 	resp, err := p.parent.RoundTrip(req)
-	fmt.Printf("< %s %s\n", req.Method, req.URL.String())
+	fmt.Fprintf(os.Stderr, "< %s %s\n", req.Method, req.URL.String())
 	return resp, err
 }
 
@@ -93,6 +93,9 @@ func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 	if err != nil {
 		return nil, err
 	}
+	if resp.StatusCode != 200 {
+		return nil, errors.Errorf("Non-200 response: %d", resp.StatusCode)
+	}
 	return goquery.NewDocumentFromResponse(resp)
 }
 
@@ -113,7 +116,8 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 		doc, err = goquery.NewDocumentFromReader(bytes.NewBuffer(b))
 		fromCache = true
 	} else {
-		req, err := http.NewRequest("GET", u.URL(), nil)
+		var req *http.Request
+		req, err = http.NewRequest("GET", u.URL(), nil)
 		if err != nil {
 			panic(err)
 		}

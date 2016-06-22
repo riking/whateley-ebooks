@@ -27,8 +27,8 @@ type EpubDefinition struct {
 	Parts []struct {
 		// Table of Contents entry
 		TOC       string
-		TOCNest   int `yaml:"toc-nest"`
-		TOCPage string `yaml:"toc-page"`
+		TOCNest   int    `yaml:"toc-nest"`
+		TOCPage   string `yaml:"toc-page"`
 		CoverPage string `yaml:"coverpage"`
 		Story     struct {
 			ID           string
@@ -118,11 +118,9 @@ func (c *contentEntry) RenderNavPoint(w io.Writer, sequence, nest int) int {
 	var newNest int
 	if c.TOCNest == nest {
 		fmt.Fprintf(w, "</navPoint>")
-		fmt.Println(nest, c.TOCNest, "1 </navPoint>")
 		newNest = nest
 	} else if c.TOCNest > nest {
 		newNest = c.TOCNest
-		fmt.Println(nest, c.TOCNest, "0 </navPoint>")
 	} else { // c.TOCNest < nest
 		newNest = nest
 		count := 1
@@ -132,7 +130,6 @@ func (c *contentEntry) RenderNavPoint(w io.Writer, sequence, nest int) int {
 			count++
 		}
 		fmt.Fprintf(w, "</navPoint>")
-		fmt.Println(nest, c.TOCNest, count, "</navPoint>")
 	}
 	fmt.Fprintf(w, `
 <navPoint id="navPoint-%d" playOrder="%d">
@@ -187,7 +184,6 @@ func (c contentEntries) RenderInTocNCX(w io.Writer) {
 		nest--
 		count++
 	}
-	fmt.Println("-", "-", count, "</navPoint>")
 	fmt.Fprint(w, "</navMap>")
 }
 
@@ -445,8 +441,8 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 			// TOC entry to an anchor on existing page
 			ed.files = append(ed.files, contentEntry{
 				Filename: v.TOCPage,
-				TOC: v.TOC,
-				TOCNest: v.TOCNest,
+				TOC:      v.TOC,
+				TOCNest:  v.TOCNest,
 			})
 		} else {
 			fmt.Println(v)
