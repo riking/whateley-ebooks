@@ -51,7 +51,7 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 func New(opts Options) *WANetwork {
 	c := new(WANetwork)
 	if opts.UserAgent == "" {
-		opts.UserAgent = "Client Name Not Set (+github.com/riking/whateley)"
+		opts.UserAgent = "Client Name Not Set (+github.com/riking/whateley-ebooks)"
 	}
 	c.Headers = opts.Headers
 	if c.Headers == nil {

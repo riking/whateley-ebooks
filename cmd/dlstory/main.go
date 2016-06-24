@@ -29,7 +29,7 @@ func main() {
 	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
 
 	networkAccess := client.New(client.Options{
-		UserAgent: "Ebook tool - TyposFile testing (+https://www.riking.org)",
+		UserAgent: "Ebook tool - TyposFile testing (+github.com/riking/whateley-ebooks)",
 		CacheFile: "./cache.db",
 	})
 

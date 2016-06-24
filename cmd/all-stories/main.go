@@ -122,7 +122,7 @@ func sortingConsumer(resChan chan result) {
 func main() {
 
 	networkAccess := client.New(client.Options{
-		UserAgent: "Ebook tool - Count Words (+https://www.riking.org)",
+		UserAgent: "Ebook tool - Count Words (+github.com/riking/whateley-ebooks)",
 		CacheFile: "./cache.db",
 	})
 
