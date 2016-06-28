@@ -67,6 +67,8 @@ This means:
 
 except where permitted by The Story License (including applicable law).
 
+In particular, this means that format changes you create of The Stories cannot be shared with anyone else.
+
 ## Copyright.md
 
 This file is Copyright © Kane York 2016.

@@ -1,17 +1,4 @@
 # Please see COPYRIGHT.md, CONTRIBUTING.md, and LICENSE-TYPOS.txt
-library:
-  table-to-div-lyrics:
-    - select: table tbody
-      action: unwrap
-    - select: tbody tr
-      action: unwrap
-    - select: tr td
-      action: unwrap
-    - select: td
-      action: wrap
-      replace: <div class="lyrics"><em>
-    - select: div.lyrics td > p
-      action: unwrap
 
 82:
   # Add anchor for ToC
@@ -19,6 +6,9 @@ library:
     action: setAttr
     attr: id
     replace: canto-1
+125:
+  - findtext: "Chapter 2"
+    replacetext: "Part 5"
 127:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
@@ -49,7 +39,17 @@ library:
     findtext: "- Keeping by Embrace"
     replacetext: "<br>— Keeping by Embrace"
 279:
-  - include: table-to-div-lyrics
+  - select: table tbody
+    action: unwrap
+  - select: tbody tr
+    action: unwrap
+  - select: tr td
+    action: unwrap
+  - select: td
+    action: wrap
+    replace: <div class="lyrics"><em>
+  - select: div.lyrics td > p
+    action: unwrap
   # align=left not needed
   - select: div.lyrics p[align="left"]
     action: deleteAttr
@@ -59,6 +59,18 @@ library:
   - select: p:contains("December 24, 2006")
     action: insertBefore
     replace: <hr>
+317:
+  - findtext: "calm and excepting"
+    replacetext: "calm and accepting"
+422:
+  - findtext: "apparently though it"
+    replacetext: "apparently thought it"
+439:
+  - findtext: "many parts of California what"
+    replacetext: "many parts of California were what"
+440:
+  - findtext: "UPCALL"
+    replacetext: "UP CALL"
 
 # notes while reading
 # need to find the story ID
@@ -69,6 +81,8 @@ todo:
   murphys-loopholes-ch-4:
     - findtext: "Biforst"
       replacetext: "Bifrost"
+  forgers-list-ch-2:
+    # missing a <hr> replacement
   hive-4:
     - findtext: "like did"
       replacetext: "like it did to you"

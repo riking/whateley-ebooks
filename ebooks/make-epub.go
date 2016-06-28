@@ -58,6 +58,7 @@ type EpubDefinition struct {
 	files      contentEntries
 	workingDir string
 	lock       sync.Mutex
+	wordCount  int
 }
 
 func (ed *EpubDefinition) Clone() *EpubDefinition {
@@ -419,6 +420,8 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 				page.StoryBodySelection().FindMatcher(cascadia.Selector(findMatchingSrc(asset.Find))).SetAttr("src", asset.Replace)
 			}
 
+			ed.wordCount += page.WordCount()
+
 			w := bufio.NewWriter(file)
 			w.WriteString(`<?xml version="1.0" encoding="utf-8" standalone="no"?>`)
 			err = storyPageTmpl.Execute(w, page)
@@ -511,6 +514,8 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 	if err != nil {
 		return err
 	}
+
+	fmt.Printf("Created %s.\nWord Count: %d\n", filename, ed.wordCount)
 
 	return nil
 }

@@ -82,6 +82,10 @@ func (p *WhateleyPage) ViewCount() int64 {
 	return hits
 }
 
+func (p *WhateleyPage) WordCount() int {
+	return len(strings.Fields(p.StoryBodySelection().Text()))
+}
+
 const StoryBodySelector = `.item-page div[itemprop="articleBody"] `
 
 func (p *WhateleyPage) StoryBodySelection() *goquery.Selection {

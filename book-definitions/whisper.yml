@@ -1,0 +1,26 @@
+
+whisper:
+  author: Sleethr
+  author-sort: Sleethr
+  title: Whisper
+  uuid: 0e484df9-921c-4fd1-a0a9-e92d286a8ed1
+  series: Whateley Academy Original Canon
+  publisher: Whateley Academy Canon Authors
+
+  assets:
+
+  parts:
+    - toc: "Chapters 1-12"
+      story: {id: 34}
+    - toc: "Chapters 13-19"
+      story: {id: 35}
+    - toc: "Chapters 20-25"
+      story: {id: 36}
+    - toc: "Chapters 26-30"
+      story: {id: 37}
+    - toc: "Chapters 31-35"
+      story: {id: 114}
+    - toc: "Chapters 36-39"
+      story: {id: 158}
+    - toc: "Chapters 40-Epilogue"
+      story: {id: 460}

@@ -177,7 +177,9 @@ personal-nextfew:
     coverpage: >
       <p>Please switch to eldritch.epub and read Chapter 7 (final chapter).</p>
   - toc: "Combat Boot"
-    story: {id: 178}
+    coverpage: >
+      <h1>Combat Boot</h1>
+  - story: {id: 178}
   - toc: "I Looked Into The Abyss And It Winked: Part 1"
     story: {id: 317}
   - toc: "Adios"
