@@ -474,6 +474,11 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 
 	zipWriter := zip.NewWriter(file)
 
+	err = ed.WriteMetaINF(zipWriter)
+	if err != nil {
+		return err
+	}
+
 	ed.lock.Lock()
 	defer ed.lock.Unlock()
 
@@ -501,11 +506,6 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 	}
 
 	err = ed.WriteContentOPF(zipWriter)
-	if err != nil {
-		return err
-	}
-
-	err = ed.WriteMetaINF(zipWriter)
 	if err != nil {
 		return err
 	}

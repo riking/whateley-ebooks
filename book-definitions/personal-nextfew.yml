@@ -18,198 +18,334 @@ personal-nextfew:
       target: ForgerCover.jpg
       find: /images/ForgerCover.jpg
       replace: ../Images/ForgerCover.jpg
+    # Silent Nacht
+    - download: http://whateleyacademy.net/images/Temple_of_the_Warriors_Chacmool.jpg
+      target: Temple_of_the_Warriors_Chacmool.jpg
+      find: /include/Temple_of_the_Warriors_Chacmool.jpg
+      replace: ../Images/Temple_of_the_Warriors_Chacmool.jpg
 
   parts:
     # TODO - potentially rearrange starting stories
-  - toc: "Unexpected Consequences"
-    story: {id: 2}
-  - toc: "Mom, I Don't Feel So Good"
-    story: {id: 7}
-  - toc: "Enter The Chaka!"
-    story: {id: 3}
-  - toc: "Jade 1: Coming Out"
-    story: {id: 10}
-  - toc: "Jade 2"
-    story: {id: 11}
-  - toc: "Quoth the Ninja: Nevermore!"
-    story: {id: 133}
-  - toc: "Another Day, We Were Going Where?"
-    story: {id: 24}
-  - toc: "PMS And Other Problems"
-    story: {id: 23}
-  - toc: "Jade 3: Being a Girl"
-    story: {id: 122}
-  - toc: "Chaka: Duel Damsel"
-    story: {id: 144}
-  - toc: "A Simple Game"
-    story: {id: 123}
-  - toc: "Welcome to Poe"
-    story: {id: 132}
-  - toc: "First Day"
-    story: {id: 147}
-  - toc: "Fey: Adjustments"
-    story: {id: 146}
-  - toc: "First Assembly"
-    story: {id: 148}
+    - toc: "Unexpected Consequences"
+      story: {id: 2}
+    - toc: "Mom, I Don't Feel So Good"
+      story: {id: 7}
+    - toc: "Enter The Chaka!"
+      story: {id: 3}
+    - toc: "Jade 1: Coming Out"
+      story: {id: 10}
+    - toc: "Jade 2"
+      story: {id: 11}
+    - toc: "Quoth the Ninja: Nevermore!"
+      story: {id: 133}
+    - toc: "Another Day, We Were Going Where?"
+      story: {id: 24}
+    - toc: "PMS And Other Problems"
+      story: {id: 23}
+    - toc: "Jade 3: Being a Girl"
+      story: {id: 122}
+    - toc: "Chaka: Duel Damsel"
+      story: {id: 144}
+    - toc: "A Simple Game"
+      story: {id: 123}
+    - toc: "Welcome to Poe"
+      story: {id: 132}
+    - toc: "First Day"
+      story: {id: 147}
+    - toc: "Fey: Adjustments"
+      story: {id: 146}
+    - toc: "First Assembly"
+      story: {id: 148}
 
 
-  - toc: "MISSING PARTS"
-    coverpage: >
-      <p>Please ask the publisher to add the missing chapters.</p>
+    - toc: "MISSING PARTS"
+      coverpage: >
+        <p>Please ask the publisher to add the missing chapters.</p>
 
 
-  - toc: "Christmas Chicanery"
-    story: {id: 316}
-  - toc: "Like a Brick"
-    story: {id: 182}
-  - toc: "Ayla and the Birthday Brawl: Chapter 3-5"
-    coverpage: >
-      <p>Please switch to ayla.epub and read:</p>
-      <ul><li>Chapter 3</li>
-      <li>Chapter 4</li>
-      <li>Chapter 5</li></ul>
-  - toc: "April Fool's"
-    coverpage: >
-      <h2>Publisher's Note</p>
-      <p>The following stories were published on 1 April 2010 as April Fool's jokes.</p>
-      <p>As such, they are significantly darker than the other stories in the Whateley Universe.</p>
-      <p>If you wish to skip the stories, please use the Table of Contents to do so.</p>
-  - toc: "As Above, So Below"
-    toc-nest: 2
-    story: {id: 298}
-  - toc: "Knife in the Ribs"
-    toc-nest: 2
-    story: {id: 349}
-  - toc: "A Fistful of Chaka"
-    story: {id: 300}
-  - toc: "Crime and Chaos"
-    story: {id: 265}
-  - toc: "Ayla and the Birthday Brawl: Chapter 6"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 6.</p>
-  - toc: "Five Elements Dancing: Book of the Fire"
-    story: {id: 406}
-  - toc: "Ayla and the Birthday Brawl: Chapter 7"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 7.</p>
-  - toc: "Silver Linings (Part 1)"
-    story: {id: 126}
-  - toc: "Silver Linings (Part 2)"
-    story: {id: 127}
-  - toc: "Dream Quest of the Underage Taoist"
-    story: {id: 399}
-  - toc: "Ayla and the Birthday Brawl: Chapter 8"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 8.</p>
-  - toc: "Silver Linings (Part 3)"
-    story: {id: 128}
-  - toc: "The Secret of the Forger's List: Chapter 1"
-    coverpage: >
-      <p>Please switch to loophole.epub and read Chapter 1.</p>
-  - toc: "Ayla and the Birthday Brawl: Chapter 9"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 9.</p>
-  - toc: "Straight From the Squirrel's Mouth: Chapter 6"
-    coverpage: >
-      <p>Please switch to squirrel.epub and read Chapter 6.</p>
-  - toc: "Ayla and the Birthday Brawl: Chapter 10"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 10.</p>
-  - toc: "The Power of Cute Compels You!"
-    story: {id: 478}
-  - toc: "Silver Linings (Part 4)"
-    story: {id: 129}
-  - toc: "Rotten to the C.O.R.E."
-    story: {id: 266}
-  - toc: "Ayla and the Birthday Brawl: Chapter 11"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 11.</p>
-  - toc: "Silver Linings (Part 5)"
-    story: {id: 130}
-  - toc: "The Secret of the Forger's List: Chapter 2"
-    coverpage: >
-      <p>Please switch to loophole.epub and read Chapter 2.</p>
-  - toc: "Ayla and the Birthday Brawl: Chapter 12"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 12.</p>
-  - toc: "Ayla and the Birthday Brawl: Chapter 13"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 13.</p>
-  - toc: "Straight From the Squirrel's Mouth: Chapter 7"
-    coverpage: >
-      <p>Please switch to squirrel.epub and read Chapter 7.</p>
-  - toc: "The Secret of the Forger's List: Chapter 3"
-    coverpage: >
-      <p>Please switch to loophole.epub and read Chapter 3.</p>
-  - toc: "Razzle Dazzle"
-    story: {id: 439}
-  - toc: "Part 2"
-    toc-nest: 2
-    story: {id: 440}
-  - toc: "Part 3"
-    toc-nest: 2
-    story: {id: 441}
-  - toc: "A View to a Smell"
-    story: {id: 231}
-  - toc: "Straight From the Squirrel's Mouth: Chapter 8"
-    coverpage: >
-      <p>Please switch to squirrel.epub and read Chapter 8.</p>
-  - toc: "The Secret of the Forger's List: Chapter 4"
-    coverpage: >
-      <p>Please switch to loophole.epub and read Chapter 4.</p>
-  - toc: "Straight From the Squirrel's Mouth: Chapter 9"
-    coverpage: >
-      <p>Please switch to squirrel.epub and read Chapter 9.</p>
-  - toc: "Gong Hai Fat Choy: Part 1"
-    story: {id: 416}
-  - toc: "Gong Hai Fat Choy: Part 2"
-    story: {id: 422}
-  - toc: "Monkey of Constant Sorrow"
-    story: {id: 326}
-  - toc: "Straight From the Squirrel's Mouth: Chapter 10"
-    coverpage: >
-      <p>Please switch to squirrel.epub and read Chapter 10.</p>
-  - toc: "Silver Linings (Part 5)"
-    story: {id: 125}
-  - toc: "Test Tube Babies"
-    story: {id: 233}
-  - toc: "Call The Thunder: Part 7"
-    coverpage: >
-      <p>Please switch to eldritch.epub and read Chapter 7 (final chapter).</p>
-  - toc: "Combat Boot"
-    coverpage: >
-      <h1>Combat Boot</h1>
-  - story: {id: 178}
-  - toc: "I Looked Into The Abyss And It Winked: Part 1"
-    story: {id: 317}
-  - toc: "Adios"
-    story: {id: 331}
-  - toc: "I Looked Into The Abyss And It Winked: Part 2"
-    story: {id: 318}
-  - toc: "Mimeographic"
-    story: {id: 232}
-  - toc: "Wednesday Morning, 5 A.M."
-    story: {id: 273}
-  - toc: "I Looked Into The Abyss And It Winked: Parts 3-6"
-    story: {id: 319} # TODO - anchors for Abyss
-  - toc: "To Know Your Heart"
-    story: {id: 475}
-  - toc: "I Looked Into The Abyss And It Winked: Parts 7-8"
-    story: {id: 320} # TODO - anchors for Abyss
-  - toc: "I Looked Into The Abyss And It Winked: Part 9"
-    story: {id: 322}
-  - toc: "I Looked Into The Abyss And It Winked: Part 10"
-    story: {id: 321}
-  - toc: "Spring, and a Young Squirrel's Fancy"
-    story: {id: 234} # TODO - add to squirrel.epub?
-  - toc: "Ayla and the Mad Scientist: Chapter 1"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 1.</p>
-  - toc: "Ayla and the Mad Scientist: Chapter 2"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 2.</p>
-  - toc: "Ayla and the Mad Scientist: Chapter 3"
-    coverpage: >
-      <p>Please switch to ayla.epub and read Chapter 3.</p>
-  - toc: "Triple Threat"
-    story: {id: 348}
+    - toc: "Christmas Chicanery"
+      story: {id: 316}
+    - toc: "Like a Brick"
+      story: {id: 182}
+    - toc: "Ayla and the Birthday Brawl: Chapter 3-5"
+      coverpage: >
+        <p>Please switch to ayla.epub and read:</p>
+        <ul><li>Chapter 3</li>
+        <li>Chapter 4</li>
+        <li>Chapter 5</li></ul>
+    - toc: "April Fool's"
+      coverpage: >
+        <h2>Publisher's Note</p>
+        <p>The following stories were published on 1 April 2010 as April Fool's jokes.</p>
+        <p>As such, they are significantly darker than the other stories in the Whateley Universe.</p>
+        <p>If you wish to skip the stories, please use the Table of Contents to do so.</p>
+    - toc: "As Above, So Below"
+      toc-nest: 2
+      story: {id: 298}
+    - toc: "Knife in the Ribs"
+      toc-nest: 2
+      story: {id: 349}
+    - toc: "A Fistful of Chaka"
+      story: {id: 300}
+    - toc: "Crime and Chaos"
+      story: {id: 265}
+    - toc: "Ayla and the Birthday Brawl: Chapter 6"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 6.</p>
+    - toc: "Five Elements Dancing: Book of the Fire"
+      story: {id: 406}
+    - toc: "Ayla and the Birthday Brawl: Chapter 7"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 7.</p>
+    - toc: "Silver Linings (Part 1)"
+      story: {id: 126}
+    - toc: "Silver Linings (Part 2)"
+      story: {id: 127}
+    - toc: "Dream Quest of the Underage Taoist"
+      story: {id: 399}
+    - toc: "Ayla and the Birthday Brawl: Chapter 8"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 8.</p>
+    - toc: "Silver Linings (Part 3)"
+      story: {id: 128}
+    - toc: "The Secret of the Forger's List: Chapter 1"
+      coverpage: >
+        <p>Please switch to loophole.epub and read Chapter 1.</p>
+    - toc: "Ayla and the Birthday Brawl: Chapter 9"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 9.</p>
+    - toc: "Straight From the Squirrel's Mouth: Chapter 6"
+      coverpage: >
+        <p>Please switch to squirrel.epub and read Chapter 6.</p>
+    - toc: "Ayla and the Birthday Brawl: Chapter 10"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 10.</p>
+    - toc: "The Power of Cute Compels You!"
+      story: {id: 478}
+    - toc: "Silver Linings (Part 4)"
+      story: {id: 129}
+    - toc: "Rotten to the C.O.R.E."
+      story: {id: 266}
+    - toc: "Ayla and the Birthday Brawl: Chapter 11"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 11.</p>
+    - toc: "Silver Linings (Part 5)"
+      story: {id: 130}
+    - toc: "The Secret of the Forger's List: Chapter 2"
+      coverpage: >
+        <p>Please switch to loophole.epub and read Chapter 2.</p>
+    - toc: "Ayla and the Birthday Brawl: Chapter 12"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 12.</p>
+    - toc: "Ayla and the Birthday Brawl: Chapter 13"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 13.</p>
+    - toc: "Straight From the Squirrel's Mouth: Chapter 7"
+      coverpage: >
+        <p>Please switch to squirrel.epub and read Chapter 7.</p>
+    - toc: "The Secret of the Forger's List: Chapter 3"
+      coverpage: >
+        <p>Please switch to loophole.epub and read Chapter 3.</p>
+    - toc: "Razzle Dazzle"
+      story: {id: 439}
+    - toc: "Part 2"
+      toc-nest: 2
+      story: {id: 440}
+    - toc: "Part 3"
+      toc-nest: 2
+      story: {id: 441}
+    - toc: "A View to a Smell"
+      story: {id: 231}
+    - toc: "Straight From the Squirrel's Mouth: Chapter 8"
+      coverpage: >
+        <p>Please switch to squirrel.epub and read Chapter 8.</p>
+    - toc: "The Secret of the Forger's List: Chapter 4"
+      coverpage: >
+        <p>Please switch to loophole.epub and read Chapter 4.</p>
+    - toc: "Straight From the Squirrel's Mouth: Chapter 9"
+      coverpage: >
+        <p>Please switch to squirrel.epub and read Chapter 9.</p>
+    - toc: "Gong Hai Fat Choy: Part 1"
+      story: {id: 416}
+    - toc: "Gong Hai Fat Choy: Part 2"
+      story: {id: 422}
+    - toc: "Monkey of Constant Sorrow"
+      story: {id: 326}
+    - toc: "Straight From the Squirrel's Mouth: Chapter 10"
+      coverpage: >
+        <p>Please switch to squirrel.epub and read Chapter 10.</p>
+    - toc: "Silver Linings (Part 5)"
+      story: {id: 125}
+    - toc: "Test Tube Babies"
+      story: {id: 233}
+    - toc: "Call The Thunder: Part 7"
+      coverpage: >
+        <p>Please switch to eldritch.epub and read Chapter 7 (final chapter).</p>
+    - toc: "Combat Boot"
+      coverpage: >
+        <h1>Combat Boot</h1>
+    - story: {id: 178}
+    - toc: "I Looked Into The Abyss And It Winked: Part 1"
+      story: {id: 317}
+    - toc: "Adios"
+      story: {id: 331}
+    - toc: "I Looked Into The Abyss And It Winked: Part 2"
+      story: {id: 318}
+    - toc: "Mimeographic"
+      story: {id: 232}
+    - toc: "Wednesday Morning, 5 A.M."
+      story: {id: 273}
+    - toc: "I Looked Into The Abyss And It Winked: Parts 3-6"
+      story: {id: 319} # TODO - anchors for Abyss
+    - toc: "To Know Your Heart"
+      story: {id: 475}
+    - toc: "I Looked Into The Abyss And It Winked: Parts 7-8"
+      story: {id: 320} # TODO - anchors for Abyss
+    - toc: "I Looked Into The Abyss And It Winked: Part 9"
+      story: {id: 322}
+    - toc: "I Looked Into The Abyss And It Winked: Part 10"
+      story: {id: 321}
+    - toc: "Spring, and a Young Squirrel's Fancy"
+      story: {id: 234} # TODO - add to squirrel.epub?
+    - toc: "Ayla and the Mad Scientist: Chapter 1"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 1.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 2"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 2.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 3"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 3.</p>
+    - toc: "Triple Threat"
+      story: {id: 348}
+    - toc: "Tea With a Serpent: Chapter 1"
+      story: {id: 479}
+    - toc: "Ayla and the Mad Scientist: Chapter 4"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 4.</p>
+    - toc: "Loose Cannons: Chapter 1"
+      story: {id: 351}
+    - toc: "Ayla and the Mad Scientist: Chapter 5"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 5.</p>
+    # April 2012
+    - toc: "Ayla and the Mad Scientist: Chapter 6"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 6.</p>
+    - toc: "Loose Cannons: Chapter 2"
+      story: {id: 352}
+    - toc: "Tea With a Serpent: Chapter 2"
+      story: {id: 480}
+    - toc: "Ayla and the Mad Scientist: Chapter 7"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 7.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 8"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 8.</p>
+    - toc: "Envy and the Gilded Cage: Chapter 1"
+      story: {id: 481}
+    - toc: "Ayla and the Mad Scientist: Chapter 9"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 9.</p>
+    - toc: "Loose Cannons: Chapter 3"
+      story: {id: 353}
+    - toc: "Envy and the Gilded Cage: Chapter 2"
+      story: {id: 482}
+    - toc: "Ayla and the Mad Scientist: Chapter 10"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 10.</p>
+    - toc: "Loose Cannons: Chapter 4"
+      story: {id: 354}
+    - toc: "Envy and the Gilded Cage: Chapter 3"
+      story: {id: 483}
+    - toc: "Ayla and the Mad Scientist: Chapter 11"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 11.</p>
+    - toc: "The Kodiak in Winter"
+      coverpage: >
+        <p>Please switch to loophole.epub and read The Kodiak in Winter.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 12"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 12.</p>
+    - toc: "There's Something About Billie: Chapter 1"
+      story: {id: 476}
+    - toc: "Ayla and the Mad Scientist: Chapter 13"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 13.</p>
+    - toc: "There's Something About Billie: Chapter 2"
+      story: {id: 477}
+    - toc: "Ayla and the Mad Scientist: Chapter 14"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 14.</p>
+    - toc: "The Widening Gyre"
+      story: {id: 356}
+    - toc: "Ayla and the Mad Scientist: Chapter 15"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 15.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 16"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 16.</p>
+    # Editorial Decision: Make this uninterrupted
+    - toc: "Tennyo's Easter: Chapter 1"
+      story: {id: 471}
+    - toc: "Tennyo's Easter: Chapter 2"
+      story: {id: 472}
+    - toc: "Tennyo's Easter: Chapter 3"
+      story: {id: 473}
+    - toc: "Tennyo's Easter: Chapter 4"
+      story: {id: 474}
+    - toc: "Ayla and the Mad Scientist: Chapter 17"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 17.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 18"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 18.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 19"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 19.</p>
+    - toc: "A Cold Plate of Vengeance"
+      coverpage: >
+        <p>Please switch to loophole.epub and read A Cold Plate of Vengeance.</p>
+    - toc: "Ayla and the Mad Scientist: Chapter 20"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 20.</p>
+    - toc: "Eclia in Normalland: Chapter 1"
+      story: {id: 323}
+    - toc: "Silent Nacht: Chapter 1"
+      story: {id: 382}
+    - toc: "Silent Nacht: Chapter 2"
+      story: {id: 383}
+    - toc: "Eclia in Normalland: Chapter 2"
+      story: {id: 324}
+    - toc: "Ayla and the Mad Scientist: Chapter 21"
+      coverpage: >
+        <p>Please switch to ayla.epub and read Chapter 21.</p>
+    - toc: "Silent Nacht: Chapter 3"
+      story: {id: 384}
+    - toc: "Accidental Antidote Apocalypse"
+      story: {id: 442}
+    - toc: "Tennyo Goes To Hell - Warning"
+      coverpage: >
+        <h3>A Whateley Academy Story</h3>
+        <h1>Tennyo Goes To Hell</h1>
+        <h4><em>or, "Good morning, and welcome to the lake of fire"</em></h4>
+        <h3>by Babs Yerunkle</h3>
+        <hr/>
+        <div style="background-color: #bd362f; padding: 0.25in; ">
+          <h3>Warning</h3>
+          <p>This horror story contains sexual violence, physical violence, and horror.</p>
+          <p>For those that wish to skip that, you may jump to the end of chapter two.</p>
+          <p>Use the "Table Of Contents" selector in your ebook reader and jump to "Tennyo Goes To Hell - Epilog".</p>
+        </div>
+        <p>This story is darker and bloodier than anything you have ever seen in Whateley canon. In fact, it is darker and more violent than anything you have ever seen in Whateley non-canon, including April Fools' Day stories and fanfic. It contains graphic scenes of violence, rape, sexual violence, bestiality, violence, brutality, violence, raw sexuality, horror, cannibalism, violence, and insanity. Did I mention the violence yet? Okay. This is somewhere around FR21. You have been warned.
+        </p>
+        <p>That said, this is a great story by a beloved Whateley author, even if some will find it very disturbing. It is not necessary to read it, because all key events will be covered elsewhere. But if you're interested (and in my personal opinion it is well worth reading). Continue reading only if you understand and can legally make the decision to subject yourself to this type of story. If you are under age or experience PTSD/trigger events due to the above things, we recommend you skip this content.
+        </p>
+    - toc: "Tennyo Goes To Hell - Chapter 1"
+      toc-nest: 2
+      coverpage: >
+        <p>special code needed, TBA</p>
+    - toc: "Tennyo Goes To Hell - Chapter 2"
+      toc-nest: 2
+      coverpage: >
+        <p>special code needed, TBA</p>

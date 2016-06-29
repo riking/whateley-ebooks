@@ -147,7 +147,7 @@ VALUES (?, ?, ?)`
 
 var stmtInsertCacheData *sql.Stmt
 
-const cacheStalePeriod = 196 * time.Hour
+const cacheStalePeriod = 1960 * time.Hour
 
 // returns -1 if no match
 func (c *WANetwork) cacheCheck(u StoryURL) (int64, error) {

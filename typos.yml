@@ -62,6 +62,11 @@
 317:
   - findtext: "calm and excepting"
     replacetext: "calm and accepting"
+342:
+  - select: p[align="center"]:contains("EPILOG")
+    action: setAttr
+    attr: id
+    replace: epilog
 422:
   - findtext: "apparently though it"
     replacetext: "apparently thought it"

@@ -49,6 +49,8 @@ loophole:
       toc-nest: 2
       story: {id: 244}
 
+    - toc: "The Kodiak in Winter"
+      story: {id: 272}
     - toc: "A Cold Plate of Vengeance"
       story: {id: 271}
 
