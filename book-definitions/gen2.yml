@@ -1,66 +1,65 @@
+id: gen2
+title: Whateley 2nd Generation
+author: Whateley Academy 2nd Generation Canon Authors
+author-sort: Whateley Academy Canon Authors
+uuid: f77affa1-dbbb-4022-86af-0ce53a1fa888
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
 
-gen2:
-  author: Whateley Academy 2nd Generation Canon Authors
-  author-sort: Whateley Academy Canon Authors
-  title: Whateley 2nd Generation
-  uuid: f77affa1-dbbb-4022-86af-0ce53a1fa888
-  series: Whateley Academy Original Canon
-  publisher: Whateley Academy Canon Authors
-
-  parts:
-    - coverpage: >
-        <h1>Whateley Academy 2nd Generation</h1>
-        <p>Note: This book contains stories from various different authors.</p>
-        <p>They are arranged in roughly date of publication order with some modifications - e.g. to keep a series all together.</p>
-    - toc: "Announcement"
-      story: {id: 157}
-    - toc: "The Big Apple Comes With Calamari"
-      story: {id: 162}
-    - toc: "Part 2"
-      toc-nest: 2
-      story: {id: 236}
-    - coverpage: >
-        <h4>Publisher's Note</h4>
-        <p>Note that the next story was published after Written In Blood Part 2.</p>
-    - toc: "Part 3"
-      toc-nest: 2
-      story: {id: 340}
-    - toc: "The Road To Whateley"
-      story: {id: 304}
-    - toc: "Part 2"
-      toc-nest: 2
-      story: {id: 501}
-    - toc: "The Curse of the Dragon Queen"
-      story: {id: 421}
-    - toc: "Islands in the Sun"
-      story: {id: 597}
-    - toc: "Written in Blood"
-      story: {id: 631}
-      # editorial decision: put all parts here in order
-    - toc: "Part 2"
-      toc-nest: 2
-      story: {id: 632}
-    - toc: "Part 3"
-      toc-nest: 2
-      story: {id: 647}
-    - toc: "Part 4"
-      toc-nest: 2
-      story: {id: 648}
-    - toc: "Down the Rabbit Hole"
-      story: {id: 270} #lapin-1
-    - toc: "Part 2"
-      toc-nest: 2
-      story: {id: 629}
-    - toc: "Part 3"
-      toc-nest: 2
-      story: {id: 660}
-    - toc: "Blood Sisters"
-      story: {id: 650}
-    - toc: "I Don't Think We're in Kansas Anymore"
-      story: {id: 635}
-    - toc: "Part 2"
-      toc-nest: 2
-      story: {id: 654}
-    - toc: "Part 3"
-      toc-nest: 2
-      story: {id: 655}
+parts:
+  - coverpage: >
+      <h1>Whateley Academy 2nd Generation</h1>
+      <p>Note: This book contains stories from various different authors.</p>
+      <p>They are arranged in roughly date of publication order with some modifications - e.g. to keep a series all together.</p>
+  - toc: "Announcement"
+    story: {id: 157}
+  - toc: "The Big Apple Comes With Calamari"
+    story: {id: 162}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 236}
+  - coverpage: >
+      <h4>Publisher's Note</h4>
+      <p>Note that the next story was published after Written In Blood Part 2.</p>
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 340}
+  - toc: "The Road To Whateley"
+    story: {id: 304}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 501}
+  - toc: "The Curse of the Dragon Queen"
+    story: {id: 421}
+  - toc: "Islands in the Sun"
+    story: {id: 597}
+  - toc: "Written in Blood"
+    story: {id: 631}
+    # editorial decision: put all parts here in order
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 632}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 647}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 648}
+  - toc: "Down the Rabbit Hole"
+    story: {id: 270} #lapin-1
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 629}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 660}
+  - toc: "Blood Sisters"
+    story: {id: 650}
+  - toc: "I Don't Think We're in Kansas Anymore"
+    story: {id: 635}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 654}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 655}

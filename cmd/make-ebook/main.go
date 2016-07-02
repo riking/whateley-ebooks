@@ -1,46 +1,63 @@
 package main
 
 import (
-	"github.com/riking/whateley-ebooks/client"
-	"github.com/riking/whateley-ebooks/ebooks"
-
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
 
 	"gopkg.in/yaml.v2"
+
+	"github.com/pkg/errors"
+	"github.com/riking/whateley-ebooks/cmd"
+	"github.com/riking/whateley-ebooks/ebooks"
 )
 
-func fatal(err error) {
-	fmt.Println("Fatal error:")
-	fmt.Println(err.Error())
-	os.Exit(2)
-}
-
 func main() {
-	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
+	networkAccess := cmd.Setup()
+	networkAccess.UserAgent("Ebook tool - Make EPub (+github.com/riking/whateley-ebooks)")
 
-	networkAccess := client.New(client.Options{
-		UserAgent: "Ebook tool - Make EPub (+github.com/riking/whateley-ebooks)",
-		CacheFile: "./cache.db",
-	})
+	flag.Parse()
 
-	ebook := "loophole"
-
-	var ebooksFile map[string]*ebooks.EpubDefinition
-	b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))
-	if err != nil {
-		fatal(err)
-	}
-	err = yaml.Unmarshal(b, &ebooksFile)
-	if err != nil {
-		fatal(err)
+	ebook := flag.Arg(0)
+	if ebook == "" {
+		fmt.Println("Please specify a book name / file on the command line")
+		os.Exit(1)
 	}
 
-	os.Mkdir("target", 0755)
-	filename := fmt.Sprintf("target/%s.epub", ebook)
-	err = ebooks.CreateEpub(ebooksFile[ebook], networkAccess, filename)
+	var ebooksFile *ebooks.EpubDefinition
+	attemptFiles := []string{ebook, fmt.Sprintf("book-definitions/%s.yml", ebook)}
+	for _, v := range attemptFiles {
+		_, err := os.Stat(v)
+		if os.IsNotExist(err) {
+			continue
+		}
+
+		b, err := ioutil.ReadFile(v)
+		if err != nil {
+			cmd.Fatal(errors.Wrapf(err, "Could not read %s", v))
+		}
+		err = yaml.Unmarshal(b, &ebooksFile)
+		if err != nil {
+			cmd.Fatal(errors.Wrapf(err, "Could not parse %s", v))
+		}
+	}
+
+	var outFile string
+
+	if flag.NArg() == 2 {
+		outFile = flag.Arg(1)
+		// TODO(riking): allow stdout output? need to make CreateEpub take io.Writer
+	} else {
+		err := os.Mkdir("target", 0755)
+		if !os.IsExist(err) {
+			cmd.Fatal(errors.Wrap(err, "Could not create output directory"))
+		}
+		outFile = fmt.Sprintf("target/%s.epub", ebook)
+	}
+
+	err := ebooks.CreateEpub(ebooksFile, networkAccess, outFile)
 	if err != nil {
-		fatal(err)
+		cmd.Fatal(err)
 	}
 }

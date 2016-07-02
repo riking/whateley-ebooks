@@ -76,6 +76,10 @@ func New(opts Options) *WANetwork {
 	return c
 }
 
+func (c *WANetwork) UserAgent(ua string) {
+	c.Headers.Set("User-Agent", ua)
+}
+
 func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
 	for k := range c.Headers {
 		req.Header.Set(k, c.Headers.Get(k))

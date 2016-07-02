@@ -1,400 +1,400 @@
 
-kayda:
-  author: ElrodW;E.E. Nalley
-  author-sort: ElrodW
-  title: Kayda Compilation
-  uuid: f29340ae-de47-4644-92f1-bd3fb5384972
-  series: Whateley Academy Original Canon
-  publisher: Whateley Academy Canon Authors
+id: kayda
+author: ElrodW;E.E. Nalley
+author-sort: ElrodW
+title: Kayda Compilation
+uuid: f29340ae-de47-4644-92f1-bd3fb5384972
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
 
-  assets:
+assets:
 
-  parts:
-    - coverpage: >
-        <h1>Kayda's Stories Compilation</h1>
-        <h3>by ElrodW</h3>
+parts:
+  - coverpage: >
+      <h1>Kayda's Stories Compilation</h1>
+      <h3>by ElrodW</h3>
 
-    - toc: "Buffalo Gal Won't You Come Out Tonight"
-      toc-nest: 1
-      coverpage: >
-        <h1>Buffalo Gal Won't You Come Out Tonight</h1>
-        <h2>Book 1</h2>
-        <h3>by ElrodW</h3>
+  - toc: "Buffalo Gal Won't You Come Out Tonight"
+    toc-nest: 1
+    coverpage: >
+      <h1>Buffalo Gal Won't You Come Out Tonight</h1>
+      <h2>Book 1</h2>
+      <h3>by ElrodW</h3>
 
-    - toc: "Chapter 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 1</h1>
-    - story:
-        id: 70
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-1
-        remove-titles: .headder
+  - toc: "Chapter 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 1</h1>
+  - story:
+      id: 70
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-1
+      remove-titles: .headder
 
-    - toc: "Chapter 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 2</h1>
-    - story:
-        id: 71
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-2
-        remove-titles: .headder
+  - toc: "Chapter 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 2</h1>
+  - story:
+      id: 71
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-2
+      remove-titles: .headder
 
-    - toc: "Chapter 3"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 3</h1>
-    - story:
-        id: 72
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-3
-        remove-titles: .headder
+  - toc: "Chapter 3"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 3</h1>
+  - story:
+      id: 72
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-3
+      remove-titles: .headder
 
-    - toc: "Chapter 4"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 4</h1>
-    - story:
-        id: 73
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-4
-        remove-titles: .headder
+  - toc: "Chapter 4"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 4</h1>
+  - story:
+      id: 73
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-4
+      remove-titles: .headder
 
-    - toc: "Chapter 5"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 5</h1>
-    - story:
-        id: 74
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-5
-        remove-titles: .headder
+  - toc: "Chapter 5"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 5</h1>
+  - story:
+      id: 74
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-5
+      remove-titles: .headder
 
-    - toc: "Chapter 6"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 6</h1>
-    - story:
-        id: 75
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-6
-        remove-titles: .headder
+  - toc: "Chapter 6"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 6</h1>
+  - story:
+      id: 75
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-6
+      remove-titles: .headder
 
-    - toc: "Chapter 7"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 7</h1>
-    - story:
-        id: 76
-        slug: buffalo-gal-won-t-you-come-out-tonight-ch-7
-        remove-titles: .headder
+  - toc: "Chapter 7"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 7</h1>
+  - story:
+      id: 76
+      slug: buffalo-gal-won-t-you-come-out-tonight-ch-7
+      remove-titles: .headder
 
-    - toc: "Kayda 2: Trials of a Warrior"
-      toc-nest: 1
-      coverpage: >
-        <h1>Trials of a Warrior</h1>
-        <h2>Book 2</h2>
-        <h3>by ElrodW</h3>
+  - toc: "Kayda 2: Trials of a Warrior"
+    toc-nest: 1
+    coverpage: >
+      <h1>Trials of a Warrior</h1>
+      <h2>Book 2</h2>
+      <h3>by ElrodW</h3>
 
-    - toc: "Chapter 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Maka</h1>
-        <h2>Chapter 1</h2>
-    - story:
-        id: 59
-        slug: kayda-2-trials-of-a-warrior-ch-1
-        remove-titles: .headder
+  - toc: "Chapter 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Maka</h1>
+      <h2>Chapter 1</h2>
+  - story:
+      id: 59
+      slug: kayda-2-trials-of-a-warrior-ch-1
+      remove-titles: .headder
 
-    - toc: "Chapter 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Hetkala</h1>
-        <h2>Chapter 2</h2>
-    - story:
-        id: 60
-        slug: kayda-2-trials-of-a-warrior-ch-2
-        remove-titles: .headder
+  - toc: "Chapter 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Hetkala</h1>
+      <h2>Chapter 2</h2>
+  - story:
+      id: 60
+      slug: kayda-2-trials-of-a-warrior-ch-2
+      remove-titles: .headder
 
-    - toc: "Chapter 3"
-      toc-nest: 2
-      coverpage: >
-        <h1>Ptan na Ithunkasan</h1>
-        <h2>Chapter 3</h2>
-    - story:
-        id: 61
-        slug: kayda-2-trials-of-a-warrior-ch-3
-        remove-titles: .headder
+  - toc: "Chapter 3"
+    toc-nest: 2
+    coverpage: >
+      <h1>Ptan na Ithunkasan</h1>
+      <h2>Chapter 3</h2>
+  - story:
+      id: 61
+      slug: kayda-2-trials-of-a-warrior-ch-3
+      remove-titles: .headder
 
-    - toc: "Chapter 4"
-      toc-nest: 2
-      coverpage: >
-        <h1>Itukala na Suka</h1>
-        <h2>Chapter 4</h2>
-    - story:
-        id: 62
-        slug: kayda-2-trials-of-a-warrior-ch-4
-        remove-titles: .headder
+  - toc: "Chapter 4"
+    toc-nest: 2
+    coverpage: >
+      <h1>Itukala na Suka</h1>
+      <h2>Chapter 4</h2>
+  - story:
+      id: 62
+      slug: kayda-2-trials-of-a-warrior-ch-4
+      remove-titles: .headder
 
-    - toc: "Chapter 5"
-      toc-nest: 2
-      coverpage: >
-        <h1>Thanagila</h1>
-        <h2>Chapter 5</h2>
-        <h3>by ElrodW (with contributions from Bek)</h3>
-    - story:
-        id: 63
-        slug: kayda-2-trials-of-a-warrior-ch-5
-        remove-titles: .headder
+  - toc: "Chapter 5"
+    toc-nest: 2
+    coverpage: >
+      <h1>Thanagila</h1>
+      <h2>Chapter 5</h2>
+      <h3>by ElrodW (with contributions from Bek)</h3>
+  - story:
+      id: 63
+      slug: kayda-2-trials-of-a-warrior-ch-5
+      remove-titles: .headder
 
-    - toc: "Chapter 6"
-      toc-nest: 2
-      coverpage: >
-        <h1>Chapter 6</h1>
-    - story:
-        id: 64
-        slug: kayda-2-trials-of-a-warrior-ch-6
-        remove-titles: .headder
+  - toc: "Chapter 6"
+    toc-nest: 2
+    coverpage: >
+      <h1>Chapter 6</h1>
+  - story:
+      id: 64
+      slug: kayda-2-trials-of-a-warrior-ch-6
+      remove-titles: .headder
 
-    - toc: "Kayda 3: Two Spirits"
-      toc-nest: 1
-      coverpage: >
-        <h1>Two Spirits</h1>
-        <h2>Book 3</h2>
-        <h3>by ElrodW</h3>
+  - toc: "Kayda 3: Two Spirits"
+    toc-nest: 1
+    coverpage: >
+      <h1>Two Spirits</h1>
+      <h2>Book 3</h2>
+      <h3>by ElrodW</h3>
 
-    - toc: "Chapter 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Oyate (the Nations)</h1>
-        <h2>Chapter 1</h2>
-    - story:
-        id: 38
-        slug: kayda-3-two-spirits-ch-1
-        remove-titles: .headder
+  - toc: "Chapter 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Oyate (the Nations)</h1>
+      <h2>Chapter 1</h2>
+  - story:
+      id: 38
+      slug: kayda-3-two-spirits-ch-1
+      remove-titles: .headder
 
-    - toc: "Chapter 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Ichimani (the Travelers)</h1>
-        <h2>Chapter 2</h2>
-    - story:
-        id: 39
-        slug: kayda-3-two-spirits-ch-2
-        remove-titles: .headder
+  - toc: "Chapter 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Ichimani (the Travelers)</h1>
+      <h2>Chapter 2</h2>
+  - story:
+      id: 39
+      slug: kayda-3-two-spirits-ch-2
+      remove-titles: .headder
 
-    - toc: "Chapter 3"
-      toc-nest: 2
-      coverpage: >
-        <h1>Zuya Wikhoskalaka (Warrior Girl)</h1>
-        <h2>Chapter 3</h2>
-    - story:
-        id: 40
-        slug: kayda-3-two-spirits-ch-3
-        remove-titles: .headder
+  - toc: "Chapter 3"
+    toc-nest: 2
+    coverpage: >
+      <h1>Zuya Wikhoskalaka (Warrior Girl)</h1>
+      <h2>Chapter 3</h2>
+  - story:
+      id: 40
+      slug: kayda-3-two-spirits-ch-3
+      remove-titles: .headder
 
-    - toc: "The Zica Encounter"
-      toc-nest: 1
-      coverpage: >
-        <h1>The Zica Encouter</h1>
-        <h2>A Whateley Academy Vignette</h2>
-        <h3>by ElrodW</h3>
-    - story:
-        id: 53
-        slug: the-zica-encounter
-        remove-titles: .headder
+  - toc: "The Zica Encounter"
+    toc-nest: 1
+    coverpage: >
+      <h1>The Zica Encouter</h1>
+      <h2>A Whateley Academy Vignette</h2>
+      <h3>by ElrodW</h3>
+  - story:
+      id: 53
+      slug: the-zica-encounter
+      remove-titles: .headder
 
-    - toc: "Kayda 4: Now The Real Learning Can Begin"
-      toc-nest: 1
-      coverpage: >
-        <h1>Now The Real Learning Can Begin</h1>
-        <h2>Book 4</h2>
-        <h3>by ElrodW</h3>
+  - toc: "Kayda 4: Now The Real Learning Can Begin"
+    toc-nest: 1
+    coverpage: >
+      <h1>Now The Real Learning Can Begin</h1>
+      <h2>Book 4</h2>
+      <h3>by ElrodW</h3>
 
-    - toc: "Chapter 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Apetu Theca (A New Dawn)</h1>
-        <h2>Chapter 1</h2>
-    - story:
-        id: 65
-        slug: kayda-4-now-the-real-learning-can-begin-ch-1
-        remove-titles: .headder
+  - toc: "Chapter 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Apetu Theca (A New Dawn)</h1>
+      <h2>Chapter 1</h2>
+  - story:
+      id: 65
+      slug: kayda-4-now-the-real-learning-can-begin-ch-1
+      remove-titles: .headder
 
-    - toc: "Chapter 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Mahpiya Wakina (Thunderclouds)</h1>
-        <h2>Chapter 2</h2>
-    - story:
-        id: 66
-        slug: kayda-4-now-the-real-learning-can-begin-ch-2
-        remove-titles: .headder
+  - toc: "Chapter 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Mahpiya Wakina (Thunderclouds)</h1>
+      <h2>Chapter 2</h2>
+  - story:
+      id: 66
+      slug: kayda-4-now-the-real-learning-can-begin-ch-2
+      remove-titles: .headder
 
-    - toc: "Chapter 3"
-      toc-nest: 2
-      coverpage: >
-        <h1>Osiceca Magazu (Rain Storm)</h1>
-        <h2>Chapter 3</h2>
-    - story:
-        id: 67
-        slug: kayda-4-now-the-real-learning-can-begin-ch-3
-        remove-titles: .headder
+  - toc: "Chapter 3"
+    toc-nest: 2
+    coverpage: >
+      <h1>Osiceca Magazu (Rain Storm)</h1>
+      <h2>Chapter 3</h2>
+  - story:
+      id: 67
+      slug: kayda-4-now-the-real-learning-can-begin-ch-3
+      remove-titles: .headder
 
-    - toc: "Chapter 4"
-      toc-nest: 2
-      coverpage: >
-        <h1>Waki Ya (Thunderclouds)</h1>
-        <h2>Chapter 4</h2>
-    - story:
-        id: 68
-        slug: kayda-4-now-the-real-learning-can-begin-ch-4
-        remove-titles: .headder
+  - toc: "Chapter 4"
+    toc-nest: 2
+    coverpage: >
+      <h1>Waki Ya (Thunderclouds)</h1>
+      <h2>Chapter 4</h2>
+  - story:
+      id: 68
+      slug: kayda-4-now-the-real-learning-can-begin-ch-4
+      remove-titles: .headder
 
-    - toc: "Chapter 5"
-      toc-nest: 2
-      coverpage: >
-        <h1>Wakinyan Towa Pi (Lightning)</h1>
-        <h2>Chapter 5</h2>
-    - story:
-        id: 69
-        slug: kayda-4-now-the-real-learning-can-begin-ch-5
-        remove-titles: .headder
+  - toc: "Chapter 5"
+    toc-nest: 2
+    coverpage: >
+      <h1>Wakinyan Towa Pi (Lightning)</h1>
+      <h2>Chapter 5</h2>
+  - story:
+      id: 69
+      slug: kayda-4-now-the-real-learning-can-begin-ch-5
+      remove-titles: .headder
 
-    - toc: "The Riddle Of Sappho"
-      toc-nest: 1
-      coverpage: >
-        <h1>The Riddle Of Sappho</h1>
-        <h2>Book 5</h2>
-        <h3>by E.E. Nalley and ElrodW</h3>
+  - toc: "The Riddle Of Sappho"
+    toc-nest: 1
+    coverpage: >
+      <h1>The Riddle Of Sappho</h1>
+      <h2>Book 5</h2>
+      <h3>by E.E. Nalley and ElrodW</h3>
 
-    - toc: "Prologue"
-      toc-nest: 2
-      coverpage: >
-        <h1>Prologue and Canto I</h1>
-    - story:
-        id: 82
-        slug: the-riddle-of-sappho-prologue-and-canto-i
-        remove-titles: .headder
-    # Add a TOC entry to point to start of Canto I
-    - toc: "Canto I"
-      toc-nest: 2
-      toc-page: "Text/82-the-riddle-of-sappho-prologue-and-canto-i#canto-1"
+  - toc: "Prologue"
+    toc-nest: 2
+    coverpage: >
+      <h1>Prologue and Canto I</h1>
+  - story:
+      id: 82
+      slug: the-riddle-of-sappho-prologue-and-canto-i
+      remove-titles: .headder
+  # Add a TOC entry to point to start of Canto I
+  - toc: "Canto I"
+    toc-nest: 2
+    toc-page: "Text/82-the-riddle-of-sappho-prologue-and-canto-i#canto-1"
 
-    - toc: "Canto II"
-      toc-nest: 2
-      coverpage: >
-        <h1>Canto II</h1>
-    - story:
-        id: 83
-        slug: the-riddle-of-sappho-prologue-and-canto-ii
-        remove-titles: .headder
+  - toc: "Canto II"
+    toc-nest: 2
+    coverpage: >
+      <h1>Canto II</h1>
+  - story:
+      id: 83
+      slug: the-riddle-of-sappho-prologue-and-canto-ii
+      remove-titles: .headder
 
-    - toc: "Canto III"
-      toc-nest: 2
-      coverpage: >
-        <h1>Canto III</h1>
-    - story:
-        id: 84
-        slug: the-riddle-of-sappho-prologue-and-canto-iii
-        remove-titles: .headder
+  - toc: "Canto III"
+    toc-nest: 2
+    coverpage: >
+      <h1>Canto III</h1>
+  - story:
+      id: 84
+      slug: the-riddle-of-sappho-prologue-and-canto-iii
+      remove-titles: .headder
 
-    - toc: "Canto IV"
-      toc-nest: 2
-      coverpage: >
-        <h1>Canto IV</h1>
-    - story:
-        id: 85
-        slug: the-riddle-of-sappho-prologue-and-canto-iv
-        remove-titles: .headder
+  - toc: "Canto IV"
+    toc-nest: 2
+    coverpage: >
+      <h1>Canto IV</h1>
+  - story:
+      id: 85
+      slug: the-riddle-of-sappho-prologue-and-canto-iv
+      remove-titles: .headder
 
-    - toc: "Canto V"
-      toc-nest: 2
-      coverpage: >
-        <h1>Canto V</h1>
-    - story:
-        id: 86
-        slug: the-riddle-of-sappho-prologue-and-canto-v
-        remove-titles: .headder
+  - toc: "Canto V"
+    toc-nest: 2
+    coverpage: >
+      <h1>Canto V</h1>
+  - story:
+      id: 86
+      slug: the-riddle-of-sappho-prologue-and-canto-v
+      remove-titles: .headder
 
-    - toc: "Canto VI"
-      toc-nest: 2
-      coverpage: >
-        <h1>Canto VI</h1>
-    - story:
-        id: 87
-        slug: the-riddle-of-sappho-prologue-and-canto-vi
-        remove-titles: .headder
+  - toc: "Canto VI"
+    toc-nest: 2
+    coverpage: >
+      <h1>Canto VI</h1>
+  - story:
+      id: 87
+      slug: the-riddle-of-sappho-prologue-and-canto-vi
+      remove-titles: .headder
 
-    - toc: "Medicine Girl"
-      toc-nest: 1
-      coverpage: >
-        <h1>Medicine Girl</h1>
-        <h2>Book 6</h2>
-        <h3>by E.E. Nalley and ElrodW</h3>
-        <h4>A Whateley Academy Short Story</h4>
-    - story:
-        id: 119
-        slug: medicine-girl
-        remove-titles: .headder
+  - toc: "Medicine Girl"
+    toc-nest: 1
+    coverpage: >
+      <h1>Medicine Girl</h1>
+      <h2>Book 6</h2>
+      <h3>by E.E. Nalley and ElrodW</h3>
+      <h4>A Whateley Academy Short Story</h4>
+  - story:
+      id: 119
+      slug: medicine-girl
+      remove-titles: .headder
 
-    - toc: "Charging Buffalo, Hidden Dragon"
-      toc-nest: 1
-      coverpage: >
-        <h1>Charging Buffalo, Hidden Dragon</h1>
-        <h2>Book 7</h2>
-        <h3>by ElrodW</h3>
-        <h4>(with thanks to EE Nalley and Phoenix Spiritus
-            for contributed scenes and idea)</h4>
+  - toc: "Charging Buffalo, Hidden Dragon"
+    toc-nest: 1
+    coverpage: >
+      <h1>Charging Buffalo, Hidden Dragon</h1>
+      <h2>Book 7</h2>
+      <h3>by ElrodW</h3>
+      <h4>(with thanks to EE Nalley and Phoenix Spiritus
+          for contributed scenes and idea)</h4>
 
-    - toc: "Part 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Part 1</h1>
-    - story:
-        id: 160
-        slug: charging-buffalo-hidden-dragon-part-1
-        remove-titles: .headder
+  - toc: "Part 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Part 1</h1>
+  - story:
+      id: 160
+      slug: charging-buffalo-hidden-dragon-part-1
+      remove-titles: .headder
 
-    - toc: "Part 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Part 2</h1>
-    - story:
-        id: 166
-        slug: charging-buffalo-hidden-dragon-part-2
-        remove-titles: .headder
+  - toc: "Part 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Part 2</h1>
+  - story:
+      id: 166
+      slug: charging-buffalo-hidden-dragon-part-2
+      remove-titles: .headder
 
-    - toc: "Part 3"
-      toc-nest: 2
-      coverpage: >
-        <h1>Part 3</h1>
-    - story:
-        id: 189
-        slug: charging-buffalo-hidden-dragon-part-3
-        remove-titles: .headder
+  - toc: "Part 3"
+    toc-nest: 2
+    coverpage: >
+      <h1>Part 3</h1>
+  - story:
+      id: 189
+      slug: charging-buffalo-hidden-dragon-part-3
+      remove-titles: .headder
 
-    - toc: "Kayda 8: The Best Days of Our Lives"
-      toc-nest: 1
-      coverpage: >
-        <h1>The Best Days of Our Lives</h1>
-        <h2>Book 8</h2>
-        <h3>by ElrodW</h3>
+  - toc: "Kayda 8: The Best Days of Our Lives"
+    toc-nest: 1
+    coverpage: >
+      <h1>The Best Days of Our Lives</h1>
+      <h2>Book 8</h2>
+      <h3>by ElrodW</h3>
 
-    - toc: "Part 1"
-      toc-nest: 2
-      coverpage: >
-        <h1>Part 1</h1>
-    - story:
-        id: 643
-        slug: the-best-days-of-our-lives-3
-        remove-titles: .headder
+  - toc: "Part 1"
+    toc-nest: 2
+    coverpage: >
+      <h1>Part 1</h1>
+  - story:
+      id: 643
+      slug: the-best-days-of-our-lives-3
+      remove-titles: .headder
 
-    - toc: "Part 2"
-      toc-nest: 2
-      coverpage: >
-        <h1>Part 2</h1>
-    - story:
-        id: 657
-        slug: kayda-8-the-best-days-of-our-lives-part-2
-        remove-titles: .headder
+  - toc: "Part 2"
+    toc-nest: 2
+    coverpage: >
+      <h1>Part 2</h1>
+  - story:
+      id: 657
+      slug: kayda-8-the-best-days-of-our-lives-part-2
+      remove-titles: .headder
 
-    - coverpage: >
-        <center><h3>to be continued…</h3></center>
-        <p>This book was last updated on 16 June 2016</p>
+  - coverpage: >
+      <center><h3>to be continued…</h3></center>
+      <p>This book was last updated on 16 June 2016</p>
 

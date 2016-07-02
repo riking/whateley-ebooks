@@ -1,0 +1,68 @@
+
+id: hive
+title: Hive's Story
+
+author: Warren
+author-sort: Warren
+uuid: b9839ce1-df08-4202-9757-5c67f87371cd
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+assets:
+  - download: http://whateleyacademy.net/images/yurt2.gif
+    target: yurt2.gif
+    find: /images/yurt2.gif
+    replace: ../Images/yurt2.gif
+parts:
+  - coverpage: >
+      <h1>Hive's Story</h1>
+      <h3>A Whateley Academy Tale</h3>
+      <h3>By Warren</h3>
+
+  - toc: "Part 1: What's Buzzing You?"
+    coverpage: >
+      <h1>Part 1</h1>
+      <h2>What's Buzzing You?</h2>
+  - story:
+      id: 275
+      slug: what-s-buzzing-you-hive-1
+      remove-titles: center h2, center h3
+
+  - toc: "Part 2"
+    coverpage: >
+      <h1>Part 2</h1>
+  - story:
+      id: 277
+      slug: hive-part-2
+      remove-titles: center h2, center h3
+
+  - toc: "Part 3: Sweet Dreams"
+    coverpage: >
+      <h1>Part 3</h1>
+      <h2>Sweet Dreams (Are Made of These)</h2>
+  - story:
+      id: 278
+      slug: hive-part-3-sweet-dreams-are-made-of-these
+      remove-titles: center h2, center h3
+
+  # opted to move the AN into the cover page
+  - toc: "Part 4: Who Dun It?"
+    coverpage: >
+      <h1>Part 4</h1>
+      <h2>Who Dun It?</h2>
+      <center><p>Hi Ho, Hi Ho, It’s off to work we go.</p><p>(But mind the recruiters)</p></center>
+      <p><em>Author’s Note: This chapter was an experiment for me. I wanted to see if I could write a mystery.</em></p>
+  - story:
+      id: 279
+      slug: hive-part-4-who-dun-it
+      remove-titles: center h2, center h3, p[align="center"]:contains("Hi Ho"), p[align="center"]:contains("mind the recruiters"), p em:contains("This chapter was an experiment")
+
+  - toc: "Part 5: Hive's Christmas Holiday"
+    coverpage: >
+      <h1>Part 5</h1>
+      <h2>Hive's Christmas Holiday</h2>
+      <h3>(Look what I got for Christmas!)</h3>
+  - story:
+      id: 280
+      slug: hive-s-christmas-holiday
+      remove-titles: center h2, center h3

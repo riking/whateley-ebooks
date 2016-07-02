@@ -1,91 +1,91 @@
 
-loophole:
-  author: E.E. Nalley
-  author-sort: eenalley
-  title: Loophole
-  uuid: 0e484df9-921c-4fd1-a0a9-e92d286a8ed1
-  series: Whateley Academy Original Canon
-  publisher: Whateley Academy Canon Authors
+id: loophole
+author: E.E. Nalley
+author-sort: eenalley
+title: Loophole
+uuid: 0e484df9-921c-4fd1-a0a9-e92d286a8ed1
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
 
-  parts:
-    - toc: "Gearhead"
-      story: {id: 260}
-    - toc: "The Case of the Poisonous Patent"
-      story: {id: 239}
+parts:
+  - toc: "Gearhead"
+    story: {id: 260}
+  - toc: "The Case of the Poisonous Patent"
+    story: {id: 239}
 
-    - toc: "Even Murphy's Law Has Loopholes"
-      coverpage: <h1>Even Murphy's Law Has Loopholes</h1><p>by E.E. Nalley</p>
-    - toc: Chapter 1
-      toc-nest: 2
-      story: {id: 245}
-    - toc: Chapter 2
-      toc-nest: 2
-      story: {id: 246}
-    - toc: Chapter 3
-      toc-nest: 2
-      story: {id: 247}
-    - toc: Chapter 4
-      toc-nest: 2
-      story: {id: 248}
-    - toc: Chapter 5
-      toc-nest: 2
-      story: {id: 249}
-    - toc: Chapter 6
-      toc-nest: 2
-      story: {id: 250}
+  - toc: "Even Murphy's Law Has Loopholes"
+    coverpage: <h1>Even Murphy's Law Has Loopholes</h1><p>by E.E. Nalley</p>
+  - toc: Chapter 1
+    toc-nest: 2
+    story: {id: 245}
+  - toc: Chapter 2
+    toc-nest: 2
+    story: {id: 246}
+  - toc: Chapter 3
+    toc-nest: 2
+    story: {id: 247}
+  - toc: Chapter 4
+    toc-nest: 2
+    story: {id: 248}
+  - toc: Chapter 5
+    toc-nest: 2
+    story: {id: 249}
+  - toc: Chapter 6
+    toc-nest: 2
+    story: {id: 250}
 
-    - toc: "The Secret of the Forger's List"
-      coverpage: <h1>The Secret of the Forger's List</h1><p>by E.E. Nalley</p>
-    - toc: Chapter 1
-      toc-nest: 2
-      story: {id: 241}
-    - toc: Chapter 2
-      toc-nest: 2
-      story: {id: 242}
-    - toc: Chapter 3
-      toc-nest: 2
-      story: {id: 243}
-    - toc: Chapter 4
-      toc-nest: 2
-      story: {id: 244}
+  - toc: "The Secret of the Forger's List"
+    coverpage: <h1>The Secret of the Forger's List</h1><p>by E.E. Nalley</p>
+  - toc: Chapter 1
+    toc-nest: 2
+    story: {id: 241}
+  - toc: Chapter 2
+    toc-nest: 2
+    story: {id: 242}
+  - toc: Chapter 3
+    toc-nest: 2
+    story: {id: 243}
+  - toc: Chapter 4
+    toc-nest: 2
+    story: {id: 244}
 
-    - toc: "The Kodiak in Winter"
-      story: {id: 272}
-    - toc: "A Cold Plate of Vengeance"
-      story: {id: 271}
+  - toc: "The Kodiak in Winter"
+    story: {id: 272}
+  - toc: "A Cold Plate of Vengeance"
+    story: {id: 271}
 
-    - toc: "Whilst Any Speaks"
-      coverpage: <h1>Whilst Any Speaks</h1><p>by E.E. Nalley</p>
-    - toc: Chapter 1
-      toc-nest: 2
-      story: {id: 261}
-    - toc: Chapter 2
-      toc-nest: 2
-      story: {id: 262}
-    - toc: Chapter 3
-      toc-nest: 2
-      story: {id: 263}
-    - toc: Chapter 4
-      toc-nest: 2
-      story: {id: 264}
+  - toc: "Whilst Any Speaks"
+    coverpage: <h1>Whilst Any Speaks</h1><p>by E.E. Nalley</p>
+  - toc: Chapter 1
+    toc-nest: 2
+    story: {id: 261}
+  - toc: Chapter 2
+    toc-nest: 2
+    story: {id: 262}
+  - toc: Chapter 3
+    toc-nest: 2
+    story: {id: 263}
+  - toc: Chapter 4
+    toc-nest: 2
+    story: {id: 264}
 
-    - toc: "North to Atlantis"
-      story: {id: 215}
+  - toc: "North to Atlantis"
+    story: {id: 215}
 
-    - toc: "The Kodiak Conspiracy"
-      coverpage: <h1>The Kodiak Conspiracy</h1><p>by E.E. Nalley</p>
-    - toc: Chapter 1
-      toc-nest: 2
-      story: {id: 77}
-    - toc: Chapter 2
-      toc-nest: 2
-      story: {id: 78}
-    - toc: Chapter 3
-      toc-nest: 2
-      story: {id: 79}
-    - toc: Chapter 4
-      toc-nest: 2
-      story: {id: 80}
-    - toc: Chapter 5
-      toc-nest: 2
-      story: {id: 81}
+  - toc: "The Kodiak Conspiracy"
+    coverpage: <h1>The Kodiak Conspiracy</h1><p>by E.E. Nalley</p>
+  - toc: Chapter 1
+    toc-nest: 2
+    story: {id: 77}
+  - toc: Chapter 2
+    toc-nest: 2
+    story: {id: 78}
+  - toc: Chapter 3
+    toc-nest: 2
+    story: {id: 79}
+  - toc: Chapter 4
+    toc-nest: 2
+    story: {id: 80}
+  - toc: Chapter 5
+    toc-nest: 2
+    story: {id: 81}

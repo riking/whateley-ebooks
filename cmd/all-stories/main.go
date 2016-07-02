@@ -11,8 +11,8 @@ import (
 	"github.com/riking/whateley-ebooks/client"
 	//"github.com/riking/whateley-ebooks/ebooks"
 	//"gopkg.in/yaml.v2"
-	"time"
 	"sort"
+	"time"
 )
 
 func fatal(err error) {
