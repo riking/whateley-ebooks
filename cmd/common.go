@@ -1,3 +1,6 @@
+// Copyright © Kane York 2016.
+// Please see COPYRIGHT.md and LICENSE-CODE.txt.
+
 package cmd
 
 import (
