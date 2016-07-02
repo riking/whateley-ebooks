@@ -53,7 +53,7 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 660}
-  - toc: "Blood Sisters"
+  - toc: "Blood Sisters Part 1"
     story: {id: 650}
   - toc: "I Don't Think We're in Kansas Anymore"
     story: {id: 635}
@@ -63,3 +63,7 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 655}
+  - toc: "Blood Sisters Part 2"
+    story: {id: 668}
+  - toc: "I Don't Think We're in Kansas Anymore: Part 4"
+    story: {id: 665}

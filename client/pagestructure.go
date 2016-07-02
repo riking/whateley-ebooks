@@ -31,6 +31,11 @@ type StoryURL struct {
 }
 
 func (u *StoryURL) URL() string {
+	if u.StoryID == "341" {
+		return "http://whateleyacademy.net/index.php/original-timeline/341-tennyo-goes-to-hell-part-1?showall=&start=1"
+	} else if u.StoryID == "342" {
+		return "http://whateleyacademy.net/index.php/original-timeline/342-tennyo-goes-to-hell-part-2?showall=&start=1"
+	}
 	return fmt.Sprintf("http://whateleyacademy.net/index.php/%s/%s-%s", u.CategorySlug, u.StoryID, u.StorySlug)
 }
 

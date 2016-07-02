@@ -6,3 +6,5 @@
 
 # Code output
 target/
+cache.db
+

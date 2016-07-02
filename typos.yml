@@ -15,6 +15,15 @@
 195:
   - findtext: "MiST"
     replacetext: "MST" # should this be an <abbr> ?
+198:
+  - findtext: "No it wasn"
+    replacetext: "No, it wasn"
+208:
+  - findtext: "‘she for"
+    replacetext: "‘she’ for"
+215:
+  - findtext: "initial"
+    replacetext: "inertial"
 244:
   - findtext: "28January"
     replacetext: "28 January"
@@ -82,7 +91,14 @@
 321:
   - findtext: "point made.&#34; I did"
     replacetext: "point made. &#34;I did"
+341:
+  - select: .pagenavcounter, .pager
+    action: replacehtml
+    replace: " "
 342:
+  - select: .pagenavcounter, .pager
+    action: replacehtml
+    replace: " "
   - select: p[align="center"]:contains("EPILOG")
     action: setAttr
     attr: id

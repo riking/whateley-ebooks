@@ -203,7 +203,7 @@ parts:
   - toc: "Straight From the Squirrel's Mouth: Chapter 10"
     coverpage: >
       <p>Please switch to squirrel.epub and read Chapter 10.</p>
-  - toc: "Silver Linings (Part 5)"
+  - toc: "Silver Linings (Part 6)"
     story: {id: 125}
   - toc: "Test Tube Babies"
     story: {id: 233}
@@ -372,9 +372,34 @@ parts:
       </p>
   - toc: "Tennyo Goes To Hell - Chapter 1"
     toc-nest: 2
-    coverpage: >
-      <p>special code needed, TBA</p>
+    story: {id: 341}
   - toc: "Tennyo Goes To Hell - Chapter 2"
     toc-nest: 2
-    coverpage: >
-      <p>special code needed, TBA</p>
+    story: {id: 342}
+  - toc: "Tennyo Goes To Hell - Epilog"
+    toc-nest: 2
+    toc-page: "Text/342-tennyo-goes-to-hell-part-2.html#epilog"
+  - toc: "May Your Death Be Sweet"
+    story: {id: 346}
+  - toc: "Silent Nacht: Chapter 4"
+    story: {id: 385}
+  - toc: "The Real MCO"
+    story: {id: 347}
+  - toc: "Sun and Fun"
+    story: {id: 355}
+  - toc: "Vamp"
+    story: {id: 359}
+  - toc: "What's Up Dork?"
+    story: {id: 373}
+  - toc: "Saks and Violence"
+    story: {id: 357}
+  - toc: "Whilst Any Speaks"
+    coverpage: <p>Switch to loophole.epub and read Chapters 1, 2, 3, 4 of Whilst Any Speaks.</p>
+  - toc: "Silver Linings (Part 7)"
+    story: {id: 124}
+  - toc: "Silent Nacht: Chapter 5"
+    story: {id: 386}
+  - toc: "Buffalo Gal Won't You Come Out Tonight (Chapter 1)"
+    coverpage: <p>Switch to kayda.epub and read Chapters 1.</p>
+  - toc: "Buffalo Gal Won't You Come Out Tonight (Chapter 2)"
+    coverpage: <p>Switch to kayda.epub and read Chapters .</p>
