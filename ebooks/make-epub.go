@@ -1,41 +1,87 @@
 package ebooks
 
 import (
+	"archive/zip"
+	"bufio"
 	"bytes"
 	"fmt"
 	"html/template"
 	"io"
-	"os"
-	"time"
-
-	"bufio"
 	"net/http"
+	"runtime"
+	"os"
 	"sync"
-
-	"archive/zip"
+	"time"
 
 	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
-	"github.com/riking/whateley-ebooks/client"
 	"golang.org/x/net/html"
+
+
+	"github.com/riking/whateley-ebooks/client"
 )
+
+// A TOCEntry is one part of the backbone of the epub file.
+type TOCEntry struct {
+	// Table of Contents entry
+	TOC       string
+	TOCNest   int    `yaml:"toc-nest"`
+	TOCPage   string `yaml:"toc-page"`
+	CoverPage string `yaml:"coverpage"`
+	Story     struct {
+		ID           string
+		Slug         string
+		RemoveTitles string `yaml:"remove-titles"`
+		page         *client.WhateleyPage
+	}
+}
+
+func (t *TOCEntry) IsCoverPage() bool {
+	return t.CoverPage != ""
+}
+
+func (t *TOCEntry) IsContentPage() bool {
+	return t.Story.ID != ""
+}
+
+func (t *TOCEntry) IsAnchorEntry() bool {
+	return t.TOCPage != ""
+}
+
+// preparePage performs the processing on a content page and stores the result in an internal field.
+func (t *TOCEntry) preparePage(access *client.WANetwork, ed *EpubDefinition) (*client.WhateleyPage, error) {
+	if t.Story.page != nil {
+		return t.Story.page, nil
+	}
+	if !t.IsContentPage() {
+		return nil, errors.Errorf("Not a content page")
+	}
+
+	page, err := access.GetStoryByID(t.Story.ID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "getting story %s (%s)", t.Story.ID, t.Story.Slug)
+	}
+
+	err = FixForEbook(page)
+	if err != nil {
+		return nil, errors.Wrapf(err, "preparing story %s", page.StorySlug)
+	}
+	// perform RemoveTitles
+	page.Doc().Find(t.Story.RemoveTitles).Remove()
+	// perform asset replacement
+	for _, asset := range ed.Assets {
+		page.StoryBodySelection().FindMatcher(cascadia.Selector(findMatchingSrc(asset.Find))).SetAttr("src", asset.Replace)
+	}
+
+	t.Story.page = page
+	return page, nil
+}
 
 // EpubDefinition is the setup, layout, and metadata of a target .epub file.
 // It also contains the working state of an epub being created.
 // EpubDefinition is not safe for multithreaded use - see Clone().
 type EpubDefinition struct {
-	Parts []struct {
-		// Table of Contents entry
-		TOC       string
-		TOCNest   int    `yaml:"toc-nest"`
-		TOCPage   string `yaml:"toc-page"`
-		CoverPage string `yaml:"coverpage"`
-		Story     struct {
-			ID           string
-			Slug         string
-			RemoveTitles string `yaml:"remove-titles"`
-		}
-	}
+	Parts  []TOCEntry
 	Assets []struct {
 		// the URL to download the asset from (should start with http://whateleyacademy.net)
 		Download string
@@ -55,10 +101,9 @@ type EpubDefinition struct {
 	Series     string
 	UUID       string
 
-	files      contentEntries
-	workingDir string
-	lock       sync.Mutex
-	wordCount  int
+	files     contentEntries
+	lock      sync.Mutex
+	wordCount int
 }
 
 func (ed *EpubDefinition) Clone() *EpubDefinition {
@@ -91,6 +136,67 @@ func (ed *EpubDefinition) TitleFileAs() string {
 		return ed.Title
 	}
 	return ed.TitleSort
+}
+
+func (ed *EpubDefinition) Prepare(access *client.WANetwork) error {
+	ed.lock.Lock()
+	defer ed.lock.Unlock()
+
+	type result error
+
+	parallelism := runtime.NumCPU()
+	tocEntryChan := make(chan *TOCEntry)
+	var wg sync.WaitGroup
+	resultChan := make(chan result)
+
+	// Generator
+	go func() {
+		for i := range ed.Parts {
+			if ed.Parts[i].IsContentPage() {
+				tocEntryChan <- &ed.Parts[i]
+			}
+		}
+		close(tocEntryChan)
+	}()
+
+	// Workers
+	wg.Add(parallelism)
+	for i := 0; i < parallelism; i++ {
+		go func() {
+			for v := range tocEntryChan {
+				_, err := v.preparePage(access, ed)
+				resultChan <- errors.Wrapf(err, "Story %s failed", v.Story.ID)
+			}
+			wg.Done()
+		}()
+	}
+
+	// Closer
+	go func() {
+		wg.Wait()
+		close(resultChan)
+	}()
+
+	// Collector
+	errs := []error{}
+	for v := range resultChan {
+		err := error(v)
+		if err != nil {
+			errs = append(errs, err)
+		}
+	}
+
+	if len(errs) > 1 {
+		var buf bytes.Buffer
+		for _, v := range errs {
+			fmt.Fprintf(&buf, "%+v\n", v)
+		}
+		return errors.Wrap(errors.New(buf.String()), "Failed to prepare story parts")
+	} else if len(errs) == 1 {
+		return errors.Wrap(errs[0], "Failed to prepare story parts")
+	} else {
+		return nil
+	}
 }
 
 type contentEntry struct {
@@ -324,16 +430,12 @@ func (ed *EpubDefinition) WriteAssets(access *client.WANetwork, fs fileCreator) 
 			panic(err)
 		}
 
-		resp, err := access.Do(req)
+		body, contentType, err := access.GetAsset(req)
 		if err != nil {
 			return errors.Wrapf(err, "downloading asset %s", v.Download)
 		}
 
-		_, err = io.Copy(file, resp.Body)
-		if err != nil {
-			return errors.Wrapf(err, "writing asset file %s", v.Target)
-		}
-		err = resp.Body.Close()
+		_, err = file.Write(body)
 		if err != nil {
 			return errors.Wrapf(err, "writing asset file %s", v.Target)
 		}
@@ -341,7 +443,7 @@ func (ed *EpubDefinition) WriteAssets(access *client.WANetwork, fs fileCreator) 
 		ed.files = append(ed.files, contentEntry{
 			Filename:    filename,
 			Id:          v.Target,
-			ContentType: resp.Header.Get("Content-Type"),
+			ContentType: contentType,
 		})
 	}
 	return nil
@@ -371,7 +473,7 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 	coverCount := 0
 	for _, v := range ed.Parts {
 		var filename string
-		if v.CoverPage != "" {
+		if v.IsCoverPage() {
 			coverCount++
 			id := fmt.Sprintf("Cover%02d.html", coverCount)
 			filename = fmt.Sprintf("Text/%s", id)
@@ -397,27 +499,16 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 				TOC:         v.TOC,
 				TOCNest:     v.TOCNest,
 			})
-		} else if v.Story.ID != "" {
-			page, err := access.GetStoryByID(v.Story.ID)
+		} else if v.IsContentPage() {
+			page, err := v.preparePage(access, ed)
 			if err != nil {
-				return errors.Wrapf(err, "getting story %s (%s)", v.Story.ID, v.Story.Slug)
+				return errors.Wrapf(err, "preparing content for story #%s", v.Story.ID)
 			}
 			id := fmt.Sprintf("%s-%s.html", page.StoryID, page.StorySlug)
 			filename = fmt.Sprintf("Text/%s", id)
 			file, err := fs.Create(fmt.Sprintf("%s/%s", ebookDir, filename))
 			if err != nil {
 				return errors.Wrapf(err, "creating target file for %s", filename)
-			}
-
-			err = FixForEbook(page)
-			if err != nil {
-				return errors.Wrapf(err, "preparing story %s", page.StorySlug)
-			}
-			// perform RemoveTitles
-			page.Doc().Find(v.Story.RemoveTitles).Remove()
-			// perform asset replacement
-			for _, asset := range ed.Assets {
-				page.StoryBodySelection().FindMatcher(cascadia.Selector(findMatchingSrc(asset.Find))).SetAttr("src", asset.Replace)
 			}
 
 			ed.wordCount += page.WordCount()
@@ -440,7 +531,7 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 				TOC:         v.TOC,
 				TOCNest:     v.TOCNest,
 			})
-		} else if v.TOCPage != "" {
+		} else if v.IsAnchorEntry() {
 			// TOC entry to an anchor on existing page
 			ed.files = append(ed.files, contentEntry{
 				Filename: v.TOCPage,
@@ -448,8 +539,7 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 				TOCNest:  v.TOCNest,
 			})
 		} else {
-			fmt.Println(v)
-			panic("bad epub definition file")
+			return errors.Errorf("bad epub definition file [%#v]", v)
 		}
 	}
 	return nil
@@ -457,6 +547,19 @@ func (ed *EpubDefinition) WriteText(access *client.WANetwork, fs fileCreator) er
 
 type fileCreator interface {
 	Create(name string) (io.Writer, error)
+}
+
+type panicDupesZipWriter struct {
+	*zip.Writer
+	files map[string]struct{}
+}
+
+func (w panicDupesZipWriter) Create(name string) (io.Writer, error) {
+	if _, ok := w.files[name]; ok {
+		return nil, errors.Errorf("Attempt to create duplicate file name %s", name)
+	}
+	w.files[name] = struct{}{}
+	return w.Writer.Create(name)
 }
 
 type dummyFileCreator func(string) (io.Writer, error)
@@ -472,7 +575,11 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 	}
 	defer file.Close()
 
-	zipWriter := zip.NewWriter(file)
+	_zipWriter := zip.NewWriter(file)
+	zipWriter := panicDupesZipWriter{
+		_zipWriter,
+		make(map[string]struct{}),
+	}
 
 	err = ed.WriteMetaINF(zipWriter)
 	if err != nil {
@@ -481,8 +588,6 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 
 	ed.lock.Lock()
 	defer ed.lock.Unlock()
-
-	ed.workingDir = "."
 
 	// Download assets
 	err = ed.WriteAssets(access, zipWriter)

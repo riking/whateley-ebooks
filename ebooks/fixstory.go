@@ -30,6 +30,7 @@ type TypoFix struct {
 	ReplaceSelector string   `yaml:",omitempty"`
 	ReplaceText     string   `yaml:",omitempty"`
 	ReplaceHTML     string   `yaml:"replace,omitempty"`
+	X_ReplaceHTML2  string   `yaml:"replacehtml,omitempty"`
 	Attribute       string   `yaml:"attr,omitempty"`
 	Action          string   `yaml:",omitempty"`
 	Include         string   `yaml:"include,omitempty"`
@@ -62,10 +63,13 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 }
 
 func (t TypoFix) Apply(p *client.WhateleyPage) {
-	switch true {
-	case t.FindText != "" && t.ReplaceText != "":
+	if t.FindText != "" && t.ReplaceText != "" {
 		t.Action = "replaceText"
 	}
+	if t.X_ReplaceHTML2 != "" {
+		t.ReplaceHTML = t.X_ReplaceHTML2
+	}
+
 	switch t.Action {
 	case "unwrap":
 		t.Find(p.Doc()).Unwrap()
@@ -87,6 +91,12 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 			}
 			s.ReplaceWithHtml(strings.Replace(html, t.FindText, t.ReplaceText, -1))
 		})
+	case "replacehtml":
+		s := t.Find(p.Doc())
+		html, _ := goquery.OuterHtml(s)
+		fmt.Println(html)
+		fmt.Println(t.ReplaceHTML)
+		s.ReplaceWithHtml(t.ReplaceHTML)
 	case "paragraphsToLinebreaks":
 		sel := t.Find(p.Doc())
 		sel.Each(func(_ int, s *goquery.Selection) {
@@ -145,6 +155,7 @@ func getTypos(p *client.WhateleyPage) []TypoFix {
 
 	oTypos, ok := typosFile.ByStoryID[p.StoryID]
 	if !ok {
+		fmt.Printf("#%s: %d typos\n", p.StoryID, 0)
 		return nil
 	}
 
@@ -159,6 +170,8 @@ func getTypos(p *client.WhateleyPage) []TypoFix {
 			typos = append(typos, v)
 		}
 	}
+
+	fmt.Printf("#%s: %d typos\n", p.StoryID, len(typos))
 	return typos
 }
 
@@ -180,19 +193,13 @@ var hrParagraphs = []string{
 
 var hrParagraphRegex *regexp.Regexp
 
-var h3Selectors = []string{
-//	`p.lyrics strong em`,
-//	`p.lyrics em strong`,
-}
-
 func getHrParagraphRegex() *regexp.Regexp {
 	if hrParagraphRegex != nil {
 		return hrParagraphRegex
 	}
 	var buf bytes.Buffer
 	buf.WriteString("\\A(")
-	// " " is a nbsp
-	buf.WriteString(`\*((\s)+\*)+`)
+	buf.WriteString(fmt.Sprintf(`%s*\*(%s+\*)+%s*`, "[ \u00a0]", "[ \u00a0]", "[ \u00a0]"))
 	buf.WriteRune('|')
 	for i, v := range hrParagraphs {
 		buf.WriteString(regexp.QuoteMeta(v))
@@ -260,13 +267,10 @@ func FixForEbook(p *client.WhateleyPage) error {
 	p.Doc().Find("p hr").Parent().ReplaceWithHtml("<hr>")
 	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")
 
-	p.Doc().Find("blockquote .lyrics .PCscreen").Unwrap()
+	// Fix double hrs
+	p.Doc().Find("hr + hr").Remove()
 
-	s = p.Doc().Find("")
-	for _, sel := range h3Selectors {
-		s.Add(client.StoryBodySelector + sel)
-	}
-	s.WrapAll("<h3>")
+	//p.Doc().Find("blockquote .lyrics .PCscreen").Unwrap()
 
 	return nil
 }

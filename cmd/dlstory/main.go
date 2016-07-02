@@ -11,6 +11,7 @@ import (
 	"flag"
 
 	"github.com/riking/whateley-ebooks/client"
+	"github.com/riking/whateley-ebooks/cmd"
 	"github.com/riking/whateley-ebooks/ebooks"
 )
 
@@ -26,7 +27,10 @@ func fatal(err error) {
 }
 
 func main() {
-	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
+	err := ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
+	if err != nil {
+		cmd.Fatal(err)
+	}
 
 	networkAccess := client.New(client.Options{
 		UserAgent: "Ebook tool - TyposFile testing (+github.com/riking/whateley-ebooks)",
@@ -47,9 +51,9 @@ func main() {
 	}
 	fmt.Println(page.URL())
 	fmt.Println(page.PublishDate())
-	ioutil.WriteFile("out1.html", []byte(page.StoryBody()), 0644)
+	ioutil.WriteFile("dlstory-before.html", []byte(page.StoryBody()), 0644)
 	ebooks.FixForEbook(page)
-	ioutil.WriteFile("out2.html", []byte(page.StoryBody()), 0644)
+	ioutil.WriteFile("dlstory-after.html", []byte(page.StoryBody()), 0644)
 	html, _ := page.Doc().Html()
-	ioutil.WriteFile("out0", []byte(html), 0644)
+	ioutil.WriteFile("dlstory-full.html", []byte(html), 0644)
 }

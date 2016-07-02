@@ -108,16 +108,20 @@ func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
 	return template.HTML(p.StoryBody())
 }
 
+// TODO - these fail for library, faq, etc
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
 var printURLRegexp = regexp.MustCompile(`\A/index.php/(?:([a-zA-Z0-9-]+)/)?(\d+)-([a-zA-Z0-9-]+)(?:(\d+)-([a-zA-Z0-9-]+))?\?tmpl=component&print=1`)
 
 var stripExceptionsSelector = `
 head base,
 meta[name="rights"],
+meta[http-equiv="content-type"],
 head title,
 div.item-page,
 div[itemprop="articleBody"]`
 
+// ParseStoryPage parses a document into a WhateleyPage object.
+// Some processing is performed, e.g. elements not relevant are stripped, and the canonical URL is parsed and stored.
 func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	if doc == nil {
 		return nil, errors.Errorf("doc was nil")
@@ -177,6 +181,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		if strings.Contains(printURL, "the-library") {
 			return nil, errors.Errorf("Library stories are not supported at this time (got %s)", printURL)
 		}
+		// TODO - this fails for library, faq, etc
 		m = printURLRegexp.FindStringSubmatch(printURL)
 		if m == nil {
 			return nil, errors.Errorf("Could not parse canonical URL (got %s)", printURL)

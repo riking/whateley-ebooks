@@ -56,7 +56,12 @@ func main() {
 		outFile = fmt.Sprintf("target/%s.epub", ebook)
 	}
 
-	err := ebooks.CreateEpub(ebooksFile, networkAccess, outFile)
+	err := ebooksFile.Prepare(networkAccess)
+	if err != nil {
+		cmd.Fatal(err)
+	}
+
+	err = ebooks.CreateEpub(ebooksFile, networkAccess, outFile)
 	if err != nil {
 		cmd.Fatal(err)
 	}

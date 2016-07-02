@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"database/sql"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
 	"os"
@@ -87,6 +88,22 @@ func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
 	return c.httpClient.Do(req)
 }
 
+func (c *WANetwork) GetAsset(req *http.Request) (content []byte, contentType string, err error) {
+	// TODO cached
+	resp, err := c.Do(req)
+	if err != nil {
+		return nil, "", err
+	}
+
+	b, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return nil, "", err
+	}
+
+	return b, resp.Header.Get("Content-Type"), nil
+}
+
 // Document gets a URL, cached, and returns a goquery.Document.
 func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 	if req.Method != "GET" {
@@ -108,12 +125,12 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 	var doc *goquery.Document
 	fromCache := false
 
-	dbID, err := c.cacheCheck(u)
+	dbID, err := c.cacheCheckStory(u)
 	if err != nil {
 		return nil, errors.Wrap(err, "checking cache for page")
 	}
 	if dbID != -1 {
-		b, err := c.cacheGet(dbID)
+		b, err := c.cacheGetStory(dbID)
 		if err != nil {
 			return nil, errors.Wrap(err, "Retrieving value from cache")
 		}
@@ -139,11 +156,12 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 	}
 
 	if !fromCache {
+		// Store in cache
 		body, err := page.Doc().Html()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
 		} else {
-			err = c.cachePut(u, body)
+			err = c.cachePutStory(u, body)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
 			}

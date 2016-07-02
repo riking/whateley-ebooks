@@ -12,6 +12,18 @@
 127:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
+195:
+  - findtext: "MiST"
+    replacetext: "MST" # should this be an <abbr> ?
+244:
+  - findtext: "28January"
+    replacetext: "28 January"
+  - select: "blockquote p:contains(\"\u00a0\u00a0 E\")"
+    action: replacehtml
+    replace: <p align="right">E</p>
+248:
+  - findtext: "Biforst"
+    replacetext: "Bifrost"
 275:
   # Add <hr> to scene change
   - select: p:contains("November 12"), p:contains("November 14")
@@ -67,6 +79,11 @@
     action: setAttr
     attr: id
     replace: epilog
+351:
+  - select: p em:contains("to be continued")
+    selectmod: [parent]
+    action: replacehtml
+    replacehtml: <p><em>to be continued</em></p>
 422:
   - findtext: "apparently though it"
     replacetext: "apparently thought it"
@@ -79,17 +96,12 @@
 
 # notes while reading
 # need to find the story ID
-todo:
-  ayla-bb-ch-4:
-    - findtext: "MiST"
-      replacetext: "MST3K"
-  murphys-loopholes-ch-4:
-    - findtext: "Biforst"
-      replacetext: "Bifrost"
-  forgers-list-ch-2:
-    # missing a <hr> replacement
-  hive-4:
-    - findtext: "like did"
-      replacetext: "like it did to you"
-  hive-christmas:
-    # MID display is wonky
+#todo:
+#  forgers-list-ch-2:
+#     missing a <hr> replacement
+#  hive-4:
+#    - findtext: "like did"
+#      replacetext: "like it did to you"
+#  hive-christmas:
+#     MID display is wonky
+#

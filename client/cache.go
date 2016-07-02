@@ -7,7 +7,6 @@ import (
 	"database/sql"
 	"fmt"
 	"time"
-
 	"os"
 
 	"github.com/mattn/go-sqlite3"
@@ -150,7 +149,7 @@ var stmtInsertCacheData *sql.Stmt
 const cacheStalePeriod = 1960 * time.Hour
 
 // returns -1 if no match
-func (c *WANetwork) cacheCheck(u StoryURL) (int64, error) {
+func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
 	row := stmtSelectExistsInCache.QueryRow(u.CacheKey())
 	var id int64 = -1
 	var lastUpdated time.Time
@@ -166,7 +165,7 @@ func (c *WANetwork) cacheCheck(u StoryURL) (int64, error) {
 	return id, nil
 }
 
-func (c *WANetwork) cacheGet(id int64) ([]byte, error) {
+func (c *WANetwork) cacheGetStory(id int64) ([]byte, error) {
 	row := stmtSelectCacheData.QueryRow(id)
 	var b []byte
 	err := row.Scan(&b)
@@ -176,7 +175,11 @@ func (c *WANetwork) cacheGet(id int64) ([]byte, error) {
 	return b, nil
 }
 
-func (c *WANetwork) cachePut(u StoryURL, body string) error {
+func (c *WANetwork) cachePutStory(u StoryURL, body string) error {
 	_, err := stmtInsertCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
 	return err
+}
+
+func (c *WANetwork) cacheCheckAsset(rel string) (int64, error) {
+	return -1, nil
 }
