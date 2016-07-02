@@ -4,7 +4,7 @@
 
 "The Stories" refers to the body of written works available to the public at The Crystal Hall.
 
-"The Copyright Page" refers to the most recent version of the document accessible at <http://whateleyacademy.net/index.php/faq-help/20-copyright> and archived at [(1)](https://web.archive.org/web/20160616033326/http://whateleyacademy.net/index.php/faq-help/19-copyright), [(2)](https://archive.is/NzQnf) on the date of 15 June 2016.
+"The Copyright Page" refers to the most recent version of the document accessible at <http://whateleyacademy.net/index.php/policy-faq/19-copyright> and archived at [(1) (01 July 2016)](https://web.archive.org/web/20160702095916/http://whateleyacademy.net/index.php/policy-faq/19-copyright), [(2)](https://web.archive.org/web/20160616033326/http://whateleyacademy.net/index.php/faq-help/19-copyright), [(3)](https://archive.is/NzQnf) on the date of 15 June 2016.
 
 "The Crystal Hall Terms Of Use" refers to the most recent version of the document accessible at <http://whateleyacademy.net/index.php/policy-faq/13-site-policy-rules>, which governs submitting user-created content to The Crystal Hall.
 
