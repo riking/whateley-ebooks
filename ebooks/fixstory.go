@@ -185,8 +185,8 @@ var hrSelectors = []string{
 	`hr[style]`,
 }
 var hrParagraphs = []string{
+	" ",
 	"\u00a0",
-	"*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 *\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*",
 	"*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*",
 }
 
@@ -198,7 +198,7 @@ func getHrParagraphRegex() *regexp.Regexp {
 	}
 	var buf bytes.Buffer
 	buf.WriteString("\\A(")
-	buf.WriteString(fmt.Sprintf(`%s*\*(%s+\*)+%s*`, "[ \u00a0]", "[ \u00a0]", "[ \u00a0]"))
+	buf.WriteString(`\p{Zs}*\*((\p{Zs})+\*)+\p{Zs}*`)
 	buf.WriteRune('|')
 	for i, v := range hrParagraphs {
 		buf.WriteString(regexp.QuoteMeta(v))
@@ -208,6 +208,23 @@ func getHrParagraphRegex() *regexp.Regexp {
 	}
 	buf.WriteString(")\\z")
 	hrParagraphRegex = regexp.MustCompile(buf.String())
+
+	quickTest := []bool{
+		hrParagraphRegex.MatchString("* * * *"),
+		hrParagraphRegex.MatchString(" * * * * "),
+		hrParagraphRegex.MatchString(" "),
+		hrParagraphRegex.MatchString("\u00a0"),
+		hrParagraphRegex.MatchString("*\u00a0*\u00a0*\u00a0*"),
+		hrParagraphRegex.MatchString("*\u00a0 *\u00a0 *\u00a0 *"),
+		hrParagraphRegex.MatchString("*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 *\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0*"),
+		hrParagraphRegex.MatchString("\u00a0*\u00a0*\u00a0*\u00a0*\u00a0"),
+	}
+
+	for i, v := range quickTest {
+		if !v {
+			panic(fmt.Sprintf("<hr> failed self-test #%d", i))
+		}
+	}
 
 	return hrParagraphRegex
 }
@@ -267,7 +284,7 @@ func FixForEbook(p *client.WhateleyPage) error {
 	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")
 
 	// Fix double hrs
-	p.Doc().Find("hr + hr").R
+	p.Doc().Find("hr + hr").Remove()
 
 	//p.Doc().Find("blockquote .lyrics .PCscreen").Unwrap()
 
