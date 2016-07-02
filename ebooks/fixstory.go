@@ -235,7 +235,7 @@ func hrParagraphMatcher() func(*html.Node) bool {
 		if n.Type != html.ElementNode {
 			return false
 		}
-		if n.Data != "p" && n.Data != "div" {
+		if n.Data != "p" && n.Data != "div" && n.Data != "strong" {
 			return false
 		}
 		d := goquery.NewDocumentFromNode(n)

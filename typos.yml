@@ -24,6 +24,9 @@
 248:
   - findtext: "Biforst"
     replacetext: "Bifrost"
+273:
+  - findtext: "Calypso"
+    replacetext: "Calypso "
 275:
   # Add <hr> to scene change
   - select: p:contains("November 12"), p:contains("November 14")
@@ -76,11 +79,18 @@
 317:
   - findtext: "calm and excepting"
     replacetext: "calm and accepting"
+321:
+  - findtext: "point made.&#34; I did"
+    replacetext: "point made. &#34;I did"
 342:
   - select: p[align="center"]:contains("EPILOG")
     action: setAttr
     attr: id
     replace: epilog
+348:
+  - select: h3
+    action: deleteAttr
+    attr: style
 351:
   - select: p em:contains("to be continued")
     selectmod: [parent]
@@ -95,3 +105,23 @@
 440:
   - findtext: "UPCALL"
     replacetext: "UP CALL"
+471:
+  - findtext: "And for once"
+    replacetext: "and for once"
+  - findtext: "was true…”"
+    replacetext: "was true…"
+  - findtext: "Only a few of"
+    replacetext: "“Only a few of"
+472:
+  - findtext: "Can we beat"
+    replacetext: "“Can we beat"
+  - findtext: "memory for them."
+    replacetext: "memory for them.”"
+476:
+  - findtext: "Outcasts can do.” And"
+    replacetext: "Outcasts can do. And"
+  - findtext: "Jericho what"
+    replacetext: "Jericho. What"
+479:
+  - findtext: "&lt;&#39;mso-spacerun:yes&#39;&gt;"
+    replacetext: " "

@@ -47,11 +47,28 @@ func (t *TOCEntry) IsAnchorEntry() bool {
 	return t.TOCPage != ""
 }
 
-// preparePage performs the processing on a content page and stores the result in an internal field.
+// called from CreateEpub, so short-circuit
 func (t *TOCEntry) preparePage(access *client.WANetwork, ed *EpubDefinition) (*client.WhateleyPage, error) {
 	if t.Story.page != nil {
 		return t.Story.page, nil
 	}
+	if !t.IsContentPage() {
+		return nil, errors.Errorf("Not a content page")
+	}
+
+	page, err := t.preparePageA(access, ed)
+	if err != nil {
+		return nil, err
+	}
+	err = t.preparePageB(access, ed, page)
+	if err != nil {
+		return nil, err
+	}
+	return t.Story.page, nil
+}
+
+// called from EpubDefinition.Prepare()
+func (t *TOCEntry) preparePageA(access *client.WANetwork, ed *EpubDefinition) (*client.WhateleyPage, error) {
 	if !t.IsContentPage() {
 		return nil, errors.Errorf("Not a content page")
 	}
@@ -61,9 +78,22 @@ func (t *TOCEntry) preparePage(access *client.WANetwork, ed *EpubDefinition) (*c
 		return nil, errors.Wrapf(err, "getting story %s (%s)", t.Story.ID, t.Story.Slug)
 	}
 
-	err = FixForEbook(page)
+	return page, nil
+}
+
+// preparePageB performs the processing on a downloaded content page and stores the result in an internal field.
+// The page parameter is mutated.
+func (t *TOCEntry) preparePageB(access *client.WANetwork, ed *EpubDefinition, page *client.WhateleyPage) error {
+	if t.Story.page != nil {
+		return nil
+	}
+	if !t.IsContentPage() {
+		return errors.Errorf("Not a content page")
+	}
+
+	err := FixForEbook(page)
 	if err != nil {
-		return nil, errors.Wrapf(err, "preparing story %s", page.StorySlug)
+		return errors.Wrapf(err, "preparing story %s", page.StorySlug)
 	}
 	// perform RemoveTitles
 	page.Doc().Find(t.Story.RemoveTitles).Remove()
@@ -76,7 +106,7 @@ func (t *TOCEntry) preparePage(access *client.WANetwork, ed *EpubDefinition) (*c
 	}
 
 	t.Story.page = page
-	return page, nil
+	return nil
 }
 
 // EpubDefinition is the setup, layout, and metadata of a target .epub file.
@@ -104,6 +134,8 @@ type EpubDefinition struct {
 	files     contentEntries
 	lock      sync.Mutex
 	wordCount int
+
+	assetPrepareDone bool
 }
 
 func (ed *EpubDefinition) Clone() *EpubDefinition {
@@ -138,15 +170,40 @@ func (ed *EpubDefinition) TitleFileAs() string {
 	return ed.TitleSort
 }
 
+func (ed *EpubDefinition) PrepareAssets() {
+	if ed.assetPrepareDone {
+		return
+	}
+	for i := range ed.Assets {
+		v := &ed.Assets[i]
+		if v.Download == "" {
+			v.Download = fmt.Sprintf("http://whateleyacademy.net/images/%s", v.Target)
+		}
+		if v.Find == "" {
+			v.Find = fmt.Sprintf("/images/%s", v.Target)
+		}
+	}
+	ed.assetPrepareDone = true
+}
+
 func (ed *EpubDefinition) Prepare(access *client.WANetwork) error {
 	ed.lock.Lock()
 	defer ed.lock.Unlock()
 
-	type result error
+	ed.PrepareAssets()
 
-	parallelism := runtime.NumCPU()
+	const netParallel = 10
+	var procParallel = runtime.NumCPU()
+	type result error
+	type downloaded struct {
+		t *TOCEntry
+		p *client.WhateleyPage
+	}
+
 	tocEntryChan := make(chan *TOCEntry)
-	var wg sync.WaitGroup
+	var networkWG sync.WaitGroup
+	downloadedChan := make(chan downloaded)
+	var processWG sync.WaitGroup
 	resultChan := make(chan result)
 
 	// Generator
@@ -159,21 +216,43 @@ func (ed *EpubDefinition) Prepare(access *client.WANetwork) error {
 		close(tocEntryChan)
 	}()
 
-	// Workers
-	wg.Add(parallelism)
-	for i := 0; i < parallelism; i++ {
+	// Network Workers
+	networkWG.Add(netParallel)
+	for i := 0; i < netParallel; i++ {
 		go func() {
 			for v := range tocEntryChan {
-				_, err := v.preparePage(access, ed)
-				resultChan <- errors.Wrapf(err, "Story %s failed", v.Story.ID)
+				p, err := v.preparePageA(access, ed)
+				if err != nil {
+					resultChan <- err
+				} else {
+					downloadedChan <- downloaded{t: v, p: p}
+				}
 			}
-			wg.Done()
+			networkWG.Done()
 		}()
 	}
 
 	// Closer
 	go func() {
-		wg.Wait()
+		networkWG.Wait()
+		close(downloadedChan)
+	}()
+
+	// CPU Workers
+	processWG.Add(procParallel)
+	for i := 0; i < procParallel; i++ {
+		go func() {
+			for v := range downloadedChan {
+				err := v.t.preparePageB(access, ed, v.p)
+				resultChan <- errors.Wrapf(err, "Story %s failed", v.t.Story.ID)
+			}
+			processWG.Done()
+		}()
+	}
+
+	// Closer
+	go func() {
+		processWG.Wait()
 		close(resultChan)
 	}()
 
@@ -428,6 +507,10 @@ func (ed *EpubDefinition) WriteAssets(access *client.WANetwork, fs fileCreator) 
 			return errors.Wrapf(err, "creating target file for asset %s", v.Target)
 		}
 
+		if v.Download == "" {
+			v.Download = fmt.Sprintf("http://whateleyacademy.net/images/%s", v.Target)
+		}
+
 		req, err := http.NewRequest("GET", v.Download, nil)
 		if err != nil {
 			panic(err)
@@ -577,6 +660,8 @@ func CreateEpub(ed *EpubDefinition, access *client.WANetwork, filename string) e
 		return errors.Wrap(err, "could not create output file")
 	}
 	defer file.Close()
+
+	ed.PrepareAssets()
 
 	_zipWriter := zip.NewWriter(file)
 	zipWriter := panicDupesZipWriter{

@@ -1,0 +1,53 @@
+
+id: squirrel
+author: Diane Castle
+author-sort: Diane Castle
+title: The Squirrel's Mouth
+title-sort: Squirrel Mouth, The
+uuid: 76c7875c-183b-4ed5-9ff5-565c74e6a2c4
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+parts:
+  - toc: "Never Look a Gift Squirrel in the Mouth"
+    story: {id: 205}
+  - toc: "Straight From the Squirrel's Mouth"
+    coverpage: >
+      <h1>Straight From the Squirrel's Mouth</h1>
+      <h3>by Diane Castle</h3>
+  - toc: "Chapter 1"
+    toc-nest: 2
+    story: {id: 281}
+  - toc: "Chapter 2"
+    toc-nest: 2
+    story: {id: 282}
+  - toc: "Chapter 3"
+    toc-nest: 2
+    story: {id: 283}
+  - toc: "Chapter 4"
+    toc-nest: 2
+    story: {id: 284}
+  - toc: "Chapter 5"
+    toc-nest: 2
+    story: {id: 285}
+  - toc: "Chapter 6"
+    toc-nest: 2
+    story: {id: 287}
+  - toc: "Chapter 7"
+    toc-nest: 2
+    story: {id: 288}
+  - toc: "Chapter 8"
+    toc-nest: 2
+    story: {id: 289}
+  - toc: "Chapter 9"
+    toc-nest: 2
+    story: {id: 290}
+  - toc: "Chapter 10"
+    toc-nest: 2
+    story: {id: 291}
+  - toc: "Spring, and a Young Squirrel's Fancy"
+    story: {id: 234}
+  - toc: "May Your Death Be Sweet"
+    story: {id: 346}
+  - toc: "The Zica Encounter"
+    story: {id: 53}

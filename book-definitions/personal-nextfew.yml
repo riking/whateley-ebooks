@@ -23,9 +23,35 @@ assets:
     find: /include/Temple_of_the_Warriors_Chacmool.jpg
 
   # Abyss Winked
-  - download: http://whateleyacademy.net/images/Abyss_Logo.jpg
-    target: Abyss_Logo.jpg
-    find: /images/Abyss_Logo.jpg
+  - target: Abyss_Logo.jpg
+  - target: Josie_Beth.jpg
+  - target: Josie_JoshBike.jpg
+  - target: Josie_ecilamason.jpg
+  - target: Josie_suzanfriends.jpg
+  - target: Josie_Joshsores.jpg
+  - target: Josie_JoshBike1.jpg
+  - target: Josh_Ray_Angry.jpg
+  - target: Josh_Clocked.jpg
+  - target: shower_diagram_P4.jpg
+  - target: JoshHotdog_P4.jpg
+  - target: Josh_No_Weeny_P4.jpg
+  - target: P5_Stripclub.jpg
+  - target: P5_Bathroom.jpg
+  - target: P5_Josh_Pantsless.jpg
+  - target: abyss_6_news.jpg
+  - target: abyss_6_door.jpg
+  - target: josh_doc.jpg
+  - target: 8_abyss_sister.jpg
+  - target: 8_Prettyjosh.jpg
+  - download: http://whateleyacademy.net/images/Unknown.jpg
+    target: AbyssWinked_Unknown.jpg
+    find: /images/Unknown.jpg
+  - target: Josie_Shark.jpg
+  - target: Josie_grave.jpg
+  - target: Eclia_sidebb.jpg
+  - target: Eclia_LT3.jpg
+  - target: Ecila_threegirls.jpg
+  - target: Ecila_makemesparkle.jpg
 
 parts:
   # TODO - potentially rearrange starting stories

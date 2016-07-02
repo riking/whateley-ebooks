@@ -6,7 +6,11 @@ body {
 p {
     text-indent: .5in;
 }
-
+img {
+    width: 100% !important;
+    height: auto !important;
+    margin: 10px 0;
+}
 .lyrics {
     margin-left: 0.5in;
     margin-right: 0.5in;
