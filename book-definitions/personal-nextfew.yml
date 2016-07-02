@@ -13,17 +13,19 @@ assets:
   - download: http://whateleyacademy.net/images/PoC.jpg
     target: PoC.jpg
     find: /images/PoC.jpg
-    replace: ../Images/PoC.jpg
   # Forger's List
   - download: http://whateleyacademy.net/images/ForgerCover.jpg
     target: ForgerCover.jpg
     find: /images/ForgerCover.jpg
-    replace: ../Images/ForgerCover.jpg
   # Silent Nacht
   - download: http://whateleyacademy.net/images/Temple_of_the_Warriors_Chacmool.jpg
     target: Temple_of_the_Warriors_Chacmool.jpg
     find: /include/Temple_of_the_Warriors_Chacmool.jpg
-    replace: ../Images/Temple_of_the_Warriors_Chacmool.jpg
+
+  # Abyss Winked
+  - download: http://whateleyacademy.net/images/Abyss_Logo.jpg
+    target: Abyss_Logo.jpg
+    find: /images/Abyss_Logo.jpg
 
 parts:
   # TODO - potentially rearrange starting stories

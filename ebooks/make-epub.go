@@ -69,7 +69,10 @@ func (t *TOCEntry) preparePage(access *client.WANetwork, ed *EpubDefinition) (*c
 	page.Doc().Find(t.Story.RemoveTitles).Remove()
 	// perform asset replacement
 	for _, asset := range ed.Assets {
-		page.StoryBodySelection().FindMatcher(cascadia.Selector(findMatchingSrc(asset.Find))).SetAttr("src", asset.Replace)
+		s := page.StoryBodySelection().FindMatcher(cascadia.Selector(findMatchingSrc(asset.Find)))
+		if s.Length() > 0 {
+			s.SetAttr("src", fmt.Sprintf("../Images/%s", asset.Target))
+		}
 	}
 
 	t.Story.page = page
@@ -88,8 +91,6 @@ type EpubDefinition struct {
 		Target string
 		// content to search 'src' attributes for
 		Find string
-		// what to replace matching 'src' attributes with
-		Replace string
 	}
 
 	Author     string

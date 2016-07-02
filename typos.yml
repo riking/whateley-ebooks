@@ -71,6 +71,8 @@
   - select: p:contains("December 24, 2006")
     action: insertBefore
     replace: <hr>
+  - findtext: "like did"
+    replacetext: "like it did to you"
 317:
   - findtext: "calm and excepting"
     replacetext: "calm and accepting"
@@ -93,15 +95,3 @@
 440:
   - findtext: "UPCALL"
     replacetext: "UP CALL"
-
-# notes while reading
-# need to find the story ID
-#todo:
-#  forgers-list-ch-2:
-#     missing a <hr> replacement
-#  hive-4:
-#    - findtext: "like did"
-#      replacetext: "like it did to you"
-#  hive-christmas:
-#     MID display is wonky
-#
