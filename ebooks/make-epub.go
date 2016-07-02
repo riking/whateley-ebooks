@@ -8,15 +8,14 @@ import (
 	"html/template"
 	"io"
 	"net/http"
-	"runtime"
 	"os"
+	"runtime"
 	"sync"
 	"time"
 
 	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
-
 
 	"github.com/riking/whateley-ebooks/client"
 )
@@ -188,10 +187,13 @@ func (ed *EpubDefinition) Prepare(access *client.WANetwork) error {
 
 	if len(errs) > 1 {
 		var buf bytes.Buffer
-		for _, v := range errs {
-			fmt.Fprintf(&buf, "%+v\n", v)
+		fmt.Fprintf(&buf, "Failed to prepare story parts:\n")
+		fmt.Fprintf(&buf, "%+v\n", errs[0])
+
+		for _, v := range errs[1:] {
+			fmt.Fprintf(&buf, "%s\n", v)
 		}
-		return errors.Wrap(errors.New(buf.String()), "Failed to prepare story parts")
+		return errors.New(buf.String())
 	} else if len(errs) == 1 {
 		return errors.Wrap(errs[0], "Failed to prepare story parts")
 	} else {

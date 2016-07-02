@@ -6,12 +6,20 @@ package client
 import (
 	"database/sql"
 	"fmt"
-	"time"
+	"net/url"
 	"os"
+	"time"
 
 	"github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
 )
+
+func assetCacheKey(u *url.URL) string {
+	if u.Host != "whateleyacademy.net" {
+		panic(errors.Errorf("Bad host for asset cache: %s", u.String()))
+	}
+	return u.EscapedPath()
+}
 
 var dbMigrations = []struct {
 	Version string
@@ -39,7 +47,21 @@ var dbMigrations = []struct {
 			id INTEGER PRIMARY KEY ASC,
 			cacheKey TEXT UNIQUE NOT NULL,
 			lastFetched TIMESTAMP,
-			body blob
+			body BLOB
+			)`)
+			return err
+		},
+	},
+	{
+		Version: "2016-07-02-07:02:32",
+		Apply: func(db *sql.DB) error {
+			_, err := db.Exec(`
+			CREATE TABLE cachedAssets (
+			id INTEGER PRIMARY KEY ASC,
+			cacheKey TEXT UNIQUE NOT NULL,
+			lastFetched TIMESTAMP,
+			contentType TEXT,
+			body BLOB
 			)`)
 			return err
 		},
@@ -108,17 +130,32 @@ func (c *WANetwork) setupDB() error {
 		fmt.Fprintln(os.Stderr, "[db] database created")
 	}
 
-	stmtSelectExistsInCache, err = c.db.Prepare(selectExistsInCache)
+	stmtSelectStoryExistsInCache, err = c.db.Prepare(selectStoryExistsInCache)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
 	}
 
-	stmtSelectCacheData, err = c.db.Prepare(selectCacheData)
+	stmtSelectStoryCacheData, err = c.db.Prepare(selectStoryCacheData)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
 	}
 
-	stmtInsertCacheData, err = c.db.Prepare(insertCacheData)
+	stmtInsertStoryCacheData, err = c.db.Prepare(insertStoryCacheData)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
+	stmtSelectAssetExistsInCache, err = c.db.Prepare(selectAssetExistsInCache)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
+	stmtSelectAssetCacheData, err = c.db.Prepare(selectAssetCacheData)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
+	stmtInsertAssetCacheData, err = c.db.Prepare(insertAssetCacheData)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
 	}
@@ -126,31 +163,41 @@ func (c *WANetwork) setupDB() error {
 	return nil
 }
 
-const insertIntoMigrations = `
+const (
+	insertIntoMigrations = `
 INSERT INTO migrations (version) VALUES (?)`
-
-const selectExistsInCache = `
+	selectStoryExistsInCache = `
 SELECT id, lastFetched FROM cachedPages WHERE cacheKey = ?`
-
-var stmtSelectExistsInCache *sql.Stmt
-
-const selectCacheData = `
+	selectStoryCacheData = `
 SELECT body FROM cachedPages WHERE id = ?`
-
-var stmtSelectCacheData *sql.Stmt
-
-const insertCacheData = `
+	insertStoryCacheData = `
 INSERT INTO cachedPages
 (cacheKey, lastFetched, body)
 VALUES (?, ?, ?)`
+	selectAssetExistsInCache = `
+SELECT id, lastFetched FROM cachedAssets WHERE cacheKey = ?`
+	selectAssetCacheData = `
+SELECT body, contentType FROM cachedAssets WHERE id = ?`
+	insertAssetCacheData = `
+INSERT INTO cachedAssets
+(cacheKey, lastFetched, body, contentType)
+VALUES (?, ?, ?, ?)`
+)
 
-var stmtInsertCacheData *sql.Stmt
+var (
+	stmtSelectStoryExistsInCache *sql.Stmt
+	stmtSelectStoryCacheData     *sql.Stmt
+	stmtInsertStoryCacheData     *sql.Stmt
+	stmtSelectAssetExistsInCache *sql.Stmt
+	stmtSelectAssetCacheData     *sql.Stmt
+	stmtInsertAssetCacheData     *sql.Stmt
+)
 
-const cacheStalePeriod = 1960 * time.Hour
+const cacheStalePeriod = 196 * time.Hour
 
 // returns -1 if no match
 func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
-	row := stmtSelectExistsInCache.QueryRow(u.CacheKey())
+	row := stmtSelectStoryExistsInCache.QueryRow(u.CacheKey())
 	var id int64 = -1
 	var lastUpdated time.Time
 	err := row.Scan(&id, &lastUpdated)
@@ -159,14 +206,14 @@ func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
 	} else if err != nil {
 		return -1, err
 	}
-	if time.Now().UTC().Add(-cacheStalePeriod).After(lastUpdated) {
+	if !c.options.Offline && time.Now().UTC().Add(-cacheStalePeriod).After(lastUpdated) {
 		return -1, nil
 	}
 	return id, nil
 }
 
 func (c *WANetwork) cacheGetStory(id int64) ([]byte, error) {
-	row := stmtSelectCacheData.QueryRow(id)
+	row := stmtSelectStoryCacheData.QueryRow(id)
 	var b []byte
 	err := row.Scan(&b)
 	if err != nil {
@@ -176,10 +223,38 @@ func (c *WANetwork) cacheGetStory(id int64) ([]byte, error) {
 }
 
 func (c *WANetwork) cachePutStory(u StoryURL, body string) error {
-	_, err := stmtInsertCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
+	_, err := stmtInsertStoryCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
 	return err
 }
 
-func (c *WANetwork) cacheCheckAsset(rel string) (int64, error) {
-	return -1, nil
+func (c *WANetwork) cacheCheckAsset(u *url.URL) (int64, error) {
+	row := stmtSelectAssetExistsInCache.QueryRow(assetCacheKey(u))
+	var id int64 = -1
+	var lastUpdated time.Time
+	err := row.Scan(&id, &lastUpdated)
+	if err == sql.ErrNoRows {
+		return -1, nil
+	} else if err != nil {
+		return -1, err
+	}
+	if !c.options.Offline && time.Now().UTC().Add(-cacheStalePeriod).After(lastUpdated) {
+		return -1, nil
+	}
+	return id, nil
+}
+
+func (c *WANetwork) cacheGetAsset(id int64) ([]byte, string, error) {
+	row := stmtSelectAssetCacheData.QueryRow(id)
+	var b []byte
+	var ct string
+	err := row.Scan(&b, &ct)
+	if err != nil {
+		return nil, "", err
+	}
+	return b, ct, nil
+}
+
+func (c *WANetwork) cachePutAsset(u *url.URL, body []byte, contentType string) error {
+	_, err := stmtInsertAssetCacheData.Exec(assetCacheKey(u), time.Now().UTC(), body, contentType)
+	return err
 }

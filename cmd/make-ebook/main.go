@@ -6,18 +6,18 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
-	"github.com/pkg/errors"
 	"github.com/riking/whateley-ebooks/cmd"
 	"github.com/riking/whateley-ebooks/ebooks"
 )
 
 func main() {
+	// flag.String()
+
 	networkAccess := cmd.Setup()
 	networkAccess.UserAgent("Ebook tool - Make EPub (+github.com/riking/whateley-ebooks)")
-
-	flag.Parse()
 
 	ebook := flag.Arg(0)
 	if ebook == "" {

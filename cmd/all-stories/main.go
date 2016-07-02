@@ -2,24 +2,16 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"sort"
 	"strconv"
 	"strings"
-	//"io/ioutil"
-	"os"
 	"sync"
+	"time"
 
 	"github.com/riking/whateley-ebooks/client"
-	//"github.com/riking/whateley-ebooks/ebooks"
-	//"gopkg.in/yaml.v2"
-	"sort"
-	"time"
+	"github.com/riking/whateley-ebooks/cmd"
 )
-
-func fatal(err error) {
-	fmt.Println("Fatal error:")
-	fmt.Println(err.Error())
-	os.Exit(2)
-}
 
 type result struct {
 	client.StoryURL
@@ -120,11 +112,10 @@ func sortingConsumer(resChan chan result) {
 }
 
 func main() {
+	// flag.String()
 
-	networkAccess := client.New(client.Options{
-		UserAgent: "Ebook tool - Count Words (+github.com/riking/whateley-ebooks)",
-		CacheFile: "./cache.db",
-	})
+	networkAccess := cmd.Setup()
+	networkAccess.UserAgent("Ebook tool - Examine All Stories (+github.com/riking/whateley-ebooks)")
 
 	const maxID = 668
 	const parallelLevel = 8

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -8,11 +9,18 @@ import (
 	"github.com/riking/whateley-ebooks/ebooks"
 )
 
+var offlineMode *bool
+
 func Setup() *client.WANetwork {
 	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
+	offlineMode = flag.Bool("offline", false, "Operate in offline mode (cached entries never expire).")
+
+	flag.Parse()
+
 	networkAccess := client.New(client.Options{
 		UserAgent: "(Error: tool name not specified) (+github.com/riking/whateley-ebooks)",
 		CacheFile: "./cache.db",
+		Offline:   *offlineMode,
 	})
 
 	return networkAccess

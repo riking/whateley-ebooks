@@ -7,18 +7,17 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
-
-	"github.com/riking/whateley-ebooks/client"
-
-	"os"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/andybalholm/cascadia"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
 	"gopkg.in/yaml.v2"
+
+	"github.com/riking/whateley-ebooks/client"
 )
 
 // TypoFix represents a single fixup processing for a story.
@@ -268,7 +267,7 @@ func FixForEbook(p *client.WhateleyPage) error {
 	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")
 
 	// Fix double hrs
-	p.Doc().Find("hr + hr").Remove()
+	p.Doc().Find("hr + hr").R
 
 	//p.Doc().Find("blockquote .lyrics .PCscreen").Unwrap()
 

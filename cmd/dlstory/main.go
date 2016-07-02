@@ -4,11 +4,10 @@
 package main // import "github.com/riking/whateley-ebooks/cmd/dlstory"
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	"flag"
 
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/cmd"
@@ -27,17 +26,10 @@ func fatal(err error) {
 }
 
 func main() {
-	err := ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
-	if err != nil {
-		cmd.Fatal(err)
-	}
+	// flag.String()
 
-	networkAccess := client.New(client.Options{
-		UserAgent: "Ebook tool - TyposFile testing (+github.com/riking/whateley-ebooks)",
-		CacheFile: "./cache.db",
-	})
-
-	flag.Parse()
+	networkAccess := cmd.Setup()
+	networkAccess.UserAgent("Ebook tool - TyposFile testing (+github.com/riking/whateley-ebooks)")
 
 	storyID := flag.Arg(0)
 	if storyID == "" {

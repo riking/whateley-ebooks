@@ -32,6 +32,8 @@ type Options struct {
 	CacheFile string
 	UserAgent string
 	Headers   http.Header
+	// if Offline, cache entries never expire
+	Offline bool
 }
 
 type printingRoundTripper struct {
@@ -51,6 +53,7 @@ func (p *printingRoundTripper) RoundTrip(req *http.Request) (*http.Response, err
 
 func New(opts Options) *WANetwork {
 	c := new(WANetwork)
+	c.options = opts
 	if opts.UserAgent == "" {
 		opts.UserAgent = "Client Name Not Set (+github.com/riking/whateley-ebooks)"
 	}
@@ -85,11 +88,28 @@ func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
 	for k := range c.Headers {
 		req.Header.Set(k, c.Headers.Get(k))
 	}
+	if c.options.Offline {
+		return nil, errors.Errorf("Offline mode; cannot request %s", req.URL.String())
+	}
 	return c.httpClient.Do(req)
 }
 
-func (c *WANetwork) GetAsset(req *http.Request) (content []byte, contentType string, err error) {
-	// TODO cached
+// GetAsset returns the bytes of the asset, its Content-Type, and any error.
+func (c *WANetwork) GetAsset(req *http.Request) ([]byte, string, error) {
+	u := req.URL
+
+	dbID, err := c.cacheCheckAsset(u)
+	if err != nil {
+		return nil, "", errors.Wrap(err, "checking cache for asset")
+	}
+	if dbID != -1 {
+		b, ct, err := c.cacheGetAsset(dbID)
+		if err != nil {
+			return nil, "", errors.Wrap(err, "checking cache for asset")
+		}
+		return b, ct, nil
+	}
+
 	resp, err := c.Do(req)
 	if err != nil {
 		return nil, "", err
@@ -100,8 +120,14 @@ func (c *WANetwork) GetAsset(req *http.Request) (content []byte, contentType str
 	if err != nil {
 		return nil, "", err
 	}
+	ct := resp.Header.Get("Content-Type")
 
-	return b, resp.Header.Get("Content-Type"), nil
+	err = c.cachePutAsset(u, b, ct)
+	if err != nil {
+		return nil, "", errors.Wrap(err, "putting asset in cache")
+	}
+
+	return b, ct, nil
 }
 
 // Document gets a URL, cached, and returns a goquery.Document.

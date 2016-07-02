@@ -5,12 +5,11 @@ package client // import "github.com/riking/whateley-ebooks/client"
 
 import (
 	"fmt"
+	"html/template"
+	"os"
 	"regexp"
 	"strings"
 	"time"
-
-	"html/template"
-	"os"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/andybalholm/cascadia"
