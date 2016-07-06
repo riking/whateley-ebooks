@@ -89,7 +89,7 @@ parts:
 
   - toc: "MISSING PARTS"
     coverpage: >
-      <p>Please ask the publisher to add the missing chapters.</p>
+      <p>Please ask the yml file maker to add the missing chapters.</p>
 
 
   - toc: "Christmas Chicanery"
@@ -126,16 +126,16 @@ parts:
   - toc: "Ayla and the Birthday Brawl: Chapter 7"
     coverpage: >
       <p>Please switch to ayla.epub and read Chapter 7.</p>
-  - toc: "Silver Linings (Part 1)"
+  - toc: "Silver Linings: Part 1"
     story: {id: 126}
-  - toc: "Silver Linings (Part 2)"
+  - toc: "Silver Linings: Part 2"
     story: {id: 127}
   - toc: "Dream Quest of the Underage Taoist"
     story: {id: 399}
   - toc: "Ayla and the Birthday Brawl: Chapter 8"
     coverpage: >
       <p>Please switch to ayla.epub and read Chapter 8.</p>
-  - toc: "Silver Linings (Part 3)"
+  - toc: "Silver Linings: Part 3"
     story: {id: 128}
   - toc: "The Secret of the Forger's List: Chapter 1"
     coverpage: >
@@ -151,14 +151,14 @@ parts:
       <p>Please switch to ayla.epub and read Chapter 10.</p>
   - toc: "The Power of Cute Compels You!"
     story: {id: 478}
-  - toc: "Silver Linings (Part 4)"
+  - toc: "Silver Linings: Part 4"
     story: {id: 129}
   - toc: "Rotten to the C.O.R.E."
     story: {id: 266}
   - toc: "Ayla and the Birthday Brawl: Chapter 11"
     coverpage: >
       <p>Please switch to ayla.epub and read Chapter 11.</p>
-  - toc: "Silver Linings (Part 5)"
+  - toc: "Silver Linings: Part 5"
     story: {id: 130}
   - toc: "The Secret of the Forger's List: Chapter 2"
     coverpage: >
@@ -203,7 +203,7 @@ parts:
   - toc: "Straight From the Squirrel's Mouth: Chapter 10"
     coverpage: >
       <p>Please switch to squirrel.epub and read Chapter 10.</p>
-  - toc: "Silver Linings (Part 6)"
+  - toc: "Silver Linings: Part 6"
     story: {id: 125}
   - toc: "Test Tube Babies"
     story: {id: 233}
@@ -353,7 +353,7 @@ parts:
     story: {id: 384}
   - toc: "Accidental Antidote Apocalypse"
     story: {id: 442}
-  - toc: "Tennyo Goes To Hell - Warning"
+  - toc: "Tennyo Goes To Hell: Warning"
     coverpage: >
       <h3>A Whateley Academy Story</h3>
       <h1>Tennyo Goes To Hell</h1>
@@ -370,13 +370,13 @@ parts:
       </p>
       <p>That said, this is a great story by a beloved Whateley author, even if some will find it very disturbing. It is not necessary to read it, because all key events will be covered elsewhere. But if you're interested (and in my personal opinion it is well worth reading). Continue reading only if you understand and can legally make the decision to subject yourself to this type of story. If you are under age or experience PTSD/trigger events due to the above things, we recommend you skip this content.
       </p>
-  - toc: "Tennyo Goes To Hell - Chapter 1"
+  - toc: "Tennyo Goes To Hell: Chapter 1"
     toc-nest: 2
     story: {id: 341}
-  - toc: "Tennyo Goes To Hell - Chapter 2"
+  - toc: "Tennyo Goes To Hell: Chapter 2"
     toc-nest: 2
     story: {id: 342}
-  - toc: "Tennyo Goes To Hell - Epilog"
+  - toc: "Tennyo Goes To Hell: Epilog"
     toc-nest: 2
     toc-page: "Text/342-tennyo-goes-to-hell-part-2.html#epilog"
   - toc: "May Your Death Be Sweet"
@@ -395,11 +395,56 @@ parts:
     story: {id: 357}
   - toc: "Whilst Any Speaks"
     coverpage: <p>Switch to loophole.epub and read Chapters 1, 2, 3, 4 of Whilst Any Speaks.</p>
-  - toc: "Silver Linings (Part 7)"
+  - toc: "Silver Linings: Part 7"
     story: {id: 124}
   - toc: "Silent Nacht: Chapter 5"
     story: {id: 386}
-  - toc: "Buffalo Gal Won't You Come Out Tonight (Chapter 1)"
-    coverpage: <p>Switch to kayda.epub and read Chapters 1.</p>
-  - toc: "Buffalo Gal Won't You Come Out Tonight (Chapter 2)"
-    coverpage: <p>Switch to kayda.epub and read Chapters .</p>
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 1"
+    coverpage: <p>Switch to kayda.epub and read Chapter 1.</p>
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 2"
+    coverpage: <p>Switch to kayda.epub and read Chapter 2.</p>
+  - toc: "Dancing in the Shadows: Part 1"
+    story: {id: 43}
+  - toc: "Steel Ribbon"
+    story: {id: 274}
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 3"
+    coverpage: <p>Switch to kayda.epub and read Chapter 3.</p>
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 4"
+    coverpage: <p>Switch to kayda.epub and read Chapter 4.</p>
+  - toc: "Roulette: Chapter 1"
+    story: {id: 46}
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 5"
+    coverpage: <p>Switch to kayda.epub and read Chapter 5.</p>
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 6"
+    coverpage: <p>Switch to kayda.epub and read Chapter 6.</p>
+  - toc: "Diamonds Are a Vamp's Best Friend: Part 1"
+    story: {id: 104}
+  - toc: "Buffalo Gal Won't You Come Out Tonight: Chapter 7"
+    coverpage: <p>Switch to kayda.epub and read Chapter 7.</p>
+  - toc: "Roulette: Chapter 2"
+    story: {id: 47}
+  - toc: "Dancing in the Shadows: Part 2"
+    story: {id: 44}
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 1"
+    coverpage: <p>Switch to kayda.epub and read Trials of a Warrior: Chapter 1.</p>
+  - toc: "Roulette: Chapter 3"
+    story: {id: 48}
+  # peformed some shuffling here
+  # notably, "Charge 2" was moved after "Charge 1"
+  - toc: "Charge 1: La Belle de Chaniers: Chapter 1"
+    story: {id: 54}
+  - toc: "Charge 1: La Belle de Chaniers: Chapter 1"
+    story: {id: 55}
+  - toc: "Charge 2: le Snob Francais"
+    story: {id: 56}
+  - toc: "The Art of Being the Imp: Part 1"
+    story: {id: 96}
+  - toc: "The Art of Being the Imp: Part 2"
+    story: {id: 97}
+  - toc: "The Art of Being the Imp: Part 3"
+    story: {id: 98}
+  - toc: "The Art of Being the Imp: Part 4"
+    story: {id: 99}
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 2"
+    coverpage: <p>Switch to kayda.epub and read Trials of a Warrior: Chapter 2.</p>
+  # shuffling done
