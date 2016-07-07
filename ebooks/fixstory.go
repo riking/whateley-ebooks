@@ -22,17 +22,17 @@ import (
 
 // TypoFix represents a single fixup processing for a story.
 type TypoFix struct {
-	FindSelector    string   `yaml:"select,omitempty"`
-	FindText        string   `yaml:",omitempty"`
-	FindHTML        string   `yaml:",omitempty"`
-	FindModifiers   []string `yaml:"selectmod,omitempty"`
-	ReplaceSelector string   `yaml:",omitempty"`
-	ReplaceText     string   `yaml:",omitempty"`
-	ReplaceHTML     string   `yaml:"replace,omitempty"`
-	X_ReplaceHTML2  string   `yaml:"replacehtml,omitempty"`
-	Attribute       string   `yaml:"attr,omitempty"`
-	Action          string   `yaml:",omitempty"`
-	Include         string   `yaml:"include,omitempty"`
+	FindSelector    string   `yaml:"select,omitempty" json:"select,omitempty"`
+	FindText        string   `yaml:",omitempty" json:"findtext,omitempty"`
+	FindHTML        string   `yaml:",omitempty" json:"findhtml,omitempty"`
+	FindModifiers   []string `yaml:"selectmod,omitempty" json:"selectmod,omitempty"`
+	ReplaceSelector string   `yaml:",omitempty" json:"replaceselector,omitempty"`
+	ReplaceText     string   `yaml:",omitempty" json:"replacetext,omitempty"`
+	ReplaceHTML     string   `yaml:"replace,omitempty" json:"replace,omitempty"`
+	X_ReplaceHTML2  string   `yaml:"replacehtml,omitempty" json:"replacehtml,omitempty"`
+	Attribute       string   `yaml:"attr,omitempty" json:"attr,omitempty"`
+	Action          string   `yaml:",omitempty" json:"action,omitempty"`
+	Include         string   `yaml:"include,omitempty" json:"include,omitempty"`
 }
 
 func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
@@ -125,6 +125,10 @@ var typosFile TyposFile
 
 func SetTypos(t TyposFile) {
 	typosFile = t
+}
+
+func GetAllTypos() *TyposFile {
+	return &typosFile
 }
 
 func SetTyposFromFile(filename string) error {

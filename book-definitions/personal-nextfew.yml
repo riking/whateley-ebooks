@@ -426,7 +426,7 @@ parts:
   - toc: "Dancing in the Shadows: Part 2"
     story: {id: 44}
   - toc: "Kayda 2: Trials of a Warrior: Chapter 1"
-    coverpage: <p>Switch to kayda.epub and read Trials of a Warrior: Chapter 1.</p>
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 1.</p>"
   - toc: "Roulette: Chapter 3"
     story: {id: 48}
   # peformed some shuffling here
@@ -446,5 +446,56 @@ parts:
   - toc: "The Art of Being the Imp: Part 4"
     story: {id: 99}
   - toc: "Kayda 2: Trials of a Warrior: Chapter 2"
-    coverpage: <p>Switch to kayda.epub and read Trials of a Warrior: Chapter 2.</p>
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 2.</p>"
   # shuffling done
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 3"
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 3.</p>"
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 4"
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 4.</p>"
+  - toc: "Charge 3: Point de'inflexion"
+    story: {id: 57}
+  - toc: "Whisper: Chapters 1-12"
+    coverpage: <p>Switch to whisper.epub and read Chapters 1 through 12.</p>
+  - toc: "Mama's Boy"
+    story: {id: 49}
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 5"
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 5.</p>"
+  - toc: "Kayda 2: Trials of a Warrior: Chapter 6"
+    coverpage: "<p>Switch to kayda.epub and read Trials of a Warrior: Chapter 6.</p>"
+  - toc: "Whisper: Chapters 13-19"
+    coverpage: <p>Switch to whisper.epub and read Chapters 13 through 19.</p>
+  - toc: "Rise 'n Shine"
+    story: {id: 45}
+  - toc: "Kayda 3: Two Spirits: Chapter 1"
+    coverpage: "<p>Switch to kayda.epub and read Two Spirits: Chapter 1.</p>"
+  - toc: "Forging Anew"
+    story: {id: 58}
+  - toc: "North to Atlantis"
+    coverpage: <p>Switch to loophole.epub and read North to Atlantis.</p>
+  # One more small shuffle
+  - toc: "Kayda 3: Two Spirits: Chapter 2"
+    coverpage: "<p>Switch to kayda.epub and read Two Spirits: Chapter 2.</p>"
+  - toc: "Mission Imp-probable"
+    coverpage: >
+      <h3>A Whateley Academy Adventure</h3>
+      <h1>Mission Imp-probable</h1>
+      <h3>by Morpheus</h3>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 31}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 32}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 33}
+  # end shuffle
+  - toc: "The Kodiak Conspiracy: Chapter 1"
+    coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 1.</p>"
+  - toc: "The Zica Encounter"
+    coverpage: "<p>Switch to squirrel.epub and read The Zica Encounter.</p>"
+  - toc: "The Kodiak Conspiracy: Chapter 2"
+    coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 2.</p>"
+  - toc: "Kayda 3: Two Spirits: Chapter 3"
+    coverpage: "<p>Switch to kayda.epub and read Two Spirits: Chapter 3.</p>"
+

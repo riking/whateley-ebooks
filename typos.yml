@@ -141,3 +141,6 @@
 479:
   - findtext: "&lt;&#39;mso-spacerun:yes&#39;&gt;"
     replacetext: " "
+678:
+  - findtext: "incredulous.\" Sp"
+    replacetext: "incredulous. \"Sp"

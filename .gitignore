@@ -7,4 +7,5 @@
 # Code output
 target/
 cache.db
+typos.json
 
