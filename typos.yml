@@ -1,5 +1,20 @@
 # Please see COPYRIGHT.md, CONTRIBUTING.md, and LICENSE-TYPOS.txt
 
+# quotes: ‘’ “”
+
+library:
+  x12quote:
+    - findtext: "\u0012"
+      replacetext: "’"
+
+72:
+  - include: x12quote
+74:
+  - include: x12quote
+75:
+  - include: x12quote
+76:
+  - include: x12quote
 82:
   # Add anchor for ToC
   - select: h2:contains("Canto I")
