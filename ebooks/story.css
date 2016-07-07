@@ -11,11 +11,16 @@ img {
     height: auto !important;
     margin: 10px 0;
 }
-.lyrics {
+.lyrics, /* Kayda */ .dream {
     margin-left: 0.5in;
     margin-right: 0.5in;
-    text-indent: 0;
+    text-indent: 0.5in;
     text-align: left;
+}
+
+/* Kayda */
+.dream {
+    font-style: italic;
 }
 
 /* end reviewed styles */

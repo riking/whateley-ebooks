@@ -1,11 +1,14 @@
 # Please see COPYRIGHT.md, CONTRIBUTING.md, and LICENSE-TYPOS.txt
 
 # quotes: ‘’ “”
+# do NOT fix "MiST" (mystery science theater), as it shows up in multiple stories; seems intentional
 
 library:
   x12quote:
     - findtext: "\u0012"
       replacetext: "’"
+    - findtext: "\u0016"
+      replacetext: "—"
 
 72:
   - include: x12quote
@@ -16,7 +19,7 @@ library:
 76:
   - include: x12quote
 82:
-  # Add anchor for ToC
+  # Add anchor for table of contents
   - select: h2:contains("Canto I")
     action: setAttr
     attr: id
@@ -27,9 +30,6 @@ library:
 127:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
-195:
-  - findtext: "MiST"
-    replacetext: "MST" # should this be an <abbr> ?
 198:
   - findtext: "No it wasn"
     replacetext: "No, it wasn"
@@ -107,13 +107,16 @@ library:
   - findtext: "point made.&#34; I did"
     replacetext: "point made. &#34;I did"
 341:
+  # delete page counter
   - select: .pagenavcounter, .pager
     action: replacehtml
     replace: " "
 342:
+  # delete page counter
   - select: .pagenavcounter, .pager
     action: replacehtml
     replace: " "
+  # Add anchor for table of contents
   - select: p[align="center"]:contains("EPILOG")
     action: setAttr
     attr: id
