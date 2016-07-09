@@ -56,6 +56,8 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 			s = s.Parent()
 		case "addNextSibling":
 			s = s.AddSelection(s.Next())
+		case "nextSibling":
+			s = s.Next()
 		}
 	}
 	return s
@@ -262,10 +264,6 @@ func searchRegexp(search *regexp.Regexp) func(*html.Node) bool {
 }
 
 func applyTypos(p *client.WhateleyPage) {
-	//curHtml, err := goquery.OuterHtml(p.StoryBodySelection())
-	//if err != nil {
-	//	panic(errors.Wrap(err, "could not convert storybody to html"))
-	//}
 	for _, v := range getTypos(p) {
 		v.Apply(p)
 	}
@@ -276,7 +274,12 @@ func FixForEbook(p *client.WhateleyPage) error {
 
 	// Fix \u0012 and friends
 	html, _ := goquery.OuterHtml(p.StoryBodySelection())
-	p.StoryBodySelection().ReplaceWithHtml(strings.Replace(strings.Replace(html, "\u0012", "’", -1), "\u0016", "—", -1))
+	p.StoryBodySelection().ReplaceWithHtml(
+		strings.Replace(
+		strings.Replace(
+		strings.Replace(html, "\u0012", "’", -1),
+					"\u0016", "—", -1),
+					"oe\u001C", "œ", -1))
 
 	// Apply typo corrections
 	applyTypos(p)

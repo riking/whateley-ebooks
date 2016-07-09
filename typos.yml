@@ -11,6 +11,46 @@ library:
   #  - findtext: "\u0016"
   #    replacetext: "—"
 
+43:
+  - findtext: "Why do always"
+    replacetext: "Why do you always"
+  - findtext: "You asked her."
+    replacetext: "&#34;You asked her."
+  - findtext: "Or, heaven"
+    replacetext: "&#34;Or, heaven"
+  - findtext: "We should call"
+    replacetext: "&#34;We should call"
+  - findtext: "is right now."
+    replacetext: "is right now.&#34;"
+  - findtext: "Under no"
+    replacetext: "&#34;Under no"
+  - findtext: "himself. &#34;Mrs."
+    replacetext: "himself.&#34; Mrs."
+  - findtext: "back. Foster"
+    replacetext: "back. &#34;Foster"
+  - findtext: "to safety."
+    replacetext: "to safety.&#34;"
+  - findtext: "bit. &#34;Miss"
+    replacetext: "bit.&#34; Miss"
+44:
+  - findtext: "awake, a"
+    replacetext: "awake,&#34; a"
+  - findtext: "sensibilities"
+    replacetext: "sensibilities."
+  - select: p:contains("sensibilities") + p
+    action: replacehtml
+    replace: ""
+  - findtext: "say, &#34;Hi Ma"
+    replacetext: "say, &#39;Hi Ma"
+  - findtext: "shame. N"
+    replacetext: "shame.&#39; N"
+  - findtext: "I don&#39;t have"
+    replacetext: "&#34;I don&#39;t have"
+  - findtext: "Are you one"
+    replacetext: "&#34;Are you one"
+  - select: p:contains("sensibilities") + p + p + p, p:contains("Place unknown"), p:contains("Date Unknown"), p:contains("August"):contains("2007")
+    action: insertBefore
+    replace: "<hr/>\u000a"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
@@ -99,11 +139,22 @@ library:
 321:
   - findtext: "point made.&#34; I did"
     replacetext: "point made. &#34;I did"
+324:
+  - findtext: ",”Wha’?”"
+    replacetext: ", “Wha’?”"
+  - findtext: "sour gate to her step"
+    replacetext: "sour gait to her step"
+  - select: span:contains("This email address is being protected from spambots. You need JavaScript enabled to view it.")
+    action: replacehtml
+    replace: "josie_gillman@example.com" # editorial note: zoho.com is actually being used?
 341:
   # delete page counter
   - select: .pagenavcounter, .pager
     action: replacehtml
     replace: " "
+  - select: p:contains("possessed the skill of integrating memories")
+    action: insertBefore
+    replace: <hr>
 342:
   # delete page counter
   - select: .pagenavcounter, .pager
@@ -114,6 +165,11 @@ library:
     action: setAttr
     attr: id
     replace: epilog
+  - findtext: "bell That is our"
+    replacetext: "bell. That is our"
+346:
+  - findtext: "It sounds like it"
+    replacetext: "“It sounds like it"
 348:
   - select: h3
     action: deleteAttr
@@ -123,6 +179,92 @@ library:
     selectmod: [parent]
     action: replacehtml
     replacehtml: <p><em>to be continued</em></p>
+359:
+  - findtext: "They’re there"
+    replacetext: "“They’re there"
+382:
+  # 24-pt font size unacceptably small on my ebook reader
+  - select: h2 span
+    action: deleteAttr
+    attr: style
+  - findtext: "dealerships- one"
+    replacetext: "dealersips – one"
+  - findtext: "ripping off-,"
+    replacetext: "ripping off–,"
+  # there's more hyphenation errors but I got tired of marking them
+  - findtext: "Erlotinib hydrochloride? Doctor"
+    replacetext: "“Erlotinib hydrochloride? Doctor"
+  - findtext: "Weellll… not"
+    replacetext: "“Weellll… not"
+383:
+  - select: h2 span
+    action: deleteAttr
+    attr: style
+  # doesn't make sense for Top Dawg to lift himself where he can't reach himself
+  - findtext: "able to lift Top Dawg"
+    replacetext: "able to lift Big Dawg"
+384:
+  - select: h2 span
+    action: deleteAttr
+    attr: style
+  - findtext: "sneer, but do"
+    replacetext: "sneer, “but do"
+385:
+  - select: h2 span
+    action: deleteAttr
+    attr: style
+  - findtext: "measure s-"
+    replacetext: "measures -"
+  - findtext: "How are you-"
+    replacetext: "“How are you-" # note: not a hyphenation error
+386:
+  - select: h2 span
+    action: deleteAttr
+    attr: style
+  - findtext: "Ben &amp; Jerry&#39;sT"
+    replacetext: "Ben &amp; Jerry&#39;s™"
+  - findtext: "Chunky MonkeyR"
+    replacetext: "Chunky Monkey®"
+  - findtext: "TiffanyT"
+    replacetext: "Tiffany™"
+  - findtext: "Hey, Darce"
+    replacetext: "“Hey, Darce"
+  - findtext: "directing the working, using Quetzalcoatl&#39;s staff to withstand the strain."
+    replacetext: "“directing the working, using Quetzalcoatl&#39;s staff to withstand the strain.”"
+  - findtext: "I LIED"
+    replacetext: "*I LIED"
+  - findtext: "face. That..."
+    replacetext: "face. *That..."
+  - findtext: "alley*"
+    replacetext: "alley.*"
+  - findtext: "chips- or scraps of what&#39;s left of your mind-"
+    replacetext: "chips - or scraps of what&#39;s left of your mind -"
+  - findtext: "and- HEY!*"
+    replacetext: "and - HEY!*"
+  - findtext: "two of them,,"
+    replacetext: "two of them,"
+  - findtext: "annoying*"
+    replacetext: "annoying.*"
+  - findtext: "this- but"
+    replacetext: "this - but"
+  - findtext: "forward- F"
+    replacetext: "forward – F"
+  - findtext: "be*"
+    replacetext: "be.*"
+  - findtext: "cap. Okay b"
+    replacetext: "cap. \"Okay, b"
+  - select: p:contains("Dear Kate"), p:contains("me out to Brujah")
+    action: setAttr
+    attr: class
+    replace: lyrics
+  - findtext: "buggin&#39;&#34;"
+    replacetext: "buggin&#39;.&#34;"
+  - findtext: "it-he"
+    replacetext: "it—he"
+  - findtext: "quickly.&#34; &#34;Yeah"
+    replacetext: "quickly.&#34;</p>\u000a<p>&#34;Yeah"
+  - findtext: "abomination] the"
+    replacetext: "abomination.] The"
 422:
   - findtext: "apparently though it"
     replacetext: "apparently thought it"
@@ -144,6 +286,27 @@ library:
     replacetext: "“Can we beat"
   - findtext: "memory for them."
     replacetext: "memory for them.”"
+473:
+  - findtext: "don’ t"
+    replacetext: "don’t"
+  - findtext: "can. ”"
+    replacetext: "can.”"
+  - findtext: "‘ donate’"
+    replacetext: "‘donate’"
+  - findtext: ". let’s get"
+    replacetext: ". Let’s get"
+  - findtext: "ed. “it’s not that. it’s"
+    replacetext: "ed. “It’s not that. It’s"
+  - findtext: "prove it? it’s been"
+    replacetext: "prove it? It’s been"
+  - findtext: ", “ THE"
+    replacetext: ", “THE"
+474:
+  - findtext: "chapter 4"
+    replacetext: "Chapter 4"
+  - select: p strong:contains("Home again Lickity Split")
+    action: wrap
+    replace: <h3>
 476:
   - findtext: "Outcasts can do.” And"
     replacetext: "Outcasts can do. And"

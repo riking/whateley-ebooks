@@ -321,7 +321,7 @@ parts:
     story: {id: 472}
   - toc: "Tennyo's Easter: Chapter 3"
     story: {id: 473}
-  - toc: "Tennyo's Easter: Chapter 4"
+  - toc: "Tennyo's Easter: Chapter 4: Home Again, Home Again Lickity Split"
     story: {id: 474}
   - toc: "Ayla and the Mad Scientist: Chapter 17"
     coverpage: >
@@ -430,13 +430,12 @@ parts:
   - toc: "Roulette: Chapter 3"
     story: {id: 48}
   # peformed some shuffling here
-  # notably, "Charge 2" was moved after "Charge 1"
+  - toc: "Charge 2: le Snob Francais"
+    story: {id: 56}
   - toc: "Charge 1: La Belle de Chaniers: Chapter 1"
     story: {id: 54}
   - toc: "Charge 1: La Belle de Chaniers: Chapter 1"
     story: {id: 55}
-  - toc: "Charge 2: le Snob Francais"
-    story: {id: 56}
   - toc: "The Art of Being the Imp: Part 1"
     story: {id: 96}
   - toc: "The Art of Being the Imp: Part 2"
