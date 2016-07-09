@@ -51,15 +51,37 @@ library:
   - select: p:contains("sensibilities") + p + p + p, p:contains("Place unknown"), p:contains("Date Unknown"), p:contains("August"):contains("2007")
     action: insertBefore
     replace: "<hr/>\u000a"
+56:
+  - findtext: "stars registration"
+    replacetext: "starts registration"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
     action: setAttr
     attr: id
     replace: canto-1
-125:
-  - findtext: "Chapter 2"
-    replacetext: "Part 5"
+124:
+  - select: p:contains("November 16"), p:contains("November 20"), p:contains("November 21"), p:contains("PSYCHO") + p:contains("November 22"), p:contains("November 26")
+    action: insertBefore
+    replace: <hr>
+  - findtext: "yanked him right"
+    replacetext: "yanked her right"
+  - findtext: "for her!] Stacy"
+    replacetext: "for her!</em>] Stacy"
+  - findtext: "throat. [Daring"
+    replacetext: "throat. [<em>Daring"
+  - findtext: "maybe H1! Has"
+    replacetext: "maybe H1! has"
+  - findtext: "Knight. I"
+    replacetext: "Knight. &#34;I"
+  - findtext: "so who could"
+    replacetext: "so how could"
+  - findtext: "it would up"
+    replacetext: "it wound up"
+  - findtext: "Foot Locker&amp;trade;"
+    replacetext: "Foot Locker&trade;"
+  - findtext: "when thatÂ"
+    replacetext: "when that"
 127:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
@@ -179,6 +201,21 @@ library:
     selectmod: [parent]
     action: replacehtml
     replacehtml: <p><em>to be continued</em></p>
+357:
+  - findtext: "Who’s Aung"
+    replacetext: "“Who’s Aung"
+  - findtext: "Jobe.”Four"
+    replacetext: "Jobe. “Four"
+  - findtext: "do first."
+    replacetext: "do first.”"
+  - findtext: "and to as they" # two matches
+    replacetext: "and to do as they"
+  - findtext: "DO NOT TOUCH!"
+    replacetext: "DO NOT TOUCH!</span>"
+  - findtext: "them the cure.”"
+    replacetext: "them the cure."
+  - findtext: "envelope. YOU"
+    replacetext: "envelope. “YOU"
 359:
   - findtext: "They’re there"
     replacetext: "“They’re there"
@@ -221,12 +258,17 @@ library:
   - select: h2 span
     action: deleteAttr
     attr: style
+  - select: h3:contains("by Bek D Corbin")
+    action: insertBefore
+    replace: "<h3 align=center><strong>Chapter 5</strong></h3>\n"
   - findtext: "Ben &amp; Jerry&#39;sT"
     replacetext: "Ben &amp; Jerry&#39;s™"
   - findtext: "Chunky MonkeyR"
     replacetext: "Chunky Monkey®"
   - findtext: "TiffanyT"
     replacetext: "Tiffany™"
+  - findtext: "Supervillains!T"
+    replacetext: "Supervillains™!"
   - findtext: "Hey, Darce"
     replacetext: "“Hey, Darce"
   - findtext: "directing the working, using Quetzalcoatl&#39;s staff to withstand the strain."
