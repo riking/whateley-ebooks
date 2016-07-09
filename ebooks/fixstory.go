@@ -274,6 +274,10 @@ func applyTypos(p *client.WhateleyPage) {
 func FixForEbook(p *client.WhateleyPage) error {
 	var s *goquery.Selection
 
+	// Fix \u0012 and friends
+	html, _ := goquery.OuterHtml(p.StoryBodySelection())
+	p.StoryBodySelection().ReplaceWithHtml(strings.Replace(strings.Replace(html, "\u0012", "’", -1), "\u0016", "—", -1))
+
 	// Apply typo corrections
 	applyTypos(p)
 

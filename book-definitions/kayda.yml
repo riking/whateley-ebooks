@@ -91,47 +91,51 @@ parts:
       <h2>Book 2</h2>
       <h3>by ElrodW</h3>
 
-  - toc: "Chapter 1"
+  - toc: "Chapter 1: Maka"
     toc-nest: 2
     coverpage: >
       <h1>Maka</h1>
       <h2>Chapter 1</h2>
+      <h3>by ElrodW</h3>
   - story:
       id: 59
       slug: kayda-2-trials-of-a-warrior-ch-1
       remove-titles: .headder
 
-  - toc: "Chapter 2"
+  - toc: "Chapter 2: Hetkala"
     toc-nest: 2
     coverpage: >
       <h1>Hetkala</h1>
       <h2>Chapter 2</h2>
+      <h3>by ElrodW</h3>
   - story:
       id: 60
       slug: kayda-2-trials-of-a-warrior-ch-2
       remove-titles: .headder
 
-  - toc: "Chapter 3"
+  - toc: "Chapter 3: Ptan na Ithunkasan"
     toc-nest: 2
     coverpage: >
       <h1>Ptan na Ithunkasan</h1>
       <h2>Chapter 3</h2>
+      <h3>by ElrodW</h3>
   - story:
       id: 61
       slug: kayda-2-trials-of-a-warrior-ch-3
       remove-titles: .headder
 
-  - toc: "Chapter 4"
+  - toc: "Chapter 4: Itukala na Suka"
     toc-nest: 2
     coverpage: >
       <h1>Itukala na Suka</h1>
       <h2>Chapter 4</h2>
+      <h3>by ElrodW</h3>
   - story:
       id: 62
       slug: kayda-2-trials-of-a-warrior-ch-4
       remove-titles: .headder
 
-  - toc: "Chapter 5"
+  - toc: "Chapter 5: Thanagila"
     toc-nest: 2
     coverpage: >
       <h1>Thanagila</h1>
@@ -158,7 +162,7 @@ parts:
       <h2>Book 3</h2>
       <h3>by ElrodW</h3>
 
-  - toc: "Chapter 1"
+  - toc: "Chapter 1: Oyate"
     toc-nest: 2
     coverpage: >
       <h1>Oyate (the Nations)</h1>
@@ -168,7 +172,7 @@ parts:
       slug: kayda-3-two-spirits-ch-1
       remove-titles: .headder
 
-  - toc: "Chapter 2"
+  - toc: "Chapter 2: Ichimani"
     toc-nest: 2
     coverpage: >
       <h1>Ichimani (the Travelers)</h1>
@@ -178,7 +182,7 @@ parts:
       slug: kayda-3-two-spirits-ch-2
       remove-titles: .headder
 
-  - toc: "Chapter 3"
+  - toc: "Chapter 3: Zuya Wikhoskalaka"
     toc-nest: 2
     coverpage: >
       <h1>Zuya Wikhoskalaka (Warrior Girl)</h1>
@@ -206,7 +210,7 @@ parts:
       <h2>Book 4</h2>
       <h3>by ElrodW</h3>
 
-  - toc: "Chapter 1"
+  - toc: "Chapter 1: Apetu Theca"
     toc-nest: 2
     coverpage: >
       <h1>Apetu Theca (A New Dawn)</h1>
@@ -216,7 +220,7 @@ parts:
       slug: kayda-4-now-the-real-learning-can-begin-ch-1
       remove-titles: .headder
 
-  - toc: "Chapter 2"
+  - toc: "Chapter 2: Mahpiya Wakina"
     toc-nest: 2
     coverpage: >
       <h1>Mahpiya Wakina (Thunderclouds)</h1>
@@ -226,7 +230,7 @@ parts:
       slug: kayda-4-now-the-real-learning-can-begin-ch-2
       remove-titles: .headder
 
-  - toc: "Chapter 3"
+  - toc: "Chapter 3: Osiceca Magazu"
     toc-nest: 2
     coverpage: >
       <h1>Osiceca Magazu (Rain Storm)</h1>
@@ -236,7 +240,7 @@ parts:
       slug: kayda-4-now-the-real-learning-can-begin-ch-3
       remove-titles: .headder
 
-  - toc: "Chapter 4"
+  - toc: "Chapter 4: Waki Ya"
     toc-nest: 2
     coverpage: >
       <h1>Waki Ya (Thunderclouds)</h1>
@@ -246,7 +250,7 @@ parts:
       slug: kayda-4-now-the-real-learning-can-begin-ch-4
       remove-titles: .headder
 
-  - toc: "Chapter 5"
+  - toc: "Chapter 5: Wakinyan Towa Pi"
     toc-nest: 2
     coverpage: >
       <h1>Wakinyan Towa Pi (Lightning)</h1>

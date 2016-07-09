@@ -4,20 +4,13 @@
 # do NOT fix "MiST" (mystery science theater), as it shows up in multiple stories; seems intentional
 
 library:
-  x12quote:
-    - findtext: "\u0012"
-      replacetext: "’"
-    - findtext: "\u0016"
-      replacetext: "—"
+  # moved to be processed for all stories
+  #x12quote:
+  #  - findtext: "\u0012"
+  #    replacetext: "’"
+  #  - findtext: "\u0016"
+  #    replacetext: "—"
 
-72:
-  - include: x12quote
-74:
-  - include: x12quote
-75:
-  - include: x12quote
-76:
-  - include: x12quote
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
