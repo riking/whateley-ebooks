@@ -54,8 +54,18 @@ library:
 56:
   - findtext: "stars registration"
     replacetext: "starts registration"
-  - findtext: "Seo\u001cur"
+  - findtext: "Seo\u001Cur"
     replacetext: "Sœur"
+  - findtext: "treachery"
+    replacetext: "treachery!"
+  - findtext: "unfair! &#34;And"
+    replacetext: "unfair! And"
+  - findtext: "Froggy?"
+    replacetext: "Froggy?&#34;"
+  - findtext: "<i>Leave me the"
+    replacetext: "&#34;<i>Leave me the"
+  - findtext: "you say at"
+    replacetext: "you stay at"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
