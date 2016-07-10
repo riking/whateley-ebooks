@@ -258,3 +258,22 @@ func (c *WANetwork) cachePutAsset(u *url.URL, body []byte, contentType string) e
 	_, err := stmtInsertAssetCacheData.Exec(assetCacheKey(u), time.Now().UTC(), body, contentType)
 	return err
 }
+
+func (c *WANetwork) DBTest() {
+	rows, err := c.db.Query(
+		"SELECT cacheKey " +
+		"FROM cachedPages " +
+		"WHERE body LIKE '%\u001c%' ")
+	if err != nil {
+		fmt.Println("err", err)
+		return
+	}
+	for rows.Next() {
+		var cacheKey string
+		rows.Scan(&cacheKey)
+		fmt.Println(cacheKey)
+	}
+	if rows.Err() != nil {
+		fmt.Println("err", rows.Err())
+	}
+}

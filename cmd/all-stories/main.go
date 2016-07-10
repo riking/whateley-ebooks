@@ -120,6 +120,9 @@ func main() {
 	networkAccess := cmd.Setup()
 	networkAccess.UserAgent("Ebook tool - Examine All Stories (+github.com/riking/whateley-ebooks)")
 
+	//networkAccess.DBTest()
+	//return
+
 	const maxID = 668
 	const parallelLevel = 8
 	// library: 434

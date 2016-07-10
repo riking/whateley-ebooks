@@ -54,6 +54,8 @@ library:
 56:
   - findtext: "stars registration"
     replacetext: "starts registration"
+  - findtext: "Seo\u001cur"
+    replacetext: "Sœur"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
