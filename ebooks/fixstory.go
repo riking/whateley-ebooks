@@ -94,9 +94,6 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 		})
 	case "replacehtml":
 		s := t.Find(p.Doc())
-		html, _ := goquery.OuterHtml(s)
-		fmt.Println(html)
-		fmt.Println(t.ReplaceHTML)
 		s.ReplaceWithHtml(t.ReplaceHTML)
 	case "paragraphsToLinebreaks":
 		sel := t.Find(p.Doc())

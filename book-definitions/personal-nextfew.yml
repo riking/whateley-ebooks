@@ -471,7 +471,7 @@ parts:
   - toc: "Kayda 3: Two Spirits: Chapter 1"
     coverpage: "<p>Switch to kayda.epub and read Two Spirits: Chapter 1.</p>"
   - toc: "Forging Anew"
-    story: {id: 58}
+    story: {id: 58} # TODO add to eldritch/outcasts/callthethunder
   - toc: "North to Atlantis"
     coverpage: <p>Switch to loophole.epub and read North to Atlantis.</p>
   # One more small shuffle
@@ -500,4 +500,111 @@ parts:
     coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 2.</p>"
   - toc: "Kayda 3: Two Spirits: Chapter 3"
     coverpage: "<p>Switch to kayda.epub and read Two Spirits: Chapter 3.</p>"
+  - toc: "An Imp-perfect World: Chapter 1"
+    story: {id: 92}
+  - toc: "An Imp-perfect World: Chapter 2"
+    story: {id: 93}
+  - toc: "Kayda 4: Now the Real Learning Can Begin: Chapter 1"
+    coverpage: "<p>Switch to kayda.epub and read Now the Real Learning Can Begin: Chapter 1.</p>"
+  - toc: "The Kodiak Conspiracy: Chapter 3"
+    coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 3.</p>"
+  - toc: "Diamonds Are a Vamp's Best Friend: Part 2"
+    story: {id: 105}
+  - toc: "Kayda 4: Now the Real Learning Can Begin: Chapter 2"
+    coverpage: "<p>Switch to kayda.epub and read Now the Real Learning Can Begin: Chapter 2.</p>"
+  - toc: "An Imp-perfect World: Chapter 3"
+    story: {id: 94}
+  - toc: "An Imp-perfect World: Chapter 4"
+    story: {id: 95}
+  - toc: "Kayda 4: Now the Real Learning Can Begin: Chapter 3"
+    coverpage: "<p>Switch to kayda.epub and read Now the Real Learning Can Begin: Chapter 3.</p>"
+  - toc: "Kayda 4: Now the Real Learning Can Begin: Chapter 4"
+    coverpage: "<p>Switch to kayda.epub and read Now the Real Learning Can Begin: Chapter 4.</p>"
+  - toc: "Kayda 4: Now the Real Learning Can Begin: Chapter 5"
+    coverpage: "<p>Switch to kayda.epub and read Now the Real Learning Can Begin: Chapter 5.</p>"
+  - toc: "The Kodiak Conspiracy: Chapter 4"
+    coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 4.</p>"
+  - toc: "The Kodiak Conspiracy: Chapter 5"
+    coverpage: "<p>Switch to loophole.epub and read The Kodiak Conspiracy: Chapter 5.</p>"
+  - toc: "The Island of Dr. DNA"
+    story: {id: 101}
+  - toc: "A Pocket Full of Tansy"
+    story: {id: 51}
+  - toc: "Whisper: Chapters 20-25"
+    coverpage: <p>Switch to whisper.epub and read Chapters 20 through 25.</p>
+  - toc: "The Back Side of Paradise"
+    story: {id: 100}
+  - toc: "Date Night"
+    story: {id: 102}
+  - toc: "First Imp-pression"
+    story: {id: 103}
+  - toc: "The Riddle of Sappho"
+    coverpage: "<p>Switch to kayda.epub and read all Cantos of The Riddle of Sappho.</p>"
+  - toc: "Wine, Women, and Ayla: Part 1"
+    story: {id: 41}
+  - toc: "Whisper: Chapters 26-30"
+    coverpage: <p>Switch to whisper.epub and read Chapters 26 through 30.</p>
+  - toc: "Wine, Women, and Ayla: Part 1"
+    story: {id: 42}
+  - toc: "As Beauty Does"
+    story: {id: 52}
+  - toc: "To Sleep, Perchance to Dream"
+    story: {id: 6}
+  - toc: "The Penance Factor"
+    story: {id: 108}
+  - toc: "A Touch of Mischief"
+    story: {id: 109}
+  - toc: "Whisper: Chapters 31-35"
+    coverpage: <p>Switch to whisper.epub and read Chapters 31 through 35.</p>
+  - toc: "Kayda 6: Medicine Girl"
+    coverpage: "<p>Switch to kayda.epub and read Medicine Girl.</p>"
+  - toc: "Galatea Debutante"
+    story: {id: 135} # TODO add to eldritch/outcasts/callthethunder
+  - toc: "Whisper: Chapters 36-39"
+    coverpage: <p>Switch to whisper.epub and read Chapters 36 through 39.</p>
+  - toc: "Charging Buffalo, Hidden Dragon: Part 1"
+    coverpage: "<p>Switch to kayda.epub and read Charging Buffalo, Hidden Dragon: Part 1.</p>"
+  - toc: "Silver Ghost, Golden Angel"
+    story: {id: 167}
+  - toc: "Charging Buffalo, Hidden Dragon: Part 2"
+    coverpage: "<p>Switch to kayda.epub and read Charging Buffalo, Hidden Dragon: Part 2.</p>"
+  - toc: "Charging Buffalo, Hidden Dragon: Part 3"
+    coverpage: "<p>Switch to kayda.epub and read Charging Buffalo, Hidden Dragon: Part 3.</p>"
 
+  # more shuffling: keep Odds&Ends and Glow in the Darkness slightly more together
+  - toc: "Whisper: Chapters 40-Epilogue"
+    coverpage: <p>Switch to whisper.epub and read Chapters 40 through Epilogue.</p>
+  - toc: "Odds and Ends: Part 1"
+    story: {id: 292}
+  - toc: "Odds and Ends: Part 2"
+    story: {id: 325}
+  - toc: "A Tenuous Blade"
+    story: {id: 268}
+  - toc: "Odds and Ends: Part 3"
+    story: {id: 503}
+  - toc: "A Glow in the Darkness: Part 1"
+    story: {id: 487}
+  - toc: "A Glow in the Darkness: Part 2"
+    story: {id: 598}
+  - toc: "A Glow in the Darkness: Part 3"
+    story: {id: 627}
+  - toc: "So Shalt Thou Show Me Friendship"
+    story: {id: 118}
+  # end shuffle
+
+  - toc: "All the King's Horses…"
+    story: {id: 560}
+  - toc: "Learning to Hunt"
+    story: {id: 486}
+  - toc: "Kayda 8: The Best Days of Our Lives: Part 1"
+    coverpage: "<p>Switch to kayda.epub and read The Best Days of Our Lives: Part 1.</p>"
+  - toc: "Pomp and Conspiracy"
+    story: {id: 651}
+  - toc: "A Good Man: Part 1"
+    story: {id: 510}
+  - toc: "Kayda 8: The Best Days of Our Lives: Part 2"
+    coverpage: "<p>Switch to kayda.epub and read The Best Days of Our Lives: Part 2.</p>"
+  - toc: "The Boys of Summer"
+    story: {id: 678}
+  - toc: "Kayda 8: The Best Days of Our Lives: Part 2"
+    story: {id: 681}

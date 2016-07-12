@@ -99,10 +99,10 @@ func (c *WANetwork) GetAsset(req *http.Request) ([]byte, string, error) {
 	u := req.URL
 
 	dbID, err := c.cacheCheckAsset(u)
-	if err != nil {
+	if err != nil && err != errExpired {
 		return nil, "", errors.Wrap(err, "checking cache for asset")
 	}
-	if dbID != -1 {
+	if dbID != -1 && err != errExpired {
 		b, ct, err := c.cacheGetAsset(dbID)
 		if err != nil {
 			return nil, "", errors.Wrap(err, "checking cache for asset")
@@ -122,9 +122,9 @@ func (c *WANetwork) GetAsset(req *http.Request) ([]byte, string, error) {
 	}
 	ct := resp.Header.Get("Content-Type")
 
-	err = c.cachePutAsset(u, b, ct)
+	err = c.cachePutAsset(dbID, u, b, ct)
 	if err != nil {
-		return nil, "", errors.Wrap(err, "putting asset in cache")
+		return nil, "", errors.Wrap(err, "putting asset %s in cache", u.String())
 	}
 
 	return b, ct, nil
@@ -152,10 +152,10 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 	fromCache := false
 
 	dbID, err := c.cacheCheckStory(u)
-	if err != nil {
+	if err != nil && err != errExpired {
 		return nil, errors.Wrap(err, "checking cache for page")
 	}
-	if dbID != -1 {
+	if dbID != -1 && err != errExpired {
 		b, err := c.cacheGetStory(dbID)
 		if err != nil {
 			return nil, errors.Wrap(err, "Retrieving value from cache")
@@ -187,9 +187,9 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
 		} else {
-			err = c.cachePutStory(u, body)
+			err = c.cachePutStory(dbID, u, body)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %s", err)
+				fmt.Fprintf(os.Stderr, "[db] warning: could not add to cache: %d %s %s", dbID, u.CacheKey(), err)
 			}
 		}
 	}

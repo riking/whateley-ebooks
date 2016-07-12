@@ -145,6 +145,11 @@ func (c *WANetwork) setupDB() error {
 		return errors.Wrap(err, "preparing statements")
 	}
 
+	stmtUpdateStoryCacheData, err = c.db.Prepare(updateStoryCacheData)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
 	stmtSelectAssetExistsInCache, err = c.db.Prepare(selectAssetExistsInCache)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
@@ -156,6 +161,11 @@ func (c *WANetwork) setupDB() error {
 	}
 
 	stmtInsertAssetCacheData, err = c.db.Prepare(insertAssetCacheData)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
+	stmtUpdateAssetCacheData, err = c.db.Prepare(updateAssetCacheData)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
 	}
@@ -174,6 +184,10 @@ SELECT body FROM cachedPages WHERE id = ?`
 INSERT INTO cachedPages
 (cacheKey, lastFetched, body)
 VALUES (?, ?, ?)`
+	updateStoryCacheData = `
+UPDATE cachedPages
+SET lastFetched=?, body=?
+WHERE id = ?`
 	selectAssetExistsInCache = `
 SELECT id, lastFetched FROM cachedAssets WHERE cacheKey = ?`
 	selectAssetCacheData = `
@@ -182,18 +196,27 @@ SELECT body, contentType FROM cachedAssets WHERE id = ?`
 INSERT INTO cachedAssets
 (cacheKey, lastFetched, body, contentType)
 VALUES (?, ?, ?, ?)`
+	updateAssetCacheData = `
+UPDATE cachedAssets
+SET lastFetched=?, body=?, contentType=?
+WHERE id = ?`
+
 )
 
 var (
 	stmtSelectStoryExistsInCache *sql.Stmt
 	stmtSelectStoryCacheData     *sql.Stmt
 	stmtInsertStoryCacheData     *sql.Stmt
+	stmtUpdateStoryCacheData     *sql.Stmt
 	stmtSelectAssetExistsInCache *sql.Stmt
 	stmtSelectAssetCacheData     *sql.Stmt
 	stmtInsertAssetCacheData     *sql.Stmt
+	stmtUpdateAssetCacheData     *sql.Stmt
 )
 
 const cacheStalePeriod = 196 * time.Hour
+
+var errExpired = errors.Errorf("cache entry expired")
 
 // returns -1 if no match
 func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
@@ -207,7 +230,7 @@ func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
 		return -1, err
 	}
 	if !c.options.Offline && time.Now().UTC().Add(-cacheStalePeriod).After(lastUpdated) {
-		return -1, nil
+		return id, errExpired
 	}
 	return id, nil
 }
@@ -222,8 +245,13 @@ func (c *WANetwork) cacheGetStory(id int64) ([]byte, error) {
 	return b, nil
 }
 
-func (c *WANetwork) cachePutStory(u StoryURL, body string) error {
-	_, err := stmtInsertStoryCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
+func (c *WANetwork) cachePutStory(id int64, u StoryURL, body string) error {
+	var err error
+	if id == -1 {
+		_, err = stmtInsertStoryCacheData.Exec(u.CacheKey(), time.Now().UTC(), body)
+	} else {
+		_, err = stmtUpdateStoryCacheData.Exec(time.Now().UTC(), body, id)
+	}
 	return err
 }
 
@@ -238,7 +266,7 @@ func (c *WANetwork) cacheCheckAsset(u *url.URL) (int64, error) {
 		return -1, err
 	}
 	if !c.options.Offline && time.Now().UTC().Add(-cacheStalePeriod).After(lastUpdated) {
-		return -1, nil
+		return id, errExpired
 	}
 	return id, nil
 }
@@ -254,8 +282,13 @@ func (c *WANetwork) cacheGetAsset(id int64) ([]byte, string, error) {
 	return b, ct, nil
 }
 
-func (c *WANetwork) cachePutAsset(u *url.URL, body []byte, contentType string) error {
-	_, err := stmtInsertAssetCacheData.Exec(assetCacheKey(u), time.Now().UTC(), body, contentType)
+func (c *WANetwork) cachePutAsset(id int64, u *url.URL, body []byte, contentType string) error {
+	var err error
+	if id == -1 {
+		_, err = stmtInsertAssetCacheData.Exec(assetCacheKey(u), time.Now().UTC(), body, contentType)
+	} else {
+		_, err = stmtUpdateAssetCacheData.Exec(time.Now().UTC(), body, contentType, id)
+	}
 	return err
 }
 
