@@ -124,7 +124,7 @@ func (c *WANetwork) GetAsset(req *http.Request) ([]byte, string, error) {
 
 	err = c.cachePutAsset(dbID, u, b, ct)
 	if err != nil {
-		return nil, "", errors.Wrap(err, "putting asset %s in cache", u.String())
+		return nil, "", errors.Wrapf(err, "putting asset %s in cache", u.String())
 	}
 
 	return b, ct, nil
