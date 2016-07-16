@@ -273,10 +273,10 @@ func FixForEbook(p *client.WhateleyPage) error {
 	html, _ := goquery.OuterHtml(p.StoryBodySelection())
 	p.StoryBodySelection().ReplaceWithHtml(
 		strings.Replace(strings.Replace(strings.Replace(
-		strings.Replace(html, "\u0012", "’", -1),
-					"\u0016", "—", -1),
-					"\u0005", "…", -1),
-					"oe\u001C", "œ", -1))
+			strings.Replace(html, "\u0012", "’", -1),
+			"\u0016", "—", -1),
+			"\u0005", "…", -1),
+			"oe\u001C", "œ", -1))
 
 	// Apply typo corrections
 	applyTypos(p)

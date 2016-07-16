@@ -1,0 +1,19 @@
+
+id: jade
+title: Jade Arrives at Whateley
+
+author: Babs Yerunkle
+author-sort: Babs Yerunkle
+uuid: c9cd51e0-d95f-4068-892f-c8fe3c446aad
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+parts:
+  - toc: "Jade 1: Coming Out"
+    story: {id: 10}
+  - toc: "Jade 2"
+    story: {id: 11}
+  - toc: "Jade 3: Being a Girl"
+    story: {id: 122}
+  - toc: "Jade 4: Bottle a Jinn"
+    story: {id: 145}

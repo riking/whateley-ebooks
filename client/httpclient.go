@@ -141,7 +141,7 @@ func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 		return nil, err
 	}
 	if resp.StatusCode != 200 {
-		return nil, errors.Errorf("Non-200 response: %d", resp.StatusCode)
+		return nil, errors.Errorf("Non-200 response: %d for %s", resp.StatusCode, req.URL.String())
 	}
 	return goquery.NewDocumentFromResponse(resp)
 }

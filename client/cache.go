@@ -170,6 +170,11 @@ func (c *WANetwork) setupDB() error {
 		return errors.Wrap(err, "preparing statements")
 	}
 
+	stmtSearchStoryFulltext, err = c.db.Prepare(searchStoryFulltext)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
 	return nil
 }
 
@@ -200,7 +205,10 @@ VALUES (?, ?, ?, ?)`
 UPDATE cachedAssets
 SET lastFetched=?, body=?, contentType=?
 WHERE id = ?`
-
+	searchStoryFulltext = `
+SELECT cacheKey
+FROM cachedPages
+WHERE body LIKE '%' || ? || '%'`
 )
 
 var (
@@ -212,6 +220,8 @@ var (
 	stmtSelectAssetCacheData     *sql.Stmt
 	stmtInsertAssetCacheData     *sql.Stmt
 	stmtUpdateAssetCacheData     *sql.Stmt
+
+	stmtSearchStoryFulltext *sql.Stmt
 )
 
 const cacheStalePeriod = 196 * time.Hour
@@ -292,11 +302,25 @@ func (c *WANetwork) cachePutAsset(id int64, u *url.URL, body []byte, contentType
 	return err
 }
 
+func (c *WANetwork) SearchFulltext(search string) ([]string, error) {
+	rows, err := stmtSearchStoryFulltext.Query(search)
+	if err != nil {
+		return nil, err
+	}
+	var storyIDs []string
+	for rows.Next() {
+		var id string
+		rows.Scan(&id)
+		storyIDs = append(storyIDs, id)
+	}
+	return storyIDs, rows.Err()
+}
+
 func (c *WANetwork) DBTest() {
 	rows, err := c.db.Query(
 		"SELECT cacheKey " +
-		"FROM cachedPages " +
-		"WHERE body LIKE '%\u001c%' ")
+			"FROM cachedPages " +
+			"WHERE body LIKE '%\u001c%' ")
 	if err != nil {
 		fmt.Println("err", err)
 		return

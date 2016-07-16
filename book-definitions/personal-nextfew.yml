@@ -54,7 +54,8 @@ assets:
   - target: Ecila_makemesparkle.jpg
 
 parts:
-  # TODO - potentially rearrange starting stories
+  # Strict publish order
+  # Use academy-chron if you want chronological
   - toc: "Unexpected Consequences"
     story: {id: 2}
   - toc: "Mom, I Don't Feel So Good"
@@ -85,9 +86,75 @@ parts:
     story: {id: 146}
   - toc: "First Assembly"
     story: {id: 148}
+  - toc: "Jade 4: Bottle a Jinn"
+    story: {id: 145}
+  - toc: "Revenge Of The Alphas"
+    story: {id: 257}
+  - toc: "The Transfer Students"
+    story: {id: 149}
+  - toc: "Destiny's Wave"
+    story: {id: 256}
+  - toc: "Baker's Dozen"
+    story: {id: 179}
+  - toc: "Eat, Drink, and be Merry"
+    story: {id: 301}
+  - toc: "Tennyo: It's Nice to Have Friends"
+    story: {id: 455}
+  - toc: "Tea and Synergy"
+    story: {id: 361}
+  - toc: "The Boston Brawl"
+    story: {id: 448}
+  - toc: "Blade Dancing"
+    story: {id: 296}
+  - toc: "Revelations"
+    story: {id: 180}
+  - toc: "Merry Meet, Merry Part, and Merry Meet Again"
+    story: {id: 302}
+  - toc: "Lightning Crashes"
+    story: {id: 141}
+  - toc: "Insanity Prerequisite: Part 1: Status Quo"
+    story: {id: 443}
+  - toc: "Hive 1: What's Buzzing You?"
+    story: {id: 275}
+  - toc: "Insanity Prerequisite: Part 2: Destabilization"
+    story: {id: 444}
+  - toc: "Merry 3: Against Ill Chances"
+    story: {id: 376}
+  - toc: "Time for an Unexpected Gift"
+    story: {id: 428}
+  - toc: "Epilogue"
+    toc-nest: 2
+    story: {id: 426}
+  - toc: "Jade 5: Redefining Jade"
+    story: {id: 152}
+  - toc: "Merry Descent Into Madness"
+    story: {id: 398}
+  - toc: "Panty Raid"
+    story: {id: 143}
+  - toc: "Merry 5: The More, The Merrier: Part 1"
+    story: {id: 400}
+  - toc: "Heyoka 2: Eating Dog"
+    story: {id: 142}
+  - toc: "Merry 5: The More, The Merrier: Part 2"
+    story: {id: 401}
+  - toc: "Insanity Prerequisite: Part 3: Metamorphosis"
+    story: {id: 445}
+  - toc: "The More, The Merrier: Part 3"
+    story: {id: 402}
+  - toc: "Ask Not For Whom Belle Tolls"
+    story: {id: 297}
+  - toc: "The More, The Merrier: Part 4"
+    story: {id: 403}
+  - toc: "The More, The Merrier: Part 5"
+    story: {id: 404}
+  - toc: "Hive 2"
+    story: {id: 277}
+  - toc: "A Wellspring of Sorrows"
+    story: {id: 259}
 
 
-  - toc: "The Big Idea (Reach)"
+
+  - toc: "Reach: The Big Idea"
     story: {id: 372}
 
   - toc: "MISSING PARTS"

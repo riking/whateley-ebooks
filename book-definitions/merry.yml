@@ -1,0 +1,35 @@
+
+id: merry
+title: Merry
+
+author: Renae
+author-sort: Renae
+uuid: f7bb3dde-7879-4d2f-af5c-d6781c79010e
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+parts:
+  - toc: "Eat, Drink, and be Merry"
+    story: {id: 301}
+  - toc: "Merry Meet, Merry Part, and Merry Meet Again"
+    story: {id: 302}
+  - toc: "Merry 3: Against Ill Chances"
+    story: {id: 376}
+  - toc: "Merry Descent Into Madness"
+    story: {id: 398}
+  - toc: "The More, The Merrier: Part 1"
+    story: {id: 400}
+  - toc: "The More, The Merrier: Part 2"
+    story: {id: 401}
+  - toc: "The More, The Merrier: Part 3"
+    story: {id: 402}
+  - toc: "The More, The Merrier: Part 4"
+    story: {id: 403}
+  - toc: "The More, The Merrier: Part 5"
+    story: {id: 404}
+  - toc: "Being Merry In Spite of It All: Part 1"
+    story: {id: 390}
+  - toc: "Being Merry In Spite of It All: Part 2"
+    story: {id: 391}
+  - toc: "Being Merry In Spite of It All: Part 3"
+    story: {id: 303}

@@ -323,10 +323,8 @@ func (c *contentEntry) RenderNavPoint(w io.Writer, sequence, nest int) int {
 		}
 		fmt.Fprintf(w, "</navPoint>")
 	}
-	fmt.Fprintf(w, `
-<navPoint id="navPoint-%d" playOrder="%d">
-<navLabel><text>%s</text></navLabel>
-<content src="%s"/>`, sequence, sequence, template.HTMLEscapeString(c.TOC), template.HTMLEscapeString(c.Filename))
+	fmt.Fprintf(w, `<navPoint id="navPoint-%d" playOrder="%d"><navLabel><text>%s</text></navLabel><content src="%s"/>`,
+		sequence, sequence, template.HTMLEscapeString(c.TOC), template.HTMLEscapeString(c.Filename))
 	return newNest
 }
 
@@ -434,8 +432,7 @@ func (ed *EpubDefinition) WriteContentOPF(fs fileCreator) error {
 	if err != nil {
 		return errors.Wrapf(err, "creating target file for asset %s", filename)
 	}
-	file.Write([]byte(`<?xml version="1.0"  encoding="UTF-8"?>
-`))
+	file.Write([]byte(`<?xml version="1.0"  encoding="UTF-8"?>`))
 	err = ed.RenderContentOPF(file)
 	if err != nil {
 		return errors.Wrapf(err, "processing asset %s", filename)

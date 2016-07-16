@@ -1,0 +1,152 @@
+
+id: academy-chron
+title: "Whateley: The Beginning"
+
+author: Whateley Academy Canon Authors
+author-sort: Whateley Academy Canon Authors
+uuid: e6064959-7b33-4077-8ae3-dd09ecb29de3
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+# This follows the order at http://crystalhall.wikia.com/wiki/Dated_Stories_-_AY_2006-07
+# The following storylines are omitted:
+# Merry, Charge, Miyet, Fling
+
+parts:
+  - toc: "Jade 1: Coming Out"
+    story: {id: 10}
+  - toc: "Fey 1: Mom, I Don't Feel So Good"
+    story: {id: 7}
+  - toc: "Tennyo 1: Unexpected Consequences"
+    story: {id: 2}
+  - toc: "Ayla 1: Ayla and the Late Trevor James Goodkind"
+    story: {id: 163}
+  - toc: "Chaka 1: Enter The Chaka!"
+    story: {id: 3}
+  - toc: "Welcome to Poe"
+    story: {id: 132}
+
+  - toc: "Jade 2"
+    story: {id: 11}
+  - toc: "Tennyo 2: Another Day, We Were Going Where?"
+    story: {id: 24}
+  - toc: "Ayla 2: Ayla and the Blackmailer"
+    story: {id: 164}
+  - toc: "Quoth the Ninja: Nevermore!"
+    story: {id: 133}
+  - toc: "First Assembly"
+    story: {id: 148}
+
+  - toc: "Fey 2: PMS And Other Problems"
+    story: {id: 23}
+  - toc: "Fey 3: Adjustments"
+    story: {id: 146}
+  - toc: "Tennyo 3: First Day and Other Interesting Things"
+    story: {id: 147}
+  - toc: "Jade 3: Being a Girl"
+    story: {id: 122}
+  - toc: "Ayla 3: Ayla and the New School"
+    story: {id: 165}
+  - toc: "Chaka: Duel Damsel"
+    story: {id: 144}
+  - toc: "A Simple Game"
+    story: {id: 123}
+  - toc: "Chaka 3: Toni and the Tiger"
+    story: {id: 362}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 1"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 1.</p>"
+  - toc: "Parkour Jam Hooligans"
+    story: {id: 467}
+  - toc: "Tennyo 4: It's Nice to Have Friends"
+    story: {id: 455}
+  - toc: "Jade 4: Bottle a Jinn"
+    story: {id: 145}
+  - toc: "Lily 1: The Transfer Students"
+    story: {id: 149}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 2"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 2.</p>"
+  - toc: "Destiny's Wave"
+    story: {id: 256}
+  - toc: "Revenge Of The Alphas"
+    story: {id: 257}
+  - toc: "Jade 5: Redefining Jade"
+    story: {id: 152}
+  # shuffled to keep it together & with Jade
+  - toc: "Time for an Unexpected Gift"
+    story: {id: 428}
+  - toc: "Epilogue"
+    toc-nest: 2
+    story: {id: 426}
+  - toc: "Chaka 4: Reflections in an Evil Eye"
+    story: {id: 363}
+  - toc: "Chou 2: Blade Dancing"
+    story: {id: 296}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 3"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 3.</p>"
+  - toc: "Tea and Synergy"
+    story: {id: 361}
+  - toc: "Tennyo 5: Dangerous Days"
+    story: {id: 452}
+  - toc: "The Boston Brawl"
+    story: {id: 448}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 4"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 4.</p>"
+  - toc: "The Three Little Witches"
+    story: {id: 371}
+  - toc: "Insanity Prerequisite: Part 1: Status Quo"
+    story: {id: 443}
+  - toc: "A Single Fold"
+    story: {id: 150}
+  - toc: "Insanity Prerequisite: Part 2: Destabilization"
+    story: {id: 444}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 5"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 5.</p>"
+  - toc: "Ask Not For Whom Belle Tolls"
+    story: {id: 297}
+  - toc: "Chaka 5: It's Good to be the Don"
+    story: {id: 364}
+  - toc: "James 2: Legacy of Friendship"
+    story: {id: 427}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 6"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 6.</p>"
+  - toc: "Insanity Prerequisite: Part 3: Metamorphosis"
+    story: {id: 445}
+  - toc: "Interlude: Merry"
+    coverpage: "<p>Switch to merry.epub and read up to The More, the Merrier: Part 3 (Part C).</p>"
+  - toc: "The Devil's Dance: Part 1"
+    story: {id: 392}
+  - toc: "The Devil's Dance: Part 2"
+    story: {id: 393}
+  - toc: "The Problem with Power"
+    story: {id: 389}
+  - toc: "Insanity Prerequisite: Part 4: Reincarnation"
+    story: {id: 446}
+  - toc: "Outcasts 1: So I'm a Freak. Sue Me."
+    story: {id: 468}
+  - toc: "Heyoka: Lightning Crashes"
+    story: {id: 141}
+  - toc: "The Blood Oath"
+    story: {id: 447}
+  - toc: "Panty Raid"
+    story: {id: 143}
+  - toc: "Heyoka 2: Eating Dog"
+    story: {id: 142}
+  - toc: "The Bad Seeds"
+    story: {id: 425}
+  - toc: "Tennyo 6: Dangerous Games"
+    story: {id: 453}
+  - toc: "Parents' Day"
+    story: {id: 138}
+  - toc: "Quoth the Ninja: What? AGAIN?"
+    story: {id: 139}
+  - toc: "The Op"
+    story: {id: 449}
+  - toc: "Outcasts 2: Child of Confusion"
+    story: {id: 314}
+  - toc: "Ayla 4: Ayla and the Tests: Chapter 7"
+    coverpage: "<p>Switch to ayla.epub and read Ayla and the Tests: Chapter 7.</p>"
+  - toc: "The Clue of the Unseen Switch"
+    coverpage: >
+      <p>Please switch to loophole.epub and read The Clue of the Unseen Switch: Chapter 1.</p>
+  - toc: "Upheaval: Instructor"
+    story: {id: 466}
