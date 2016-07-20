@@ -611,7 +611,7 @@ parts:
     story: {id: 41}
   - toc: "Whisper: Chapters 26-30"
     coverpage: <p>Switch to whisper.epub and read Chapters 26 through 30.</p>
-  - toc: "Wine, Women, and Ayla: Part 1"
+  - toc: "Wine, Women, and Ayla: Part 2"
     story: {id: 42}
   - toc: "As Beauty Does"
     story: {id: 52}
@@ -626,7 +626,7 @@ parts:
   - toc: "Kayda 6: Medicine Girl"
     coverpage: "<p>Switch to kayda.epub and read Medicine Girl.</p>"
   - toc: "Galatea Debutante"
-    story: {id: 135} # TODO add to eldritch/outcasts/callthethunder
+    story: {id: 135} # this is the kayda/loophole/solange combat final
   - toc: "Whisper: Chapters 36-39"
     coverpage: <p>Switch to whisper.epub and read Chapters 36 through 39.</p>
   - toc: "Charging Buffalo, Hidden Dragon: Part 1"

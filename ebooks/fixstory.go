@@ -65,7 +65,7 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 
 func (t TypoFix) Apply(p *client.WhateleyPage) {
 	if t.FindText != "" && t.ReplaceText != "" {
-		t.Action = "replaceText"
+		t.Action = "replacetext"
 	}
 	if t.X_ReplaceHTML2 != "" {
 		t.ReplaceHTML = t.X_ReplaceHTML2
@@ -84,7 +84,7 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 		t.Find(p.Doc()).SetAttr(t.Attribute, t.ReplaceHTML)
 	case "insertBefore":
 		t.Find(p.Doc()).BeforeHtml(t.ReplaceHTML)
-	case "replaceText":
+	case "replacetext":
 		t.Find(p.Doc()).Each(func(_ int, s *goquery.Selection) {
 			html, err := goquery.OuterHtml(s)
 			if err != nil {

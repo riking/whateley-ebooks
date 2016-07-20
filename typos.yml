@@ -167,6 +167,15 @@ library:
     replace: <hr>
   - findtext: "like did"
     replacetext: "like it did to you"
+307:
+  - select: .MID table tr td[colspan="2"]
+    selectmod: [parent]
+    action: replacehtml
+    replace: "$SPLITHERE"
+  - select: .MID table
+    action: replacetext
+    findtext: "$SPLITHERE"
+    replacetext: "</tbody></table></div><div class='MID'><table border=0 cellspacing=0 cellpadding=0><tbody>"
 317:
   - findtext: "calm and excepting"
     replacetext: "calm and accepting"
