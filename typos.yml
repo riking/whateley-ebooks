@@ -4,6 +4,17 @@
 # do NOT fix "MiST" (mystery science theater), as it shows up in multiple stories; seems intentional
 
 library:
+  odds-ends-fix:
+    - select: "[style=\"color: #000000;\"]"
+      action: deleteAttr
+      attr: style
+    - select: "[style=\"text-indent: 0in;\"]"
+      action: setAttr
+      attr: class
+      replace: no-indent
+    - select: .no-indent
+      action: deleteAttr
+      attr: style
   # moved to be processed for all stories
   #x12quote:
   #  - findtext: "\u0012"
@@ -51,6 +62,11 @@ library:
   - select: p:contains("sensibilities") + p + p + p, p:contains("Place unknown"), p:contains("Date Unknown"), p:contains("August"):contains("2007")
     action: insertBefore
     replace: "<hr/>\u000a"
+51:
+  - select: " "
+    action: replacetext
+    findtext: " </i>"
+    replacetext: "</i>"
 56:
   - findtext: "stars registration"
     replacetext: "starts registration"
@@ -72,6 +88,27 @@ library:
     action: setAttr
     attr: id
     replace: canto-1
+92:
+  - findtext: "around my feat"
+    replacetext: "around my feet"
+  - findtext: "seem even"
+    replacetext: "seem to even"
+101:
+  - findtext: "to be and horse"
+    replacetext: "to be and was what horse"
+  - findtext: "too high for bass but too low for baritone"
+    replacetext: "‘too high for bass, but too low for baritone’"
+  - findtext: "&#34;Oh I wouldn&#39;t&#34;"
+    replacetext: "&#34;Oh I wouldn&#39;t,&#34;"
+  - findtext: "I assure the"
+    replacetext: "&#34;I assure the"
+  - findtext: "you&#39;re weren&#39;t"
+    replacetext: "you&#39;re… weren&#39;t"
+  - findtext: "do have any"
+    replacetext: "do you have any"
+105:
+  - findtext: "adults on"
+    replacetext: "adults’ on"
 124:
   - select: p:contains("November 16"), p:contains("November 20"), p:contains("November 21"), p:contains("PSYCHO") + p:contains("November 22"), p:contains("November 26")
     action: insertBefore
@@ -167,6 +204,8 @@ library:
     replace: <hr>
   - findtext: "like did"
     replacetext: "like it did to you"
+292:
+  - include: odds-ends-fix
 307:
   - select: .MID table tr td[colspan="2"]
     selectmod: [parent]

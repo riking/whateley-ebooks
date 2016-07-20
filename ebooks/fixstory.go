@@ -41,11 +41,7 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 		panic("findHTML not implemented")
 	}
 	if t.FindSelector != "" {
-		if t.FindText != "" {
-			s = doc.Find(fmt.Sprintf("%s %s:contains(\"%s\")", client.StoryBodySelector, t.FindSelector, t.FindText))
-		} else {
-			s = doc.Find(client.StoryBodySelector + t.FindSelector)
-		}
+		s = doc.Find(client.StoryBodySelector + t.FindSelector)
 	} else if t.FindText != "" {
 		s = doc.Find(client.StoryBodySelector + " p:contains(\"" + t.FindSelector + "\")")
 	}
