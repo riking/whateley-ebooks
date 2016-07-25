@@ -4,17 +4,19 @@
 # do NOT fix "MiST" (mystery science theater), as it shows up in multiple stories; seems intentional
 
 library:
-  odds-ends-fix:
-    - select: "[style=\"color: #000000;\"]"
-      action: deleteAttr
-      attr: style
-    - select: "[style=\"text-indent: 0in;\"]"
+  replacept:
+    - select: "[style=\"font-size: 16pt;\"]"
       action: setAttr
-      attr: class
-      replace: no-indent
-    - select: .no-indent
-      action: deleteAttr
       attr: style
+      replace: "font-size: 1.6em;"
+    - select: "[style=\"font-size: 18pt;\"]"
+      action: setAttr
+      attr: style
+      replace: "font-size: 1.8em;"
+    - select: "[style=\"font-size: 13.5pt;\"]"
+      action: setAttr
+      attr: style
+      replace: "font-size: 1.35em;"
   # moved to be processed for all stories
   #x12quote:
   #  - findtext: "\u0012"
@@ -22,6 +24,23 @@ library:
   #  - findtext: "\u0016"
   #    replacetext: "—"
 
+6:
+  # this one is a mess, gave up on cleaning it
+  - select: "[style=\"color: #000000;\"], [style=\"font-size: medium;\"]"
+    action: deleteAttr
+    attr: style
+  - select: "span[lang]" # these are all hilariously wrong
+    action: deleteAttr
+    attr: lang
+  - select: "[style=\"text-indent: 0.3in; margin-bottom: 0in; widows: 2; orphans: 2; text-decoration: none;\"]"
+    action: deleteAttr
+    attr: style
+  - select: "p[style=\"margin-bottom: 0in; widows: 2; orphans: 2; text-decoration: none; text-align: center;\"]"
+    action: replacehtml
+    replace: <hr>
+  - select: "p[align=\"CENTER\"] :contains(\"* * *\")"
+    action: replacehtml
+    replace: <hr>
 43:
   - findtext: "Why do always"
     replacetext: "Why do you always"
@@ -205,7 +224,17 @@ library:
   - findtext: "like did"
     replacetext: "like it did to you"
 292:
-  - include: odds-ends-fix
+  - select: "[style=\"color: #000000;\"]"
+    action: deleteAttr
+    attr: style
+  - select: "[style=\"text-indent: 0in;\"]"
+    action: setAttr
+    attr: class
+    replace: no-indent
+  - select: .no-indent
+    action: deleteAttr
+    attr: style
+  - include: replacept
 307:
   - select: .MID table tr td[colspan="2"]
     selectmod: [parent]
@@ -221,6 +250,8 @@ library:
 321:
   - findtext: "point made.&#34; I did"
     replacetext: "point made. &#34;I did"
+325:
+  - include: replacept
 324:
   - findtext: ",”Wha’?”"
     replacetext: ", “Wha’?”"
@@ -417,6 +448,28 @@ library:
 479:
   - findtext: "&lt;&#39;mso-spacerun:yes&#39;&gt;"
     replacetext: " "
+503:
+  - include: replacept
+560:
+  - include: replacept
+651:
+  - include: replacept
 678:
+  - select: p
+    action: deleteAttr
+    attr: style
+  - select: span
+    action: deleteAttr
+    attr: style
+  - select: p
+    action: deleteAttr
+    attr: dir
   - findtext: "incredulous.\" Sp"
     replacetext: "incredulous. \"Sp"
+681:
+  - select: "[style*=color]"
+    action: deleteAttr
+    attr: style
+  - select: h3 span[style], h5 span[style]
+    action: deleteAttr
+    attr: style

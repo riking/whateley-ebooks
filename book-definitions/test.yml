@@ -1,0 +1,19 @@
+
+id: test
+title: Ebooks Testing
+
+author: Whateley Academy Canon Authors
+author-sort: Whateley Academy Canon Authors
+uuid: 870773e8-9a45-4995-affe-1526742add6d
+series: Whateley Academy Original Canon
+publisher: Whateley Academy Canon Authors
+
+parts:
+  - toc: "Odds and Ends: Part 1"
+    story: {id: 292}
+  - toc: "Jade 2"
+    story: {id: 11}
+  - toc: "Jade 3: Being a Girl"
+    story: {id: 122}
+  - toc: "Jade 4: Bottle a Jinn"
+    story: {id: 145}

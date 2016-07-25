@@ -662,7 +662,7 @@ parts:
   - toc: "All the King's Horses…"
     story: {id: 560}
   - toc: "Learning to Hunt"
-    story: {id: 486}
+    coverpage: "<p>Switch to kayda.epub and read Learning to Hunt.</p>"
   - toc: "Kayda 8: The Best Days of Our Lives: Part 1"
     coverpage: "<p>Switch to kayda.epub and read The Best Days of Our Lives: Part 1.</p>"
   - toc: "Pomp and Conspiracy"

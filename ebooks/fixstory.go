@@ -198,7 +198,7 @@ func getHrParagraphRegex() *regexp.Regexp {
 	}
 	var buf bytes.Buffer
 	buf.WriteString("\\A(")
-	buf.WriteString(`\p{Zs}*\*((\p{Zs})+\*)+\p{Zs}*`)
+	buf.WriteString(`[\*\p{Zs}]+`)
 	buf.WriteRune('|')
 	for i, v := range hrParagraphs {
 		buf.WriteString(regexp.QuoteMeta(v))
@@ -235,15 +235,11 @@ func hrParagraphMatcher() func(*html.Node) bool {
 		if n.Type != html.ElementNode {
 			return false
 		}
-		if n.Data != "p" && n.Data != "div" && n.Data != "strong" {
+		if n.Data != "p" && n.Data != "div" && n.Data != "strong" && n.Data != "span" {
 			return false
 		}
 		d := goquery.NewDocumentFromNode(n)
-		html, err := d.Html()
-		if err != nil {
-			panic(errors.Wrap(err, "error returned from Html()"))
-		}
-		return paraRegex.MatchString(html)
+		return paraRegex.MatchString(d.Text())
 	}
 }
 

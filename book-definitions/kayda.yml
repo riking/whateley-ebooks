@@ -353,7 +353,6 @@ parts:
   - story:
       id: 160
       slug: charging-buffalo-hidden-dragon-part-1
-      remove-titles: .headder
 
   - toc: "Part 2"
     toc-nest: 2
@@ -362,7 +361,6 @@ parts:
   - story:
       id: 166
       slug: charging-buffalo-hidden-dragon-part-2
-      remove-titles: .headder
 
   - toc: "Part 3"
     toc-nest: 2
@@ -371,7 +369,14 @@ parts:
   - story:
       id: 189
       slug: charging-buffalo-hidden-dragon-part-3
-      remove-titles: .headder
+
+  - toc: "Learning to Hunt"
+    coverpage: >
+      <h1>Learning to Hunt</h1>
+      <h3>A Whateley Academy Vingette</h3>
+      <h3>by Light-of-Fury and ElrodW</h3>
+  - story:
+      id: 486
 
   - toc: "Kayda 8: The Best Days of Our Lives"
     toc-nest: 1
@@ -387,16 +392,12 @@ parts:
   - story:
       id: 643
       slug: the-best-days-of-our-lives-3
-      remove-titles: .headder
 
   - toc: "Part 2"
     toc-nest: 2
-    coverpage: >
-      <h1>Part 2</h1>
-  - story:
+    story:
       id: 657
       slug: kayda-8-the-best-days-of-our-lives-part-2
-      remove-titles: .headder
 
   - coverpage: >
       <center><h3>to be continued…</h3></center>
