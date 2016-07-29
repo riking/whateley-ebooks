@@ -74,6 +74,8 @@ func (t TypoFix) Apply(p *client.WhateleyPage) {
 		t.Find(p.Doc()).WrapHtml(t.ReplaceHTML)
 	case "wrapAll":
 		t.Find(p.Doc()).WrapAllHtml(t.ReplaceHTML)
+	case "wrapInner":
+		t.Find(p.Doc()).WrapInnerHtml(t.ReplaceHTML)
 	case "deleteAttr":
 		t.Find(p.Doc()).RemoveAttr(t.Attribute)
 	case "setAttr":

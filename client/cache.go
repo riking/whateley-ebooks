@@ -224,7 +224,7 @@ var (
 	stmtSearchStoryFulltext *sql.Stmt
 )
 
-const cacheStalePeriod = 196 * time.Hour
+const cacheStalePeriod = 1960 * time.Hour
 
 var errExpired = errors.Errorf("cache entry expired")
 

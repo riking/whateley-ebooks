@@ -14,22 +14,13 @@ import (
 
 	"github.com/riking/whateley-ebooks/cmd"
 	"github.com/riking/whateley-ebooks/ebooks"
+	"github.com/riking/whateley-ebooks/client"
+	"sync"
 )
 
-func main() {
-	// flag.String()
-
-	networkAccess := cmd.Setup()
-	networkAccess.UserAgent("Ebook tool - Make EPub (+github.com/riking/whateley-ebooks)")
-
-	ebook := flag.Arg(0)
-	if ebook == "" {
-		fmt.Println("Please specify a book name / file on the command line")
-		os.Exit(1)
-	}
-
+func createEbook(bookID string, networkAccess *client.WANetwork) error {
 	var ebooksFile *ebooks.EpubDefinition
-	attemptFiles := []string{ebook, fmt.Sprintf("book-definitions/%s.yml", ebook)}
+	attemptFiles := []string{bookID, fmt.Sprintf("book-definitions/%s.yml", bookID)}
 	for _, v := range attemptFiles {
 		_, err := os.Stat(v)
 		if os.IsNotExist(err) {
@@ -38,34 +29,59 @@ func main() {
 
 		b, err := ioutil.ReadFile(v)
 		if err != nil {
-			cmd.Fatal(errors.Wrapf(err, "Could not read %s", v))
+			return errors.Wrapf(err, "Could not read %s", v)
 		}
 		err = yaml.Unmarshal(b, &ebooksFile)
 		if err != nil {
-			cmd.Fatal(errors.Wrapf(err, "Could not parse %s", v))
+			return errors.Wrapf(err, "Could not parse %s", v)
 		}
 	}
 
-	var outFile string
-
-	if flag.NArg() == 2 {
-		outFile = flag.Arg(1)
-		// TODO(riking): allow stdout output? need to make CreateEpub take io.Writer
-	} else {
-		err := os.Mkdir("target", 0755)
-		if !os.IsExist(err) {
-			cmd.Fatal(errors.Wrap(err, "Could not create output directory"))
-		}
-		outFile = fmt.Sprintf("target/%s.epub", ebook)
-	}
+	var outFile string = fmt.Sprintf("target/%s.epub", bookID)
 
 	err := ebooksFile.Prepare(networkAccess)
 	if err != nil {
-		cmd.Fatal(err)
+		return errors.Wrapf(err, "Failed to prepare %s", bookID)
 	}
 
 	err = ebooks.CreateEpub(ebooksFile, networkAccess, outFile)
 	if err != nil {
-		cmd.Fatal(err)
+		return errors.Wrapf(err, "Failed to create %s", bookID)
+	}
+	return nil
+}
+
+func main() {
+	// flag.String()
+
+	networkAccess := cmd.Setup()
+	networkAccess.UserAgent("Ebook tool - Make EPub (+github.com/riking/whateley-ebooks)")
+
+	bookIDs := flag.Args()
+	if len(bookIDs) == 0 {
+		fmt.Println("Please specify a book name / file on the command line")
+		os.Exit(1)
+	}
+
+	var wg sync.WaitGroup
+	var errs []error
+	wg.Add(len(bookIDs))
+	errs = make([]error, len(bookIDs))
+
+	for i, v := range bookIDs {
+		go func() {
+			err := createEbook(v, networkAccess)
+			errs[i] = err
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+
+	for i, v := range bookIDs {
+		if errs[i] == nil {
+			fmt.Printf("[ OK] %s\n", v)
+		} else {
+			fmt.Printf("[ERR] %s: %s\n", v, errs[i])
+		}
 	}
 }

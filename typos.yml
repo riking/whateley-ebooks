@@ -101,6 +101,29 @@ library:
     replacetext: "&#34;<i>Leave me the"
   - findtext: "you say at"
     replacetext: "you stay at"
+70:
+  - findtext: "more.,"
+    replacetext: "more,"
+  - findtext: "families. &#34;I"
+    replacetext: "families. I"
+  - findtext: "e. ."
+    replacetext: "e."
+  - findtext: "nudge me"
+    replacetext: "nudged me"
+71:
+  - findtext: "lap.&#34;"
+    replacetext: "lap."
+  - findtext: "of cr?me"
+    replacetext: "of crème"
+72:
+  - findtext: "able to/"
+    replacetext: "able to."
+  - select: p.WALocation
+    action: wrapInner
+    replace: <strong>
+73:
+  - findtext: "shere the"
+    replacetext: "where the"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
