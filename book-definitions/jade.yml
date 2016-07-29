@@ -1,6 +1,6 @@
 
 id: jade
-title: Jade Arrives at Whateley
+title: Jade - Fall 2006
 
 author: Babs Yerunkle
 author-sort: Babs Yerunkle
@@ -11,9 +11,26 @@ publisher: Whateley Academy Canon Authors
 parts:
   - toc: "Jade 1: Coming Out"
     story: {id: 10}
-  - toc: "Jade 2"
+  - toc: "Jade 2: Away From Home"
     story: {id: 11}
   - toc: "Jade 3: Being a Girl"
     story: {id: 122}
   - toc: "Jade 4: Bottle a Jinn"
     story: {id: 145}
+  - toc: "Revenge of the Alphas"
+    story: {id: 257}
+  - toc: "Jade 5: Redefining Jade"
+    story: {id: 152}
+  - toc: "Time for an Unexpected Gift"
+    story: {id: 428}
+  - toc: "Epilogue"
+    toc-nest: 2
+    story: {id: 426}
+  - toc: "Jade 6 - Dreams and Awakenings"
+    story: {id: 153}
+  - toc: "Jade 7 - Over the Top"
+    story: {id: 154}
+  - toc: "Jade 8 - Exams"
+    story: {id: 155}
+  - toc: "Jade 9 - Sit In"
+    story: {id: 156}
