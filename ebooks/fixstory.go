@@ -33,6 +33,7 @@ type TypoFix struct {
 	Attribute       string   `yaml:"attr,omitempty" json:"attr,omitempty"`
 	Action          string   `yaml:",omitempty" json:"action,omitempty"`
 	Include         string   `yaml:"include,omitempty" json:"include,omitempty"`
+	OnlyWhen        string   `yaml:"onlywhen,omitempty" json:"onlywhen,omitempty"`
 }
 
 func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
@@ -60,6 +61,20 @@ func (t TypoFix) Find(doc *goquery.Document) *goquery.Selection {
 }
 
 func (t TypoFix) Apply(p *client.WhateleyPage) {
+	if t.OnlyWhen != "" {
+		spl := strings.Split(t.OnlyWhen, ",")
+		skip := true
+		for _, v := range spl {
+			if v == "ebook" {
+				skip = false
+				break
+			}
+		}
+
+		if skip {
+			return
+		}
+	}
 	if t.FindText != "" && t.ReplaceText != "" {
 		t.Action = "replacetext"
 	}

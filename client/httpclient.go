@@ -15,6 +15,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
+	"strings"
 )
 
 type Doer interface {
@@ -147,6 +148,10 @@ func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 }
 
 func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
+	if strings.HasPrefix(storyId, "story-") {
+		storyId = storyId[len("story-"):]
+	}
+
 	u := StoryURL{StoryID: storyId, StorySlug: "-", CategorySlug: "-"}
 	var doc *goquery.Document
 	fromCache := false

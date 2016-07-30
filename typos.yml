@@ -333,6 +333,12 @@ library:
 359:
   - findtext: "They’re there"
     replacetext: "“They’re there"
+362:
+  - findtext: "I ,ah"
+    replacetext: "I, ah"
+370:
+  - findtext: "and ,,,"
+    replacetext: "and…"
 382:
   # 24-pt font size unacceptably small on my ebook reader
   - select: h2 span
@@ -427,6 +433,9 @@ library:
 439:
   - findtext: "many parts of California what"
     replacetext: "many parts of California were what"
+455:
+  - findtext: " ,and"
+    replacetext: ", and"
 440:
   - findtext: "UPCALL"
     replacetext: "UP CALL"

@@ -12,6 +12,7 @@ import (
 
 	"github.com/mattn/go-sqlite3"
 	"github.com/pkg/errors"
+	"strconv"
 )
 
 func assetCacheKey(u *url.URL) string {
@@ -302,16 +303,21 @@ func (c *WANetwork) cachePutAsset(id int64, u *url.URL, body []byte, contentType
 	return err
 }
 
-func (c *WANetwork) SearchFulltext(search string) ([]string, error) {
+func (c *WANetwork) SearchFulltext(search string) ([]int, error) {
 	rows, err := stmtSearchStoryFulltext.Query(search)
 	if err != nil {
 		return nil, err
 	}
-	var storyIDs []string
+	var storyIDs []int
 	for rows.Next() {
 		var id string
 		rows.Scan(&id)
-		storyIDs = append(storyIDs, id)
+		id = id[len("story-"):]
+		numID, err := strconv.Atoi(id)
+		if err != nil {
+			return nil, err
+		}
+		storyIDs = append(storyIDs, numID)
 	}
 	return storyIDs, rows.Err()
 }

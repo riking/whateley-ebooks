@@ -51,7 +51,7 @@ func wordcountStory(ch chan<- result, storyID string, networkAccess *client.WANe
 	}
 }
 
-var skipIDs = []int{1, 4, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26, 30, 358, 396, 641}
+var skipIDs = []int{1, 4, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26, 30, 358, 396, 641, 672}
 
 func emitAllIDs(idChan chan string, maxID int) {
 	// Work Producer
@@ -68,15 +68,40 @@ outer:
 
 }
 
+type wcAndID struct {
+	wordcount int
+	client.StoryURL
+}
+type sortByWordcount []wcAndID
+
+func (a sortByWordcount) Len() int {
+	return len(a)
+}
+
+func (a sortByWordcount) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+
+func (a sortByWordcount) Less(i, j int) bool {
+	return a[i].wordcount < a[j].wordcount
+}
 func wordcountConsumer(resChan chan result) {
+	ary := make(sortByWordcount, 0)
 	total := 0
 	for v := range resChan {
-		fmt.Printf("%d %s-%s\n", v.WordCount, v.StoryID, v.StorySlug)
+		fmt.Fprintf(os.Stderr, "%d %s-%s\n", v.WordCount, v.StoryID, v.StorySlug)
+		ary = append(ary, wcAndID{wordcount: v.WordCount, StoryURL: v.StoryURL})
 		total += v.WordCount
 	}
 
-	fmt.Println("---------")
-	fmt.Println("TOTAL:", total)
+	sort.Sort(ary)
+
+	for _, v := range ary {
+		fmt.Fprintf(os.Stdout, "%d %s-%s\n", v.wordcount, v.StoryID, v.StorySlug)
+	}
+
+	fmt.Fprintln(os.Stderr, "---------")
+	fmt.Fprintln(os.Stderr, "TOTAL:", total)
 }
 
 type dateAndID struct {
@@ -172,6 +197,6 @@ func main() {
 		close(resChan)
 	}()
 
-	//wordcountConsumer(resChan)
-	sortingConsumer(resChan)
+	wordcountConsumer(resChan)
+	//sortingConsumer(resChan)
 }

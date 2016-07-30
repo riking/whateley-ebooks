@@ -12,9 +12,9 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
+	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/cmd"
 	"github.com/riking/whateley-ebooks/ebooks"
-	"github.com/riking/whateley-ebooks/client"
 	"sync"
 )
 
@@ -68,12 +68,15 @@ func main() {
 	wg.Add(len(bookIDs))
 	errs = make([]error, len(bookIDs))
 
-	for i, v := range bookIDs {
-		go func() {
-			err := createEbook(v, networkAccess)
-			errs[i] = err
+	fmt.Println(bookIDs)
+
+	for i := range bookIDs {
+		go func(idx int) {
+			bookID := bookIDs[idx]
+			err := createEbook(bookID, networkAccess)
+			errs[idx] = err
 			wg.Done()
-		}()
+		}(i)
 	}
 	wg.Wait()
 
