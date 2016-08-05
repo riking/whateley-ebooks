@@ -15,7 +15,7 @@ import (
 var offlineMode *bool
 
 func Setup() *client.WANetwork {
-	ebooks.SetTyposFromFile(ebooks.TyposDefaultFilename)
+	ebooks.SetTyposFromFile("./typos.yml")
 	offlineMode = flag.Bool("offline", false, "Operate in offline mode (cached entries never expire).")
 
 	flag.Parse()

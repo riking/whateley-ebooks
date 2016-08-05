@@ -6,6 +6,7 @@ package client // import "github.com/riking/whateley-ebooks/client"
 import (
 	"fmt"
 	"html/template"
+	"net/url"
 	"os"
 	"regexp"
 	"strings"
@@ -20,8 +21,33 @@ import (
 const timeFmt = "2006-01-02T15:04:05-07:00"
 
 type StoryTag struct {
-	ID   int
+	ID   string
+	Slug string
 	Name string
+}
+
+var tagIdRegexp = regexp.MustCompile(`tag-(\d+)`)
+
+func ParseTag(s *goquery.Selection) StoryTag {
+	t := StoryTag{}
+	class, _ := s.Attr("class")
+	m := tagIdRegexp.FindStringSubmatch(strings.Split(class, " ")[0])
+	if m != nil {
+		t.ID = m[1]
+	}
+	l := s.Find("a")
+	for _, v := range l.Nodes[0].Attr {
+		if v.Key == "href" {
+			href := v.Val
+			idx := strings.LastIndex(href, "/")
+			m = idAndSlugRegexp.FindStringSubmatch(href[idx+1:])
+			if m != nil {
+				t.Slug = m[2]
+			}
+		}
+	}
+	t.Name = strings.TrimSpace(l.Text())
+	return t
 }
 
 type StoryURL struct {
@@ -63,15 +89,33 @@ func (p *WhateleyPage) Authors() string {
 }
 
 func (p *WhateleyPage) Category() string {
-	return strings.TrimSpace(p.document.Find(`.category-name a[itemprop="name"]`).Text())
+	return strings.TrimSpace(p.document.Find(`.category-name a`).Text())
+}
+
+func (p *WhateleyPage) CategoryLink() string {
+	val, _ := p.document.Find(`.category-name a`).Attr("href")
+	return val
 }
 
 func (p *WhateleyPage) PublishDate() (time.Time, error) {
+	if p.StoryID == "551" {
+		// The date of record is broken, so select a time between the previous and next chapter
+		return time.Parse(timeFmt, "2016-03-10T08:53:07-08:00")
+	}
 	t, ok := p.document.Find(`time[itemprop="datePublished"]`).Attr("datetime")
 	if !ok {
 		return time.Time{}, fmt.Errorf("could not find time.datePublished in %s", p.URL())
 	}
 	return time.Parse(timeFmt, t)
+}
+
+func (p *WhateleyPage) Tags() []StoryTag {
+	sel := 	p.document.Find(`ul.tags li`)
+	tags := make([]StoryTag, sel.Length())
+	sel.Each(func(i int, s *goquery.Selection) {
+		tags[i] = ParseTag(s)
+	})
+	return tags
 }
 
 func (p *WhateleyPage) ViewCount() int64 {
@@ -115,6 +159,7 @@ func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
 // TODO - these fail for library, faq, etc
 var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
 var printURLRegexp = regexp.MustCompile(`\A/index.php/(?:([a-zA-Z0-9-]+)/)?(\d+)-([a-zA-Z0-9-]+)(?:(\d+)-([a-zA-Z0-9-]+))?\?tmpl=component&print=1`)
+var idAndSlugRegexp = regexp.MustCompile(`\A(\d+)-([a-zA-Z0-9-]+)\z`)
 
 var stripExceptionsSelector = `
 head base,
@@ -122,7 +167,24 @@ meta[name="rights"],
 meta[http-equiv="content-type"],
 head title,
 div.item-page,
+.article-info,
+ul.tags,
 div[itemprop="articleBody"]`
+
+func nodeInSelection(n *html.Node, s *goquery.Selection) bool {
+	for {
+		for _, v := range s.Nodes {
+			if n == v {
+				return true
+			}
+		}
+		if n.Parent == nil {
+			break
+		}
+		n = n.Parent
+	}
+	return false
+}
 
 // ParseStoryPage parses a document into a WhateleyPage object.
 // Some processing is performed, e.g. elements not relevant are stripped, and the canonical URL is parsed and stored.
@@ -142,16 +204,14 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		prevLen = dontRemove.Length()
 		dontRemove = dontRemove.AddSelection(dontRemove.Children())
 	}
-	prevLen = 0
-	for dontRemove.Length() != prevLen {
-		prevLen = dontRemove.Length()
-		dontRemove = dontRemove.AddSelection(dontRemove.Parents())
-	}
+	dontRemove = dontRemove.AddSelection(dontRemove.Parents())
 
+	// CPU hog right here
 	removed := page.document.Find("html *").NotSelection(dontRemove).RemoveMatcher(cascadia.Selector(func(n *html.Node) bool {
 		if n.Type == html.TextNode {
-			decision := !dontRemove.IsNodes(n.Parent)
-			return decision
+			if nodeInSelection(n, dontRemove) {
+				return false
+			}
 		}
 		return true
 	}))
@@ -182,21 +242,32 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	// The printing link is the only part of the page where the correct slug is emitted
 	printURL, ok := doc.Find(".print-icon a").Attr("href")
 	if ok {
-		if strings.Contains(printURL, "the-library") {
-			return nil, errors.Errorf("Library stories are not supported at this time (got %s)", printURL)
+		u, err := url.Parse(printURL)
+		if err != nil {
+			return nil, errors.Wrapf(err, "Error parsing %s:", printURL)
 		}
-		// TODO - this fails for library, faq, etc
-		m = printURLRegexp.FindStringSubmatch(printURL)
+		u.RawQuery = ""
+		parts := strings.Split(u.EscapedPath(), "/")
+		if parts[0] != "" || parts[1] != "index.php" {
+			return nil, errors.Errorf("Could not parse canonical URL - doesn't start with /index.php (got %s)", printURL)
+		}
+		if len(parts) < 3 || len(parts) > 5 {
+			return nil, errors.Errorf("Could not parse canonical URL - wrong # of parts (got %s)", printURL)
+		}
+
+		storyPart := parts[len(parts)-1]
+		m = idAndSlugRegexp.FindStringSubmatch(storyPart)
 		if m == nil {
-			return nil, errors.Errorf("Could not parse canonical URL (got %s)", printURL)
+			return nil, errors.Errorf("Could not parse canonical URL - failed to extract id and slug (got %s)", printURL)
 		}
-		page.CategorySlug = m[1]
-		page.StoryID = m[2]
-		page.StorySlug = m[3]
+		page.StoryID = m[1]
+		page.StorySlug = m[2]
+
+		page.CategorySlug = strings.Join(parts[2:len(parts)-1], "/")
 	} else {
 		// Fall back on the requested URL
 		canonical, ok := doc.Find(`head base`).Attr("href")
-		fmt.Fprintf(os.Stderr, "warning: falling back to <base>")
+		fmt.Fprintln(os.Stderr, "warning: falling back to <base>")
 		if !ok {
 			return nil, errors.Errorf("could not find <base href> (canonical URL)")
 		}

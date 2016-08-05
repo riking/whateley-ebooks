@@ -25,6 +25,8 @@ func fatal(err error) {
 	os.Exit(2)
 }
 
+var purgeCache = flag.Bool("purge", false, "Purge cache for the page")
+
 func main() {
 	// flag.String()
 
@@ -37,12 +39,26 @@ func main() {
 		os.Exit(1)
 	}
 
+	if *purgeCache == true {
+		acted, err := networkAccess.PurgeCache(client.StoryURL{StoryID: storyID})
+		if err != nil {
+			cmd.Fatal(err)
+		}
+		if acted {
+			fmt.Println("Cache purged..")
+		}
+	}
+
 	page, err := networkAccess.GetStoryByID(storyID)
 	if err != nil {
-		fatal(err)
+		cmd.Fatal(err)
 	}
 	fmt.Println(page.URL())
 	fmt.Println(page.PublishDate())
+	tags := page.Tags()
+	for _, v := range tags {
+		fmt.Printf("%s %s - %s\n", v.ID, v.Slug, v.Name)
+	}
 	ioutil.WriteFile("dlstory-before.html", []byte(page.StoryBody()), 0644)
 	ebooks.FixForEbook(page)
 	ioutil.WriteFile("dlstory-after.html", []byte(page.StoryBody()), 0644)

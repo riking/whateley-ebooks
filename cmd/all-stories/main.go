@@ -14,6 +14,8 @@ import (
 
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/cmd"
+	"flag"
+	"runtime/pprof"
 )
 
 type result struct {
@@ -22,36 +24,102 @@ type result struct {
 	PublishDate time.Time
 }
 
-func wordcountStory(ch chan<- result, storyID string, networkAccess *client.WANetwork) {
+func getStory(ch chan<- *client.WhateleyPage, storyID string, networkAccess *client.WANetwork) {
 	story, err := networkAccess.GetStoryByID(storyID)
 	if err != nil {
 		if strings.Contains(err.Error(), "fetching page HTML") {
-			fmt.Fprintf(os.Stderr, "[W] Ignoring error fetching HTML for %s: %s\n", storyID, err)
+			if strings.Contains(err.Error(), "404 for http") {
+				fmt.Fprint(os.Stderr, "4")
+				return
+			}
+			if strings.Contains(err.Error(), "403 for http") {
+				fmt.Fprint(os.Stderr, "3")
+				return
+			}
+			fmt.Fprintf(os.Stderr, "\n[W] Ignoring error fetching HTML for %s: %s\n", storyID, err)
 			return
 		}
 		if strings.Contains(err.Error(), "Could not parse canonical URL") {
 			if strings.Contains(err.Error(), "/community") {
+				fmt.Fprint(os.Stderr, "C")
 				return
 			}
-		}
-		if strings.Contains(err.Error(), "Library stories are not supported") {
-			return
 		}
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	if story.CategorySlug == "original-timeline" || story.CategorySlug == "stories" || story.CategorySlug == "2nd-gen-canon" {
-		count := len(strings.Fields(story.StoryBodySelection().Text()))
-		date, err := story.PublishDate()
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "[F] Could not parse date for %s: %s\n", storyID, err)
-			os.Exit(1)
-		}
-		ch <- result{StoryURL: story.StoryURL, WordCount: count, PublishDate: date}
+
+	categoryAccepted := *includeEverything
+	if *includeGen1 && (story.CategorySlug == "original-timeline" || story.CategorySlug == "stories") {
+		categoryAccepted = true
 	}
+	if *includeGen2 && story.CategorySlug == "2nd-gen-canon" {
+		categoryAccepted = true
+	}
+	if *includeFanFiction && story.CategorySlug == "featured-fan-fiction" {
+		categoryAccepted = true
+	}
+	if *includeLibrary && (story.CategorySlug == "the-library" || strings.HasPrefix(story.CategorySlug, "the-library/")) {
+		categoryAccepted = true
+	}
+
+	if !categoryAccepted {
+		fmt.Fprintf(os.Stderr, "\n[W] Ignoring page %s with category %s\n", story.StoryID, story.CategorySlug)
+		return
+	}
+	ch <- story
 }
 
-var skipIDs = []int{1, 4, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26, 30, 358, 396, 641, 672}
+func noopProcess(ch chan<- result, story *client.WhateleyPage, networkAccess *client.WANetwork) {
+	//date, err := story.PublishDate()
+	//if err != nil {
+	//	fmt.Fprintf(os.Stderr, "\n[F] Could not parse date for %s: %s\n", story.StoryID, err)
+	//	os.Exit(1)
+	//}
+	ch <- result{StoryURL: story.StoryURL}
+}
+
+func wordcountProcess(ch chan<- result, story *client.WhateleyPage, networkAccess *client.WANetwork) {
+	count := len(strings.Fields(story.StoryBodySelection().Text()))
+	date, err := story.PublishDate()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "[F] Could not parse date for %s: %s\n", story.StoryID, err)
+		os.Exit(1)
+	}
+	ch <- result{StoryURL: story.StoryURL, WordCount: count, PublishDate: date}
+}
+
+type categoryPair struct {
+	Text string
+	FromURL string
+	Href string
+}
+var allCategories = make(map[categoryPair]struct{})
+var allTags = make(map[client.StoryTag]struct{})
+var allAuthors = make(map[string]struct{})
+
+func recordUniqueProcess(ch chan<- result, story *client.WhateleyPage, networkAccess *client.WANetwork) {
+	cat := categoryPair{
+		FromURL: story.CategorySlug,
+		Text: story.Category(),
+		Href: story.CategoryLink(),
+	}
+	if cat.FromURL == "-" || cat.Text == "" || cat.Href == ""{
+		fmt.Println("############## EMPTY CATEGORY", story.StoryURL.StoryID, story.StoryURL.URL())
+	}
+	allCategories[cat] = struct{}{}
+	for _, v := range story.Tags() {
+		allTags[v] = struct{}{}
+	}
+	allAuthors[story.Authors()] = struct{}{}
+	noopProcess(ch, story, networkAccess)
+}
+
+//var skipIDs = []int{1, 4, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26, 30, 358, 396, 641, 672}
+var skipIDs = []int{
+	672, // Is /published, its category is /15-public-news
+	680, // Is /chat, its category is /36-empty
+}
 
 func emitAllIDs(idChan chan string, maxID int) {
 	// Work Producer
@@ -128,7 +196,7 @@ func sortingConsumer(resChan chan result) {
 
 	for v := range resChan {
 		ary = append(ary, dateAndID{Published: v.PublishDate, StoryURL: v.StoryURL})
-		fmt.Fprintf(os.Stderr, ".")
+		fmt.Fprint(os.Stderr, ".")
 	}
 
 	sort.Sort(ary)
@@ -139,34 +207,82 @@ func sortingConsumer(resChan chan result) {
 	}
 }
 
+func collectingConsumer(resChan chan result) []result {
+	ary := make([]result, 0, 150)
+
+	for v := range resChan {
+		ary = append(ary, v)
+		fmt.Fprint(os.Stderr, ".")
+	}
+
+	return ary
+}
+
+var includeEverything = flag.Bool("everything", false, "Process everything")
+var includeLibrary = flag.Bool("library", false, "Include library stories")
+var includeFanFiction = flag.Bool("fanfiction", false, "Include fanfiction")
+var includeGen2 = flag.Bool("gen2", true, "Include gen2")
+var includeGen1 = flag.Bool("gen1", true, "Include gen1")
+
+var cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
+
 func main() {
 	// flag.String()
 
 	networkAccess := cmd.Setup()
 	networkAccess.UserAgent("Ebook tool - Examine All Stories (+github.com/riking/whateley-ebooks)")
 
+	fmt.Fprintf(os.Stderr, "Gen1: %s", *includeGen1)
+	fmt.Fprintf(os.Stderr, "Gen2: %s", *includeGen2)
+	fmt.Fprintf(os.Stderr, "Library: %s", *includeLibrary)
+	fmt.Fprintf(os.Stderr, "Fan Fiction: %s", *includeFanFiction)
 	//networkAccess.DBTest()
 	//return
 
-	const maxID = 686
+	workFunc := recordUniqueProcess
+
+	const maxID = 691
 	const parallelLevel = 8
 	// library: 434
 
 	idChan := make(chan string)
+	storyChan := make(chan *client.WhateleyPage)
 	resChan := make(chan result)
-	var wg sync.WaitGroup
+	var fetchWg sync.WaitGroup
+	var procWg sync.WaitGroup
 
-	// Worker
-	worker := func() {
+	fetchWorker := func() {
 		for v := range idChan {
-			wordcountStory(resChan, v, networkAccess)
+			getStory(storyChan, v, networkAccess)
 		}
-		wg.Done()
+		fetchWg.Done()
 	}
 
-	wg.Add(parallelLevel)
+	fetchWg.Add(parallelLevel)
 	for i := 0; i < parallelLevel; i++ {
-		go worker()
+		go fetchWorker()
+	}
+
+	processWorker := func() {
+		for v := range storyChan {
+			workFunc(resChan, v, networkAccess)
+		}
+		procWg.Done()
+	}
+
+	procWg.Add(parallelLevel)
+	for i := 0; i < parallelLevel; i++ {
+		go processWorker()
+	}
+
+
+	if *cpuProfile != "" {
+		f, err := os.Create(*cpuProfile)
+		if err != nil {
+			cmd.Fatal(err)
+		}
+		pprof.StartCPUProfile(f)
+		defer pprof.StopCPUProfile()
 	}
 
 	go emitAllIDs(idChan, maxID)
@@ -193,10 +309,37 @@ func main() {
 	//}()
 
 	go func() {
-		wg.Wait()
+		fetchWg.Wait()
+		close(storyChan)
+	}()
+	go func() {
+		procWg.Wait()
 		close(resChan)
 	}()
 
-	wordcountConsumer(resChan)
+	//wordcountConsumer(resChan)
 	//sortingConsumer(resChan)
+	allStoryUrls := collectingConsumer(resChan)
+
+	const separator = "============================================================"
+	fmt.Println(separator)
+
+	for _, v := range allStoryUrls {
+		fmt.Println(v.URL())
+	}
+	fmt.Println(separator)
+
+	for k := range allAuthors {
+		fmt.Println(k)
+	}
+	fmt.Println(separator)
+
+	for k := range allCategories {
+		fmt.Println(k)
+	}
+	fmt.Println(separator)
+
+	for k := range allTags {
+		fmt.Println(k)
+	}
 }

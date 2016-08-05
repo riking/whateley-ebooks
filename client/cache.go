@@ -151,6 +151,11 @@ func (c *WANetwork) setupDB() error {
 		return errors.Wrap(err, "preparing statements")
 	}
 
+	stmtDeleteStoryCacheData, err = c.db.Prepare(deleteStoryCacheData)
+	if err != nil {
+		return errors.Wrap(err, "preparing statements")
+	}
+
 	stmtSelectAssetExistsInCache, err = c.db.Prepare(selectAssetExistsInCache)
 	if err != nil {
 		return errors.Wrap(err, "preparing statements")
@@ -194,6 +199,9 @@ VALUES (?, ?, ?)`
 UPDATE cachedPages
 SET lastFetched=?, body=?
 WHERE id = ?`
+	deleteStoryCacheData = `
+DELETE FROM cachedPages
+WHERE cacheKey = ?`
 	selectAssetExistsInCache = `
 SELECT id, lastFetched FROM cachedAssets WHERE cacheKey = ?`
 	selectAssetCacheData = `
@@ -217,6 +225,7 @@ var (
 	stmtSelectStoryCacheData     *sql.Stmt
 	stmtInsertStoryCacheData     *sql.Stmt
 	stmtUpdateStoryCacheData     *sql.Stmt
+	stmtDeleteStoryCacheData *sql.Stmt
 	stmtSelectAssetExistsInCache *sql.Stmt
 	stmtSelectAssetCacheData     *sql.Stmt
 	stmtInsertAssetCacheData     *sql.Stmt
@@ -228,6 +237,15 @@ var (
 const cacheStalePeriod = 1960 * time.Hour
 
 var errExpired = errors.Errorf("cache entry expired")
+
+func (c *WANetwork) PurgeCache(u StoryURL) (bool, error) {
+	r, err := stmtDeleteStoryCacheData.Exec(u.CacheKey())
+	if err != nil {
+		return false, err
+	}
+	count, err := r.RowsAffected()
+	return count != 0, err
+}
 
 // returns -1 if no match
 func (c *WANetwork) cacheCheckStory(u StoryURL) (int64, error) {
