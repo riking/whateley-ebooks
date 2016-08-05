@@ -98,7 +98,10 @@ var allCategories = make(map[categoryPair]struct{})
 var allTags = make(map[client.StoryTag]struct{})
 var allAuthors = make(map[string]struct{})
 
-func recordUniqueProcess(ch chan<- result, story *client.WhateleyPage, networkAccess *client.WANetwork) {
+func recordUniqueProcess(ch chan<- result, story *client.WhateleyPage, networkAccess *client.WANetwork, extra *map[string]interface{}) {
+	catMap := (*extra)["c"].(map[categoryPair]struct{})
+	tagMap := (*extra)["t"].(map[client.StoryTag]struct{})
+	authorMap := (*extra)["a"].(map[string]struct{})
 	cat := categoryPair{
 		FromURL: story.CategorySlug,
 		Text: story.Category(),
@@ -107,11 +110,11 @@ func recordUniqueProcess(ch chan<- result, story *client.WhateleyPage, networkAc
 	if cat.FromURL == "-" || cat.Text == "" || cat.Href == ""{
 		fmt.Println("############## EMPTY CATEGORY", story.StoryURL.StoryID, story.StoryURL.URL())
 	}
-	allCategories[cat] = struct{}{}
+	catMap[cat] = struct{}{}
 	for _, v := range story.Tags() {
-		allTags[v] = struct{}{}
+		tagMap[v] = struct{}{}
 	}
-	allAuthors[story.Authors()] = struct{}{}
+	authorMap[story.Authors()] = struct{}{}
 	noopProcess(ch, story, networkAccess)
 }
 
@@ -263,16 +266,22 @@ func main() {
 		go fetchWorker()
 	}
 
-	processWorker := func() {
+	extraDatas := make([]map[string]interface{}, parallelLevel)
+	processWorker := func(i int) {
+		extraData := make(map[string]interface{})
+		extraData["c"] = make(map[categoryPair]struct{})
+		extraData["t"] = make(map[client.StoryTag]struct{})
+		extraData["a"] = make(map[string]struct{})
 		for v := range storyChan {
-			workFunc(resChan, v, networkAccess)
+			workFunc(resChan, v, networkAccess, &extraData)
 		}
+		extraDatas[i] = extraData
 		procWg.Done()
 	}
 
 	procWg.Add(parallelLevel)
 	for i := 0; i < parallelLevel; i++ {
-		go processWorker()
+		go processWorker(i)
 	}
 
 
@@ -287,27 +296,6 @@ func main() {
 
 	go emitAllIDs(idChan, maxID)
 
-	//ebook := "gen2"
-	//
-	//var ebooksFile map[string]*ebooks.EpubDefinition
-	//b, err := ioutil.ReadFile(fmt.Sprintf("book-definitions/%s.yml", ebook))
-	//if err != nil {
-	//	fatal(err)
-	//}
-	//err = yaml.Unmarshal(b, &ebooksFile)
-	//if err != nil {
-	//	fatal(err)
-	//}
-	//go func() {
-	//	b := ebooksFile[ebook]
-	//	for _, v := range b.Parts {
-	//		if v.Story.ID != "" {
-	//			idChan <- v.Story.ID
-	//		}
-	//	}
-	//	close(idChan)
-	//}()
-
 	go func() {
 		fetchWg.Wait()
 		close(storyChan)
@@ -320,6 +308,20 @@ func main() {
 	//wordcountConsumer(resChan)
 	//sortingConsumer(resChan)
 	allStoryUrls := collectingConsumer(resChan)
+
+	// combine per-goroutine maps
+	for _, ed := range extraDatas {
+		fmt.Println(ed)
+		for k, v := range ed["c"].(map[categoryPair]struct{}) {
+			allCategories[k] = v
+		}
+		for k, v := range ed["t"].(map[client.StoryTag]struct{}) {
+			allTags[k] = v
+		}
+		for k, v := range ed["a"].(map[string]struct{}) {
+			allAuthors[k] = v
+		}
+	}
 
 	const separator = "============================================================"
 	fmt.Println(separator)
