@@ -10,6 +10,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"sync"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/andybalholm/cascadia"
@@ -208,8 +209,11 @@ var hrParagraphs = []string{
 }
 
 var hrParagraphRegex *regexp.Regexp
+var hrParagraphRegexLock sync.Mutex
 
 func getHrParagraphRegex() *regexp.Regexp {
+	hrParagraphRegexLock.Lock()
+	defer hrParagraphRegexLock.Unlock()
 	if hrParagraphRegex != nil {
 		return hrParagraphRegex
 	}

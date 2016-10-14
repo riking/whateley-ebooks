@@ -17,7 +17,7 @@ library:
       action: setAttr
       attr: style
       replace: "font-size: 1.35em;"
-  # moved to be processed for all stories
+  # moved to code, to be processed for all stories
   #x12quote:
   #  - findtext: "\u0012"
   #    replacetext: "’"
@@ -101,6 +101,28 @@ library:
     replacetext: "&#34;<i>Leave me the"
   - findtext: "you say at"
     replacetext: "you stay at"
+59:
+  - findtext: "_that_!&#34;"
+    replacetext: "_that_!"
+60:
+  - findtext: "exhaled. &#39;I&#39;"
+    replacetext: "exhaled. &#34;I&#39;"
+  - findtext: "messed up."
+    replacetext: "messed up.&#34;"
+  - findtext: "- intently -"
+    replacetext: "- intensely - "
+  - findtext: "Roger ,,,"
+    replacetext: "Roger…"
+61:
+  - findtext: "-and"
+    replacetext: "- and"
+  - findtext: "talk to today."
+    replacetext: "talk to today.&#34;"
+  - findtext: "Is own"
+    replacetext: "His own"
+62:
+  - findtext: "with Officer Lindon"
+    replacetext: "with Officer Lindon."
 70:
   - findtext: "more.,"
     replacetext: "more,"
@@ -124,6 +146,18 @@ library:
 73:
   - findtext: "shere the"
     replacetext: "where the"
+  - findtext: "to her friends, I suppose."
+    replacetext: "to her friends, I suppose.&#34;"
+74:
+  - findtext: "surprises for her.&#34;"
+    replacetext: "surprises for her."
+  - findtext: "&#39; I protested."
+    replacetext: "&#34; I protested."
+76:
+  - findtext: "yourself own"
+    replacetext: "your own"
+  - findtext: "naove"
+    replacetext: "naïve"
 82:
   # Add anchor for table of contents
   - select: h2:contains("Canto I")
