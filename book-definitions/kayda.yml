@@ -76,19 +76,19 @@ parts:
       id: 59
       slug: kayda-2-trials-of-a-warrior-ch-1
 
-  - toc: "Chapter 2: Hetkala"
+  - toc: "Chapter 2: Hetkála"
     toc-nest: 2
     story:
       id: 60
       slug: kayda-2-trials-of-a-warrior-ch-2
 
-  - toc: "Chapter 3: Ptan na Ithunkasan"
+  - toc: "Chapter 3: Ptaŋ na Ithunkasan"
     toc-nest: 2
     story:
       id: 61
       slug: kayda-2-trials-of-a-warrior-ch-3
 
-  - toc: "Chapter 4: Itukala na Suka"
+  - toc: "Chapter 4: Itukala na Šuŋka"
     toc-nest: 2
     story:
       id: 62

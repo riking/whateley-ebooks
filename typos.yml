@@ -1,7 +1,11 @@
+# This file is licensed as CC-BY-SA 4.0
+# There are additional license grants granted to certain groups of people.
 # Please see COPYRIGHT.md, CONTRIBUTING.md, and LICENSE-TYPOS.txt
 
+---
 # quotes: ‘’ “”
 # do NOT fix "MiST" (mystery science theater), as it shows up in multiple stories; seems intentional
+# because we're setting utf-8 encoding on the output file, unicode stuff is fine
 
 library:
   replacept:
@@ -17,6 +21,20 @@ library:
       action: setAttr
       attr: style
       replace: "font-size: 1.35em;"
+  lakota_accent:
+    - findtext: "Suka"
+      replacetext: "Šuŋka"
+    - findtext: "Ceta"
+      replacetext: "Četaŋ"
+    - findtext: "Hetkala"
+      replacetext: "Hetkála"
+    - findtext: "Hoka"
+      replacetext: "Ȟoká"
+    - findtext: "Ptan"
+      replacetext: "Pta&#407;"
+    - findtext: "Pahi"
+      replacetext: "<abbr title='Pa-heen'>Pahiŋ</abbr>"
+
   # moved to code, to be processed for all stories
   #x12quote:
   #  - findtext: "\u0012"
@@ -114,6 +132,7 @@ library:
   - findtext: "Roger ,,,"
     replacetext: "Roger…"
 61:
+  - include: lakota_accent
   - findtext: "-and"
     replacetext: "- and"
   - findtext: "talk to today."
@@ -121,8 +140,27 @@ library:
   - findtext: "Is own"
     replacetext: "His own"
 62:
+  - include: lakota_accent
   - findtext: "with Officer Lindon"
     replacetext: "with Officer Lindon."
+  - findtext: "slowly. &#34;Yes."
+    replacetext: "slowly. &#34;Yes.&#34;"
+  - findtext: "to the movie."
+    replacetext: "to the movie.&#34;"
+  - findtext: "discrete"
+    replacetext: "discreet" # two matches, both are correct
+  - findtext: "Are you&#39;re still"
+    replacetext: "Are you still"
+  - findtext: "We are truly"
+    replacetext: "&#34;We are truly"
+  - findtext: "two. Shelly"
+    replacetext: "two, Shelly"
+63:
+  - include: lakota_accent
+  - findtext: "in her hips.&#34;"
+    replacetext: "in her hips."
+  - findtext: "clichi"
+    replacetext: "cliché"
 70:
   - findtext: "more.,"
     replacetext: "more,"
@@ -149,6 +187,9 @@ library:
   - findtext: "to her friends, I suppose."
     replacetext: "to her friends, I suppose.&#34;"
 74:
+  - findtext: "pahi"
+    replacetext: "Pahi"
+  - include: lakota_accent
   - findtext: "surprises for her.&#34;"
     replacetext: "surprises for her."
   - findtext: "&#39; I protested."
@@ -539,3 +580,13 @@ library:
   - select: h3 span[style], h5 span[style]
     action: deleteAttr
     attr: style
+720:
+  - include: lakota_accent
+  - findtext: "to term which"
+    replacetext: "to terms which"
+  - findtext: "symbolism&#34;"
+    replacetext: "symbolism.&#34;"
+    # conflicted about this one. I really liked how it flowed without a paragraph break here.
+    # I tried using a semicolon but then it looked like poetry
+  - findtext: "spat angrily, &#34;And"
+    replacetext: "spat angrily.</p><p>&#34;And"
