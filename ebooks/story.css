@@ -11,6 +11,7 @@ img {
     height: auto !important;
     margin: 10px 0;
 }
+
 .lyrics, /* Kayda */ .dream {
     margin-left: 0.5in;
     margin-right: 0.5in;
@@ -21,6 +22,11 @@ img {
 /* Kayda */
 .dream {
     font-style: italic;
+}
+
+.whatif-disclaimer {
+	max-width: 80%;
+	font-size: 80%;
 }
 
 /* end reviewed styles */

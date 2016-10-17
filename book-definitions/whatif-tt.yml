@@ -1,0 +1,24 @@
+
+id: whatif-tt
+author: Phoenix Spiritus
+author-sort: Phoenix Spiritus
+title: Twisted Triplets
+uuid: 9fb142e8-686a-4e46-be8d-008397638482
+series: Whateley Academy Independent Fiction
+publisher: Whateley Press
+
+assets:
+
+parts:
+  - toc: "Book 0: Seeing is Believing"
+    story: {id: 701}
+  - toc: "Book 1: Twisted Triplets"
+    toc-nest: 1
+    coverpage: <h1>Twisted Triplets</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 704}
+  - coverpage: >
+      <center><h3>to be continued…</h3></center>
+      <p>This book was last updated on 12 October 2016</p>
+

@@ -34,6 +34,15 @@ library:
       replacetext: "Pta&#407;"
     - findtext: "Pahi"
       replacetext: "<abbr title='Pa-heen'>Pahiŋ</abbr>"
+  whatif:
+    - select: img[alt="WhatIF Logo"]
+      action: replacehtml
+      replace: >
+        <div class='whatif-disclaimer'>
+        <p>This is a Whateley Independent Fiction story - a body of non-canon stories set in the Whateley Academy Universe.
+        IF may include canon characters, events, and ideas but does not set precedent.
+        For more information, see <a href='http://whateleyacademy.net/index.php/whateley-independent-fiction'>whateleyacademy.net/index.php/whateley-independent-fiction</a>.
+        </p></div>
 
   # moved to code, to be processed for all stories
   #x12quote:
@@ -580,6 +589,10 @@ library:
   - select: h3 span[style], h5 span[style]
     action: deleteAttr
     attr: style
+701:
+  - include: whatif
+704:
+  - include: whatif
 720:
   - include: lakota_accent
   - findtext: "to term which"
