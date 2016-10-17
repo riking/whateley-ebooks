@@ -18,9 +18,6 @@ parts:
   - toc: "Part 2"
     toc-nest: 2
     story: {id: 236}
-  - coverpage: >
-      <h4>Publisher's Note</h4>
-      <p>Note that the next story was published after Written In Blood Part 2.</p>
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 340}
@@ -35,7 +32,6 @@ parts:
     story: {id: 597}
   - toc: "Written in Blood"
     story: {id: 631}
-    # editorial decision: put all parts here in order
   - toc: "Part 2"
     toc-nest: 2
     story: {id: 632}
@@ -55,6 +51,8 @@ parts:
     story: {id: 660}
   - toc: "Blood Sisters Part 1"
     story: {id: 650}
+  - toc: "Blood Sisters Part 2"
+    story: {id: 668}
   - toc: "I Don't Think We're in Kansas Anymore"
     story: {id: 635}
   - toc: "Part 2"
@@ -63,11 +61,30 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 655}
-  - toc: "Blood Sisters Part 2"
-    story: {id: 668}
-  - toc: "I Don't Think We're in Kansas Anymore: Part 4"
+  - toc: "Part 4"
+    toc-nest: 2
     story: {id: 665}
   - toc: "Professional Courtesy"
     story: {id: 684}
-  - toc: "I Don't Think We're in Kansas Anymore: Part 5"
+  - toc: "Part 5"
+    toc-nest: 2
     story: {id: 691}
+  - toc: "Glimpses of the Sun"
+    story: {id: 689}
+  - toc: "IDTWIKA: Part 6"
+    toc-nest: 2
+    story: {id: 694}
+  - toc: "Myriad Meetings: Part 1"
+    story: {id: 659}
+  - toc: "The Writing On the Wall"
+    toc-nest: 1
+    story: {id: 705}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 707}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 715}
+  - coverpage: >
+      <center><h3>to be continued…</h3></center>
+      <p>This book was last updated on 16 October 2016</p>

@@ -1,0 +1,36 @@
+
+id: whatif-featured
+author: Various Authors
+author-sort: Various
+title: Featured Independent Fiction
+uuid: b9de6a3a-a7c6-41d5-8831-17bf863ead8f
+series: Whateley Academy Independent Fiction
+publisher: Whateley Press
+
+assets:
+
+parts:
+  - toc: "Casey Steele: Whateley Dazed"
+    story: {id: 485}
+  - toc: "Dream Lover"
+    story: {id: 328}
+  - toc: "Fate Sucks: Part 1"
+    story: {id: 116}
+  - toc: "A Light in the Dark"
+    story: {id: 254}
+  - toc: "Two Become One: Part 1"
+    story: {id: 211}
+  - toc: "Never"
+    story: {id: 191}
+  - toc: "How Far"
+    story: {id: 255}
+  - toc: "Ma-at: Part 1, Part 2"
+    story: {id: 511}
+  - toc: "Ma-at: Part 3"
+    story: {id: 652}
+  - toc: "Kitsune"
+    story: {id: 117}
+  - coverpage: >
+      <center><h3>to be continued…</h3></center>
+      <p>This book was last updated on 16 October 2016</p>
+

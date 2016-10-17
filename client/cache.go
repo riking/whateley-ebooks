@@ -73,6 +73,9 @@ var createMigrationsTable = dbMigrations[0]
 
 func (c *WANetwork) setupDB() error {
 	var firstRun bool
+
+	c.db.SetMaxOpenConns(1)
+
 	rows, err := c.db.Query("select version from migrations")
 	if sErr, ok := err.(sqlite3.Error); ok {
 		if sErr.Error() == "no such table: migrations" {
@@ -225,7 +228,7 @@ var (
 	stmtSelectStoryCacheData     *sql.Stmt
 	stmtInsertStoryCacheData     *sql.Stmt
 	stmtUpdateStoryCacheData     *sql.Stmt
-	stmtDeleteStoryCacheData *sql.Stmt
+	stmtDeleteStoryCacheData     *sql.Stmt
 	stmtSelectAssetExistsInCache *sql.Stmt
 	stmtSelectAssetCacheData     *sql.Stmt
 	stmtInsertAssetCacheData     *sql.Stmt
