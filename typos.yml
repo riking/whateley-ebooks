@@ -570,6 +570,35 @@ library:
   - include: replacept
 651:
   - include: replacept
+659:
+  - select: "span[style *= italic]"
+    action: wrapInner
+    replace: <em>
+  - select: "span[style *= underline]"
+    action: wrapInner
+    replace: <u>
+  - select: span
+    action: deleteAttr
+    attr: style
+  - select: p:not([style]):not(:contains("Lowering her head"))
+    action: replacehtml
+    replace: " "
+  - select: p[style]
+    action: deleteAttr
+    attr: style
+  - select: p
+    action: deleteAttr
+    attr: dir
+  - select: p > img
+    selectmod: [parent]
+    action: replacehtml
+    replace: <hr>
+  - select: p > span > img
+    selectmod: [parent, parent]
+    action: replacehtml
+    replace: <hr>
+  - select: p > span > *
+    action: unwrap
 678:
   - select: p
     action: deleteAttr

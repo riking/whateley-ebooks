@@ -199,6 +199,7 @@ var hrSelectors = []string{
 	// `center > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
 	`center > img[alt="linebreak shadow"]`,
 	`[align=center] > img[alt="linebreak shadow"]`,
+	`p[style] > img[alt="line break short"]`,
 	`div.hr`,
 	`div.hr2`,
 	`hr[style]`,
