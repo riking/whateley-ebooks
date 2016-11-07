@@ -11,11 +11,11 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
-	"strings"
 )
 
 type Doer interface {

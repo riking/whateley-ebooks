@@ -659,21 +659,38 @@ parts:
     story: {id: 118}
   # end shuffle
 
-  - toc: "All the King's Horses…"
-    story: {id: 560}
   - toc: "Learning to Hunt"
     coverpage: "<p>Switch to kayda.epub and read Learning to Hunt.</p>"
   - toc: "Kayda 8: The Best Days of Our Lives: Part 1"
     coverpage: "<p>Switch to kayda.epub and read The Best Days of Our Lives: Part 1.</p>"
   - toc: "Pomp and Conspiracy"
     story: {id: 651}
-  - toc: "A Good Man: Part 1"
-    story: {id: 510}
-  - toc: "Kayda 8: The Best Days of Our Lives: Part 2"
-    coverpage: "<p>Switch to kayda.epub and read The Best Days of Our Lives: Part 2.</p>"
   - toc: "The Boys of Summer"
     story: {id: 678}
   - toc: "Kayda 8: The Best Days of Our Lives: Part 2"
+    story: {id: 657}
+  - toc: "Kayda 8: The Best Days of Our Lives: Part 3"
     story: {id: 681}
+  - toc: "A Good Man: Part 1"
+    story: {id: 510}
+  - toc: "A Good Man: Part 2"
+    story: {id: 724}
   - toc: "Diamonds Are a Vamp's Best Friend: Part 3"
     story: {id: 685}
+  - toc: "Wondercute Saga"
+    toc-nest: 1
+    coverpage: "<h1>Wondercute</h1>"
+  - toc: "All the King's Horses…"
+    story: {id: 560}
+    toc-nest: 2
+  - toc: "Veni, Vidi, Cutie"
+    story: {id: 712}
+    toc-nest: 2
+
+  - toc: "Lancer's Summer"
+    toc-nest: 1
+    coverpage: "<h1>Lancer's Summer Break</h1>"
+  - toc: "One Woe Doth Thread Upon Another's Heel"
+    story: {id: 656}
+  - toc: "Life's But a Walking Shadow"
+    story: {id: 673}

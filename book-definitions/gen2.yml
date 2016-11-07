@@ -85,6 +85,8 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 715}
+  - toc: "Following the Path of Cute"
+    story: {id: 729}
   - coverpage: >
       <center><h3>to be continued…</h3></center>
       <p>This book was last updated on 16 October 2016</p>

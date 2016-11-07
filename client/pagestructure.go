@@ -110,7 +110,7 @@ func (p *WhateleyPage) PublishDate() (time.Time, error) {
 }
 
 func (p *WhateleyPage) Tags() []StoryTag {
-	sel := 	p.document.Find(`ul.tags li`)
+	sel := p.document.Find(`ul.tags li`)
 	tags := make([]StoryTag, sel.Length())
 	sel.Each(func(i int, s *goquery.Selection) {
 		tags[i] = ParseTag(s)

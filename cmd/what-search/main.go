@@ -3,13 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-
-	"github.com/PuerkitoBio/goquery"
-	"github.com/riking/whateley-ebooks/cmd"
 	"os"
 	"regexp"
 	"sort"
 	"strconv"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/riking/whateley-ebooks/cmd"
 )
 
 func main() {

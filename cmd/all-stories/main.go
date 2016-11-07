@@ -4,8 +4,10 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
+	"runtime/pprof"
 	"sort"
 	"strconv"
 	"strings"
@@ -14,8 +16,6 @@ import (
 
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/cmd"
-	"flag"
-	"runtime/pprof"
 )
 
 type result struct {
@@ -90,10 +90,11 @@ func wordcountProcess(ch chan<- result, story *client.WhateleyPage, networkAcces
 }
 
 type categoryPair struct {
-	Text string
+	Text    string
 	FromURL string
-	Href string
+	Href    string
 }
+
 var allCategories = make(map[categoryPair]struct{})
 var allTags = make(map[client.StoryTag]struct{})
 var allAuthors = make(map[string]struct{})
@@ -104,10 +105,10 @@ func recordUniqueProcess(ch chan<- result, story *client.WhateleyPage, networkAc
 	authorMap := (*extra)["a"].(map[string]struct{})
 	cat := categoryPair{
 		FromURL: story.CategorySlug,
-		Text: story.Category(),
-		Href: story.CategoryLink(),
+		Text:    story.Category(),
+		Href:    story.CategoryLink(),
 	}
-	if cat.FromURL == "-" || cat.Text == "" || cat.Href == ""{
+	if cat.FromURL == "-" || cat.Text == "" || cat.Href == "" {
 		fmt.Println("############## EMPTY CATEGORY", story.StoryURL.StoryID, story.StoryURL.URL())
 	}
 	catMap[cat] = struct{}{}
@@ -283,7 +284,6 @@ func main() {
 	for i := 0; i < parallelLevel; i++ {
 		go processWorker(i)
 	}
-
 
 	if *cpuProfile != "" {
 		f, err := os.Create(*cpuProfile)

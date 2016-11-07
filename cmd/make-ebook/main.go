@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sync"
 
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
@@ -15,7 +16,6 @@ import (
 	"github.com/riking/whateley-ebooks/client"
 	"github.com/riking/whateley-ebooks/cmd"
 	"github.com/riking/whateley-ebooks/ebooks"
-	"sync"
 )
 
 func createEbook(bookID string, networkAccess *client.WANetwork) error {
