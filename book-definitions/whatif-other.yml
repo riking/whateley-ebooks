@@ -1,0 +1,26 @@
+
+id: whatif-other
+author: Various Authors
+author-sort: Various
+title: Whateley Independent Fiction
+uuid: 09bd202c-6545-4689-9780-d55928c95507
+series: Whateley Academy Independent Fiction
+publisher: Whateley Press
+
+assets:
+
+parts:
+  - toc: "For Master: Part 1"
+    story: {id: 638}
+  - toc: "Evershade Reforming"
+    story: {id: 693}
+  - toc: "Halloween"
+    story: {id: 702}
+  - toc: "A Matter of Fact"
+    story: {id: 709}
+  - toc: "Homecoming, 2026"
+    story: {id: 721}
+  - coverpage: >
+      <center><h3>to be continued…</h3></center>
+      <p>This book was last updated on 06 November 2016</p>
+

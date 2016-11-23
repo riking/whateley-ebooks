@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -20,7 +21,7 @@ import (
 
 func createEbook(bookID string, networkAccess *client.WANetwork) error {
 	var ebooksFile *ebooks.EpubDefinition
-	attemptFiles := []string{bookID, fmt.Sprintf("book-definitions/%s.yml", bookID)}
+	attemptFiles := []string{bookID, fmt.Sprintf("book-definitions/%s", bookID), fmt.Sprintf("book-definitions/%s.yml", bookID)}
 	for _, v := range attemptFiles {
 		_, err := os.Stat(v)
 		if os.IsNotExist(err) {
@@ -37,7 +38,7 @@ func createEbook(bookID string, networkAccess *client.WANetwork) error {
 		}
 	}
 
-	var outFile string = fmt.Sprintf("target/%s.epub", bookID)
+	var outFile string = fmt.Sprintf("target/%s.epub", path.Base(bookID))
 
 	err := ebooksFile.Prepare(networkAccess)
 	if err != nil {
