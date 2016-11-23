@@ -27,6 +27,8 @@ type WANetwork struct {
 	httpClient http.Client
 	options    Options
 	db         *sql.DB
+
+	rateChan   chan struct{}
 }
 
 type Options struct {
@@ -78,6 +80,15 @@ func New(opts Options) *WANetwork {
 			panic(err)
 		}
 	}
+	c.rateChan = make(chan struct{})
+	for i := 0; i < 10; i++ {
+		go func() {
+			for {
+				c.rateChan <- struct{}{}
+				time.Sleep(1*time.Second)
+			}
+		}()
+	}
 	return c
 }
 
@@ -93,6 +104,7 @@ func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
 	if c.options.Offline {
 		return nil, errors.Errorf("Offline mode; cannot request %s", req.URL.String())
 	}
+	<-c.rateChan
 	return c.httpClient.Do(req)
 }
 
