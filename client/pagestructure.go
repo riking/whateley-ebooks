@@ -62,7 +62,7 @@ func (u *StoryURL) URL() string {
 	} else if u.StoryID == "342" {
 		return "http://whateleyacademy.net/index.php/original-timeline/342-tennyo-goes-to-hell-part-2?showall=&start=1"
 	}
-	return fmt.Sprintf("http://whateleyacademy.net/index.php/%s/%s-%s", u.CategorySlug, u.StoryID, u.StorySlug)
+	return fmt.Sprintf("http://whateleyacademy.net/index.php/original-timeline/%s-%s", u.StoryID, u.StorySlug)
 }
 
 func (u *StoryURL) CacheKey() string {

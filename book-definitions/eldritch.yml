@@ -1,0 +1,44 @@
+
+id: eldritch
+title: Whateley - Eldritch / Call The Thunder
+
+author: Joe Gunnarson
+author-sort: Joe Gunnarson
+uuid: 65092ffc-ea40-451f-bb88-9142ec4be056
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "Upheaval: Instructor"
+    story: {id: 466}
+  - toc: "Walking Alone"
+    story: {id: 465}
+  - toc: "New Friends, New Problems"
+    story: {id: 464}
+  - toc: "Call The Thunder"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 2: Call The Thunder</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 306}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 308}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 309}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 311}
+  - toc: "Part 5"
+    toc-nest: 2
+    story: {id: 312}
+  - toc: "Part 6"
+    toc-nest: 2
+    story: {id: 310}
+  - toc: "Part 7"
+    toc-nest: 2
+    story: {id: 307}
+  - toc: "Ashes and Steel"
+    story: {id: 737}

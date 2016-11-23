@@ -56,7 +56,7 @@ func New(opts Options) *WANetwork {
 	c := new(WANetwork)
 	c.options = opts
 	if opts.UserAgent == "" {
-		opts.UserAgent = "Client Name Not Set (+github.com/riking/whateley-ebooks)"
+		opts.UserAgent = "Program Name Not Set (+github.com/riking/whateley-ebooks)"
 	}
 	c.Headers = opts.Headers
 	if c.Headers == nil {
@@ -65,7 +65,7 @@ func New(opts Options) *WANetwork {
 	c.Headers.Set("User-Agent", opts.UserAgent)
 	c.httpClient.Jar, _ = cookiejar.New(nil)
 	c.httpClient.Timeout = 15 * time.Second
-	c.httpClient.Transport = &printingRoundTripper{c.httpClient.Transport}
+	c.httpClient.Transport = &printingRoundTripper{parent: c.httpClient.Transport}
 
 	if opts.CacheFile != "" {
 		conn, err := sql.Open("sqlite3", fmt.Sprintf("file:%s", opts.CacheFile))
@@ -83,6 +83,7 @@ func New(opts Options) *WANetwork {
 
 func (c *WANetwork) UserAgent(ua string) {
 	c.Headers.Set("User-Agent", ua)
+	c.Headers.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
 }
 
 func (c *WANetwork) Do(req *http.Request) (*http.Response, error) {
@@ -144,7 +145,12 @@ func (c *WANetwork) Document(req *http.Request) (*goquery.Document, error) {
 	if resp.StatusCode != 200 {
 		return nil, errors.Errorf("Non-200 response: %d for %s", resp.StatusCode, req.URL.String())
 	}
-	return goquery.NewDocumentFromResponse(resp)
+	b, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+	return goquery.NewDocumentFromReader(bytes.NewReader(b))
 }
 
 func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
