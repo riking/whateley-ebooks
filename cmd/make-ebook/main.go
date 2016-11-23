@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"strings"
 	"sync"
 
 	"github.com/pkg/errors"
@@ -38,7 +39,7 @@ func createEbook(bookID string, networkAccess *client.WANetwork) error {
 		}
 	}
 
-	var outFile string = fmt.Sprintf("target/%s.epub", path.Base(bookID))
+	var outFile string = fmt.Sprintf("target/%s.epub", strings.TrimSuffix(path.Base(bookID), ".yml"))
 
 	err := ebooksFile.Prepare(networkAccess)
 	if err != nil {

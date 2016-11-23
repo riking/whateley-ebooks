@@ -28,7 +28,7 @@ type WANetwork struct {
 	options    Options
 	db         *sql.DB
 
-	rateChan   chan struct{}
+	rateChan chan struct{}
 }
 
 type Options struct {
@@ -85,7 +85,7 @@ func New(opts Options) *WANetwork {
 		go func() {
 			for {
 				c.rateChan <- struct{}{}
-				time.Sleep(1*time.Second)
+				time.Sleep(1 * time.Second)
 			}
 		}()
 	}
