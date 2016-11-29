@@ -304,8 +304,8 @@ func FixForEbook(p *client.WhateleyPage) error {
 	s = s.AddMatcher(cascadia.Selector(hrParagraphMatcher()))
 	s.ReplaceWithHtml("<hr>")
 
-	p.Doc().Find("p hr").Parent().ReplaceWithHtml("<hr>")
-	p.Doc().Find("center hr").Parent().ReplaceWithHtml("<hr>")
+	p.Doc().Find("p hr:only-child").Parent().ReplaceWithHtml("<hr>")
+	p.Doc().Find("center hr:only-child").Parent().ReplaceWithHtml("<hr>")
 
 	// Fix double hrs
 	p.Doc().Find("hr + hr").Remove()

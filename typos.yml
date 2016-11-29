@@ -632,3 +632,6 @@ library:
     # I tried using a semicolon but then it looked like poetry
   - findtext: "spat angrily, &#34;And"
     replacetext: "spat angrily.</p><p>&#34;And"
+740:
+  - findtext: "look kindly on us"
+    replacetext: "look kindly on us…&#34;"

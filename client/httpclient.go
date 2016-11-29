@@ -170,7 +170,7 @@ func (c *WANetwork) GetStoryByID(storyId string) (*WhateleyPage, error) {
 		storyId = storyId[len("story-"):]
 	}
 
-	u := StoryURL{StoryID: storyId, StorySlug: "-", CategorySlug: "-"}
+	u := StoryURL{StoryID: storyId, StorySlug: "slug", CategorySlug: "original-timeline"}
 	var doc *goquery.Document
 	fromCache := false
 

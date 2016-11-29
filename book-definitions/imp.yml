@@ -1,0 +1,61 @@
+
+id: imp
+title: Whateley - Imp
+
+author: Morpheus
+author-sort: Morpheus
+uuid: beaf72d1-ad58-438f-98d0-5bc3a0aaea68
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "The Art of Being the Imp"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 1: The Art of Being the Imp</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 96}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 97}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 98}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 99}
+
+  - toc: "Mission Imp-probable"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 2: Mission Imp-Probable</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 31}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 32}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 33}
+
+  - toc: "An Imp-perfect World"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 3: An Imp-Perfect World</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 92}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 93}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 94}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 95}
+
+  - toc: "First Imp-ression"
+    story: {id: 103}
