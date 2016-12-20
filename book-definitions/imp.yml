@@ -59,6 +59,8 @@ parts:
 
   - toc: "First Imp-ression"
     story: {id: 103}
+  - toc: "A Touch of Mischief"
+    story: {id: 109}
 
   - toc: "A Teacher's Tail"
     toc-nest: 1

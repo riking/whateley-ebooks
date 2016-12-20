@@ -1,0 +1,19 @@
+
+id: hank-spring
+title: Hank - Spring 2006
+
+author: Phoenix Spiritus
+author-sort: Phoenix Spiritus
+uuid: 3a41666f-b09d-4af5-b04d-c1e31a10aa15
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "To Sleep, Perchance to Dream"
+    story: {id: 6}
+  - toc: "So Shalt Thou Show Me Friendship"
+    story: {id: 118}
+  - toc: "One Woe Doth Tread Upon Another's Heel"
+    story: {id: 656}
+  - toc: "Life's But a Walking Shadow"
+    story: {id: 673}
