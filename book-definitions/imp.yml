@@ -59,3 +59,16 @@ parts:
 
   - toc: "First Imp-ression"
     story: {id: 103}
+
+  - toc: "A Teacher's Tail"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 4: A Teacher's Tail</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 745}
+
+  - coverpage: >
+      <center><h3><em>to be continued…</em></h3></center>
+      <hr>
+      <p>This book was last updated on 19 December 2016</p>

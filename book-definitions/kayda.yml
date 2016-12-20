@@ -309,7 +309,19 @@ parts:
       id: 720
       slug: kayda-9-crying-for-a-dream
 
+  - toc: "Kayda 10: There's No Place Like Poe"
+    toc-nest: 1
+    coverpage: >
+      <h1>There's No Place Like Poe</h1>
+      <h2>Book 10</h2>
+      <h3>by ElrodW</h3>
+
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 752}
+
   - coverpage: >
-      <center><h3>to be continued…</h3></center>
-      <p>This book was last updated on 12 October 2016</p>
+      <center><h3><em>to be continued…</em></h3></center>
+      <hr>
+      <p>This book was last updated on 19 December 2016</p>
 
