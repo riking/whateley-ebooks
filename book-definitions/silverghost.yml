@@ -1,0 +1,56 @@
+
+id: silverghost
+author: Bek D. Corbin
+author-sort: Bek Corbin
+title: "Silver Linings (Whateley Universe)"
+title-sort: Silver Linings
+uuid: 6645da01-0176-411c-8a4c-65d3518f9e0b
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+assets:
+  # Silver Ghost, Golden Angel: Part 1, Part 2
+  - download: http://whateleyacademy.net/images/silverghostgoldenangel2.png
+    target: silverghostgoldenangel2.png
+    find: /images/silverghostgoldenangel2.png
+
+parts:
+  - toc: "Silver Linings 1"
+    coverpage: >
+      <h1>Silver Linings 1</h1>
+      <h3>by Bek D. Corbin</h3>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 126}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 127}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 128}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 129}
+  - toc: "Part 5"
+    toc-nest: 2
+    story: {id: 130}
+  - toc: "Silver Linings 2"
+    coverpage: >
+      <h1>Silver Linings 2</h1>
+      <h3>by Bek D. Corbin</h3>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 125}
+  - toc: "Parts 2-9"
+    toc-nest: 2
+    story: {id: 124}
+  - toc: "Silver Ghost, Golden Angel"
+    coverpage: >
+      <h1>Silver Ghost, Golden Angel</h1>
+      <h3>by Bek D. Corbin</h3>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 167}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 747}

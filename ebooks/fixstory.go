@@ -197,8 +197,7 @@ var hrSelectors = []string{
 	`* > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
 	`* > img[src="/images/hr1.gif"]`,
 	// `center > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
-	`center > img[alt="linebreak shadow"]`,
-	`[align=center] > img[alt="linebreak shadow"]`,
+	`img[alt="linebreak shadow"]`,
 	`p[style] > img[alt="line break short"]`,
 	`div.hr`,
 	`div.hr2`,
@@ -285,10 +284,10 @@ func FixForEbook(p *client.WhateleyPage) error {
 	var s *goquery.Selection
 
 	// Fix \u0012 and friends
-	html, _ := goquery.OuterHtml(p.StoryBodySelection())
+	htmlSrc, _ := goquery.OuterHtml(p.StoryBodySelection())
 	p.StoryBodySelection().ReplaceWithHtml(
 		strings.Replace(strings.Replace(strings.Replace(
-			strings.Replace(html, "\u0012", "’", -1),
+			strings.Replace(htmlSrc, "\u0012", "’", -1),
 			"\u0016", "—", -1),
 			"\u0005", "…", -1),
 			"oe\u001C", "œ", -1))
@@ -302,7 +301,7 @@ func FixForEbook(p *client.WhateleyPage) error {
 		s = s.Add(client.StoryBodySelector + sel)
 	}
 	s = s.AddMatcher(cascadia.Selector(hrParagraphMatcher()))
-	s.ReplaceWithHtml("<hr>")
+	s.ReplaceWithHtml("<hr/>")
 
 	p.Doc().Find("p hr:only-child").Parent().ReplaceWithHtml("<hr>")
 	p.Doc().Find("center hr:only-child").Parent().ReplaceWithHtml("<hr>")
