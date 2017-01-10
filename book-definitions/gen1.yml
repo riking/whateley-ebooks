@@ -1,0 +1,848 @@
+author: Whateley Academy Canon Authors
+author-sort: Whateley Academy Canon Authors
+id: gen1
+parts:
+- story: {id: 2}
+  toc: !!python/unicode 'Unexpected Consequences'
+- story: {id: 7}
+  toc: "Mom, I Don\u2019t Feel So Good"
+- story: {id: 3}
+  toc: !!python/unicode 'Enter the Chaka'
+- story: {id: 10}
+  toc: !!python/unicode 'Coming Out'
+- story: {id: 11}
+  toc: !!python/unicode 'Away From Home'
+- story: {id: 133}
+  toc: !!python/unicode 'Quoth The Ninja, Nevermore!'
+- story: {id: 24}
+  toc: !!python/unicode 'Another Day, We Were Going Where?'
+- story: {id: 23}
+  toc: !!python/unicode 'PMS and Other Problems'
+- story: {id: 122}
+  toc: !!python/unicode 'Jade 3: Being a Girl'
+- story: {id: 144}
+  toc: !!python/unicode 'Chaka: Duel Damsel'
+- story: {id: 123}
+  toc: !!python/unicode 'A Simple Game'
+- story: {id: 132}
+  toc: !!python/unicode 'Welcome to Poe'
+- story: {id: 147}
+  toc: !!python/unicode 'First Day and Other Interesting Things'
+- story: {id: 146}
+  toc: !!python/unicode 'Fey: Adjustments'
+- story: {id: 148}
+  toc: !!python/unicode 'First Assembly'
+- story: {id: 145}
+  toc: !!python/unicode 'Jade 4: Bottle a Jinn'
+- story: {id: 257}
+  toc: !!python/unicode 'Revenge of The Alphas'
+- story: {id: 149}
+  toc: !!python/unicode 'The Transfer Students'
+- story: {id: 256}
+  toc: !!python/unicode 'Destiny''s Wave'
+- story: {id: 179}
+  toc: !!python/unicode 'Baker''s Dozen'
+- story: {id: 362}
+  toc: !!python/unicode 'Toni and the Tiger'
+- story: {id: 301}
+  toc: !!python/unicode 'Eat, Drink and be Merry'
+- story: {id: 455}
+  toc: !!python/unicode 'Tennyo: It''s Nice to Have  Friends'
+- story: {id: 361}
+  toc: !!python/unicode 'Tea and Synergy'
+- story: {id: 448}
+  toc: !!python/unicode 'The Boston Brawl'
+- story: {id: 296}
+  toc: !!python/unicode 'Blade Dancing'
+- story: {id: 180}
+  toc: !!python/unicode 'Revelations'
+- story: {id: 302}
+  toc: !!python/unicode 'Merry Meet, Merry Part, and Merry Meet Again'
+- story: {id: 141}
+  toc: !!python/unicode 'Lightning Crashes'
+- story: {id: 443}
+  toc: !!python/unicode 'Insanity Prerequisite (Part 1)'
+- story: {id: 275}
+  toc: !!python/unicode 'Hive 1: What''s Buzzing You?'
+- story: {id: 444}
+  toc: !!python/unicode 'Insanity Prerequisite (Part 2)'
+- story: {id: 376}
+  toc: !!python/unicode 'Merry 3: Against Ill Chances'
+- story: {id: 428}
+  toc: !!python/unicode 'Time for an Unexpected Gift'
+- story: {id: 426}
+  toc: !!python/unicode 'Time for an Unexpected Gift: Epilogue (Gift 2)'
+- story: {id: 152}
+  toc: !!python/unicode 'Jade 5: Redefining Jade'
+- story: {id: 398}
+  toc: !!python/unicode 'Merry Decent into Madness'
+- story: {id: 143}
+  toc: !!python/unicode 'Panty Raid'
+- story: {id: 400}
+  toc: !!python/unicode 'Merry 5: The More, the Merrier (Part A)'
+- story: {id: 142}
+  toc: !!python/unicode 'Eating Dog'
+- story: {id: 401}
+  toc: !!python/unicode 'Merry 5: The More, the Merrier (Part B)'
+- story: {id: 445}
+  toc: !!python/unicode 'Insanity Prerequisite (Part 3)'
+- story: {id: 402}
+  toc: !!python/unicode 'Merry 5: The More, the Merrier (Part C)'
+- story: {id: 297}
+  toc: !!python/unicode 'Ask Not For Whom Belle Tolls'
+- story: {id: 403}
+  toc: !!python/unicode 'Merry 5: The More, the Merrier (Part D)'
+- story: {id: 404}
+  toc: !!python/unicode 'Merry 5: The More, the Merrier (Part E)'
+- story: {id: 277}
+  toc: !!python/unicode 'Hive 2'
+- story: {id: 259}
+  toc: !!python/unicode 'A Wellspring of Sorrows'
+- story: {id: 278}
+  toc: !!python/unicode 'Hive 3: Sweet Dreams (Are Made of These)'
+- story: {id: 303}
+  toc: !!python/unicode 'Merry 6: Being Merry In Spite of It All (Part C)'
+- story: {id: 390}
+  toc: !!python/unicode 'Merry 6: Being Merry In Spite of It All (Part A)'
+- story: {id: 153}
+  toc: !!python/unicode 'Jade 6: Dreams and Awakenings'
+- story: {id: 363}
+  toc: !!python/unicode 'Reflections In An Evil Eye'
+- story: {id: 279}
+  toc: !!python/unicode 'Hive  4: Who Dun It?'
+- story: {id: 364}
+  toc: !!python/unicode 'It''s Good to be the Don'
+- story: {id: 391}
+  toc: !!python/unicode 'Merry 6: Being Merry In Spite of It All (Part B)'
+- story: {id: 131}
+  toc: !!python/unicode 'Catgirl Madness'
+- story: {id: 369}
+  toc: "There\u2019s an Angel in Father John\u2019s Basement (Part 1)"
+- story: {id: 370}
+  toc: "There\u2019s an Angel in Father John\u2019s Basement (Part 2)"
+- story: {id: 464}
+  toc: !!python/unicode 'Upheaval: New Friends, New Problems'
+- story: {id: 465}
+  toc: !!python/unicode 'Upheaval: Walking Alone'
+- story: {id: 466}
+  toc: !!python/unicode 'Upheaval: Instructor'
+- story: {id: 392}
+  toc: !!python/unicode 'The Devil''s Dance (Part 1)'
+- story: {id: 375}
+  toc: !!python/unicode 'The Clue of the Unseen Switch'
+- story: {id: 429}
+  toc: !!python/unicode 'To The Mountain (Part 1)'
+- story: {id: 137}
+  toc: !!python/unicode 'Garafena'
+- story: {id: 393}
+  toc: !!python/unicode 'The Devil''s Dance (Part 2)'
+- story: {id: 454}
+  toc: !!python/unicode 'Hobbies And Heckling'
+- story: {id: 427}
+  toc: !!python/unicode 'Legacy of Friendship'
+- story: {id: 154}
+  toc: !!python/unicode 'Jade 7: Over the Top'
+- story: {id: 452}
+  toc: !!python/unicode 'Dangerous Days'
+- story: {id: 453}
+  toc: !!python/unicode 'Dangerous Games'
+- story: {id: 430}
+  toc: !!python/unicode 'To The Mountain (Part 2)'
+- story: {id: 468}
+  toc: !!python/unicode 'So I''m a Freak. Sue Me.'
+- story: {id: 155}
+  toc: !!python/unicode 'Jade 8: Exams'
+- story: {id: 314}
+  toc: !!python/unicode 'Child of Confusion'
+- story: {id: 469}
+  toc: !!python/unicode 'Yet Another Day as an Outcast'
+- story: {id: 345}
+  toc: !!python/unicode 'Summoning Courage'
+- story: {id: 150}
+  toc: !!python/unicode 'A Single Fold'
+- story: {id: 431}
+  toc: !!python/unicode 'To The Mountain (Part 3)'
+- story: {id: 432}
+  toc: !!python/unicode 'To The Mountain (Part 4)'
+- story: {id: 374}
+  toc: !!python/unicode 'The Pushover'
+- story: {id: 425}
+  toc: !!python/unicode 'The Bad Seeds'
+- story: {id: 456}
+  toc: !!python/unicode 'The Christmas Crisis'
+- story: {id: 378}
+  toc: !!python/unicode 'BostonBrawl II - This Time It''s Personal!'
+- story: {id: 294}
+  toc: !!python/unicode 'To Be Merry and Escape From It All'
+- story: {id: 449}
+  toc: !!python/unicode 'The OP'
+- story: {id: 306}
+  toc: !!python/unicode 'Call the Thunder (Part 1)'
+- story: {id: 457}
+  toc: !!python/unicode 'Ill Winds (Part 1)'
+- story: {id: 308}
+  toc: !!python/unicode 'Call the Thunder (Part 2)'
+- story: {id: 458}
+  toc: !!python/unicode 'Ill Winds (Part 2)'
+- story: {id: 309}
+  toc: !!python/unicode 'Call the Thunder (Part 3)'
+- story: {id: 459}
+  toc: !!python/unicode 'Ill Winds (Part 3)'
+- story: {id: 163}
+  toc: !!python/unicode 'Ayla and the Late Trevor James Goodkind'
+- story: {id: 313}
+  toc: !!python/unicode 'Chasing the Dragon'
+- story: {id: 311}
+  toc: !!python/unicode 'Call the Thunder (Part 4)'
+- story: {id: 461}
+  toc: !!python/unicode 'Ill Winds (Part 4)'
+- story: {id: 164}
+  toc: !!python/unicode 'Ayla 2: Ayla and the Blackmailer'
+- story: {id: 389}
+  toc: !!python/unicode 'The Problem with Power'
+- story: {id: 394}
+  toc: !!python/unicode 'Aftermath'
+- story: {id: 229}
+  toc: !!python/unicode 'The Turks or the Geek'
+- story: {id: 344}
+  toc: !!python/unicode 'The Braeburn Report'
+- story: {id: 447}
+  toc: !!python/unicode 'The Blood Oath'
+- story: {id: 165}
+  toc: !!python/unicode 'Ayla 3: Ayla and the New School'
+- story: {id: 462}
+  toc: !!python/unicode 'Ill Winds (Part 5)'
+- story: {id: 168}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 1)'
+- story: {id: 169}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 2)'
+- story: {id: 372}
+  toc: !!python/unicode 'The Big Idea'
+- story: {id: 258}
+  toc: "The Play\u2019s the Thing"
+- story: {id: 170}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 3)'
+- story: {id: 171}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 4)'
+- story: {id: 172}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 5)'
+- story: {id: 463}
+  toc: !!python/unicode 'Ill Winds (Part 6)'
+- story: {id: 173}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 6)'
+- story: {id: 174}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 7)'
+- story: {id: 175}
+  toc: !!python/unicode 'Ayla 4: Ayla and the Tests (Chap 8)'
+- story: {id: 205}
+  toc: !!python/unicode 'Never Look a Gift Squirrel in the Mouth'
+- story: {id: 371}
+  toc: !!python/unicode 'The Three Little Witches'
+- story: {id: 407}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 1)'
+- story: {id: 409}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 2)'
+- story: {id: 410}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 3)'
+- story: {id: 412}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 4)'
+- story: {id: 414}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 5)'
+- story: {id: 415}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 6)'
+- story: {id: 329}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 7)'
+- story: {id: 299}
+  toc: !!python/unicode 'Afternoon Tea With the Devil'
+- story: {id: 417}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 8)'
+- story: {id: 418}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 9)'
+- story: {id: 419}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 10)'
+- story: {id: 330}
+  toc: !!python/unicode 'Summoning Tactics'
+- story: {id: 438}
+  toc: !!python/unicode 'Tales of the MCO'
+- story: {id: 420}
+  toc: !!python/unicode 'Petra 1: Rock and a Hard Place (Part 11)'
+- story: {id: 446}
+  toc: !!python/unicode 'Insanity Prerequisite (Part 4)'
+- story: {id: 138}
+  toc: !!python/unicode 'Parents'' Day'
+- story: {id: 139}
+  toc: !!python/unicode 'Quoth the Ninja, ''What? AGAIN?'', a Parents'' Day Vignette'
+- story: {id: 176}
+  toc: !!python/unicode 'Ayla 5: Ayla and the Networks'
+- story: {id: 177}
+  toc: !!python/unicode 'Ayla and the Grinch (A Christmas Story)'
+- story: {id: 230}
+  toc: !!python/unicode 'Stress Fracture'
+- story: {id: 312}
+  toc: !!python/unicode 'Call the Thunder (Part 5)'
+- story: {id: 315}
+  toc: !!python/unicode 'Christmas Elves'
+- story: {id: 365}
+  toc: !!python/unicode 'It''s All In The Timing'
+- story: {id: 260}
+  toc: !!python/unicode 'Gearhead'
+- story: {id: 156}
+  toc: !!python/unicode 'Jade 9: Sit In'
+- story: {id: 332}
+  toc: !!python/unicode 'The Book of Jobe'
+- story: {id: 183}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 1)'
+- story: {id: 360}
+  toc: !!python/unicode 'No Beast So Fierce'
+- story: {id: 333}
+  toc: !!python/unicode 'The Second Book of Jobe (Part 1)'
+- story: {id: 334}
+  toc: !!python/unicode 'The Second Book of Jobe (Part 2)'
+- story: {id: 335}
+  toc: !!python/unicode 'The Second Book of Jobe (Part 3)'
+- story: {id: 337}
+  toc: !!python/unicode 'The Second Book of Jobe (Part 4)'
+- story: {id: 240}
+  toc: !!python/unicode 'Sara''s Little Purple Book'
+- story: {id: 184}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 2)'
+- story: {id: 423}
+  toc: !!python/unicode 'Have Yourself a Monkey Little Christmas'
+- story: {id: 185}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 3)'
+- story: {id: 467}
+  toc: !!python/unicode 'Parkour Jam Hooligans'
+- story: {id: 239}
+  toc: !!python/unicode 'The Case of the Poisonous Patent'
+- story: {id: 186}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 4)'
+- story: {id: 310}
+  toc: !!python/unicode 'Call the Thunder (Part 6)'
+- story: {id: 187}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 5)'
+- story: {id: 188}
+  toc: !!python/unicode 'Ayla and the Great Shoulder Angel Conspiracy: (Chap 6)'
+- story: {id: 424}
+  toc: !!python/unicode 'Summoning Sweeties'
+- story: {id: 245}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 1)'
+- story: {id: 246}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 2)'
+- story: {id: 247}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 3)'
+- story: {id: 181}
+  toc: !!python/unicode 'Ultimate Disguise'
+- story: {id: 280}
+  toc: !!python/unicode 'Hive''s Christmas Holiday (Part 1)'
+- story: {id: 366}
+  toc: !!python/unicode 'There''s an Angel in Dickinson Cottage (Part 1)'
+- story: {id: 367}
+  toc: !!python/unicode 'There''s an Angel in Dickinson Cottage (Part 2)'
+- story: {id: 368}
+  toc: !!python/unicode 'There''s an Angel in Dickinson Cottage (Part 3)'
+- story: {id: 405}
+  toc: !!python/unicode 'Five Elements Dancing - Book of the Earth'
+- story: {id: 281}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 1)"
+- story: {id: 248}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 4)'
+- story: {id: 282}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 2)"
+- story: {id: 408}
+  toc: !!python/unicode 'Five Elements Dancing - Book of the Metal'
+- story: {id: 249}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 5)'
+- story: {id: 140}
+  toc: !!python/unicode 'GEO Vignettes'
+- story: {id: 411}
+  toc: !!python/unicode 'Five Elements Dancing - Book of the Water'
+- story: {id: 283}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 3)"
+- story: {id: 379}
+  toc: !!python/unicode 'Have Your Self an Evil Little Christmas (Part 1)'
+- story: {id: 250}
+  toc: !!python/unicode 'Even Murphy''s Law has Loopholes (Chapter 6)'
+- story: {id: 380}
+  toc: !!python/unicode 'Have Your Self an Evil Little Christmas (Part 2)'
+- story: {id: 284}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 4)"
+- story: {id: 381}
+  toc: !!python/unicode 'Have Your Self an Evil Little Christmas (Part 3)'
+- story: {id: 285}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 5)"
+- story: {id: 192}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 1)'
+- story: {id: 413}
+  toc: !!python/unicode 'Five Elements Dancing - Book of the Wood'
+- story: {id: 193}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 2)'
+- story: {id: 316}
+  toc: !!python/unicode 'Christmas Chicanery'
+- story: {id: 182}
+  toc: !!python/unicode 'Like a Brick'
+- story: {id: 194}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 3)'
+- story: {id: 195}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 4)'
+- story: {id: 196}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 5)'
+- story: {id: 298}
+  toc: !!python/unicode 'As Above, So Below'
+- story: {id: 349}
+  toc: !!python/unicode 'Knife in the Ribs'
+- story: {id: 300}
+  toc: !!python/unicode 'A Fistful of Chaka'
+- story: {id: 265}
+  toc: !!python/unicode 'Crime and Chaos'
+- story: {id: 197}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 6)'
+- story: {id: 406}
+  toc: !!python/unicode 'Five Elements Dancing - Book of the Fire'
+- story: {id: 198}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 7)'
+- story: {id: 126}
+  toc: !!python/unicode 'Silver Linings 1 (Part 1)'
+- story: {id: 127}
+  toc: !!python/unicode 'Silver Linings 1 (Part 2)'
+- story: {id: 399}
+  toc: !!python/unicode 'Dream Quest of the Underage Taoist'
+- story: {id: 199}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 8)'
+- story: {id: 128}
+  toc: !!python/unicode 'Silver Linings 1 (Part 3)'
+- story: {id: 241}
+  toc: !!python/unicode 'The Secret of the Forger''s List (Chapter 1)'
+- story: {id: 200}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 9)'
+- story: {id: 287}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 6)"
+- story: {id: 201}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 10)'
+- story: {id: 478}
+  toc: !!python/unicode 'The Power of Cute Compels You!'
+- story: {id: 129}
+  toc: !!python/unicode 'Silver Linings 1 (Part 4)'
+- story: {id: 266}
+  toc: !!python/unicode 'Rotten to the C.O.R.E.'
+- story: {id: 202}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 11)'
+- story: {id: 130}
+  toc: !!python/unicode 'Silver Linings 1 (Part 5)'
+- story: {id: 242}
+  toc: !!python/unicode 'The Secret of the Forger''s List (Chapter 2)'
+- story: {id: 203}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 12)'
+- story: {id: 204}
+  toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 13)'
+- story: {id: 288}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 7)"
+- story: {id: 243}
+  toc: !!python/unicode 'The Secret of the Forger''s List (Chapter 3)'
+- story: {id: 439}
+  toc: !!python/unicode 'Razzle Dazzle (Part 1)'
+- story: {id: 440}
+  toc: !!python/unicode 'Razzle Dazzle (Part 2)'
+- story: {id: 441}
+  toc: !!python/unicode 'Razzle Dazzle (Part 3)'
+- story: {id: 231}
+  toc: !!python/unicode 'A View to a Smell'
+- story: {id: 289}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 8)"
+- story: {id: 244}
+  toc: !!python/unicode 'The Secret of the Forger''s List (Chapter 4)'
+- story: {id: 290}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 9)"
+- story: {id: 416}
+  toc: !!python/unicode 'Gong Hai Fat Choy (Part 1)'
+- story: {id: 422}
+  toc: !!python/unicode 'Gong Hai Fat Choy (Part 2)'
+- story: {id: 326}
+  toc: !!python/unicode 'Monkey of Constant Sorrow'
+- story: {id: 291}
+  toc: "Straight from the Squirrel\u2019s Mouth (Chapter 10)"
+- story: {id: 125}
+  toc: !!python/unicode 'Silver Linings 2 (Part 1)'
+- story: {id: 233}
+  toc: !!python/unicode 'Test Tube Babies'
+- story: {id: 307}
+  toc: !!python/unicode 'Call the Thunder (Part 7)'
+- story: {id: 178}
+  toc: !!python/unicode 'Combat Boot'
+- story: {id: 317}
+  toc: !!python/unicode 'I Looked into the Abyss, and it Winked (Part 1)'
+- story: {id: 331}
+  toc: !!python/unicode 'Adios'
+- story: {id: 318}
+  toc: !!python/unicode 'I Looked into the Abyss, and it Winked (Part 2)'
+- story: {id: 232}
+  toc: !!python/unicode 'Mimeographic'
+- story: {id: 273}
+  toc: !!python/unicode 'Wednesday Morning, 5AM'
+- story: {id: 319}
+  toc: !!python/unicode 'I looked into the Abyss, and it Winked (Parts 3 - 6)'
+- story: {id: 475}
+  toc: !!python/unicode 'To Know Your Heart'
+- story: {id: 320}
+  toc: !!python/unicode 'I looked into the Abyss, and it Winked (Parts 7 & 8)'
+- story: {id: 322}
+  toc: !!python/unicode 'I looked into the Abyss, and it Winked (Part 9)'
+- story: {id: 321}
+  toc: !!python/unicode 'I looked into the Abyss, and it Winked (Part 10)'
+- story: {id: 234}
+  toc: "Spring, and a Young Squirrel\u2019s Fancy\u2026"
+- story: {id: 206}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 1)'
+- story: {id: 207}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 2)'
+- story: {id: 208}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 3)'
+- story: {id: 348}
+  toc: !!python/unicode 'Triple Threat'
+- story: {id: 479}
+  toc: !!python/unicode 'Tea with a Serpent (Chapter 1)'
+- story: {id: 209}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 4)'
+- story: {id: 351}
+  toc: !!python/unicode 'Loose Cannons (Chapter 1)'
+- story: {id: 210}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 5)'
+- story: {id: 212}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 6)'
+- story: {id: 352}
+  toc: !!python/unicode 'Loose Cannons (Chapter 2)'
+- story: {id: 480}
+  toc: !!python/unicode 'Tea with a Serpent (Chapter 2)'
+- story: {id: 213}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 7)'
+- story: {id: 214}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 8)'
+- story: {id: 481}
+  toc: !!python/unicode 'Envy and the Gilded Cage (Part 1)'
+- story: {id: 215}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 9)'
+- story: {id: 353}
+  toc: !!python/unicode 'Loose Cannons (Chapter 3)'
+- story: {id: 482}
+  toc: !!python/unicode 'Envy and the Gilded Cage (Part 2)'
+- story: {id: 216}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 10)'
+- story: {id: 354}
+  toc: !!python/unicode 'Loose Cannons (Chapter 4)'
+- story: {id: 483}
+  toc: !!python/unicode 'Envy and the Gilded Cage (Part 3)'
+- story: {id: 217}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 11)'
+- story: {id: 272}
+  toc: !!python/unicode 'The Kodiak in Winter'
+- story: {id: 218}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 12)'
+- story: {id: 476}
+  toc: !!python/unicode 'There''s Something about Billie (Chapter 1)'
+- story: {id: 219}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 13)'
+- story: {id: 477}
+  toc: !!python/unicode 'There''s Something about Billie (Chapter 2)'
+- story: {id: 220}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 14)'
+- story: {id: 356}
+  toc: !!python/unicode 'The Widening Gyre'
+- story: {id: 221}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 15)'
+- story: {id: 222}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 16)'
+- story: {id: 471}
+  toc: !!python/unicode 'Tennyo''s Easter (Chapter 1)'
+- story: {id: 223}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 17)'
+- story: {id: 472}
+  toc: !!python/unicode 'Tennyo''s Easter (Chapter 2)'
+- story: {id: 224}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 18)'
+- story: {id: 473}
+  toc: !!python/unicode 'Tennyo''s Easter (Chapter 3)'
+- story: {id: 225}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 19)'
+- story: {id: 271}
+  toc: !!python/unicode 'A Cold Plate of Vengeance'
+- story: {id: 474}
+  toc: !!python/unicode 'Tennyo''s Easter (Chapter 4)'
+- story: {id: 226}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 20)'
+- story: {id: 323}
+  toc: !!python/unicode 'Ecila in Normalland - Chapter 1: This Is Whateley'
+- story: {id: 382}
+  toc: !!python/unicode 'Silent Nacht (Chapter 1)'
+- story: {id: 383}
+  toc: !!python/unicode 'Silent Nacht (Chapter 2)'
+- story: {id: 324}
+  toc: !!python/unicode 'Ecila in Normalland - Chapter 2: This Is Madness'
+- story: {id: 227}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 21)'
+- story: {id: 384}
+  toc: !!python/unicode 'Silent Nacht (Chapter 3)'
+- story: {id: 228}
+  toc: !!python/unicode 'Ayla and the Mad Scientist: (Chap 22)'
+- story: {id: 442}
+  toc: !!python/unicode 'Anecdotal Antidote Apocalypse'
+- story: {id: 341}
+  toc: !!python/unicode 'Tennyo Goes to Hell (Part 1)'
+- story: {id: 342}
+  toc: !!python/unicode 'Tennyo Goes to Hell (Part 2)'
+- story: {id: 346}
+  toc: !!python/unicode 'May Your Death Be Sweet'
+- story: {id: 385}
+  toc: !!python/unicode 'Silent Nacht (Chapter 4)'
+- story: {id: 347}
+  toc: !!python/unicode 'The Real MCO'
+- story: {id: 355}
+  toc: !!python/unicode 'Sun and Fun'
+- story: {id: 359}
+  toc: !!python/unicode 'VAMP'
+- story: {id: 373}
+  toc: !!python/unicode 'What''s Up Dork?'
+- story: {id: 357}
+  toc: !!python/unicode 'Saks and Violence'
+- story: {id: 261}
+  toc: !!python/unicode 'Whilst Any Speaks (Chapter 1)'
+- story: {id: 262}
+  toc: !!python/unicode 'Whilst Any Speaks (Chapter 2)'
+- story: {id: 263}
+  toc: !!python/unicode 'Whilst Any Speaks (Chapter 3)'
+- story: {id: 124}
+  toc: !!python/unicode 'Silver Linings 2 (Parts 2-9)'
+- story: {id: 386}
+  toc: !!python/unicode 'Silent Nacht (Chapter 5)'
+- story: {id: 264}
+  toc: !!python/unicode 'Whilst Any Speaks (Chapter 4)'
+- story: {id: 70}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 1)'
+- story: {id: 71}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 2)'
+- story: {id: 56}
+  toc: !!python/unicode 'Charge 2: le Snob Francais'
+- story: {id: 43}
+  toc: !!python/unicode 'Dancing in the Shadows (Part 1)'
+- story: {id: 274}
+  toc: !!python/unicode 'Steel Ribbon'
+- story: {id: 72}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 3)'
+- story: {id: 73}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 4)'
+- story: {id: 46}
+  toc: !!python/unicode 'Roulette (Chapter 1)'
+- story: {id: 74}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 5)'
+- story: {id: 75}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 6)'
+- story: {id: 104}
+  toc: !!python/unicode 'Diamonds Are a Vamp''s Best Friend (Part 1)'
+- story: {id: 76}
+  toc: !!python/unicode 'Buffalo Gal Won''t You Come Out Tonight (Ch 7)'
+- story: {id: 47}
+  toc: !!python/unicode 'Roulette (Chapter 2)'
+- story: {id: 44}
+  toc: !!python/unicode 'Dancing in the Shadows (Part 2)'
+- story: {id: 59}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 1)'
+- story: {id: 48}
+  toc: !!python/unicode 'Roulette (Chapter 3)'
+- story: {id: 96}
+  toc: !!python/unicode 'The Art of Being the Imp (Part 1)'
+- story: {id: 54}
+  toc: !!python/unicode 'Charge 1: La Belle de Chaniers (Ch 1)'
+- story: {id: 60}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 2)'
+- story: {id: 97}
+  toc: !!python/unicode 'The Art of Being the Imp (Part 2)'
+- story: {id: 98}
+  toc: !!python/unicode 'The Art of Being the Imp (Part 3)'
+- story: {id: 55}
+  toc: !!python/unicode 'Charge 1: La Belle de Chaniers (Ch 2)'
+- story: {id: 99}
+  toc: !!python/unicode 'The Art of Being the Imp (Part 4)'
+- story: {id: 61}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 3)'
+- story: {id: 62}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 4)'
+- story: {id: 57}
+  toc: !!python/unicode 'Charge 3: Point de''inflexion'
+- story: {id: 34}
+  toc: !!python/unicode 'Whisper (Chapters 1-12)'
+- story: {id: 49}
+  toc: !!python/unicode 'Mama''s Boy'
+- story: {id: 63}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 5)'
+- story: {id: 64}
+  toc: !!python/unicode 'Kayda 2: Trials of a Warrior (Ch 6)'
+- story: {id: 35}
+  toc: !!python/unicode 'Whisper (Chapters 13-19)'
+- story: {id: 45}
+  toc: !!python/unicode 'Rise ''n Shine'
+- story: {id: 38}
+  toc: !!python/unicode 'Kayda 3: Two Spirits (Chapter 1)'
+- story: {id: 58}
+  toc: !!python/unicode 'Forging Anew'
+- story: {id: 50}
+  toc: !!python/unicode 'North to Atlantis'
+- story: {id: 31}
+  toc: !!python/unicode 'Mission Imp-probable (Part 1)'
+- story: {id: 32}
+  toc: !!python/unicode 'Mission Imp-probable (Part 2)'
+- story: {id: 39}
+  toc: !!python/unicode 'Kayda 3: Two Spirits (Chapter 2)'
+- story: {id: 33}
+  toc: !!python/unicode 'Mission Imp-probable (Part 3)'
+- story: {id: 77}
+  toc: !!python/unicode 'The Kodiak Conspiracy (Chapter 1)'
+- story: {id: 53}
+  toc: !!python/unicode 'The Zica Encounter'
+- story: {id: 78}
+  toc: !!python/unicode 'The Kodiak Conspiracy (Chapter 2)'
+- story: {id: 40}
+  toc: !!python/unicode 'Kayda 3: Two Spirits (Chapter 3)'
+- story: {id: 92}
+  toc: !!python/unicode 'An Imp-perfect World (Ch 1)'
+- story: {id: 93}
+  toc: !!python/unicode 'An Imp-perfect World (Ch 2)'
+- story: {id: 65}
+  toc: !!python/unicode 'Kayda 4: Now the Real Learning Can Begin (Ch 1)'
+- story: {id: 79}
+  toc: !!python/unicode 'The Kodiak Conspiracy (Chapter 3)'
+- story: {id: 105}
+  toc: !!python/unicode 'Diamonds Are a Vamp''s Best Friend (Part 2)'
+- story: {id: 66}
+  toc: !!python/unicode 'Kayda 4: Now the Real Learning Can Begin (Ch 2)'
+- story: {id: 94}
+  toc: !!python/unicode 'An Imp-perfect World (Ch 3)'
+- story: {id: 67}
+  toc: !!python/unicode 'Kayda 4: Now the Real Learning Can Begin (Ch 3)'
+- story: {id: 95}
+  toc: !!python/unicode 'An Imp-perfect World (Ch 4)'
+- story: {id: 68}
+  toc: !!python/unicode 'Kayda 4: Now the Real Learning Can Begin (Ch 4)'
+- story: {id: 69}
+  toc: !!python/unicode 'Kayda 4: Now the Real Learning Can Begin (Ch 5)'
+- story: {id: 80}
+  toc: !!python/unicode 'The Kodiak Conspiracy (Chapter 4)'
+- story: {id: 81}
+  toc: !!python/unicode 'The Kodiak Conspiracy (Chapter 5)'
+- story: {id: 101}
+  toc: !!python/unicode 'The Island of Dr DNA'
+- story: {id: 51}
+  toc: !!python/unicode 'A Pocket Full of Tansy'
+- story: {id: 36}
+  toc: !!python/unicode 'Whisper (Chapters 20-25)'
+- story: {id: 100}
+  toc: !!python/unicode 'The Back Side of Paradise'
+- story: {id: 102}
+  toc: !!python/unicode 'Date Night'
+- story: {id: 82}
+  toc: !!python/unicode 'The Riddle of Sappho (Prologue and Canto I)'
+- story: {id: 103}
+  toc: !!python/unicode 'First Imp-ression'
+- story: {id: 83}
+  toc: !!python/unicode 'The Riddle of Sappho (Canto II)'
+- story: {id: 84}
+  toc: !!python/unicode 'The Riddle of Sappho (Canto III)'
+- story: {id: 85}
+  toc: !!python/unicode 'The Riddle of Sappho (Canto IV)'
+- story: {id: 86}
+  toc: !!python/unicode 'The Riddle of Sappho (Canto V)'
+- story: {id: 87}
+  toc: !!python/unicode 'The Riddle of Sappho (Canto VI)'
+- story: {id: 41}
+  toc: !!python/unicode 'Wine, Women, and Ayla (Part 1)'
+- story: {id: 37}
+  toc: !!python/unicode 'Whisper (Chapters 26-30)'
+- story: {id: 52}
+  toc: !!python/unicode 'As Beauty Does'
+- story: {id: 42}
+  toc: !!python/unicode 'Wine, Women, and Ayla (Part 2)'
+- story: {id: 6}
+  toc: !!python/unicode 'Hank 1: To Sleep, Perchance to Dream'
+- story: {id: 108}
+  toc: !!python/unicode 'The Penance Factor'
+- story: {id: 109}
+  toc: !!python/unicode 'A Touch of Mischief'
+- story: {id: 114}
+  toc: !!python/unicode 'Whisper (Chapters 31-35)'
+- story: {id: 119}
+  toc: !!python/unicode 'Medicine Girl'
+- story: {id: 135}
+  toc: !!python/unicode 'Galatea Debutante'
+- story: {id: 158}
+  toc: !!python/unicode 'Whisper (Chapters 36-39)'
+- story: {id: 160}
+  toc: !!python/unicode 'Charging Buffalo, Hidden Dragon (Part 1)'
+- story: {id: 167}
+  toc: !!python/unicode 'Silver Ghost, Golden Angel (Part 1)'
+- story: {id: 166}
+  toc: !!python/unicode 'Charging Buffalo, Hidden Dragon (Part 2)'
+- story: {id: 189}
+  toc: !!python/unicode 'Charging Buffalo, Hidden Dragon (Part 3)'
+- story: {id: 292}
+  toc: !!python/unicode 'Odds and Ends  (Part 1)'
+- story: {id: 325}
+  toc: !!python/unicode 'Odds and Ends (Part 2)'
+- story: {id: 460}
+  toc: !!python/unicode 'Whisper (Chapters 40-42 + Epilogue)'
+- story: {id: 487}
+  toc: !!python/unicode 'A Glow in the Darkness (Part 1)'
+- story: {id: 268}
+  toc: !!python/unicode 'A Tenuous Blade'
+- story: {id: 503}
+  toc: !!python/unicode 'Odds and Ends (Part 3)'
+- story: {id: 598}
+  toc: !!python/unicode 'A Glow in the Darkness (Part 2)'
+- story: {id: 118}
+  toc: !!python/unicode 'Hank 2: So Shalt Thou Show Me Friendship'
+- story: {id: 627}
+  toc: !!python/unicode 'A Glow in the Darkness (Part 3)'
+- story: {id: 560}
+  toc: !!python/unicode 'All the Kings Horses ...'
+- story: {id: 486}
+  toc: !!python/unicode 'Learning to Hunt'
+- story: {id: 643}
+  toc: !!python/unicode 'Kayda 8: The Best Days of Our Lives (Part 1)'
+- story: {id: 510}
+  toc: !!python/unicode 'A Good Man (Part 1)'
+- story: {id: 651}
+  toc: !!python/unicode 'Pomp and Conspiracy'
+- story: {id: 657}
+  toc: !!python/unicode 'Kayda 8: The Best Days of Our Lives (Part 2)'
+- story: {id: 678}
+  toc: !!python/unicode 'The Boys of Summer'
+- story: {id: 681}
+  toc: !!python/unicode 'Kayda 8: The Best Days of Our Lives (Part 3)'
+- story: {id: 685}
+  toc: !!python/unicode 'Diamonds Are a Vamp''s Best Friend (Part 3)'
+- story: {id: 712}
+  toc: !!python/unicode 'Veni, Vidi, Cutie'
+- story: {id: 656}
+  toc: !!python/unicode 'Hank 3: One Woe Doth Tread Upon Another''s Heel'
+- story: {id: 720}
+  toc: !!python/unicode 'Kayda 9 - Crying for a Dream'
+- story: {id: 673}
+  toc: !!python/unicode 'Hank 4: Life''s But a Walking Shadow'
+- story: {id: 724}
+  toc: !!python/unicode 'A Good Man (part 2)'
+- story: {id: 737}
+  toc: !!python/unicode 'Ashes and Steel'
+- story: {id: 740}
+  toc: !!python/unicode 'Elle 1 - Dawn of the Aurora (Part 1)'
+- story: {id: 741}
+  toc: !!python/unicode 'Elle 1 - Dawn of the Aurora (Part 2)'
+- story: {id: 745}
+  toc: "Imp 4: A Teacher\u2019s Tail (Part 1)"
+- story: {id: 752}
+  toc: !!python/unicode 'Kayda 10: There''s No Place Like Poe (Part 1)'
+- story: {id: 747}
+  toc: !!python/unicode 'Silver Ghost, Golden Angel (Part 2)'
+- story: {id: 746}
+  toc: "Imp 4: A Teacher\u2019s Tail (Part 2)"
+- story: {id: 742}
+  toc: !!python/unicode 'Boys of Summer (Part 2)'
+publisher: Whateley Press
+series: Whateley Academy Original Canon
+title: Whateley - Gen1 Complete
+uuid: 0b6b1f75-3483-4657-b7f8-3b6c657e9a44

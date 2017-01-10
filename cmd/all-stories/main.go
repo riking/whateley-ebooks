@@ -18,6 +18,8 @@ import (
 	"github.com/riking/whateley-ebooks/cmd"
 )
 
+const maxID = 800
+
 type result struct {
 	client.StoryURL
 	WordCount   int
@@ -207,7 +209,7 @@ func sortingConsumer(resChan chan result) {
 
 	fmt.Println("In publication order:")
 	for _, v := range ary {
-		fmt.Println(v.StoryID, v.StorySlug)
+		fmt.Println(v.URL())
 	}
 }
 
@@ -245,7 +247,6 @@ func main() {
 
 	workFunc := recordUniqueProcess
 
-	const maxID = 691
 	const parallelLevel = 8
 	// library: 434
 
@@ -306,7 +307,8 @@ func main() {
 	}()
 
 	//wordcountConsumer(resChan)
-	//sortingConsumer(resChan)
+	sortingConsumer(resChan)
+	return
 	allStoryUrls := collectingConsumer(resChan)
 
 	// combine per-goroutine maps
