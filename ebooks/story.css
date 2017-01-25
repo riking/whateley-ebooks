@@ -29,6 +29,20 @@ img {
 	font-size: 80%;
 }
 
+.bizcard {
+    font-style: italic;
+    background-color: #ddd;
+    color: #222;
+    text-align: center;
+    vertical-align: baseline;
+    margin: 5px;
+    padding: 5px;
+    border: 0.1in solid #FF0000;
+    background-position: center;
+    clear: both;
+    float: none;
+}
+
 /* end reviewed styles */
 
 .Webarticle {
@@ -40,20 +54,6 @@ img {
     border: thin solid #999999;
 }
 
-.bizcard {
-    font-style: italic;
-    background-color: #FFFFFF;
-    text-align: center;
-    vertical-align: baseline;
-    margin: 5px;
-    padding: 5px;
-    height: 2in;
-    width: 3in;
-    border: 1px solid #FF0000;
-    background-position: center;
-    clear: both;
-    float: none;
-}
 .PCscreen {
     font-family: "Courier New", Courier, monospace;
     color: #FFFFFF;
