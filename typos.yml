@@ -51,6 +51,9 @@ library:
   #  - findtext: "\u0016"
   #    replacetext: "—"
 
+2:
+  - findtext: "fire. You will be quiet"
+    replacetext: "fire. “You will be quiet"
 6:
   # this one is a mess, gave up on cleaning it
   - select: "[style=\"color: #000000;\"], [style=\"font-size: medium;\"]"
@@ -68,6 +71,35 @@ library:
   - select: "p[align=\"CENTER\"] :contains(\"* * *\")"
     action: replacehtml
     replace: <hr>
+11:
+  - findtext: "two many"
+    replacetext: "too many"
+  - findtext: "late me pay"
+    replacetext: "let me pay"
+23:
+  - findtext: "Uh, Nikki?"
+    replacetext: "&#34;Uh, Nikki?"
+24:
+  - findtext: "get -“ Suddenly"
+    replacetext: "get&ndash;” Suddenly"
+  - findtext: "It* isn"
+    replacetext: "It *isn"
+  - findtext: "coarse of action"
+    replacetext: "course of action"
+  - findtext: "Her moto"
+    replacetext: "Her motto"
+  - findtext: "waiting for us. I put"
+    replacetext: "waiting for us.” I put"
+  - findtext: "see you again. Ha"
+    replacetext: "see you again.” Ha"
+  - findtext: "and said’ “Go"
+    replacetext: "and said, “Go"
+  - findtext: "Do you understand”"
+    replacetext: "Do you understand?”"
+  - findtext: "English ,math, social studies etc.,"
+    replacetext: "English, math, social studies, etc.,"
+  - findtext: "“Harry put"
+    replacetext: "Harry put"
 43:
   - findtext: "Why do always"
     replacetext: "Why do you always"
@@ -235,6 +267,18 @@ library:
 105:
   - findtext: "adults on"
     replacetext: "adults’ on"
+122:
+  - findtext: "other size"
+    replacetext: "other side"
+  - findtext: "The sure"
+    replacetext: "They sure"
+  #- select: p:contains("What flag was up today") + hr
+  #  action: delete
+  - findtext: "other size"
+    replacetext: "other side"
+123:
+  - findtext: "over coco."
+    replacetext: "over cocoa."
 124:
   - select: p:contains("November 16"), p:contains("November 20"), p:contains("November 21"), p:contains("PSYCHO") + p:contains("November 22"), p:contains("November 26")
     action: insertBefore
@@ -260,6 +304,13 @@ library:
 127:
   - findtext: "later, Karen was wearing"
     replacetext: "later, Stacy was wearing"
+144:
+  # "Zenith made is sound as if it were important that as many of the elective classes were over."
+  # what... do I do with that sentence? leave it alone.
+  - findtext: "dont’"
+    replacetext: "don’t"
+  - findtext: "hot griddle"
+    replacetext: "hot griddle!"
 198:
   - findtext: "No it wasn"
     replacetext: "No, it wasn"
