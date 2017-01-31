@@ -23,45 +23,25 @@ parts:
 
   - toc: "Chapter 1"
     toc-nest: 2
-    story:
-      id: 70
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-1
-
+    story: {id: 70}
   - toc: "Chapter 2"
     toc-nest: 2
-    story:
-      id: 71
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-2
-
+    story: {id: 71}
   - toc: "Chapter 3"
     toc-nest: 2
-    story:
-      id: 72
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-3
-
+    story: {id: 72}
   - toc: "Chapter 4"
     toc-nest: 2
-    story:
-      id: 73
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-4
-
+    story: {id: 73}
   - toc: "Chapter 5"
     toc-nest: 2
-    story:
-      id: 74
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-5
-
+    story: {id: 74}
   - toc: "Chapter 6"
     toc-nest: 2
-    story:
-      id: 75
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-6
-
+    story: {id: 75}
   - toc: "Chapter 7"
     toc-nest: 2
-    story:
-      id: 76
-      slug: buffalo-gal-won-t-you-come-out-tonight-ch-7
+    story: {id: 76}
 
   - toc: "Kayda 2: Trials of a Warrior"
     toc-nest: 1
@@ -72,39 +52,22 @@ parts:
 
   - toc: "Chapter 1: Maka"
     toc-nest: 2
-    story:
-      id: 59
-      slug: kayda-2-trials-of-a-warrior-ch-1
-
+    story: {id: 59}
   - toc: "Chapter 2: Hetkála"
     toc-nest: 2
-    story:
-      id: 60
-      slug: kayda-2-trials-of-a-warrior-ch-2
-
+    story: {id: 60}
   - toc: "Chapter 3: Ptaŋ na Ithunkasan"
     toc-nest: 2
-    story:
-      id: 61
-      slug: kayda-2-trials-of-a-warrior-ch-3
-
+    story: {id: 61}
   - toc: "Chapter 4: Itukala na Šuŋka"
     toc-nest: 2
-    story:
-      id: 62
-      slug: kayda-2-trials-of-a-warrior-ch-4
-
+    story: {id: 62}
   - toc: "Chapter 5: Thanagila"
     toc-nest: 2
-    story:
-      id: 63
-      slug: kayda-2-trials-of-a-warrior-ch-5
-
+    story: {id: 63}
   - toc: "Chapter 6"
     toc-nest: 2
-    story:
-      id: 64
-      slug: kayda-2-trials-of-a-warrior-ch-6
+    story: {id: 64}
 
   - toc: "Kayda 3: Two Spirits"
     toc-nest: 1
@@ -115,21 +78,13 @@ parts:
 
   - toc: "Chapter 1: Oyate"
     toc-nest: 2
-    story:
-      id: 38
-      slug: kayda-3-two-spirits-ch-1
-
+    story: {id: 38}
   - toc: "Chapter 2: Ichimani"
     toc-nest: 2
-    story:
-      id: 39
-      slug: kayda-3-two-spirits-ch-2
-
+    story: {id: 39}
   - toc: "Chapter 3: Zuya Wikhoskalaka"
     toc-nest: 2
-    story:
-      id: 40
-      slug: kayda-3-two-spirits-ch-3
+    story: {id: 40}
 
   - toc: "The Zica Encounter"
     toc-nest: 1
@@ -137,9 +92,7 @@ parts:
       <h1>The Zica Encouter</h1>
       <h2>A Whateley Academy Vignette</h2>
       <h3>by ElrodW</h3>
-  - story:
-      id: 53
-      slug: the-zica-encounter
+  - story: {id: 53}
 
   - toc: "Kayda 4: Now The Real Learning Can Begin"
     toc-nest: 1
@@ -150,33 +103,19 @@ parts:
 
   - toc: "Chapter 1: Apetu Theca"
     toc-nest: 2
-    story:
-      id: 65
-      slug: kayda-4-now-the-real-learning-can-begin-ch-1
-
+    story: {id: 65}
   - toc: "Chapter 2: Mahpiya Wakina"
     toc-nest: 2
-    story:
-      id: 66
-      slug: kayda-4-now-the-real-learning-can-begin-ch-2
-
+    story: {id: 66}
   - toc: "Chapter 3: Osiceca Magazu"
     toc-nest: 2
-    story:
-      id: 67
-      slug: kayda-4-now-the-real-learning-can-begin-ch-3
-
+    story: {id: 67}
   - toc: "Chapter 4: Waki Ya"
     toc-nest: 2
-    story:
-      id: 68
-      slug: kayda-4-now-the-real-learning-can-begin-ch-4
-
+    story: {id: 68}
   - toc: "Chapter 5: Wakinyan Towa Pi"
     toc-nest: 2
-    story:
-      id: 69
-      slug: kayda-4-now-the-real-learning-can-begin-ch-5
+    story: {id: 69}
 
   - toc: "The Riddle Of Sappho"
     toc-nest: 1
@@ -187,9 +126,8 @@ parts:
 
   - toc: "Prologue"
     toc-nest: 2
-    story:
-      id: 82
-      slug: the-riddle-of-sappho-prologue-and-canto-i
+    story: {id: 82}
+
   # Add a TOC entry to point to start of Canto I
   - toc: "Canto I"
     toc-nest: 2
@@ -197,33 +135,19 @@ parts:
 
   - toc: "Canto II"
     toc-nest: 2
-    story:
-      id: 83
-      slug: the-riddle-of-sappho-prologue-and-canto-ii
-
+    story: {id: 83}
   - toc: "Canto III"
     toc-nest: 2
-    story:
-      id: 84
-      slug: the-riddle-of-sappho-prologue-and-canto-iii
-
+    story: {id: 84}
   - toc: "Canto IV"
     toc-nest: 2
-    story:
-      id: 85
-      slug: the-riddle-of-sappho-prologue-and-canto-iv
-
+    story: {id: 85}
   - toc: "Canto V"
     toc-nest: 2
-    story:
-      id: 86
-      slug: the-riddle-of-sappho-prologue-and-canto-v
-
+    story: {id: 86}
   - toc: "Canto VI"
     toc-nest: 2
-    story:
-      id: 87
-      slug: the-riddle-of-sappho-prologue-and-canto-vi
+    story: {id: 87}
 
   - toc: "Medicine Girl"
     toc-nest: 1
@@ -232,9 +156,7 @@ parts:
       <h2>Book 6</h2>
       <h3>by E.E. Nalley and ElrodW</h3>
       <h4>A Whateley Academy Short Story</h4>
-  - story:
-      id: 119
-      slug: medicine-girl
+  - story: {id: 119}
 
   - toc: "Charging Buffalo, Hidden Dragon"
     toc-nest: 1
@@ -247,29 +169,20 @@ parts:
 
   - toc: "Part 1"
     toc-nest: 2
-    story:
-      id: 160
-      slug: charging-buffalo-hidden-dragon-part-1
-
+    story: {id: 160}
   - toc: "Part 2"
     toc-nest: 2
-    story:
-      id: 166
-      slug: charging-buffalo-hidden-dragon-part-2
-
+    story: {id: 166}
   - toc: "Part 3"
     toc-nest: 2
-    story:
-      id: 189
-      slug: charging-buffalo-hidden-dragon-part-3
+    story: {id: 189}
 
   - toc: "Learning to Hunt"
     coverpage: >
       <h1>Learning to Hunt</h1>
       <h3>A Whateley Academy Vingette</h3>
       <h3>by Light-of-Fury and ElrodW</h3>
-  - story:
-      id: 486
+  - story: {id: 486}
 
   - toc: "Kayda 8: The Best Days of Our Lives"
     toc-nest: 1
@@ -280,21 +193,13 @@ parts:
 
   - toc: "Part 1"
     toc-nest: 2
-    story:
-      id: 643
-      slug: the-best-days-of-our-lives-3
-
+    story: {id: 643}
   - toc: "Part 2"
     toc-nest: 2
-    story:
-      id: 657
-      slug: kayda-8-the-best-days-of-our-lives-part-2
-
+    story: {id: 657}
   - toc: "Part 3"
     toc-nest: 2
-    story:
-      id: 681
-      slug: kayda-8-the-best-days-of-our-lives-part-3
+    story: {id: 681}
 
   - toc: "Kayda 9: Crying for a Dream"
     toc-nest: 1
@@ -303,11 +208,7 @@ parts:
       <h2>Book 9</h2>
       <h3>by ElrodW</h3>
 
-  - toc: "Part 1"
-    toc-nest: 2
-    story:
-      id: 720
-      slug: kayda-9-crying-for-a-dream
+  - story: {id: 720}
 
   - toc: "Kayda 10: There's No Place Like Poe"
     toc-nest: 1
