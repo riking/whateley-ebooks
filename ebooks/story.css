@@ -1,3 +1,6 @@
+/* crystalhall styles, adapted for ebook readers */
+/* mostly, colors have been removed or adjusted */
+
 body {
     max-width:50em;
     margin-left:auto;
@@ -42,6 +45,14 @@ img {
     clear: both;
     float: none;
 }
+.Net {
+    background-color: #3300FF;
+    border: 2px double #00FFFF;
+    color: #FFFFFF;
+}
+.headder {
+    text-align: center;
+}
 
 /* end reviewed styles */
 
@@ -64,19 +75,11 @@ img {
     border: 2px solid #afaf7c;
     text-decoration: none;
 }
-.Net {
-    background-color: #3300FF;
-    border: 2px double #00FFFF;
-    color: #FFFFFF;
-}
 .Fireworks {
     background-image: url(../Images/firework27.gif);
     background-position: center center;
 }
 
-.headder {
-    text-align: center;
-}
 .Newsclipping {
     margin-right: 3%;
     margin-left: 3%;
@@ -84,13 +87,10 @@ img {
 
 }
 .WarningYellow {
-    color: #FFFF00;
-    background-color: #FF0000;
+    color: #969600;
+    background-color: #ae0000;
 }
 .MID {
-    width: 30pc;
-    float: none;
-    clear: none;
     border: solid #666;
 }
 MMID {
