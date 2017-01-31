@@ -1,0 +1,29 @@
+publisher: Whateley Press
+series: Whateley Academy Original Canon
+title: Whateley - Backstory Items
+uuid: f08e0520-1e87-439b-acfc-0422ee2146c1
+author: Whateley Academy Canon Authors
+author-sort: Whateley Academy Canon Authors
+id: universe-info
+
+parts:
+- story: {id: 450}
+  toc: 'Interview with Dr. Bender'
+- story: {id: 451}
+  toc: 'Interview with Heather O''Malley'
+- story: {id: 22}
+  toc: 'Foundation of the MCO'
+- story: {id: 21}
+  toc: 'WU American Firearms Regulations'
+- story: {id: 25}
+  toc: 'Lovecraftian Influences'
+- story: {id: 26}
+  toc: 'History of Whateley Academy'
+- story: {id: 27}
+  toc: 'Security and the Range'
+- story: {id: 28}
+  toc: 'JG''s List'
+- story: {id: 29}
+  toc: 'Entity Classifications'
+- story: {id: 30}
+  toc: 'Graduating Class Legacies'

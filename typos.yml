@@ -76,6 +76,9 @@ library:
     replacetext: "too many"
   - findtext: "late me pay"
     replacetext: "let me pay"
+21:
+  - findtext: "â€¢"
+    replacetext: "\u2022"
 23:
   - findtext: "Uh, Nikki?"
     replacetext: "&#34;Uh, Nikki?"

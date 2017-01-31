@@ -58,6 +58,6 @@ yml_file = {
 		}
 yml_file['parts'] = book_parts
 
-with open('gen1.yml', 'w') as f:
+with open('output.yml', 'w') as f:
 	f.write(yaml.dump(yml_file))
 #print(json.dumps(list(book_parts)))
