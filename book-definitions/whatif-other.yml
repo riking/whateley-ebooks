@@ -20,10 +20,6 @@ parts:
     story: {id: 709}
   - toc: "Homecoming, 2026"
     story: {id: 721}
-  - toc: "Hard Being Pure: Part 1"
-    story: {id: 725}
-  - toc: "Hard Being Pure: Part 2"
-    story: {id: 731}
   - coverpage: >
       <center><h3>to be continued…</h3></center>
       <p>This book was last updated on 20 January 2017</p>
