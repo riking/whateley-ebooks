@@ -50,8 +50,6 @@ parts:
     story: {id: 307}
   - toc: "Ashes and Steel"
     story: {id: 737}
-  # - toc: "Small Mercies"
-  #  story: {id: 748}
   - toc: "The Book of Darwin"
     toc-nest: 1
     coverpage: >
@@ -59,3 +57,6 @@ parts:
   - toc: "Part 1"
     toc-nest: 2
     story: {id: 759}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 760}

@@ -64,8 +64,7 @@ parts:
 
   - toc: "A Teacher's Tail"
     toc-nest: 1
-    coverpage: >
-      <h1>Book 4: A Teacher's Tail</h1>
+    coverpage: "<h1>Book 4: A Teacher's Tail</h1>"
   - toc: "Part 1"
     toc-nest: 2
     story: {id: 745}
@@ -73,7 +72,10 @@ parts:
     toc-nest: 2
     story: {id: 746}
 
+  - toc: "Quick Imp-ressions"
+    story: {id: 769}
+
   - coverpage: >
       <center><h3><em>to be continued…</em></h3></center>
       <hr>
-      <p>This book was last updated on 02 January 2017</p>
+      <p>This book was last updated on 07 February 2017</p>
