@@ -32,9 +32,10 @@ type WANetwork struct {
 }
 
 type Options struct {
-	CacheFile string
-	UserAgent string
-	Headers   http.Header
+	CacheFile      string
+	UserAgent      string
+	Headers        http.Header
+	MaxConcurrency int
 	// if Offline, cache entries never expire
 	Offline bool
 }
@@ -60,13 +61,16 @@ func New(opts Options) *WANetwork {
 	if opts.UserAgent == "" {
 		opts.UserAgent = "Program Name Not Set (+github.com/riking/whateley-ebooks)"
 	}
+	if opts.MaxConcurrency == 0 {
+		opts.MaxConcurrency = 10
+	}
 	c.Headers = opts.Headers
 	if c.Headers == nil {
 		c.Headers = make(http.Header)
 	}
 	c.Headers.Set("User-Agent", opts.UserAgent)
 	c.httpClient.Jar, _ = cookiejar.New(nil)
-	c.httpClient.Timeout = 15 * time.Second
+	c.httpClient.Timeout = 45 * time.Second
 	c.httpClient.Transport = &printingRoundTripper{parent: c.httpClient.Transport}
 
 	if opts.CacheFile != "" {
@@ -81,7 +85,7 @@ func New(opts Options) *WANetwork {
 		}
 	}
 	c.rateChan = make(chan struct{})
-	for i := 0; i < 10; i++ {
+	for i := 0; i < opts.MaxConcurrency; i++ {
 		go func() {
 			for {
 				c.rateChan <- struct{}{}

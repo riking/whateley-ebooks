@@ -14,8 +14,8 @@ parts:
     story: {id: 638}
   - toc: "Evershade Reforming"
     story: {id: 693}
-  - toc: "Halloween"
-    story: {id: 702}
+  #- toc: "Halloween"
+  # story: {id: 702}
   - toc: "A Matter of Fact"
     story: {id: 709}
   - toc: "Homecoming, 2026"

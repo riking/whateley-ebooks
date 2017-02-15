@@ -75,7 +75,7 @@ parts:
 - story: {id: 152}
   toc: !!python/unicode 'Jade 5: Redefining Jade'
 - story: {id: 398}
-  toc: !!python/unicode 'Merry Decent into Madness'
+  toc: !!python/unicode 'Merry Descent into Madness'
 - story: {id: 143}
   toc: !!python/unicode 'Panty Raid'
 - story: {id: 400}
@@ -121,11 +121,11 @@ parts:
 - story: {id: 370}
   toc: "There\u2019s an Angel in Father John\u2019s Basement (Part 2)"
 - story: {id: 464}
-  toc: !!python/unicode 'Upheaval: New Friends, New Problems'
+  toc: !!python/unicode 'Upheaval 3: New Friends, New Problems'
 - story: {id: 465}
-  toc: !!python/unicode 'Upheaval: Walking Alone'
+  toc: !!python/unicode 'Upheaval 2: Walking Alone'
 - story: {id: 466}
-  toc: !!python/unicode 'Upheaval: Instructor'
+  toc: !!python/unicode 'Upheaval 1: Instructor'
 - story: {id: 392}
   toc: !!python/unicode 'The Devil''s Dance (Part 1)'
 - story: {id: 375}
@@ -386,10 +386,6 @@ parts:
   toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 4)'
 - story: {id: 196}
   toc: !!python/unicode 'Ayla and the Birthday Brawl: (Chap 5)'
-- story: {id: 298}
-  toc: !!python/unicode 'As Above, So Below'
-- story: {id: 349}
-  toc: !!python/unicode 'Knife in the Ribs'
 - story: {id: 300}
   toc: !!python/unicode 'A Fistful of Chaka'
 - story: {id: 265}
@@ -842,6 +838,16 @@ parts:
   toc: "Imp 4: A Teacher\u2019s Tail (Part 2)"
 - story: {id: 742}
   toc: !!python/unicode 'Boys of Summer (Part 2)'
+- story: {id: 759}
+  toc: !!python/unicode 'The Book of Darwin (Chapter 1)'
+- story: {id: 766}
+  toc: !!python/unicode 'Kayda 10 - There''s No Place Like Poe - Part 2'
+- story: {id: 760}
+  toc: !!python/unicode 'The Book of Darwin (Chapter 2)'
+- story: {id: 769}
+  toc: !!python/unicode 'Quick Imp-ressions'
+- story: {id: 776}
+  toc: !!python/unicode 'Round and Round (Part 1)'
 publisher: Whateley Press
 series: Whateley Academy Original Canon
 title: Whateley - Gen1 Complete

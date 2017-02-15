@@ -18,6 +18,9 @@ parts:
   - toc: "Part 1"
     toc-nest: 2
     story: {id: 704}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 728}
   - coverpage: >
       <center><h3>to be continued…</h3></center>
       <p>This book was last updated on 12 October 2016</p>

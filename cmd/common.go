@@ -17,13 +17,15 @@ var offlineMode *bool
 func Setup() *client.WANetwork {
 	ebooks.SetTyposFromFile("./typos.yml")
 	offlineMode = flag.Bool("offline", false, "Operate in offline mode (cached entries never expire).")
+	maxRequests := flag.Int("max-requests", 10, "Maximum number of concurrent outstanding HTTP requests")
 
 	flag.Parse()
 
 	networkAccess := client.New(client.Options{
-		UserAgent: "(Error: tool name not specified) (+github.com/riking/whateley-ebooks)",
-		CacheFile: "./cache.db",
-		Offline:   *offlineMode,
+		UserAgent:      "(Error: tool name not specified) (+github.com/riking/whateley-ebooks)",
+		CacheFile:      "./cache.db",
+		Offline:        *offlineMode,
+		MaxConcurrency: *maxRequests,
 	})
 
 	return networkAccess

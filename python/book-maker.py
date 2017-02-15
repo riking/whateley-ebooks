@@ -24,6 +24,17 @@ re_url = re.compile('^http://whateleyacademy.net/index.php/(?:([a-z0-9-]+)/)+(\d
 
 content = []
 
+yml_file = {}
+import os.path
+base_filename = os.path.basename(url) + '.yml'
+with open(base_filename, 'r') as f:
+	yml_file = yaml.load(f)
+import os
+if yml_file['id'] is None or yml_file['uuid'] is None:
+	print("Error: Base file " + base_filename + " must have the non-'parts' fields filled out")
+	os.exit(2)
+yml_file['publisher'] = 'Whateley Press'
+
 def process_page(url):
 	resp = requests.post(url, data={'filter_order': 'a.publish_up', 'filter_order_Dir': 'asc'})
 	print("processing", url)
@@ -47,17 +58,8 @@ while cur_url is not None:
 		cur_url = urljoin(cur_url, ret['href'])
 
 book_parts = [{'toc': item['title'], 'story': {'id': int(item['id'])}} for item in content]
-yml_file = {
-	'id': 'gen1',
-	'title': 'Whateley - Gen1 Complete',
-	'author': 'Whateley Academy Canon Authors',
-	'author-sort': 'Whateley Academy Canon Authors',
-	'uuid': '0b6b1f75-3483-4657-b7f8-3b6c657e9a44',
-	'series': 'Whateley Academy Original Canon',
-	'publisher': 'Whateley Press',
-		}
 yml_file['parts'] = book_parts
 
-with open('output.yml', 'w') as f:
+with open(yml_file['id'] + '.yml', 'w') as f:
 	f.write(yaml.dump(yml_file))
 #print(json.dumps(list(book_parts)))
