@@ -89,3 +89,11 @@ parts:
   - toc: Chapter 5
     toc-nest: 2
     story: {id: 81}
+
+  - toc: "The Bear, the Bitch, and Everything: Part 1"
+    story: {id: 774}
+  - toc: "Part 2"
+    story: {id: 791}
+  # i'll fix this later
+  - toc: "Murphy's Laws of Whateley"
+    story: {id: 765}
