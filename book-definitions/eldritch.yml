@@ -21,6 +21,8 @@ parts:
     story: {id: 314}
   - toc: "Yet Another Day as an Outcast"
     story: {id: 469}
+  - coverpage: >
+       <p><em>Editor's Note:</em> And now, for a brief flashback...</p>
   - toc: "Parkour Jam Hooligans"
     story: {id: 467}
   - toc: "Call The Thunder"
@@ -50,8 +52,6 @@ parts:
     story: {id: 307}
   - toc: "Ashes and Steel"
     story: {id: 737}
-  - toc: "Small Mercies"
-    story: {id: 748}
   - toc: "The Book of Darwin"
     toc-nest: 1
     coverpage: >
@@ -62,3 +62,13 @@ parts:
   - toc: "Part 2"
     toc-nest: 2
     story: {id: 760}
+  - toc: "Small Mercies"
+    story: {id: 748}
+  # - toc: "Sunshine & Fury"
+    #story:
+  - toc: "Blood-Sister, Blood-Brother"
+    story: {id: 768}
+  - coverpage: >
+      <p><em>Editor's Note:</em> We're jumping ahead about 9 years into the future here, into Generation 2 of the Academy.</p>
+  - toc: "Reinforce: Don't Call Me a Pretty"
+    story: {id: 813}
