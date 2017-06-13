@@ -1,6 +1,6 @@
 
 id: eldritch
-title: Whateley - Eldritch / Call The Thunder
+title: Whateley - Outcast Corner
 
 author: Joe Gunnarson
 author-sort: Joe Gunnarson
@@ -64,10 +64,16 @@ parts:
     story: {id: 760}
   - toc: "Small Mercies"
     story: {id: 748}
-  # - toc: "Sunshine & Fury"
-    #story:
+  - coverpage: >
+      <p><em>Editor's Note:</em> Murphy's Laws is being included because it contains multiple scenes critical to the Outcast Corner plot.</p>
+    toc: "Murphy's Laws of Whateley"
+  - story: {id: 765}
   - toc: "Blood-Sister, Blood-Brother"
     story: {id: 768}
+  - toc: "Siblings & Savages: Chapter 1"
+    story: {id: 772}
+  - toc: "Siblings & Savages: Chapter 2"
+    story: {id: 846}
   - coverpage: >
       <p><em>Editor's Note:</em> We're jumping ahead about 9 years into the future here, into Generation 2 of the Academy.</p>
   - toc: "Reinforce: Don't Call Me a Pretty"
