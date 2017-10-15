@@ -46,6 +46,8 @@ func getStory(ch chan<- *client.WhateleyPage, storyID string, networkAccess *cli
 				fmt.Fprint(os.Stderr, "C")
 				return
 			}
+			fmt.Fprintln(os.Stderr, err)
+			return
 		}
 		fmt.Println(err)
 		os.Exit(1)

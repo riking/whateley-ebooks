@@ -1,0 +1,36 @@
+
+id: absinthe
+title: Whateley - Absinthe
+
+author: Morpheus
+author-sort: Morpheus
+uuid: bf6e4aa5-e9d3-4346-b350-09e15f77292a
+series: Whateley Academy 2nd Generation Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "Book 1"
+    story: {id: 823}
+
+  - toc: "Absinthe 2: The Absinthe of Malice"
+    toc-nest: 1
+    coverpage: >
+      <h1>Book 2: The Absinthe of Malice</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 882}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 901}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 937}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 938}
+
+
+  - coverpage: >
+      <center><h3><em>to be continued…</em></h3></center>
+      <hr>
+      <p>This book was last updated on 15 October 2017</p>

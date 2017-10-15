@@ -75,6 +75,32 @@ parts:
   - toc: "Quick Imp-ressions"
     story: {id: 769}
 
+  - toc: "Head Over Tail"
+    toc-nest: 1
+    coverpage: "<h1>Book 5: Head Over Tail</h1>"
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 820}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 821}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 822}
+
+  - toc: "A Very Imp-ortant Date"
+    toc-nest: 1
+    coverpage: "<h1>Book 6: A Very Imp-ortant Date</h1>"
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 908}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 909}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 910}
+
   - coverpage: >
       <center><h3><em>to be continued…</em></h3></center>
       <hr>
