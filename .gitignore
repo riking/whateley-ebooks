@@ -8,4 +8,6 @@
 target/
 cache.db
 typos.json
-
+dlstory-before.html
+dlstory-after.html
+dlstory-full.html

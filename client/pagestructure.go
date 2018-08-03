@@ -6,7 +6,6 @@ package client // import "github.com/riking/whateley-ebooks/client"
 import (
 	"fmt"
 	"html/template"
-	"net/url"
 	"os"
 	"regexp"
 	"strings"
@@ -97,16 +96,18 @@ func (p *WhateleyPage) CategoryLink() string {
 	return val
 }
 
+var serverLoc, _ = time.LoadLocation("America/Los_Angeles")
+
 func (p *WhateleyPage) PublishDate() (time.Time, error) {
-	if p.StoryID == "551" {
-		// The date of record is broken, so select a time between the previous and next chapter
-		return time.Parse(timeFmt, "2016-03-10T08:53:07-08:00")
+	t1 := p.document.Find(`.flexi.element.field_published .value`).Text()
+	if t1 != "" {
+		return time.ParseInLocation("Monday, 02 January 2006 15:04", t1, serverLoc)
 	}
-	t, ok := p.document.Find(`time[itemprop="datePublished"]`).Attr("datetime")
-	if !ok {
-		return time.Time{}, fmt.Errorf("could not find time.datePublished in %s", p.URL())
+	t, ok := p.document.Find(`meta[itemprop="dateCreated"]`).Attr("content")
+	if ok {
+		return time.ParseInLocation("2006-01-02 15:04:05", t, serverLoc)
 	}
-	return time.Parse(timeFmt, t)
+	return time.Time{}, fmt.Errorf("could not find publish date in %s", p.URL())
 }
 
 func (p *WhateleyPage) Tags() []StoryTag {
@@ -134,7 +135,7 @@ func (p *WhateleyPage) WordCount() int {
 	return len(strings.Fields(p.StoryBodySelection().Text()))
 }
 
-const StoryBodySelector = `.item-page div[itemprop="articleBody"] `
+const StoryBodySelector = `div.description.group div.desc-content.field_text`
 
 func (p *WhateleyPage) StoryBodySelection() *goquery.Selection {
 	return p.document.Find(StoryBodySelector)
@@ -156,20 +157,20 @@ func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
 	return template.HTML(p.StoryBody())
 }
 
-// TODO - these fail for library, faq, etc
-var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/index\.php/([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)`)
-var printURLRegexp = regexp.MustCompile(`\A/index.php/(?:([a-zA-Z0-9-]+)/)?(\d+)-([a-zA-Z0-9-]+)(?:(\d+)-([a-zA-Z0-9-]+))?\?tmpl=component&print=1`)
-var idAndSlugRegexp = regexp.MustCompile(`\A(\d+)-([a-zA-Z0-9-]+)\z`)
+var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/(?:index\.php/)?(?:content_page/)?([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)(?:\?|#|\z)`)
+var idAndSlugRegexp = regexp.MustCompile(`(?:\A|/)(\d+)-([a-zA-Z%0-9-]+)(?:/|\z)`)
 
 var stripExceptionsSelector = `
 head base,
 meta[name="rights"],
+link[rel="canonical"],
 meta[http-equiv="content-type"],
 head title,
-div.item-page,
-.article-info,
-ul.tags,
-div[itemprop="articleBody"]`
+.flexi.element.field_published,
+.flexi.element.field_created,
+.flexi.element.field_modified,
+.flexi.element.field_tags,
+` + StoryBodySelector
 
 func nodeInSelection(n *html.Node, s *goquery.Selection) bool {
 	for {
@@ -238,45 +239,15 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 		}
 	})
 
-	var m []string
-	// The printing link is the only part of the page where the correct slug is emitted
-	printURL, ok := doc.Find(".print-icon a").Attr("href")
-	if ok {
-		u, err := url.Parse(printURL)
-		if err != nil {
-			return nil, errors.Wrapf(err, "Error parsing %s:", printURL)
-		}
-		u.RawQuery = ""
-		parts := strings.Split(u.EscapedPath(), "/")
-		if parts[0] != "" || parts[1] != "index.php" {
-			return nil, errors.Errorf("Could not parse canonical URL - doesn't start with /index.php (got %s)", printURL)
-		}
-		if len(parts) < 3 || len(parts) > 5 {
-			return nil, errors.Errorf("Could not parse canonical URL - wrong # of parts (got %s)", printURL)
-		}
-
-		storyPart := parts[len(parts)-1]
-		m = idAndSlugRegexp.FindStringSubmatch(storyPart)
-		if m == nil {
-			return nil, errors.Errorf("Could not parse canonical URL - failed to extract id and slug (got %s)", printURL)
-		}
-		page.StoryID = m[1]
-		page.StorySlug = m[2]
-
-		page.CategorySlug = strings.Join(parts[2:len(parts)-1], "/")
-	} else {
-		// Fall back on the requested URL
-		canonical, ok := doc.Find(`head base`).Attr("href")
-		fmt.Fprintln(os.Stderr, "warning: falling back to <base>")
-		if !ok {
-			return nil, errors.Errorf("could not find <base href> (canonical URL)")
-		}
-		var err error
-		page.StoryURL, err = ParseURL(canonical)
-		if err != nil {
-			return nil, err
-		}
+	canonicalLink, ok := doc.Find(`link[rel="canonical"]`).Attr("href")
+	if !ok {
+		return nil, errors.Errorf("could not find <link rel=canonical>")
 	}
+	urlShort, err := ParseURL(canonicalLink)
+	if err != nil {
+		return nil, err
+	}
+	page.StoryURL = urlShort
 
 	return page, nil
 }

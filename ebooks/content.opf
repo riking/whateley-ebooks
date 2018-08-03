@@ -7,5 +7,6 @@
 <dc:publisher>{{.Publisher}}</dc:publisher>
 <meta name="calibre:title_sort" content="{{.TitleFileAs}}"/>
 <meta name="calibre:series" content="{{.Series}}"/>
+<meta name="whateleyebooks:creator" content="{{.Username}}@{{.Hostname}}"/>
 <dc:identifier opf:scheme="calibre">{{.UUID}}</dc:identifier>
 </metadata>{{.ManifestAndSpine}}<guide/></package>
