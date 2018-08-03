@@ -1,0 +1,19 @@
+
+id: tennyo-easter
+title: "Tennyo's Easter"
+
+author: Starwolf
+author-sort: Starwolf
+uuid: 84b0039d-0e0b-4db0-9309-68f43c81daf8
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "Chapter 1"
+    story: {id: 471}
+  - toc: "Chapter 2"
+    story: {id: 472}
+  - toc: "Chapter 3"
+    story: {id: 473}
+  - toc: "Chapter 4"
+    story: {id: 474}
