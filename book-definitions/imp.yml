@@ -100,8 +100,24 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 910}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 911}
+
+  - toc: "Imp-ervious to Reason"
+    toc-nest: 1
+    coverpage: "<h1>Book 7: Imp-ervious to Reason</h1>"
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 1050}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 1051}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 1052}
 
   - coverpage: >
       <center><h3><em>to be continued…</em></h3></center>
       <hr>
-      <p>This book was last updated on 07 February 2017</p>
+      <p>This book was last updated on 03 August 2018</p>
