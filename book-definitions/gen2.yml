@@ -26,6 +26,9 @@ parts:
   - toc: "Part 2"
     toc-nest: 2
     story: {id: 501}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 815}
   - toc: "The Curse of the Dragon Queen"
     story: {id: 421}
   - toc: "Islands in the Sun"
@@ -51,8 +54,9 @@ parts:
     story: {id: 660}
   - toc: "Blood Sisters Part 1"
     story: {id: 650}
-  - toc: "Blood Sisters Part 2"
+  - toc: "Part 2"
     story: {id: 668}
+    toc-nest: 2
   - toc: "I Don't Think We're in Kansas Anymore"
     story: {id: 635}
   - toc: "Part 2"
@@ -64,16 +68,16 @@ parts:
   - toc: "Part 4"
     toc-nest: 2
     story: {id: 665}
-  - toc: "Professional Courtesy"
-    story: {id: 684}
   - toc: "Part 5"
     toc-nest: 2
     story: {id: 691}
-  - toc: "Glimpses of the Sun"
-    story: {id: 689}
-  - toc: "IDTWIKA: Part 6"
+  - toc: "Part 6"
     toc-nest: 2
     story: {id: 694}
+  - toc: "Professional Courtesy"
+    story: {id: 684}
+  - toc: "Glimpses of the Sun"
+    story: {id: 689}
   - toc: "Myriad Meetings: Part 1"
     story: {id: 659}
   - toc: "The Writing On the Wall"
@@ -89,8 +93,79 @@ parts:
     story: {id: 729}
   - toc: "Eisenmädel: Summer of my German Heritage: Part 1: Family Secrets"
     story: {id: 756}
+  - toc: "Part 2: Family Heritage"
+    toc-nest: 2
+    story: {id: 818}
   - toc: "Hunger"
     story: {id: 764}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 983}
+  - toc: "Good Cop / Bad Cop: Part 1"
+    story: {id: 676}
+  - toc: "Rises the Sun: Part 1"
+    story: {id: 788}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 842}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 886}
+  - toc: "Would the Last One Out Please Turn Out the Lights"
+    story: {id: 797}
+  - toc: "Reinforce: Don't Call Me a Pretty"
+    story: {id: 813}
+  - toc: "A Dragon Abroad: Part 1"
+    story: {id: 795}
+  - toc: "Dorms of Our Lives: Season 1"
+    story: {id: 849}
+  - toc: "Sunshine & Fury"
+    story: {id: 789}
+  - toc: "Laura and the Village"
+    story: {id: 841}
+  - toc: "The Autumn Leaves"
+    story: {id: 840}
+  - toc: "Reckless Reputations"
+    story: {id: 866}
+  - toc: "Meanwhile in Castle Groenwald"
+    story: {id: 861}
+  - toc: "The Sorrows of Red October"
+    story: {id: 859}
+  - toc: "A Dragon Abroad: Part 2"
+    story: {id: 916}
+  - toc: "The Hand You're Dealt"
+    story: {id: 951}
+  - toc: "The Haunting of Jennifer Kelly: Part 1"
+    story: {id: 952}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 940}
+  - toc: "Dorms of Our Lives: Season 2"
+    story: {id: 973}
+  - toc: "Like A Candle in the Wind"
+    story: {id: 994}
+  - toc: "Glyph 3: Ink in her Veins: Part 1"
+    story: {id: 1002}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 1003}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 1004}
+  - toc: "The Trouble with Karma"
+    story: {id: 1011}
+  - toc: "Evil Genius"
+    story: {id: 1033}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 1034}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 1035}
+  - toc: "Dorms of Our Lives: Season 3"
+    story: {id: 1049}
+  - toc: "Flowers of the Sun"
+    story: {id: 1068}
   - coverpage: >
       <center><h3>to be continued…</h3></center>
-      <p>This book was last updated on 20 January 2017</p>
+      <p>This book was last updated on 17 August 2018 </p>

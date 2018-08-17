@@ -76,7 +76,6 @@ parts:
     story: {id: 846}
   - toc: "Siblings & Savages: Chapter 3"
     story: {id: 847}
-  - coverpage: >
-      <p><em>Editor's Note:</em> We're jumping ahead about 9 years into the future here, into Generation 2 of the Academy.</p>
-  - toc: "Reinforce: Don't Call Me a Pretty"
-    story: {id: 813}
+
+  - toc: "The Gates of the Garden"
+    story: {id: 896}

@@ -1,0 +1,38 @@
+
+id: glow-origin
+title: Whateley - Glow & Psyber Origin
+
+author: Morpheus
+author-sort: Morpheus
+uuid: eeb96e9f-16cf-4fcb-b604-1789255b472d
+series: Whateley Academy 1st Generation Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "A Glow in the Darkness"
+    toc-nest: 1
+    coverpage: >
+      <h1>Glow's Origin: A Glow in the Darkness</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 487}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 598}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 627}
+
+  - toc: "Nerves of Steel"
+    toc-nest: 1
+    coverpage: >
+      <h1>Psyber's Origin: Nerves of Steel</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 965}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 966}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 967}
