@@ -194,10 +194,12 @@ func getTypos(p *client.WhateleyPage) []TypoFix {
 //
 
 var hrSelectors = []string{
-	`* > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
+	`* > img[src^="/images/breaks/"]`,
 	`* > img[src="/images/hr1.gif"]`,
 	// `center > img[src="/images/breaks/linebreak-bluearcs.jpg"]`,
 	`img[alt="linebreak shadow"]`,
+	`img[alt="linebreak brownarcs"]`,
+	`img[alt^="linebreak"]`,
 	`p[style] > img[alt="line break short"]`,
 	`div.hr`,
 	`div.hr2`,
