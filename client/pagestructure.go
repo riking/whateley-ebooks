@@ -135,7 +135,8 @@ func (p *WhateleyPage) WordCount() int {
 	return len(strings.Fields(p.StoryBodySelection().Text()))
 }
 
-const StoryBodySelector = `div.description.group div.desc-content.field_text`
+// NOTE: Must end with a space, so that additional selectors can be concatenated on the end
+const StoryBodySelector = `div.description.group div.desc-content.field_text `
 
 func (p *WhateleyPage) StoryBodySelection() *goquery.Selection {
 	return p.document.Find(StoryBodySelector)
