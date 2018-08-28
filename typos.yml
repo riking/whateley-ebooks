@@ -323,6 +323,9 @@ library:
 215:
   - findtext: "initial"
     replacetext: "inertial"
+236:
+  - findtext: "iudea"
+    replacetext: "idea"
 244:
   - findtext: "28January"
     replacetext: "28 January"
@@ -622,13 +625,22 @@ library:
   - include: replacept
 560:
   - include: replacept
+650:
+  - findtext: "Morris continued.&#34;"
+    replacetext: "Morris continued."
+  - findtext: "Ah yes,"
+    replacetext: "&#34;Ah yes,"
+  - findtext: "circumastance"
+    replacetext: "circumstances"
+  - findtext: "So...&#34;"
+    replacetext: "&#34;So..."
 651:
   - include: replacept
 659:
-  - select: "span[style *= italic]"
+  - select: "span[style*=italic]"
     action: wrapInner
     replace: <em>
-  - select: "span[style *= underline]"
+  - select: "span[style*=underline]"
     action: wrapInner
     replace: <u>
   - select: span
@@ -653,6 +665,14 @@ library:
     replace: <hr>
   - select: p > span > *
     action: unwrap
+668:
+  - findtext: "Yhey"
+    replacetext: "They"
+676:
+  - findtext: "duringt"
+    replacetext: "during"
+  - findtext: "batteriest"
+    replacetext: "batteries"
 678:
   - select: p
     action: deleteAttr
@@ -672,6 +692,13 @@ library:
   - select: h3 span[style], h5 span[style]
     action: deleteAttr
     attr: style
+689:
+  - findtext: "AMA"
+    replacetext: "BMA"
+  - findtext: "freinds"
+    replacetext: "friends"
+  - findtext: "aquadate"
+    replacetext: "adequate"
 701:
   - include: whatif
 704:
@@ -689,3 +716,7 @@ library:
 740:
   - findtext: "look kindly on us"
     replacetext: "look kindly on us…&#34;"
+795:
+  - select: "[style*=color]"
+    action: deleteAttr
+    attr: style
