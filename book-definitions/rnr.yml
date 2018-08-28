@@ -1,0 +1,56 @@
+
+id: rnr
+title: "Whateley - Ribbon & Roulette"
+
+author: Morpheus
+author-sort: Morpheus
+uuid: f165981c-ce59-4e23-bfa5-78a4c004e64a
+series: Whateley Academy 2nd Generation Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "Steel Ribbon"
+    story: {id: 274}
+
+  - toc: "Roulette 1"
+    toc-nest: 1
+    coverpage: >
+      <h1>Roulette's Introduction</h1>
+  - toc: "Part 1"
+    toc-nest: 2
+    story: {id: 46}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 47}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 48}
+
+  - toc: "A Little R&R"
+    story: {id: 775}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 800}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 801}
+
+  - toc: "A Little R&R 2: Alyss in Wondercute Land"
+    story: {id: 816}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 817}
+
+  - toc: "A Little R&R 3"
+    story: {id: 948}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 949}
+
+  - toc: "Shenanigans"
+    story: {id: 1059}
+
+  - coverpage: >
+      <center><h3><em>to be continued…</em></h3></center>
+      <hr>
+      <p>This book was last updated on 27 August 2018</p>
