@@ -79,3 +79,5 @@ parts:
 
   - toc: "The Gates of the Garden"
     story: {id: 896}
+  - toc: "The Garden of Good and Evil"
+    story: {id: 1091}
