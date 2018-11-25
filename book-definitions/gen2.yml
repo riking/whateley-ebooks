@@ -166,6 +166,21 @@ parts:
     story: {id: 1049}
   - toc: "Flowers of the Sun"
     story: {id: 1068}
+  - toc: "Tears and Fears"
+    story: {id: 1062}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 1080}
+  - toc: "Khali in Mourning"
+    story: {id: 1082}
+  - toc: "Dorms of Our Lives: Season 4"
+    story: {id: 1070}
+  - toc: "Part 2"
+    toc-nest: 2
+    story: {id: 1079}
+  - toc: "Part 3"
+    toc-nest: 2
+    story: {id: 1084}
   - coverpage: >
       <center><h3>to be continued…</h3></center>
-      <p>This book was last updated on 17 August 2018 </p>
+      <p>This book was last updated on 24 November 2018 </p>

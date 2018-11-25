@@ -50,7 +50,13 @@ parts:
   - toc: "Shenanigans"
     story: {id: 1059}
 
+  - toc: "Ribbon 2: All Knotted Up"
+    story: {id: 1098}
+
+  - toc: "Roulette 2: Taking Another Spin"
+    story: {id: 1108}
+
   - coverpage: >
       <center><h3><em>to be continued…</em></h3></center>
       <hr>
-      <p>This book was last updated on 27 August 2018</p>
+      <p>This book was last updated on 24 November 2018</p>

@@ -116,8 +116,17 @@ parts:
   - toc: "Part 3"
     toc-nest: 2
     story: {id: 1052}
+  - toc: "Part 4"
+    toc-nest: 2
+    story: {id: 1053}
+  - toc: "Part 5"
+    toc-nest: 2
+    story: {id: 1054}
+
+  - toc: "Mischief 3: The Remedy For Mischief"
+    story: {id: 1063}
 
   - coverpage: >
       <center><h3><em>to be continued…</em></h3></center>
       <hr>
-      <p>This book was last updated on 03 August 2018</p>
+      <p>This book was last updated on 24 November 2018</p>

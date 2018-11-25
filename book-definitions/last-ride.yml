@@ -1,0 +1,13 @@
+
+id: last-ride
+title: "The Last Ride of \"Black\" Jack Kingston"
+
+author: "E. E. Nalley"
+author-sort: "E.E. Nalley"
+uuid: 910cc181-f4ab-476d-8e93-3605d8706d51
+series: Whateley Academy Original Canon
+publisher: Whateley Press
+
+parts:
+  - toc: "The Last Ride"
+    story: {id: 1066, slug: "lastride"}
