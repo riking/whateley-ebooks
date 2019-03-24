@@ -584,6 +584,8 @@ parts:
   toc: !!python/unicode 'Tennyo Goes to Hell (Part 1)'
 - story: {id: 342}
   toc: !!python/unicode 'Tennyo Goes to Hell (Part 2)'
+- toc: "Tennyo Goes to Hell (Epilogue)"
+  toc-page: "Text/342-tennyo-goes-to-hell-part-2.html#epilog"
 - story: {id: 346}
   toc: !!python/unicode 'May Your Death Be Sweet'
 - story: {id: 385}
