@@ -153,7 +153,7 @@ func (p *WhateleyPage) StoryBodyForTemplate() template.HTML {
 	return template.HTML(p.StoryBody())
 }
 
-var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/(?:index\.php/)?(?:content_page/)?([a-zA-Z0-9-]+)/(\d+)-([a-zA-Z0-9-]+)(?:\?|#|\z)`)
+var canonicalURLRegexp = regexp.MustCompile(`\Ahttp://whateleyacademy\.net/(?:index\.php/)?(?:content_page/)?([a-zA-Z0-9_-]+)/(\d+)-([a-zA-Z0-9_-]+)(?:\?|#|\z)`)
 var idAndSlugRegexp = regexp.MustCompile(`(?:\A|/)(\d+)-([a-zA-Z%0-9-]+)(?:/|\z)`)
 
 var stripExceptionsSelector = `
