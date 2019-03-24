@@ -425,23 +425,29 @@ library:
     action: replacehtml
     replace: "josie_gillman@example.com" # editorial note: zoho.com is actually being used?
 341:
-  # delete page counter
-  - select: .pagenavcounter, .pager
-    action: replacehtml
-    replace: " "
+  # Fix styling of content warning
+  - select: "span[style*=\"font-size\"]"
+    action: deleteAttr
+    attr: style
+  - select: "h3[style*=\"color:\"],h2[style*=\"color:\"],h4[style*=\"color:\"]"
+    action: deleteAttr
+    attr: style
   - select: p:contains("possessed the skill of integrating memories")
     action: insertBefore
     replace: <hr>
 342:
-  # delete page counter
-  - select: .pagenavcounter, .pager
-    action: replacehtml
-    replace: " "
   # Add anchor for table of contents
   - select: p[align="center"]:contains("EPILOG")
     action: setAttr
     attr: id
     replace: epilog
+  # Fix styling of content warning
+  - select: "span[style*=\"font-size\"]"
+    action: deleteAttr
+    attr: style
+  - select: "h3[style*=\"color:\"],h2[style*=\"color:\"],h4[style*=\"color:\"]"
+    action: deleteAttr
+    attr: style
   - findtext: "bell That is our"
     replacetext: "bell. That is our"
 346:
