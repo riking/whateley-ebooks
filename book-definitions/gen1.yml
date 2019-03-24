@@ -848,6 +848,107 @@ parts:
   toc: !!python/unicode 'Quick Imp-ressions'
 - story: {id: 776}
   toc: !!python/unicode 'Round and Round (Part 1)'
+- {story: {id: 748}, toc: "Small Mercies"}
+- {story: {id: 775}, toc: "A Little R&R (Part 1)"}
+- {story: {id: 765}, toc: "Murphy's Laws of Whateley"}
+- {story: {id: 774}, toc: "The Bear, The Bitch, And Everything (Part1)"}
+- {story: {id: 786}, toc: "Round and Round (Part 2)"}
+- {story: {id: 771}, toc: "Kayda 10: There's No Place Like Poe (Part 3)"}
+- {story: {id: 791}, toc: "The Bear, The Bitch and Everything (Part 2)"}
+- {story: {id: 799}, toc: "Out on a Tether"}
+- {story: {id: 768}, toc: "Blood-Sister, Blood-Brother"}
+- {story: {id: 800}, toc: "A Little R&R (Part 2)"}
+- {story: {id: 802}, toc: "The Final Trump (Part 1)"}
+- {story: {id: 787}, toc: "Round and Round (Part 3)"}
+- {story: {id: 801}, toc: "A Little R&R (Part 3)"}
+- {story: {id: 803}, toc: "The Final Trump (Part 2)"}
+- {story: {id: 782}, toc: "Kayda 10: There's No Place Like Poe (Part 4)"}
+- {story: {id: 794}, toc: "The Bear, the Bitch, and Everything (Part 3)"}
+- {story: {id: 820}, toc: "Imp 5: Head over Tail (Part 1)"}
+- {story: {id: 804}, toc: "The Final Trump (Part 3)"}
+- {story: {id: 783}, toc: "Kayda 10: There's No Place Like Poe (Part 5)"}
+- {story: {id: 823}, toc: "Absinthe"}
+- {story: {id: 812}, toc: "The Bear, The Bitch, And Everything (Part 4)"}
+- {story: {id: 821}, toc: "Imp 5: Head over Tail (Part 2)"}
+- {story: {id: 805}, toc: "The Final Trump (Part 4)"}
+- {story: {id: 810}, toc: "Soaring"}
+- {story: {id: 837}, toc: "Blast from the Past"}
+- {story: {id: 792}, toc: "Kayda 10: There's No Place Like Poe (Part 6)"}
+- {story: {id: 806}, toc: "The Final Trump (Part 5)"}
+- {story: {id: 772}, toc: "Siblings & Savages (Chapter 1)"}
+- {story: {id: 816}, toc: "A Little R&R 2: Alyss in Wondercute Land (Part 1)"}
+- {story: {id: 822}, toc: "Imp 5: Head over Tail (Part 3)"}
+- {story: {id: 825}, toc: "Intervention"}
+- {story: {id: 817}, toc: "A Little R&R 2: Alyss in Wondercute Land (Part 2)"}
+- {story: {id: 846}, toc: "Siblings & Savages (Chapter2)"}
+- {story: {id: 851}, toc: "Hank 5: To the New Year!"}
+- {story: {id: 888}, toc: "Seeking Depth is Best"}
+- {story: {id: 827}, toc: "Tea and Dagger"}
+- {story: {id: 847}, toc: "Siblings & Savages (Chapter 3)"}
+- {story: {id: 863}, toc: "The Banshee's Tale"}
+- {story: {id: 869}, toc: "Mischief Managed"}
+- {story: {id: 862}, toc: "Danny 1 - What's New, Pussycat? (Part 1)"}
+- {story: {id: 896}, toc: "The Gates of the Garden"}
+- {story: {id: 882}, toc: "Absinthe 2: The Absinthe of Malice (Part 1)"}
+- {story: {id: 884}, toc: "Hank 6: To Companions, New and Old!"}
+- {story: {id: 892}, toc: "The Angel And Cecil Barrows"}
+- {story: {id: 889}, toc: "Danny 1 - What's New, Pussycat? (Part 2)"}
+- {story: {id: 908}, toc: "Imp 6: A Very Imp-ortant Date (Part 1)"}
+- {story: {id: 909}, toc: "Imp 6: A Very Imp-ortant Date (Part 2)"}
+- {story: {id: 901}, toc: "Absinthe 2: The Absinthe of Malice (Part 2)"}
+- {story: {id: 918}, toc: "Dague de L'esprit (Part 1)"}
+- {story: {id: 910}, toc: "Imp 6: A Very Imp-ortant Date (Part 3)"}
+- {story: {id: 937}, toc: "Absinthe 2: The Absinthe of Malice (Part 3)"}
+- {story: {id: 948}, toc: "A Little R&R 3 (Part 1)"}
+- {story: {id: 911}, toc: "Imp 6: A Very Imp-ortant Date (Part 4)"}
+- {story: {id: 949}, toc: "A Little R&R 3 (Part 2)"}
+- {story: {id: 943}, toc: "Vegas, Baby, Vegas! (Part 1)"}
+- {story: {id: 938}, toc: "Absinthe 2: The Absinthe of Malice (Part 4)"}
+- {story: {id: 944}, toc: "Vegas, Baby, Vegas! (Part 2)"}
+- {story: {id: 965}, toc: "Nerves of Steel (Part 1)"}
+- {story: {id: 945}, toc: "Vegas, Baby, Vegas! (Part 3)"}
+- {story: {id: 966}, toc: "Nerves of Steel (Part 2)"}
+- {story: {id: 961}, toc: "Dague De L'esprit (Part 2)"}
+- {story: {id: 946}, toc: "Vegas, Baby, Vegas! (Part 4)"}
+- {story: {id: 967}, toc: "Nerves of Steel (Part 3)"}
+- {story: {id: 950}, toc: "Absinthe 2: The Absinthe of Malice (Part 5)"}
+- {story: {id: 955}, toc: "Vegas, Baby, Vegas! (Part 5)"}
+- {story: {id: 957}, toc: "Vegas, Baby, Vegas! (Part 6)"}
+- {story: {id: 971}, toc: "Shine 2 - My Fair 'Shine (Part 1)"}
+- {story: {id: 959}, toc: "Tales of Summer"}
+- {story: {id: 980}, toc: "Diamonds are a Vamp's Best Friend (Part 4)"}
+- {story: {id: 989}, toc: "The Evil That Men Do (Part 1)"}
+- {story: {id: 995 }, toc: "Hank 7: And all who sail in her!"}
+- {story: {id: 1001}, toc: "The Evil That Men Do (Part 2)"}
+- {story: {id: 1026}, toc: "Fallen Angel"}
+- {story: {id: 1017}, toc: "The Evil That Men Do (Part 3)"}
+- {story: {id: 1024}, toc: "The Evil That Men Do (Part 4)"}
+- {story: {id: 1029}, toc: "The Evil That Men Do (Part 5)"}
+- {story: {id: 1042}, toc: "Amongst the Shadows"}
+- {story: {id: 1044}, toc: "Brief Glimpses"}
+- {story: {id: 1045}, toc: "To Seal Our Happiness (Part 1)"}
+- {story: {id: 1047}, toc: "Shine 2: My Fair Shine (Part 2)"}
+- {story: {id: 1046}, toc: "To Seal Our Happiness (Part 2)"}
+- {story: {id: 1050}, toc: "Imp 7: Imp-ervious to Reason (Part 1)"}
+- {story: {id: 1056}, toc: "To Seal Our Happiness (Part 3)"}
+- {story: {id: 1051}, toc: "Imp 7: Imp-ervious to Reason (Part 2)"}
+- {story: {id: 1052}, toc: "Imp 7: Imp-ervious to Reason (Part 3)"}
+- {story: {id: 1066}, toc: "The Last Ride"}
+- {story: {id: 1053}, toc: "Imp 7: Imp-ervious to Reason (Part 4)"}
+- {story: {id: 1060}, toc: "Tea and Tears"}
+- {story: {id: 1054}, toc: "Imp 7: Imp-ervious to Reason (Part 5)"}
+- {story: {id: 1059}, toc: "Shenanigans"}
+- {story: {id: 1063}, toc: "Mischief 3: The Remedy for Mischief"}
+- {story: {id: 1083}, toc: "All Hallows Ball"}
+- {story: {id: 1091}, toc: "The Garden of Good and Evil"}
+- {story: {id: 1093}, toc: "Shine 2: My Fair Shine (part 3)"}
+- {story: {id: 1098}, toc: "Ribbon 2: All Knotted Up"}
+- {story: {id: 1103}, toc: "All Hallows Ball Part Two"}
+- {story: {id: 1108}, toc: "Roulette 2: Taking Another Spin"}
+- {story: {id: 1107}, toc: "All Hallows Ball (Part 3)"}
+- {story: {id: 1119}, toc: "Silver Ghost, Golden Angel (Part 3)"}
+- {story: {id: 1131}, toc: "Shine 2: My Fair Shine (part 4)"}
+- coverpage: "<i>(end)</i>"
 publisher: Whateley Press
 series: Whateley Academy Original Canon
 title: Whateley - Gen1 Complete
