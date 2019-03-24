@@ -215,6 +215,7 @@ func ParseStoryPage(doc *goquery.Document) (*WhateleyPage, error) {
 	_ = removed
 
 	page.document.Find("script,style").Remove()
+	page.document.Find("a.returnToc,div.contenttoc,div.tocNav").Remove()  // No JS, don't need dynamic TOC
 
 	// Delete the space nodes adjacent to other space nodes
 	spacesTrimmed := 0
