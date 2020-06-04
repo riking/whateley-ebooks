@@ -189,7 +189,7 @@ func (ed *EpubDefinition) Username() (string, error) {
 	if err != nil {
 		return "<ERROR>", err
 	}
-	return u.Username, nil
+	return u.Name, nil
 }
 
 func (ed *EpubDefinition) PrepareAssets() {
